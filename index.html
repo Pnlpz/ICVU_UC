@@ -1,0 +1,619 @@
+
+<!DOCTYPE html>
+
+      <html>
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <style type="text/css">
+    .hidden {
+  display: none;
+  visibility: hidden;
+}
+  </style>
+
+  <script type="text/javascript">
+    google.charts.load('current', {
+  packages:['bar', 'sankey',
+  'corechart', 'controls']
+}).then(function () {
+
+
+
+function createCustomHTMLContent(flagURL, totalGold, totalSilver, totalBronze) {
+  return '<div style="padding:5px 5px 5px 5px;">' +
+      '<img src="' + flagURL + '" style="width:75px;height:50px"><br/>' +
+      '<table class="medals_layout">' + '<tr>' +
+      '<td><img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Gold_medal.svg" style="width:25px;height:25px"/></td>' +
+      '<td><b>' + totalGold + '</b></td>' + '</tr>' + '<tr>' +
+      '<td><img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Silver_medal.svg" style="width:25px;height:25px"/></td>' +
+      '<td><b>' + totalSilver + '</b></td>' + '</tr>' + '<tr>' +
+      '<td><img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Bronze_medal.svg" style="width:25px;height:25px"/></td>' +
+      '<td><b>' + totalBronze + '</b></td>' + '</tr>' + '</table>' + '</div>';
+}
+    var colors = [
+    '#a6cee3', // icvu
+    '#b2df8a', // vivienda
+    '#fb9a99', // salud
+    '#fdbf6f', // soc
+    '#fb9a99', // amb neg
+    '#fdbf6f', // lab
+    '#cab2d6', // conn
+    '#ffff99', // viv1
+    '#ffff99', // viv2
+    '#ffff99', // viv3
+    '#ffff99', // viv4
+    '#ffff99', // viv5
+    '#ffff99', // viv6
+    '#1f78b4', // sal1
+    '#1f78b4', // sal2
+    '#1f78b4', // sal3
+    '#1f78b4', // sal4
+    '#1f78b4', // sal5
+    '#33a02c'
+    ];
+
+
+var optionsSankey = {
+      width: 1000,
+      height: 840,
+      animation:{
+        duration: 1000,
+        easing: 'out',
+      },
+
+            allowHtml: 'true',
+            tooltip: {
+                isHtml: 'true',
+textStyle: 
+  { 
+    //color: <string>,
+  //fontName: <string>,
+  fontSize: 10,
+  bold: true
+  //italic: <boolean> 
+}
+},
+/***************************/
+// REVISAR
+// https://jsfiddle.net/PN03/4th0e7e6/8/
+// https://stackoverflow.com/questions/40435332/google-charts-sankey-node-text-style
+// https://github.com/google/google-visualization-issues/issues/2380
+// ALTURA DINAMICA
+// https://stackoverflow.com/questions/35408995/google-sankey-chart-adjust-height-automatically
+// function
+// https://stackoverflow.com/questions/34566777/google-charts-how-to-hide-dynamically-created-series-and-show-only-one-in-legend
+// SANKEY D3 https://bl.ocks.org/emeeks/e749224c89f82788cb18
+// LEYENDAS https://stackoverflow.com/questions/16980002/how-to-prevent-legend-labels-being-cut-off-in-google-charts
+// COLOR https://stackoverflow.com/questions/40435332/google-charts-sankey-node-text-style
+// DYNAMICALLY https://stackoverflow.com/questions/21933951/how-to-control-show-hide-the-tooltip-dynamically-in-google-chart-api
+// https://stackoverflow.com/questions/42947236/position-icon-after-google-line-chart-title AGREGAR ICONO AL TITULO *****
+// https://stackoverflow.com/questions/46401043/adding-a-small-custom-icon-and-popup-to-a-title-of-google-charts ***** IDEM
+/***************************/
+showRowNumber: true,
+      sankey: {
+        node: {
+         // colors: colors,
+          interactivity: true, // Allows you to select nodes.
+         nodePadding: 10,
+         labelPadding: -2,
+          //colorMode: 'target',
+          colors: colors,
+         label: { fontName: 'Times-Roman',
+                         fontSize: 14,
+                         //color: '#871b47',
+                         //bold: true,
+                         italic: true }
+        },
+        link: {
+          interactivity: true, // Allows you to select nodes.
+          //colorMode: 'gradient',
+          //colorMode: 'target',
+          colorMode: 'source',
+          colors: colors
+        }
+      }
+    };
+
+var dataSankey = new google.visualization.DataTable();
+    dataSankey.addColumn('string', 'From');
+    dataSankey.addColumn('string', 'To');
+    dataSankey.addColumn('number', 'Ponderación');
+    //dataSankey.addColumn({type: 'string', role: 'annotation'});
+  //dataSankey.addColumn({type: 'string', role: 'style'});
+    dataSankey.addColumn({type: 'string', role: 'tooltip', 'p': {'html': true}});
+
+    /*
+    dataSankey.addRows([
+       [ 'ICVU', 'D1', 5 ],
+       [ 'ICVU', 'D2', 1 ],
+       [ 'ICVU', 'D3', 1 ],
+       [ 'D1', 'England', 1 ],
+       [ 'D1', 'Portugal', 1 ],
+       [ 'D2', 'France', 5 ],
+       [ 'D3', 'England', 1 ],
+       [ 'D3', 'Portugal', 1 ],
+       [ 'D3', 'France', 1 ]
+    ]);*/
+// 19.9, 18.1, 14.5, 11.5, 16.7, 19.3
+    //factors = [[1,1],[2,2],[1,2,3]];
+    criteria = [37.9, 47.9],
+
+
+    factors = [19.9, 18.1, 14.5, 11.5, 16.7, 19.3];
+
+
+labels = ["VIVIENDA Y ENTORNO", "SALUD Y MEDIO AMBIENTE", "CONDICIONES SOCIOCULTURALES", "AMBIENTE DE NEGOCIOS", "CONDICIÓN LABORAL", "CONECTIVIDAD Y MOVILIDAD"];
+// cl = ["Ingreso promedio de los hogares","Porcentaje de pobreza multidimensional CASEN 2015","Porcentaje de Ocupados Asalariados con contrato de trabajo firmado","Porcentaje de Ocupados con jornadas de trabajo superiores a 45 horas","% de encuestados con percepción satisfecho y muy satisfecho con respecto al Empleo (encuesta de percepción)","Costo de Vida ($) Precio canasta 130 productos"];
+cl = ["Ingreso promedio de hogares",
+"Pobreza multidimensional laboral",
+"Ocupados con contrato trabajo",
+"Ocupados en jornada menos 30 horas ",
+"Índice de mora por consumo ",
+"Costo de vida regional"];
+
+
+an = ["Dotación cajeros automáticos",
+"Índice de mora consumo 90 días o más (agosto 2016)","Metros cuadrados obra aprobada Servicios (promedio 2013-2015) por cada 10.000 habitantes","N° de empleados en Hoteles y Restaurantes por cada 1000 habitantes, 2015","Porcentaje de población que ha recibido capacitación laboral en el último año"];
+cs = ["Porcentaje de participación en organizaciones sociales","Tasa de denuncias por delitos de violencia Intrafamiliar 2016","Promedio SIMCE 4° Básico 2015 MAT","Promedio SIMCE 4° Básico 2015 LEN","Tasa de embarazo adoslecente 2012","Porcentaje de Puntajes PSU Igual o Superior a 450 puntos Establecimientos Municipales (proceso de admisión 2016)","% de personas que usan por lo menos una vez por semana un parque o una plaza"];
+cm = ["Porcentaje de hogares que tienen conexión a Internet","N° Accidentes del tránsito por cada 10.000 habitantes 2014","Porcentaje de población que trabaja en la misma comuna donde reside","% de encuestados que considera estado de calles y avenidas buena y muy buena (Encuesta de Percepción) ","% de encuestados que considera estado de veredas buena y muy buena (Encuesta de Percepción) ","% de encuestados que considera que la congestión vehícular es un problema muy grave o grave en su comuna"];
+sm = ["Tasa años de vida potencialmente perdidos por cada 1.000 hab ambos sexos 2014","N° de personas que han sido tratadas por enfermedades respiratorias por cada 10.000 habitantes 2011","N° de personas que han sido tratadas por depresión por cada 10.000 habitantes 2011","Total Número de Camas Hospitales y Clínicas por cada 1.000 habitantes 2013","Tasa de Mortalidad Infantil 2014","% de encuestado con percepció de  ruido nada grave o no existe"];
+vm = ["Metros Cuadrados (M2) de Areas Verdes con Mantenimiento por Habitante  (MTS²) 2015","Gasto total municipal por cada habitante de la comuna  M$ / Habitante (promedio 2013-2015)","Porcentaje de hogares  con hacinamiento ","% de encuestados satisfechos y muy satisfechos con respecto a Seguridad (Encuesta de Percepción) ","Frecuencia de Denuncias por Delitos de Mayor Connotación Social 2015","% de encuestados con percepción positiva con respecto a calidad Sedes sociales u otros lugares para el encuentro","Presencia grave o muy grave de perros vagos"];
+
+variables = [cl, an, cs, cm, sm, vm];
+colors = [ "#0F0", "#0FF", "#000", "#0F0", "#0F7", "#7F0" ];
+
+
+/*
+    for (var j = 0; j < splited.length-1; j++){
+        var t = splited[j].split(",");
+        var s = [t[0], t[1], parseInt(t[2]), '<h4>Del total de MOOCs en <i>'+t[0]+'</i>, se han producido '+t[2]+' en <i>'+t[1]+'</i>.</h4>'];
+        all_data.addRow(s);
+    }*/
+        
+        
+
+
+    for (var i = 0; i < factors.length ; i++) {
+
+      aux = 0;
+      /*
+      for (var k = 0; k < factors[i].length ; k++) {
+        aux += parseInt(factors[i][k]);
+      }
+      */
+
+        aux += (factors[i]);
+      //console.log("aux: "+aux);
+
+      //dataSankey.addRow([ 'ICVU', 'D'+i, aux ]);
+      dataSankey.addRow(['ICVU', labels[i], aux, "El <b>ICVU</b> está compuesto por " + factors[i]+ "% de <b>"+ labels[i] +"</b>"]);
+
+      l = variables[i].length;
+      for (var j = 0; j < l ; j++) {
+        peso = (aux/l) ;        
+        
+        //var s = [t[0], t[1], parseInt(t[2]), '<h4>Del total de MOOCs en <i>'+t[0]+'</i>, se han producido '+t[2]+' en <i>'+t[1]+'</
+        
+        dataSankey.addRow([labels[i], variables[i][j], peso,  "<b>"+labels[i]+"</b> se compone de <b>" + factors[i]+ "%</b> de "+ variables[i][j] ]);
+      }
+      
+    }
+
+
+  var chartContainer = document.getElementById('dual_x_div');
+  var chart = new google.visualization.Sankey(chartContainer);
+  var button = document.getElementById('button');
+
+
+function downloadCanvas(link, canvasId, filename) {
+  console.log("SI");
+    link.href = document.getElementById(canvasId).toDataURL();
+    link.download = filename;
+}
+
+
+$( "#button" ).click(function() {
+
+
+
+  //google.visualization.events.addListener(chart, 'ready', function () {
+  //google.visualization.events.addListener(button, 'click', function() {
+
+    console.log("Click");
+    console.log("GENERAR IMAGEN DE ANTES");
+    var canvas;
+    var domURL;
+    var imageNode;
+    var imageURL;
+    var svgParent;
+
+    // add svg namespace to chart
+    domURL = window.URL || window.webkitURL || window;
+    svgParent = chartContainer.getElementsByTagName('svg')[0];
+    svgParent.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    imageNode = chartContainer.cloneNode(true);
+    imageURL = domURL.createObjectURL(new Blob([svgParent.outerHTML], {type: 'image/svg+xml'}));
+    image = new Image();
+    image.onload = function() {
+      canvas = document.getElementById('canvas');
+      canvas.setAttribute('width', parseFloat(svgParent.getAttribute('width')));
+      canvas.setAttribute('height', parseFloat(svgParent.getAttribute('height')));
+      canvas.getContext('2d').drawImage(image, 0, 0);
+      //console.log(canvas.toDataURL('image/png'));
+      //console.log(canvas.toDataURL('image/png'));
+
+
+      downloadCanvas(this, 'canvas', 'test.png');
+      ////
+      ////
+    }
+    image.src = imageURL;
+  });
+
+
+  chart.draw(dataSankey, optionsSankey);
+});
+
+
+
+
+
+
+/// Dashboard =>
+var data;
+var dashboard;
+var chartTool;
+var dataFull;
+
+      var options = {
+        width: 600,
+        height: 600,
+        //title: 'Detalle para la comuna ' + value,
+        colors: ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6'],
+
+      animation:{
+        duration: 1000,
+        easing: 'out',
+      }
+  };
+
+function excludeEmptyRows(dataTable)
+{
+    var view = new google.visualization.DataView(dataTable);
+    //var rowIndexes = view.getFilteredRows([{column: 1, maxValue: 50}]); //get rows with 0 values
+    //getFilteredRows([{column: 3, value: 42}, {column: 2, minValue: 10, maxValue: 50}]) 
+
+    var rowIndexes = view.getFilteredRows([ {column: 1, minValue: 200, maxValue: 500}]) 
+
+    // removeRows(rowIndex, numberOfRows) 
+    // getTableRowIndex(viewRowIndex)  // Example: If setRows([3, 1, 4]) was previously called, then getTableRowIndex(2) will return 4.
+    // getViewRowIndex(tableRowIndex) // Example: If setRows([3, 1, 4]) was previously called, then getViewRowIndex(4) will return 2.
+
+    // hideRows(min, max) // Hides all rows with indexes that lie between min and max (inclusive) from the current view. This is a convenience syntax for hideRows(rowIndexes) above. For example, hideRows(5, 10) is equivalent to hideRows([5, 6, 7, 8, 9, 10]).
+    
+    // hideRows(rowIndexes)  // Example: If you have a table with 10 rows, and you call setRows([2,7,1,7,9]), and then hideRows([7,9]), the rows in the view will then be [2,1].
+
+
+
+    view.hideRows(rowIndexes); //hide empty rows
+    return view.toDataTable();
+}    
+
+
+      // Load the Visualization API and the controls package.
+      //google.charts.load('current', {'packages':['corechart', 'controls']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawDashboard);
+
+      // Callback that creates and populates a data table,
+      // instantiates a dashboard, a range slider and a pie chart,
+      // passes in the data and draws it.
+      function drawDashboard() {
+
+        // Create our data table.
+        array = [['Name', 'Filtro1']];
+        for (var i = 0; i < 10; i++) {
+            array.push('Comuna'+i, i);
+        }
+        array.push('Comuna'+i, i);
+
+
+        data = //google.visualization.arrayToDataTable(array);
+        new google.visualization.DataTable();
+
+        data.addColumn('string', 'Name');
+        data.addColumn('number', 'Filtro1');
+        //data.addColumn({type: 'string', role: 'style'});
+
+
+        for (var i = 0; i < 100; i++) {
+            data.addRow(['Comuna '+i, (i+1)*10]);
+        }
+
+
+        dataFull1 = //google.visualization.arrayToDataTable(array);
+        new google.visualization.arrayToDataTable([
+       ['Employee Name', 'Salary'],
+       ['Mike', {v:22500, f:'22,500'}], // Format as "22,500".
+       ['Bob', 35000],
+       ['Alice', 44000],
+       ['Frank', 27000],
+       ['Floyd', 92000],
+       ['Fritz', 18500]
+      ],
+      false); // 'false' means that the first row contains labels, not data.
+
+
+
+        dataFull2 = //google.visualization.arrayToDataTable(array);
+        new google.visualization.arrayToDataTable([
+       ['Employee Name', 'Salary'],
+       ['Mike', {v:2250, f:'22,500'}], // Format as "22,500".
+       ['Bob', 3500],
+       ['Alice', 4400],
+       ['Frank', 2700],
+       ['Floyd', 9200],
+       ['Fritz', 1850]
+      ],
+      false); // 'false' means that the first row contains labels, not data.
+
+var dataFull = [dataFull1, dataFull2];
+/*
+        data = google.visualization.arrayToDataTable([
+          ['Name', 'Filtro1'],
+          ['Michael' , 5],
+          ['Elisa', 7],
+          ['Robert', 3],
+          ['John', 2],
+          ['Jessica', 6],
+          ['Aaron', 1],
+          ['Margareth', 8]
+        ]);*/
+        
+        /*
+        data = google.visualization.arrayToDataTable([
+          ['Name', 'Filtro1', 'Filtro2'],
+          ['Michael' , 5, true],
+          ['Elisa', 7, true],
+          ['Robert', 3, false],
+          ['John', 2, false],
+          ['Jessica', 6, true],
+          ['Aaron', 1, true],
+          ['Margareth', 8, true]
+        ]);
+        */
+
+        //data.sort([{column: 1}, {column: 0}]);
+        //data.sort([{column: 1}, {column: 0}]);
+        data.sort([{column: 1, desc: true}]);
+
+
+
+
+        // Create a dashboard.
+        dashboard = new google.visualization.Dashboard(
+            document.getElementById('dashboard_div'));
+
+        // Create a range slider, passing some options
+        var donutRangeSlider = new google.visualization.ControlWrapper({
+          'controlType': 'NumberRangeFilter',
+          'containerId': 'filter_div',
+          'options': {
+            'filterColumnLabel': 'Filtro1'
+
+          }
+        });
+
+        // Create a pie chart, passing some options
+        var barChart = new google.visualization.ChartWrapper({
+          'chartType': 'BarChart',
+          'containerId': 'chart_div',
+          'options': {
+            'width': 600,
+            'height': 600,
+            'pieSliceText': 'value',
+            'legend': 'right',
+            'hAxis': {'minValue': '0'},
+            'animation':{
+              'duration': '1000',
+              'easing': 'out',
+            },
+            'tooltip': {'isHtml': true}
+
+          }
+        });
+
+// =====================================================================================
+// =================
+// REVISAR ESTO !!!
+// =================
+// https://developers.google.com/chart/interactive/docs/basic_interactivity
+// https://developers.google.com/chart/interactive/docs/animation
+// https://developers.google.com/chart/interactive/docs/events
+//  https://developers.google.com/chart/interactive/docs/overlays#fullpage2  ****
+// http://a32.me/2018/01/change-tooltip-position-on-google-charts/
+// =====================================================================================
+
+
+var mi_aux = 0;
+      // Instantiate and draw our chart, passing in some options.
+      chartTool = new google.visualization.ColumnChart(document.getElementById('chart_TOOL'));
+
+google.visualization.events.addListener(barChart, 'select', function () {
+  console.log("Click: " + barChart.getChart().getSelection());
+
+    var selection = barChart.getChart().getSelection();
+
+    var selectedItem = barChart.getChart().getSelection()[0];
+    if (selectedItem) {
+      var value = data.getValue(selectedItem.row, selectedItem.column);
+      console.log('- The user selected ' + value + ', '+barChart.getChart().getSelection()[0][1] );
+
+
+      var optionsTool = {
+        width: 600,
+        height: 600,
+        title: 'Detalle para ' + data.getValue(selectedItem.row, 0),
+        colors: ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6'],
+
+      animation:{
+        duration: 1000,
+        easing: 'out',
+      }
+      };
+
+  var message = '';
+
+  for (var i = 0; i < selection.length; i++) {
+    var item = selection[i];
+    if (item.row != null && item.column != null) {
+      message += '{row:' + item.row + ',column:' + item.column + '}'  + ' ===> (' + data.getValue(item.row, 0)+': '+ data.getValue(item.row, 1)+')';
+    } else if (item.row != null) {
+      message += '{row:' + item.row + '}';
+    } else if (item.column != null) {
+      message += '{column:' + item.column + '}';
+    }
+  }
+  if (message == '') {
+    message = 'nothing';
+  }
+  console.log('You selected ' + message);
+
+
+      chartTool.draw(dataFull[(mi_aux++)%2], optionsTool);
+    }
+
+
+
+
+});
+
+        // Establish dependencies, declaring that 'filter' drives 'barChart',
+        // so that the pie chart will only display entries that are let through
+        // given the chosen slider range.
+        dashboard.bind(donutRangeSlider, barChart);
+
+        // Draw the dashboard.
+        //dashboard.draw(data);
+
+var formatter = new google.visualization.ColorFormat();
+formatter.addRange(0, criteria[0], 'white', 'orange');
+formatter.addRange(criteria[0], criteria[1], 'red', '#33ff33');
+formatter.addRange(criteria[1], null, 'green', '#000');
+formatter.format(data, 1); // Apply formatter to second column
+
+//dashboard.draw(data, {allowHtml: true, showRowNumber: true, width: '100%', height: '100%'});
+
+        //dashboard.draw(data, options);
+              //dashboard.draw(excludeEmptyRows(data), options);
+              dashboard.draw((data), options);
+
+      }
+/// Dashboard <=
+
+
+function updateChart(){
+
+
+              order1 =  parseInt($("#order1 option:selected").val());
+              order2 =  parseInt($("#order2 option:selected").val());
+
+              data.sort([{column: order1, desc: (order2%2 == 0)}]);
+              dashboard.draw(data, options);
+
+}
+
+          var order1 = 1;
+          $( document ).ready(function() {
+              order1 =  parseInt($("#order1 option:selected").val());
+              order2 =  parseInt($("#order2 option:selected").val());
+              console.log( "text_commune! " + order1 );
+
+              $('#order1').change(function() {
+                  updateChart();
+                  
+
+              });
+
+              $('#order2').change(function() {
+                  updateChart();
+
+              });
+
+          });
+
+
+  </script>
+
+  </head>
+  <body>
+
+
+
+
+
+<!-- Dashboard > -->
+
+    <!--Div that will hold the dashboard-->
+    <div id="dashboard_div">
+
+      <h3>Orden:</h3><br>
+
+
+      <label for="order1">Orden por:</label>
+      <select name="order1" id="order1">
+        <option value=1>Valor</option>
+        <option value=0>Nombre</option>
+      </select><br>
+      
+      <br>
+      <label for="order2">en forma:</label>
+      <select name="order2" id="order2">
+        <option value=1>Ascendente (A..Z)</option>
+        <option value=2>Descendente (Z..A)</option>
+      </select>
+
+            <!--Divs that will hold each control and chart-->
+            <div id="filter_div"></div>
+      <div class="row">
+
+
+          <div class="col-md-6">
+            <div id="chart_div"></div>
+          </div>
+          <div class="col-md-6">
+
+            <div id="chart_TOOL"></div>
+          </div>
+    </div>
+    </div>
+
+<!-- Dashboard < -->
+
+<h2>El ICVU se construye mezclando distintas dimensiones, con distintas ponderaciones:</h2>
+<div id="dual_x_div"></div>
+<canvas class="" id="canvas"></canvas>
+<button id="button">
+  EXPORTAR
+</button>
+
+<!--
+<h2>Ranking ICVU 2018:</h2>
+<div id="dual_x_div"></div>
+<canvas class="" id="canvas"></canvas>
+-->
+
+
+  </body>
+</html>
