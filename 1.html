@@ -454,19 +454,68 @@ var mi_aux = 0;
 
 google.visualization.events.addListener(barChart, 'select', function () {
   console.log("Click: " + barChart.getChart().getSelection());
+  //r = barChart.getView().rows[currentRow]
+  //r = barChart.getView().rows[currentRow]
+
+    var selection = barChart.getChart().getSelection();
+    //var selectedRow = selection[i].row;
+    /*
+    var selectedRow = selection[i].row;
+    var dataTableRow = barChart.getView().rows[selectedRow];
+    var values = '';
+    for (var col = 0; col < data.getNumberOfColumns(); col++) {
+      if (values !== '') {
+        values += ' -- ';
+      }
+      values += data.getValue(dataTableRow, col);
+    }*/
+message ='';
+  for (var i = 0; i < selection.length; i++) {
+    var item = selection[i];
+    if (item.row != null && item.column != null) {
+      message += '{row:' + item.row + ',column:' + item.column + '}';
+    } else if (item.row != null) {
+      message += '{row:' + item.row + '}';
+    } else if (item.column != null) {
+      message += '{column:' + item.column + '}';
+    }
+  }
+  if (message == '') {
+    message = 'nothing';
+  }
+
+      var id = barChart.getDataTable().getValue(item.row,0);
+      var originalRow = data.getFilteredRows([{column: 0, value: id }]);
+      originalRow = parseInt(originalRow);
+      var originalData = data.getFormattedValue(originalRow, 1);
+
+      console.log("originalIndexRow: " + originalRow);
+      console.log("originalDataRow: " + originalData);
+  //alert('You selected ' + message);
+
+  console.log("*** values: " + message);
+
+
 
     var selection = barChart.getChart().getSelection();
 
     var selectedItem = barChart.getChart().getSelection()[0];
     if (selectedItem) {
       var value = data.getValue(selectedItem.row, selectedItem.column);
-      console.log('- The user selected ' + value + ', '+barChart.getChart().getSelection()[0][1] );
+      //console.log('- The user selected ' + value + ', '+barChart.getChart().getSelection()[0][1] );
 
+
+      var id = barChart.getDataTable().getValue(item.row,0);
+      var originalRow = data.getFilteredRows([{column: 0, value: id }]);
+      originalRow = parseInt(originalRow);
+      var originalData = data.getFormattedValue(originalRow, 1);
+      var originalNameData = data.getFormattedValue(originalRow, 0);
+      
 
       var optionsTool = {
         width: 600,
         height: 600,
-        title: 'Detalle para ' + data.getValue(selectedItem.row, 0),
+        title: 'Detalle para ' + originalNameData,
         colors: ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6'],
 
       animation:{
