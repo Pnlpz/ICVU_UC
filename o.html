@@ -38,9 +38,9 @@
 
       var options = {
         legend: 'none',
-        colors: ['#760946'],
-        lineWidth: 4,
-        vAxis: { gridlines: { count: 4 } }
+        //colors: ['#760946'],
+        //lineWidth: 4,
+        //vAxis: { gridlines: { count: 4 } }
       };
 
       function placeMarker(dataTable) {
@@ -54,14 +54,17 @@
         //document.querySelector('.overlay-marker').style.top = Math.floor(cli.getYLocation(dataTable.getValue(elem, 1))) - 50 + "px";
         //document.querySelector('.overlay-marker').style.left = Math.floor(cli.getXLocation(elem)) - 10 + "px";
         elem = document.getElementById('img'+i);
-        elem.style.top = Math.floor(cli.getYLocation(dataTable.getValue(i, 1))) - 50 + "px";
-        elem.style.left = Math.floor(cli.getXLocation(i)) - 10 + "px";
+        //elem.style.top = Math.floor(cli.getYLocation(dataTable.getValue(i, 1))) - 50 + "px";
+        //elem.style.left = Math.floor(cli.getXLocation(i)) - 10 + "px";
+        elem.style.left = Math.floor(cli.getXLocation(dataTable.getValue(i, 1))) - 50 + "px";
+        elem.style.top = Math.floor(cli.getYLocation(i)) - 10 + "px";
 
         console.log("I: " + i);
         }
       };
 
-      var chart = new google.visualization.LineChart(document.getElementById('line-chart-marker'));
+      //var chart = new google.visualization.LineChart(document.getElementById('line-chart-marker'));
+      var chart = new google.visualization.BarChart(document.getElementById('line-chart-marker'));
       google.visualization.events.addListener(chart, 'ready',
         placeMarker.bind(chart, data));
       chart.draw(data, options);
