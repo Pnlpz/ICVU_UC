@@ -30,8 +30,8 @@
         ['Threat', 'Attacks'],
         ['Chandrian', 38],
         ['Ghosts', 12],
-        ['Ghouls', 6],
-        ['UFOs', 44],
+        //['Ghouls', 6],
+        //['UFOs', 44],
         ['V', 28],
         ['Zombies', 88]
       ]);
@@ -50,9 +50,13 @@
         // "Zombies" is element #5.
         for (var i = dataTable.getNumberOfRows() - 1; i >= 0; i--) {
           //dataTable.getNumberOfRows[i]
-        elem = i;
-        document.querySelector('.overlay-marker').style.top = Math.floor(cli.getYLocation(dataTable.getValue(elem, 1))) - 50 + "px";
-        document.querySelector('.overlay-marker').style.left = Math.floor(cli.getXLocation(elem)) - 10 + "px";
+        //elem = i;
+        //document.querySelector('.overlay-marker').style.top = Math.floor(cli.getYLocation(dataTable.getValue(elem, 1))) - 50 + "px";
+        //document.querySelector('.overlay-marker').style.left = Math.floor(cli.getXLocation(elem)) - 10 + "px";
+        elem = document.getElementById('img'+i);
+        elem.style.top = Math.floor(cli.getYLocation(dataTable.getValue(i, 1))) - 50 + "px";
+        elem.style.left = Math.floor(cli.getXLocation(i)) - 10 + "px";
+
         console.log("I: " + i);
         }
       };
@@ -75,7 +79,16 @@
     <div style="color: #444; font-family:'Arial Black'; font-size: 32px; letter-spacing: .15em; margin-top:15px; margin-left:5px;">attacks</div>
   </div>
 
-  <div class="overlay-marker">
+  <div class="overlay-marker" id="img0">
+    <img src="https://developers.google.com/chart/interactive/images/zombie_150.png" height="50">
+  </div>
+  <div class="overlay-marker" id="img1">
+    <img src="https://developers.google.com/chart/interactive/images/zombie_150.png" height="50">
+  </div>
+  <div class="overlay-marker" id="img2">
+    <img src="https://developers.google.com/chart/interactive/images/zombie_150.png" height="50">
+  </div>
+  <div class="overlay-marker" id="img3">
     <img src="https://developers.google.com/chart/interactive/images/zombie_150.png" height="50">
   </div>
 
