@@ -341,16 +341,17 @@ function excludeEmptyRows(dataTable)
             data.addRow(['Comuna '+i, (i+1)*10]);
         }
 
+// labels = ["VIVIENDA Y ENTORNO", "SALUD Y MEDIO AMBIENTE", "CONDICIONES SOCIOCULTURALES", "AMBIENTE DE NEGOCIOS", "CONDICIÓN LABORAL", "CONECTIVIDAD Y MOVILIDAD"];
 
         dataFull1 = //google.visualization.arrayToDataTable(array);
         new google.visualization.arrayToDataTable([
        ['Employee Name', 'Salary'],
-       ['Mike', {v:22500, f:'22,500'}], // Format as "22,500".
-       ['Bob', 35000],
-       ['Alice', 44000],
-       ['Frank', 27000],
-       ['Floyd', 92000],
-       ['Fritz', 18500]
+       ['Vivienda y Entorno', {v:22500, f:'22,500'}], // Format as "22,500".
+       ['Salud y Medio Ambiente', 35000],
+       ['Condiciones Socioculturales', 44000],
+       ['Ambiente de Negocios', 27000],
+       ['Condicion Laboral', 92000],
+       ['Conectividad y Movilidad', 18500]
       ],
       false); // 'false' means that the first row contains labels, not data.
 
@@ -359,12 +360,12 @@ function excludeEmptyRows(dataTable)
         dataFull2 = //google.visualization.arrayToDataTable(array);
         new google.visualization.arrayToDataTable([
        ['Employee Name', 'Salary'],
-       ['Mike', {v:2250, f:'22,500'}], // Format as "22,500".
-       ['Bob', 3500],
-       ['Alice', 4400],
-       ['Frank', 2700],
-       ['Floyd', 9200],
-       ['Fritz', 1850]
+       ['Vivienda y Entorno', {v:2250, f:'22,500'}], // Format as "22,500".
+       ['Salud y Medio Ambiente', 3500],
+       ['Condiciones Socioculturales', 4400],
+       ['Ambiente de Negocios', 2700],
+       ['Condición Laboral', 9200],
+       ['Conectividad y Movilidad', 1850]
       ],
       false); // 'false' means that the first row contains labels, not data.
 
@@ -448,7 +449,8 @@ var dataFull = [dataFull1, dataFull2];
 
 var mi_aux = 0;
       // Instantiate and draw our chart, passing in some options.
-      chartTool = new google.visualization.ColumnChart(document.getElementById('chart_TOOL'));
+      //chartTool = new google.visualization.ColumnChart(document.getElementById('chart_TOOL'));
+      chartTool = new google.visualization.BarChart(document.getElementById('chart_TOOL'));
 
 google.visualization.events.addListener(barChart, 'select', function () {
   console.log("Click: " + barChart.getChart().getSelection());
@@ -470,7 +472,17 @@ google.visualization.events.addListener(barChart, 'select', function () {
       animation:{
         duration: 1000,
         easing: 'out',
-      }
+      },
+
+               chartArea: {
+                //'width': '50%', 'height': '80%',
+
+    left:200,
+    right:10, // !!! works !!!
+    bottom:20,  // !!! works !!!
+    top:20},
+               legend: {'position': 'bottom'}
+
       };
 
   var message = '';
