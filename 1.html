@@ -492,31 +492,30 @@ google.visualization.events.addListener(barChart, 'select', function () {
 /// Dashboard <=
 
 
-function updateChart(){
-/*
-FILTROS:
-=========
-- población
-- norte a sur
-- costeras o mediterráneas
-- metropolitanas o no
-- porcentaje
-- per cápita
+      function updateChart(){
+      /*
+      FILTROS:
+      =========
+      - población
+      - norte a sur
+      - costeras o mediterráneas
+      - metropolitanas o no
+      - porcentaje
+      - per cápita
 
-  ORDEN:
-=========
-- de mayor a menor indicador por dimensión,
-- de mayor a menor indicador por dimensión ICVU como índice sintético, ó
-- geográficamente (norte a sur).
-*/
+        ORDEN:
+      =========
+      - de mayor a menor indicador por dimensión,
+      - de mayor a menor indicador por dimensión ICVU como índice sintético, ó
+      - geográficamente (norte a sur).
+      */
+                    order1 =  parseInt($("#order1 option:selected").val());
+                    order2 =  parseInt($("#order2 option:selected").val());
 
-              order1 =  parseInt($("#order1 option:selected").val());
-              order2 =  parseInt($("#order2 option:selected").val());
+                    data.sort([{column: order1, desc: (order2%2 == 0)}]);
+                    dashboard.draw(data, options);
 
-              data.sort([{column: order1, desc: (order2%2 == 0)}]);
-              dashboard.draw(data, options);
-
-}
+      }
 
           var order1 = 1;
           $( document ).ready(function() {
@@ -526,13 +525,10 @@ FILTROS:
 
               $('#order1').change(function() {
                   updateChart();
-                  
-
               });
 
               $('#order2').change(function() {
                   updateChart();
-
               });
 
           });
@@ -575,8 +571,8 @@ Antofagasta,389.812,334,676,453,123,654
 
       <label for="order1">Orden por:</label>
       <select name="order1" id="order1">
-        <option value=0>Nombre</option>
-        <option value=1>ICVU</option>
+        <option value=0>Comuna</option>
+        <option value=1 selected="true">Población</option>
         <option value=2>D1</option>
         <option value=3>D2</option>
       </select><br>
