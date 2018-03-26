@@ -493,7 +493,22 @@ google.visualization.events.addListener(barChart, 'select', function () {
 
 
 function updateChart(){
+/*
+FILTROS:
+=========
+- población
+- norte a sur
+- costeras o mediterráneas
+- metropolitanas o no
+- porcentaje
+- per cápita
 
+  ORDEN:
+=========
+- de mayor a menor indicador por dimensión,
+- de mayor a menor indicador por dimensión ICVU como índice sintético, ó
+- geográficamente (norte a sur).
+*/
 
               order1 =  parseInt($("#order1 option:selected").val());
               order2 =  parseInt($("#order2 option:selected").val());
