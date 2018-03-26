@@ -35,85 +35,8 @@
 }).then(function () {
 
 
-    // plots the data input into the textarea
-    function flotTextData() {
-      var options = {
-        series: {
-          lines: { show: true },
-          points: { show: true }
-        }
-      }
-
-      var data1 = [];
-      data1[0] = $.csv.toArrays($('#textInput').val(), {
-        onParseValue: $.csv.hooks.castToScalar
-      });
-      flot1 = $.plot($('#flot1'), data1, options);
-
-      var data2 = [];
-      flot2 = $.plot($('#flot2'), data2, options);
-// AQUI
-// AQUI
-
-    }
 
 
-
-
-function createCustomHTMLContent(flagURL, totalGold, totalSilver, totalBronze) {
-  return '<div style="padding:5px 5px 5px 5px;">' +
-      '<img src="' + flagURL + '" style="width:75px;height:50px"><br/>' +
-      '<table class="medals_layout">' + '<tr>' +
-      '<td><img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Gold_medal.svg" style="width:25px;height:25px"/></td>' +
-      '<td><b>' + totalGold + '</b></td>' + '</tr>' + '<tr>' +
-      '<td><img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Silver_medal.svg" style="width:25px;height:25px"/></td>' +
-      '<td><b>' + totalSilver + '</b></td>' + '</tr>' + '<tr>' +
-      '<td><img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Bronze_medal.svg" style="width:25px;height:25px"/></td>' +
-      '<td><b>' + totalBronze + '</b></td>' + '</tr>' + '</table>' + '</div>';
-}
-    var colors = [
-    '#a6cee3', // icvu
-    '#b2df8a', // vivienda
-    '#fb9a99', // salud
-    '#fdbf6f', // soc
-    '#fb9a99', // amb neg
-    '#fdbf6f', // lab
-    '#cab2d6', // conn
-    '#ffff99', // viv1
-    '#ffff99', // viv2
-    '#ffff99', // viv3
-    '#ffff99', // viv4
-    '#ffff99', // viv5
-    '#ffff99', // viv6
-    '#1f78b4', // sal1
-    '#1f78b4', // sal2
-    '#1f78b4', // sal3
-    '#1f78b4', // sal4
-    '#1f78b4', // sal5
-    '#33a02c'
-    ];
-
-
-var optionsSankey = {
-      width: 1000,
-      height: 840,
-      animation:{
-        duration: 1000,
-        easing: 'out',
-      },
-
-            allowHtml: 'true',
-            tooltip: {
-                isHtml: 'true',
-textStyle: 
-  { 
-    //color: <string>,
-  //fontName: <string>,
-  fontSize: 10,
-  bold: true
-  //italic: <boolean> 
-}
-},
 /***************************/
 // REVISAR
 // https://jsfiddle.net/PN03/4th0e7e6/8/
@@ -130,115 +53,9 @@ textStyle:
 // https://stackoverflow.com/questions/42947236/position-icon-after-google-line-chart-title AGREGAR ICONO AL TITULO *****
 // https://stackoverflow.com/questions/46401043/adding-a-small-custom-icon-and-popup-to-a-title-of-google-charts ***** IDEM
 /***************************/
-showRowNumber: true,
-      sankey: {
-        node: {
-         // colors: colors,
-          interactivity: true, // Allows you to select nodes.
-         nodePadding: 10,
-         labelPadding: -2,
-          //colorMode: 'target',
-          colors: colors,
-         label: { fontName: 'Times-Roman',
-                         fontSize: 14,
-                         //color: '#871b47',
-                         //bold: true,
-                         italic: true }
-        },
-        link: {
-          interactivity: true, // Allows you to select nodes.
-          //colorMode: 'gradient',
-          //colorMode: 'target',
-          colorMode: 'source',
-          colors: colors
-        }
-      }
-    };
-
-var dataSankey = new google.visualization.DataTable();
-    dataSankey.addColumn('string', 'From');
-    dataSankey.addColumn('string', 'To');
-    dataSankey.addColumn('number', 'Ponderación');
-    //dataSankey.addColumn({type: 'string', role: 'annotation'});
-  //dataSankey.addColumn({type: 'string', role: 'style'});
-    dataSankey.addColumn({type: 'string', role: 'tooltip', 'p': {'html': true}});
-
-    /*
-    dataSankey.addRows([
-       [ 'ICVU', 'D1', 5 ],
-       [ 'ICVU', 'D2', 1 ],
-       [ 'ICVU', 'D3', 1 ],
-       [ 'D1', 'England', 1 ],
-       [ 'D1', 'Portugal', 1 ],
-       [ 'D2', 'France', 5 ],
-       [ 'D3', 'England', 1 ],
-       [ 'D3', 'Portugal', 1 ],
-       [ 'D3', 'France', 1 ]
-    ]);*/
-// 19.9, 18.1, 14.5, 11.5, 16.7, 19.3
-    //factors = [[1,1],[2,2],[1,2,3]];
-    criteria = [37.9, 47.9],
 
 
-    factors = [19.9, 18.1, 14.5, 11.5, 16.7, 19.3];
 
-
-labels = ["VIVIENDA Y ENTORNO", "SALUD Y MEDIO AMBIENTE", "CONDICIONES SOCIOCULTURALES", "AMBIENTE DE NEGOCIOS", "CONDICIÓN LABORAL", "CONECTIVIDAD Y MOVILIDAD"];
-// cl = ["Ingreso promedio de los hogares","Porcentaje de pobreza multidimensional CASEN 2015","Porcentaje de Ocupados Asalariados con contrato de trabajo firmado","Porcentaje de Ocupados con jornadas de trabajo superiores a 45 horas","% de encuestados con percepción satisfecho y muy satisfecho con respecto al Empleo (encuesta de percepción)","Costo de Vida ($) Precio canasta 130 productos"];
-cl = ["Ingreso promedio de hogares",
-"Pobreza multidimensional laboral",
-"Ocupados con contrato trabajo",
-"Ocupados en jornada menos 30 horas ",
-"Índice de mora por consumo ",
-"Costo de vida regional"];
-
-
-an = ["Dotación cajeros automáticos",
-"Índice de mora consumo 90 días o más (agosto 2016)","Metros cuadrados obra aprobada Servicios (promedio 2013-2015) por cada 10.000 habitantes","N° de empleados en Hoteles y Restaurantes por cada 1000 habitantes, 2015","Porcentaje de población que ha recibido capacitación laboral en el último año"];
-cs = ["Porcentaje de participación en organizaciones sociales","Tasa de denuncias por delitos de violencia Intrafamiliar 2016","Promedio SIMCE 4° Básico 2015 MAT","Promedio SIMCE 4° Básico 2015 LEN","Tasa de embarazo adoslecente 2012","Porcentaje de Puntajes PSU Igual o Superior a 450 puntos Establecimientos Municipales (proceso de admisión 2016)","% de personas que usan por lo menos una vez por semana un parque o una plaza"];
-cm = ["Porcentaje de hogares que tienen conexión a Internet","N° Accidentes del tránsito por cada 10.000 habitantes 2014","Porcentaje de población que trabaja en la misma comuna donde reside","% de encuestados que considera estado de calles y avenidas buena y muy buena (Encuesta de Percepción) ","% de encuestados que considera estado de veredas buena y muy buena (Encuesta de Percepción) ","% de encuestados que considera que la congestión vehícular es un problema muy grave o grave en su comuna"];
-sm = ["Tasa años de vida potencialmente perdidos por cada 1.000 hab ambos sexos 2014","N° de personas que han sido tratadas por enfermedades respiratorias por cada 10.000 habitantes 2011","N° de personas que han sido tratadas por depresión por cada 10.000 habitantes 2011","Total Número de Camas Hospitales y Clínicas por cada 1.000 habitantes 2013","Tasa de Mortalidad Infantil 2014","% de encuestado con percepció de  ruido nada grave o no existe"];
-vm = ["Metros Cuadrados (M2) de Areas Verdes con Mantenimiento por Habitante  (MTS²) 2015","Gasto total municipal por cada habitante de la comuna  M$ / Habitante (promedio 2013-2015)","Porcentaje de hogares  con hacinamiento ","% de encuestados satisfechos y muy satisfechos con respecto a Seguridad (Encuesta de Percepción) ","Frecuencia de Denuncias por Delitos de Mayor Connotación Social 2015","% de encuestados con percepción positiva con respecto a calidad Sedes sociales u otros lugares para el encuentro","Presencia grave o muy grave de perros vagos"];
-
-variables = [cl, an, cs, cm, sm, vm];
-colors = [ "#0F0", "#0FF", "#000", "#0F0", "#0F7", "#7F0" ];
-
-
-/*
-    for (var j = 0; j < splited.length-1; j++){
-        var t = splited[j].split(",");
-        var s = [t[0], t[1], parseInt(t[2]), '<h4>Del total de MOOCs en <i>'+t[0]+'</i>, se han producido '+t[2]+' en <i>'+t[1]+'</i>.</h4>'];
-        all_data.addRow(s);
-    }*/
-        
-        
-
-
-    for (var i = 0; i < factors.length ; i++) {
-
-      aux = 0;
-      /*
-      for (var k = 0; k < factors[i].length ; k++) {
-        aux += parseInt(factors[i][k]);
-      }
-      */
-
-        aux += (factors[i]);
-      //console.log("aux: "+aux);
-
-      //dataSankey.addRow([ 'ICVU', 'D'+i, aux ]);
-      dataSankey.addRow(['ICVU', labels[i], aux, "El <b>ICVU</b> está compuesto por " + factors[i]+ "% de <b>"+ labels[i] +"</b>"]);
-
-      l = variables[i].length;
-      for (var j = 0; j < l ; j++) {
-        peso = (aux/l) ;        
-        
-        //var s = [t[0], t[1], parseInt(t[2]), '<h4>Del total de MOOCs en <i>'+t[0]+'</i>, se han producido '+t[2]+' en <i>'+t[1]+'</
-        
-        dataSankey.addRow([labels[i], variables[i][j], peso,  "<b>"+labels[i]+"</b> se compone de <b>" + factors[i]+ "%</b> de "+ variables[i][j] ]);
-      }
-      
-    }
 
 
   // AQUI DEFINO EL ID DEL GRAFICO A EXPORTAR
@@ -255,59 +72,59 @@ colors = [ "#0F0", "#0FF", "#000", "#0F0", "#0F7", "#7F0" ];
   }
 
 
-$( "#button1" ).click(function() {
-    console.log("Click");
-    console.log("GENERAR IMAGEN DE ANTES");
-    var canvas;
-    var domURL;
-    var imageNode;
-    var imageURL;
-    var svgParent;
+  $( "#button1" ).click(function() {
+      console.log("Click");
+      console.log("GENERAR IMAGEN DE ANTES");
+      var canvas;
+      var domURL;
+      var imageNode;
+      var imageURL;
+      var svgParent;
 
-    // add svg namespace to chart
-    domURL = window.URL || window.webkitURL || window;
-    svgParent = chartContainerRANKING.getElementsByTagName('svg')[0];
-    svgParent.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-    imageNode = chartContainerRANKING.cloneNode(true);
-    imageURL = domURL.createObjectURL(new Blob([svgParent.outerHTML], {type: 'image/svg+xml'}));
-    image = new Image();
-    image.onload = function() {
-      canvas = document.getElementById('canvas');
-      canvas.setAttribute('width', parseFloat(svgParent.getAttribute('width')));
-      canvas.setAttribute('height', parseFloat(svgParent.getAttribute('height')));
-      canvas.getContext('2d').drawImage(image, 0, 0);
-      downloadCanvas(this, 'canvas', 'Ranking.png');
-    }
-    image.src = imageURL;
-  });
+      // add svg namespace to chart
+      domURL = window.URL || window.webkitURL || window;
+      svgParent = chartContainerRANKING.getElementsByTagName('svg')[0];
+      svgParent.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+      imageNode = chartContainerRANKING.cloneNode(true);
+      imageURL = domURL.createObjectURL(new Blob([svgParent.outerHTML], {type: 'image/svg+xml'}));
+      image = new Image();
+      image.onload = function() {
+        canvas = document.getElementById('canvas');
+        canvas.setAttribute('width', parseFloat(svgParent.getAttribute('width')));
+        canvas.setAttribute('height', parseFloat(svgParent.getAttribute('height')));
+        canvas.getContext('2d').drawImage(image, 0, 0);
+        downloadCanvas(this, 'canvas', 'Ranking.png');
+      }
+      image.src = imageURL;
+    });
 
 
 
-$( "#button2" ).click(function() {
-    console.log("Click");
-    console.log("GENERAR IMAGEN DE ANTES");
-    var canvas;
-    var domURL;
-    var imageNode;
-    var imageURL;
-    var svgParent;
+  $( "#button2" ).click(function() {
+      console.log("Click");
+      console.log("GENERAR IMAGEN DE ANTES");
+      var canvas;
+      var domURL;
+      var imageNode;
+      var imageURL;
+      var svgParent;
 
-    // add svg namespace to chart
-    domURL = window.URL || window.webkitURL || window;
-    svgParent = chartContainerDETAIL.getElementsByTagName('svg')[0];
-    svgParent.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-    imageNode = chartContainerDETAIL.cloneNode(true);
-    imageURL = domURL.createObjectURL(new Blob([svgParent.outerHTML], {type: 'image/svg+xml'}));
-    image = new Image();
-    image.onload = function() {
-      canvas = document.getElementById('canvas');
-      canvas.setAttribute('width', parseFloat(svgParent.getAttribute('width')));
-      canvas.setAttribute('height', parseFloat(svgParent.getAttribute('height')));
-      canvas.getContext('2d').drawImage(image, 0, 0);
-      downloadCanvas(this, 'canvas', 'Ranking.png');
-    }
-    image.src = imageURL;
-  });
+      // add svg namespace to chart
+      domURL = window.URL || window.webkitURL || window;
+      svgParent = chartContainerDETAIL.getElementsByTagName('svg')[0];
+      svgParent.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+      imageNode = chartContainerDETAIL.cloneNode(true);
+      imageURL = domURL.createObjectURL(new Blob([svgParent.outerHTML], {type: 'image/svg+xml'}));
+      image = new Image();
+      image.onload = function() {
+        canvas = document.getElementById('canvas');
+        canvas.setAttribute('width', parseFloat(svgParent.getAttribute('width')));
+        canvas.setAttribute('height', parseFloat(svgParent.getAttribute('height')));
+        canvas.getContext('2d').drawImage(image, 0, 0);
+        downloadCanvas(this, 'canvas', 'Ranking.png');
+      }
+      image.src = imageURL;
+    });
 });
 
 
@@ -399,14 +216,26 @@ var dataFull;
           });
         }
 
-      // Callback that creates and populates a data table,
-      // instantiates a dashboard, a range slider and a pie chart,
-      // passes in the data and draws it.
-      function drawDashboard() {
+
+    // plots the data input into the textarea
+    function flotTextData() {
+
 
       var data1 = $.csv.toArrays($('#textInput').val(), {
         onParseValue: $.csv.hooks.castToScalar
       });
+
+      // this new DataTable object holds all the data
+       data = new google.visualization.arrayToDataTable(data1);
+       dashboard.draw((data), options);
+
+    }
+
+
+      // Callback that creates and populates a data table,
+      // instantiates a dashboard, a range slider and a pie chart,
+      // passes in the data and draws it.
+      function drawDashboard() {
 
 
 /*
@@ -424,6 +253,11 @@ var dataFull;
         */
 
 
+
+      var data1 = $.csv.toArrays($('#textInput').val(), {
+        onParseValue: $.csv.hooks.castToScalar
+      });
+
       // this new DataTable object holds all the data
        data = new google.visualization.arrayToDataTable(data1);
 
@@ -431,7 +265,7 @@ var dataFull;
 
       //flotTextData();
 
-      //$('#run').bind('click', flotTextData);
+      $('#run').bind('click', flotTextData);
 
 // loadData("input.csv");
 
@@ -651,11 +485,6 @@ google.visualization.events.addListener(barChart, 'select', function () {
         // Draw the dashboard.
         //dashboard.draw(data);
 
-var formatter = new google.visualization.ColorFormat();
-formatter.addRange(0, criteria[0], 'white', 'orange');
-formatter.addRange(criteria[0], criteria[1], 'red', '#33ff33');
-formatter.addRange(criteria[1], null, 'green', '#000');
-formatter.format(data, 1); // Apply formatter to second column
 
 //dashboard.draw(data, {allowHtml: true, showRowNumber: true, width: '100%', height: '100%'});
 
@@ -724,7 +553,7 @@ Calama,181.897
 </textarea>
       <input id="run" type="button"  value="Run" />
       <hr />
-      
+
       <h3>Orden:</h3><br>
 
 
