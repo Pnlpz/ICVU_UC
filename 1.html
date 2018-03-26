@@ -189,7 +189,7 @@ var dataFull;
               var data = new google.visualization.arrayToDataTable(arrayData);
 
                 //data.addColumn('string', 'Name');
-                //data.addColumn('number', 'Filtro1');
+                //data.addColumn('number', 'Población');
               /*
 
               // this view can select a subset of the data at a time
@@ -239,7 +239,7 @@ var dataFull;
         new google.visualization.DataTable();
 
         data.addColumn('string', 'Name');
-        data.addColumn('number', 'Filtro1');
+        data.addColumn('number', 'Población');
         //data.addColumn({type: 'string', role: 'style'});
 
 
@@ -296,7 +296,7 @@ var dataFull;
 var dataFull = [dataFull1, dataFull2];
 /*
         data = google.visualization.arrayToDataTable([
-          ['Name', 'Filtro1'],
+          ['Name', 'Población'],
           ['Michael' , 5],
           ['Elisa', 7],
           ['Robert', 3],
@@ -308,7 +308,7 @@ var dataFull = [dataFull1, dataFull2];
         
         /*
         data = google.visualization.arrayToDataTable([
-          ['Name', 'Filtro1', 'Filtro2'],
+          ['Name', 'Población', 'Filtro2'],
           ['Michael' , 5, true],
           ['Elisa', 7, true],
           ['Robert', 3, false],
@@ -335,7 +335,7 @@ var dataFull = [dataFull1, dataFull2];
           'controlType': 'NumberRangeFilter',
           'containerId': 'filter_div',
           'options': {
-            'filterColumnLabel': 'Filtro1'
+            'filterColumnLabel': 'Población'
 
           }
         });
@@ -538,12 +538,20 @@ function updateChart(){
     <!--Div that will hold the dashboard-->
     <div id="dashboard_div">
 
-      <textarea id="textInput" style="height:150px;width: 800px">
-COMUNA,Filtro1,D1,D2
+      <textarea id="textInput" style="height:50px;width: 800px">
+COMUNA,Población,D1,D2
 Alto Hospicio,124.872,123,223
 Angol,55.845,245,323
 Antofagasta,389.812,334,676
 </textarea>
+
+      <textarea id="textInput2" style="height:50px;width: 800px">
+COMUNA,VIVIENDA Y ENTORNO, SALUD Y MEDIO AMBIENTE, CONDICIONES SOCIOCULTURALES, AMBIENTE DE NEGOCIOS, CONDICIÌÒN LABORAL, CONECTIVIDAD Y MOVILIDAD
+Alto Hospicio,124.872,123,223,234,345,564
+Angol,55.845,245,323,234,345,234
+Antofagasta,389.812,334,676,453,123,654
+</textarea>
+
       <input id="run" type="button"  value="Run" />
       <hr />
 
