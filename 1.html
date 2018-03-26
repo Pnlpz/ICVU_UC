@@ -241,8 +241,10 @@ colors = [ "#0F0", "#0FF", "#000", "#0F0", "#0F7", "#7F0" ];
     }
 
 
-  var chartContainer = document.getElementById('dual_x_div');
-  var chart = new google.visualization.Sankey(chartContainer);
+  // AQUI DEFINO EL ID DEL GRAFICO A EXPORTAR
+  var chartContainerRANKING = document.getElementById('chartRanking');
+  var chartContainerDETAIL = document.getElementById('chartDetail');
+
   var button = document.getElementById('button');
 
 
@@ -253,13 +255,7 @@ colors = [ "#0F0", "#0FF", "#000", "#0F0", "#0F7", "#7F0" ];
   }
 
 
-  $( "#button" ).click(function() {
-
-
-
-  //google.visualization.events.addListener(chart, 'ready', function () {
-  //google.visualization.events.addListener(button, 'click', function() {
-
+$( "#button1" ).click(function() {
     console.log("Click");
     console.log("GENERAR IMAGEN DE ANTES");
     var canvas;
@@ -270,9 +266,9 @@ colors = [ "#0F0", "#0FF", "#000", "#0F0", "#0F7", "#7F0" ];
 
     // add svg namespace to chart
     domURL = window.URL || window.webkitURL || window;
-    svgParent = chartContainer.getElementsByTagName('svg')[0];
+    svgParent = chartContainerRANKING.getElementsByTagName('svg')[0];
     svgParent.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-    imageNode = chartContainer.cloneNode(true);
+    imageNode = chartContainerRANKING.cloneNode(true);
     imageURL = domURL.createObjectURL(new Blob([svgParent.outerHTML], {type: 'image/svg+xml'}));
     image = new Image();
     image.onload = function() {
@@ -280,19 +276,39 @@ colors = [ "#0F0", "#0FF", "#000", "#0F0", "#0F7", "#7F0" ];
       canvas.setAttribute('width', parseFloat(svgParent.getAttribute('width')));
       canvas.setAttribute('height', parseFloat(svgParent.getAttribute('height')));
       canvas.getContext('2d').drawImage(image, 0, 0);
-      //console.log(canvas.toDataURL('image/png'));
-      //console.log(canvas.toDataURL('image/png'));
-
-
-      downloadCanvas(this, 'canvas', 'test.png');
-      ////
-      ////
+      downloadCanvas(this, 'canvas', 'Ranking.png');
     }
     image.src = imageURL;
   });
 
 
-  chart.draw(dataSankey, optionsSankey);
+
+$( "#button2" ).click(function() {
+    console.log("Click");
+    console.log("GENERAR IMAGEN DE ANTES");
+    var canvas;
+    var domURL;
+    var imageNode;
+    var imageURL;
+    var svgParent;
+
+    // add svg namespace to chart
+    domURL = window.URL || window.webkitURL || window;
+    svgParent = chartContainerDETAIL.getElementsByTagName('svg')[0];
+    svgParent.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    imageNode = chartContainerDETAIL.cloneNode(true);
+    imageURL = domURL.createObjectURL(new Blob([svgParent.outerHTML], {type: 'image/svg+xml'}));
+    image = new Image();
+    image.onload = function() {
+      canvas = document.getElementById('canvas');
+      canvas.setAttribute('width', parseFloat(svgParent.getAttribute('width')));
+      canvas.setAttribute('height', parseFloat(svgParent.getAttribute('height')));
+      canvas.getContext('2d').drawImage(image, 0, 0);
+      downloadCanvas(this, 'canvas', 'Ranking.png');
+    }
+    image.src = imageURL;
+  });
+});
 
 
 
@@ -497,7 +513,7 @@ var dataFull = [dataFull1, dataFull2];
         // Create a pie chart, passing some options
         var barChart = new google.visualization.ChartWrapper({
           'chartType': 'BarChart',
-          'containerId': 'chart_div',
+          'containerId': 'chartRanking',
           'options': {
             'width': 600,
             'height': 600,
@@ -527,8 +543,8 @@ var dataFull = [dataFull1, dataFull2];
 
 var mi_aux = 0;
       // Instantiate and draw our chart, passing in some options.
-      //chartTool = new google.visualization.ColumnChart(document.getElementById('chart_TOOL'));
-      chartTool = new google.visualization.BarChart(document.getElementById('chart_TOOL'));
+      //chartTool = new google.visualization.ColumnChart(document.getElementById('chartDetail'));
+      chartTool = new google.visualization.BarChart(document.getElementById('chartDetail'));
 
 google.visualization.events.addListener(barChart, 'select', function () {
   console.log("Click: " + barChart.getChart().getSelection());
@@ -680,7 +696,7 @@ function updateChart(){
               });
 
           });
-});
+
 
 
   </script>
@@ -708,6 +724,7 @@ Calama,181.897
 </textarea>
       <input id="run" type="button"  value="Run" />
       <hr />
+      
       <h3>Orden:</h3><br>
 
 
@@ -730,22 +747,25 @@ Calama,181.897
 
 
           <div class="col-md-6">
-            <div id="chart_div"></div>
+            <div id="chartRanking"></div>
           </div>
           <div class="col-md-6">
 
-            <div id="chart_TOOL"></div>
+            <div id="chartDetail"></div>
           </div>
     </div>
     </div>
 
 <!-- Dashboard < -->
 
-<h2>El ICVU se construye mezclando distintas dimensiones, con distintas ponderaciones:</h2>
+
 <div id="dual_x_div"></div>
 <canvas class="" id="canvas"></canvas>
-<button id="button">
-  EXPORTAR
+<button id="button1">
+  EXPORTAR Ranking
+</button>
+<button id="button2">
+  EXPORTAR Detalle
 </button>
 
 <!--
