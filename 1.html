@@ -539,13 +539,10 @@ function updateChart(){
     <div id="dashboard_div">
 
       <textarea id="textInput" style="height:150px;width: 800px">
-COMUNA,Filtro1
-Alto Hospicio,124.872
-Angol,55.845
-Antofagasta,389.812
-Arica,243.701
-Buin,86.079
-Calama,181.897
+COMUNA,Filtro1,D1,D2
+Alto Hospicio,124.872,123,223
+Angol,55.845,245,323
+Antofagasta,389.812,334,676
 </textarea>
       <input id="run" type="button"  value="Run" />
       <hr />
@@ -555,8 +552,10 @@ Calama,181.897
 
       <label for="order1">Orden por:</label>
       <select name="order1" id="order1">
-        <option value=1>Valor</option>
         <option value=0>Nombre</option>
+        <option value=1>ICVU</option>
+        <option value=2>D1</option>
+        <option value=3>D2</option>
       </select><br>
       
       <br>
