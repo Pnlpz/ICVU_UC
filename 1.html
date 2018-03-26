@@ -314,13 +314,14 @@
         });
 
         var mi_aux = 0;
+        var selection;
         // Instantiate and draw our chart, passing in some options.
         //chartTool = new google.visualization.ColumnChart(document.getElementById('chartDetail'));
         chartTool = new google.visualization.BarChart(document.getElementById('chartDetail'));
 
         google.visualization.events.addListener(barChart, 'select', function () {
           console.log("Click: " + barChart.getChart().getSelection());
-          var selection = barChart.getChart().getSelection();
+           selection = barChart.getChart().getSelection();
           //var selectedRow = selection[i].row;
           /*
           var selectedRow = selection[i].row;
@@ -355,7 +356,7 @@
           console.log("originalDataRow: " + originalData);
           console.log("*** values: " + message);
 
-          var selection = barChart.getChart().getSelection();
+           selection = barChart.getChart().getSelection();
 
           var selectedItem = barChart.getChart().getSelection()[0];
           if (selectedItem) {
@@ -407,8 +408,26 @@
               message = 'nothing';
             }
             console.log('You selected ' + message);
+
+
+        //dashboard.draw(data, options);
+
+            // chartTool.draw(dataFull[(mi_aux++)%2], optionsTool);
+            //chartTool.draw(selection, optionsTool);
+            s = data.getFilteredRows([{column: 0, value: id}]) ;
+            console.log("data.getFilteredRows([{column: 0, value: id }])=== "+ s);
             
-            chartTool.draw(dataFull[(mi_aux++)%2], optionsTool);
+var view = new google.visualization.DataView(data);
+  view.setRows(data.getFilteredRows([
+    {column: 0, value: id}
+  ]));
+chartTool.draw(view, optionsTool);
+
+
+
+
+
+
           }
 
 
@@ -492,9 +511,9 @@
 
       <textarea id="textInput" style="height:50px;width: 800px">
 COMUNA,Población,D1,D2
-Alto Hospicio,124.872,123,223
-Angol,55.845,245,323
-Antofagasta,389.812,334,676
+Alto Hospicio,172,123,223
+Angol,558,245,323
+Antofagasta,812,334,676
 </textarea>
 
       <textarea id="textInput2" style="height:50px;width: 800px">
