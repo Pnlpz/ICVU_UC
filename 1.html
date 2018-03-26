@@ -418,9 +418,16 @@
             console.log("data.getFilteredRows([{column: 0, value: id }])=== "+ s);
             
 var view = new google.visualization.DataView(data);
+indexPopulation = 1;
   view.setRows(data.getFilteredRows([
     {column: 0, value: id}
   ]));
+  N = view.getNumberOfColumns();
+  //if(N > 2)
+  {
+    //view.setColumns([1,2,3]);
+    view.hideColumns([indexPopulation]);
+  }
 chartTool.draw(view, optionsTool);
 
 
