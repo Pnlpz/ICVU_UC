@@ -59,6 +59,7 @@
 // =====================================================================================
 
 
+var theTitle = '';
 
     google.charts.load('current', {
   packages:['bar', 'sankey',
@@ -149,7 +150,7 @@
   var options = {
     width: 600,
     height: 600,
-    //title: 'Detalle para la comuna ' + value,
+    title: 'AAaaa ',
     colors: ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6'],
     animation:{
       duration: 1000,
@@ -228,6 +229,7 @@
       });
       // this new DataTable object holds all the data
        data = new google.visualization.arrayToDataTable(data1);
+        options.title = 'Ranking ICVU 2017 para '+ theTitle;
        dashboard.draw((data), options);
     } // FIN flotTextData
 
@@ -304,6 +306,7 @@
             'height': 600,
             'pieSliceText': 'value',
             'legend': 'right',
+            title: 'Ranking ICVU 2017 para '+ theTitle,
             'hAxis': {'minValue': '0'},
             'animation':{
               'duration': '1000',
@@ -382,7 +385,7 @@
                 easing: 'out',
               },
 
-            hAxis: {'minValue': '0'},
+              hAxis: {'minValue': '0'},
              chartArea: {
               'width': '40%', 'height': '80%',
               left:200,
@@ -454,6 +457,7 @@ chartTool.draw(view, optionsTool);
 
         //dashboard.draw(data, options);
         //dashboard.draw(excludeEmptyRows(data), options);
+        options.title = 'Ranking ICVU 2017 para '+ theTitle;
         dashboard.draw((data), options);
 
       } // FIN drawDashboard
@@ -479,6 +483,8 @@ chartTool.draw(view, optionsTool);
         */
         order1 =  parseInt($("#order1 option:selected").val());
         order2 =  parseInt($("#order2 option:selected").val());
+        options.title = 'Ranking ICVU 2017 para '+ theTitle ;
+
 
         data.sort([{column: order1, desc: (order2%2 == 0)}]);
         dashboard.draw(data, options);
@@ -492,6 +498,8 @@ chartTool.draw(view, optionsTool);
           console.log( "text_commune! " + order1 );
 
           $('#order1').change(function() {
+            theTitle = $("#order1 option:selected").text();
+
               updateChart();
           });
 
