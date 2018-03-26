@@ -62,7 +62,7 @@
 var theTitle = '';
 
     google.charts.load('current', {
-  packages:['bar', 'sankey',
+  packages:['bar', 'table',
   'corechart', 'controls']
 }).then(function () {
 
@@ -199,6 +199,8 @@ var theTitle = '';
 
           // this new DataTable object holds all the data
           var data = new google.visualization.arrayToDataTable(arrayData);
+          
+
           //data.addColumn('string', 'Name');
           //data.addColumn('number', 'Población');
           /*
@@ -245,6 +247,9 @@ var theTitle = '';
         });
         // this new DataTable object holds all the data
         data = new google.visualization.arrayToDataTable(data1);
+
+        var table = new google.visualization.Table(document.getElementById('tabla'));
+        table.draw(data, {showRowNumber: true, width: '90%', height: '100%'});
 
         //flotTextData();
         $('#run').bind('click', flotTextData);
@@ -526,7 +531,10 @@ chartTool.draw(view, optionsTool);
 
     <!--Div that will hold the dashboard-->
     <div id="dashboard_div">
-
+<!--
+LINK PARA AGREGAR BOOLEAN
+https://stackoverflow.com/questions/41944874/color-google-virtualization-boolean-column
+-->
       <textarea id="textInput" style="height:50px;width: 800px">
 COMUNA,Población,D1,D2
 Alto Hospicio,172,123,223
@@ -543,6 +551,8 @@ Antofagasta,389.812,334,676,453,123,654
 
       <input id="run" type="button"  value="Run" />
       <hr />
+
+<div id="tabla"></div>
 
       <h3>Orden:</h3><br>
 
