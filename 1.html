@@ -66,15 +66,13 @@
 
 
   function downloadCanvas(link, canvasId, filename) {
-    console.log("SI");
+    //console.log("SI");
       link.href = document.getElementById(canvasId).toDataURL();
       link.download = filename;
   }
 
 
   $( "#button1" ).click(function() {
-      console.log("Click");
-      console.log("GENERAR IMAGEN DE ANTES");
       var canvas;
       var domURL;
       var imageNode;
@@ -101,8 +99,6 @@
 
 
   $( "#button2" ).click(function() {
-      console.log("Click");
-      console.log("GENERAR IMAGEN DE ANTES");
       var canvas;
       var domURL;
       var imageNode;
@@ -542,7 +538,7 @@ function updateChart(){
     <!--Div that will hold the dashboard-->
     <div id="dashboard_div">
 
-      <textarea id="textInput" style="height:150px;">
+      <textarea id="textInput" style="height:150px;width: 800px">
 COMUNA,Filtro1
 Alto Hospicio,124.872
 Angol,55.845
