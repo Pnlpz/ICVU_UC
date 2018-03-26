@@ -144,6 +144,7 @@ var theTitle = '';
   /// Dashboard =>
   var data;
   var dashboard;
+  var barChart;
   var chartTool;
   var dataFull;
 
@@ -229,7 +230,7 @@ var theTitle = '';
       });
       // this new DataTable object holds all the data
        data = new google.visualization.arrayToDataTable(data1);
-        options.title = 'Ranking ICVU 2017 para '+ theTitle;
+        barChart.setOption('title', 'Ranking ICVU 2017 para '+ theTitle );
        dashboard.draw((data), options);
     } // FIN flotTextData
 
@@ -298,7 +299,7 @@ var theTitle = '';
         });
 
         // Create a pie chart, passing some options
-        var barChart = new google.visualization.ChartWrapper({
+        barChart = new google.visualization.ChartWrapper({
           'chartType': 'BarChart',
           'containerId': 'chartRanking',
           'options': {
@@ -457,7 +458,7 @@ chartTool.draw(view, optionsTool);
 
         //dashboard.draw(data, options);
         //dashboard.draw(excludeEmptyRows(data), options);
-        options.title = 'Ranking ICVU 2017 para '+ theTitle;
+        barChart.setOption('title', 'Ranking ICVU 2017 para '+ theTitle );
         dashboard.draw((data), options);
 
       } // FIN drawDashboard
@@ -483,22 +484,23 @@ chartTool.draw(view, optionsTool);
         */
         order1 =  parseInt($("#order1 option:selected").val());
         order2 =  parseInt($("#order2 option:selected").val());
-        options.title = 'Ranking ICVU 2017 para '+ theTitle ;
-
 
         data.sort([{column: order1, desc: (order2%2 == 0)}]);
+        theTitle = $("#order1 option:selected").text();
+        barChart.setOption('title', 'Ranking ICVU 2017 para '+ theTitle );
         dashboard.draw(data, options);
 
       } // FIN updateChart
 
       var order1 = 1;
       $( document ).ready(function() {
+        theTitle = $("#order1 option:selected").text();
           order1 =  parseInt($("#order1 option:selected").val());
           order2 =  parseInt($("#order2 option:selected").val());
           console.log( "text_commune! " + order1 );
 
           $('#order1').change(function() {
-            theTitle = $("#order1 option:selected").text();
+
 
               updateChart();
           });
