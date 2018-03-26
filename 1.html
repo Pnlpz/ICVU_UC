@@ -29,13 +29,6 @@
   </style>
 
   <script type="text/javascript">
-    google.charts.load('current', {
-  packages:['bar', 'sankey',
-  'corechart', 'controls']
-}).then(function () {
-
-
-
 
 /***************************/
 // REVISAR
@@ -53,6 +46,14 @@
 // https://stackoverflow.com/questions/42947236/position-icon-after-google-line-chart-title AGREGAR ICONO AL TITULO *****
 // https://stackoverflow.com/questions/46401043/adding-a-small-custom-icon-and-popup-to-a-title-of-google-charts ***** IDEM
 /***************************/
+
+
+
+    google.charts.load('current', {
+  packages:['bar', 'sankey',
+  'corechart', 'controls']
+}).then(function () {
+
 
 
 
@@ -121,7 +122,7 @@
       }
       image.src = imageURL;
     });
-});
+}); // FIN }).then(function () {
 
 
 
@@ -485,8 +486,8 @@ google.visualization.events.addListener(barChart, 'select', function () {
 //dashboard.draw(data, {allowHtml: true, showRowNumber: true, width: '100%', height: '100%'});
 
         //dashboard.draw(data, options);
-              //dashboard.draw(excludeEmptyRows(data), options);
-              dashboard.draw((data), options);
+        //dashboard.draw(excludeEmptyRows(data), options);
+        dashboard.draw((data), options);
 
       }
 /// Dashboard <=
@@ -509,29 +510,29 @@ google.visualization.events.addListener(barChart, 'select', function () {
       - de mayor a menor indicador por dimensión ICVU como índice sintético, ó
       - geográficamente (norte a sur).
       */
-                    order1 =  parseInt($("#order1 option:selected").val());
-                    order2 =  parseInt($("#order2 option:selected").val());
+      order1 =  parseInt($("#order1 option:selected").val());
+      order2 =  parseInt($("#order2 option:selected").val());
 
-                    data.sort([{column: order1, desc: (order2%2 == 0)}]);
-                    dashboard.draw(data, options);
+      data.sort([{column: order1, desc: (order2%2 == 0)}]);
+      dashboard.draw(data, options);
 
       }
 
-          var order1 = 1;
-          $( document ).ready(function() {
-              order1 =  parseInt($("#order1 option:selected").val());
-              order2 =  parseInt($("#order2 option:selected").val());
-              console.log( "text_commune! " + order1 );
+      var order1 = 1;
+      $( document ).ready(function() {
+          order1 =  parseInt($("#order1 option:selected").val());
+          order2 =  parseInt($("#order2 option:selected").val());
+          console.log( "text_commune! " + order1 );
 
-              $('#order1').change(function() {
-                  updateChart();
-              });
-
-              $('#order2').change(function() {
-                  updateChart();
-              });
-
+          $('#order1').change(function() {
+              updateChart();
           });
+
+          $('#order2').change(function() {
+              updateChart();
+          });
+
+      });
 
 
 
