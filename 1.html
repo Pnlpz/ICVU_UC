@@ -47,6 +47,17 @@
 // https://stackoverflow.com/questions/46401043/adding-a-small-custom-icon-and-popup-to-a-title-of-google-charts ***** IDEM
 /***************************/
 
+// =====================================================================================
+// =================
+// REVISAR ESTO !!!
+// =================
+// https://developers.google.com/chart/interactive/docs/basic_interactivity
+// https://developers.google.com/chart/interactive/docs/animation
+// https://developers.google.com/chart/interactive/docs/events
+//  https://developers.google.com/chart/interactive/docs/overlays#fullpage2  ****
+// http://a32.me/2018/01/change-tooltip-position-on-google-charts/
+// =====================================================================================
+
 
 
     google.charts.load('current', {
@@ -129,104 +140,96 @@
 
 
 
-/// Dashboard =>
-var data;
-var dashboard;
-var chartTool;
-var dataFull;
+  /// Dashboard =>
+  var data;
+  var dashboard;
+  var chartTool;
+  var dataFull;
 
-      var options = {
-        width: 600,
-        height: 600,
-        //title: 'Detalle para la comuna ' + value,
-        colors: ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6'],
-
-      animation:{
-        duration: 1000,
-        easing: 'out',
-      }
+  var options = {
+    width: 600,
+    height: 600,
+    //title: 'Detalle para la comuna ' + value,
+    colors: ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6'],
+    animation:{
+      duration: 1000,
+      easing: 'out',
+    }
   };
 
   function excludeEmptyRows(dataTable)
   {
-      var view = new google.visualization.DataView(dataTable);
-      //var rowIndexes = view.getFilteredRows([{column: 1, maxValue: 50}]); //get rows with 0 values
-      //getFilteredRows([{column: 3, value: 42}, {column: 2, minValue: 10, maxValue: 50}]) 
+    var view = new google.visualization.DataView(dataTable);
+    //var rowIndexes = view.getFilteredRows([{column: 1, maxValue: 50}]); //get rows with 0 values
+    //getFilteredRows([{column: 3, value: 42}, {column: 2, minValue: 10, maxValue: 50}]) 
 
-      var rowIndexes = view.getFilteredRows([ {column: 1, minValue: 200, maxValue: 500}]) 
+    var rowIndexes = view.getFilteredRows([ {column: 1, minValue: 200, maxValue: 500}]) 
 
-      // removeRows(rowIndex, numberOfRows) 
-      // getTableRowIndex(viewRowIndex)  // Example: If setRows([3, 1, 4]) was previously called, then getTableRowIndex(2) will return 4.
-      // getViewRowIndex(tableRowIndex) // Example: If setRows([3, 1, 4]) was previously called, then getViewRowIndex(4) will return 2.
+    // removeRows(rowIndex, numberOfRows) 
+    // getTableRowIndex(viewRowIndex)  // Example: If setRows([3, 1, 4]) was previously called, then getTableRowIndex(2) will return 4.
+    // getViewRowIndex(tableRowIndex) // Example: If setRows([3, 1, 4]) was previously called, then getViewRowIndex(4) will return 2.
 
-      // hideRows(min, max) // Hides all rows with indexes that lie between min and max (inclusive) from the current view. This is a convenience syntax for hideRows(rowIndexes) above. For example, hideRows(5, 10) is equivalent to hideRows([5, 6, 7, 8, 9, 10]).
-      
-      // hideRows(rowIndexes)  // Example: If you have a table with 10 rows, and you call setRows([2,7,1,7,9]), and then hideRows([7,9]), the rows in the view will then be [2,1].
-
-
-
-      view.hideRows(rowIndexes); //hide empty rows
-      return view.toDataTable();
-  }    
-
-
-      // Load the Visualization API and the controls package.
-      //google.charts.load('current', {'packages':['corechart', 'controls']});
-
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawDashboard);
+    // hideRows(min, max) // Hides all rows with indexes that lie between min and max (inclusive) from the current view. This is a convenience syntax for hideRows(rowIndexes) above. For example, hideRows(5, 10) is equivalent to hideRows([5, 6, 7, 8, 9, 10]).
+    
+    // hideRows(rowIndexes)  // Example: If you have a table with 10 rows, and you call setRows([2,7,1,7,9]), and then hideRows([7,9]), the rows in the view will then be [2,1].
 
 
 
-        // this has to be a global function
-        function loadData(filename) {
-           // grab the CSV
-           $.get(filename, function(csvString) {
-              // transform the CSV string into a 2-dimensional array
-              var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
-              console.log(arrayData);
+    view.hideRows(rowIndexes); //hide empty rows
+    return view.toDataTable();
+  } // FIN excludeEmptyRows
 
-              // this new DataTable object holds all the data
-              var data = new google.visualization.arrayToDataTable(arrayData);
 
-                //data.addColumn('string', 'Name');
-                //data.addColumn('number', 'Población');
-              /*
+    // Load the Visualization API and the controls package.
+    //google.charts.load('current', {'packages':['corechart', 'controls']});
 
-              // this view can select a subset of the data at a time
-              var view = new google.visualization.DataView(data);
-              view.setColumns([0,1]);
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.charts.setOnLoadCallback(drawDashboard);
 
-             // set chart options
-             var options = {
-                title: "A Chart from a CSV!",
-                hAxis: {title: data.getColumnLabel(0), minValue: data.getColumnRange(0).min, maxValue: data.getColumnRange(0).max},
-                vAxis: {title: data.getColumnLabel(1), minValue: data.getColumnRange(1).min, maxValue: data.getColumnRange(1).max},
-                legend: 'none'
-             };
 
-             // create the chart object and draw it
-             var chart = new google.visualization.ScatterChart(document.getElementById('chart'));
-             chart.draw(view, options);
+    // this has to be a global function
+    function loadData(filename) {
+       // grab the CSV
+       $.get(filename, function(csvString) {
+          // transform the CSV string into a 2-dimensional array
+          var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+          console.log(arrayData);
 
-             */
-          });
-        }
+          // this new DataTable object holds all the data
+          var data = new google.visualization.arrayToDataTable(arrayData);
+          //data.addColumn('string', 'Name');
+          //data.addColumn('number', 'Población');
+          /*
+          // this view can select a subset of the data at a time
+          var view = new google.visualization.DataView(data);
+          view.setColumns([0,1]);
+
+         // set chart options
+         var options = {
+            title: "A Chart from a CSV!",
+            hAxis: {title: data.getColumnLabel(0), minValue: data.getColumnRange(0).min, maxValue: data.getColumnRange(0).max},
+            vAxis: {title: data.getColumnLabel(1), minValue: data.getColumnRange(1).min, maxValue: data.getColumnRange(1).max},
+            legend: 'none'
+         };
+
+         // create the chart object and draw it
+         var chart = new google.visualization.ScatterChart(document.getElementById('chart'));
+         chart.draw(view, options);
+
+         */
+      });
+    } // FIN loadData
 
 
     // plots the data input into the textarea
     function flotTextData() {
-
-
       var data1 = $.csv.toArrays($('#textInput').val(), {
         onParseValue: $.csv.hooks.castToScalar
       });
-
       // this new DataTable object holds all the data
        data = new google.visualization.arrayToDataTable(data1);
        dashboard.draw((data), options);
-
-    }
+    } // FIN flotTextData
 
 
       // Callback that creates and populates a data table,
@@ -234,91 +237,44 @@ var dataFull;
       // passes in the data and draws it.
       function drawDashboard() {
 
+        var data1 = $.csv.toArrays($('#textInput').val(), {
+          onParseValue: $.csv.hooks.castToScalar
+        });
+        // this new DataTable object holds all the data
+        data = new google.visualization.arrayToDataTable(data1);
 
-/*
-        data = //google.visualization.arrayToDataTable(array);
-        new google.visualization.DataTable();
+        //flotTextData();
+        $('#run').bind('click', flotTextData);
 
-        data.addColumn('string', 'Name');
-        data.addColumn('number', 'Población');
-        //data.addColumn({type: 'string', role: 'style'});
-
-
-        for (var i = 0; i < 100; i++) {
-            data.addRow(['Comuna '+i, (i+1)*10]);
-        }
-        */
-
-
-
-      var data1 = $.csv.toArrays($('#textInput').val(), {
-        onParseValue: $.csv.hooks.castToScalar
-      });
-
-      // this new DataTable object holds all the data
-       data = new google.visualization.arrayToDataTable(data1);
-
-
-
-      //flotTextData();
-
-      $('#run').bind('click', flotTextData);
-
-// loadData("input.csv");
-
-// labels = ["VIVIENDA Y ENTORNO", "SALUD Y MEDIO AMBIENTE", "CONDICIONES SOCIOCULTURALES", "AMBIENTE DE NEGOCIOS", "CONDICIÓN LABORAL", "CONECTIVIDAD Y MOVILIDAD"];
+        // labels = ["VIVIENDA Y ENTORNO", "SALUD Y MEDIO AMBIENTE", "CONDICIONES SOCIOCULTURALES", "AMBIENTE DE NEGOCIOS", "CONDICIÓN LABORAL", "CONECTIVIDAD Y MOVILIDAD"];
 
         dataFull1 = //google.visualization.arrayToDataTable(array);
         new google.visualization.arrayToDataTable([
-       ['Employee Name', 'Salary'],
-       ['Vivienda y Entorno', {v:22500, f:'22,500'}], // Format as "22,500".
-       ['Salud y Medio Ambiente', 35000],
-       ['Condiciones Socioculturales', 44000],
-       ['Ambiente de Negocios', 27000],
-       ['Condicion Laboral', 92000],
-       ['Conectividad y Movilidad', 18500]
-      ],
-      false); // 'false' means that the first row contains labels, not data.
+         ['Employee Name', 'Salary'],
+         ['Vivienda y Entorno', {v:22500, f:'22,500'}], // Format as "22,500".
+         ['Salud y Medio Ambiente', 35000],
+         ['Condiciones Socioculturales', 44000],
+         ['Ambiente de Negocios', 27000],
+         ['Condicion Laboral', 92000],
+         ['Conectividad y Movilidad', 18500]
+        ],
+        false); // 'false' means that the first row contains labels, not data.
 
 
 
         dataFull2 = //google.visualization.arrayToDataTable(array);
-        new google.visualization.arrayToDataTable([
-       ['Employee Name', 'Salary'],
-       ['Vivienda y Entorno', {v:2250, f:'22,500'}], // Format as "22,500".
-       ['Salud y Medio Ambiente', 3500],
-       ['Condiciones Socioculturales', 4400],
-       ['Ambiente de Negocios', 2700],
-       ['Condición Laboral', 9200],
-       ['Conectividad y Movilidad', 1850]
-      ],
-      false); // 'false' means that the first row contains labels, not data.
+          new google.visualization.arrayToDataTable([
+         ['Employee Name', 'Salary'],
+         ['Vivienda y Entorno', {v:2250, f:'22,500'}], // Format as "22,500".
+         ['Salud y Medio Ambiente', 3500],
+         ['Condiciones Socioculturales', 4400],
+         ['Ambiente de Negocios', 2700],
+         ['Condición Laboral', 9200],
+         ['Conectividad y Movilidad', 1850]
+        ],
+        false); // 'false' means that the first row contains labels, not data.
 
-var dataFull = [dataFull1, dataFull2];
-/*
-        data = google.visualization.arrayToDataTable([
-          ['Name', 'Población'],
-          ['Michael' , 5],
-          ['Elisa', 7],
-          ['Robert', 3],
-          ['John', 2],
-          ['Jessica', 6],
-          ['Aaron', 1],
-          ['Margareth', 8]
-        ]);*/
-        
-        /*
-        data = google.visualization.arrayToDataTable([
-          ['Name', 'Población', 'Filtro2'],
-          ['Michael' , 5, true],
-          ['Elisa', 7, true],
-          ['Robert', 3, false],
-          ['John', 2, false],
-          ['Jessica', 6, true],
-          ['Aaron', 1, true],
-          ['Margareth', 8, true]
-        ]);
-        */
+        var dataFull = [dataFull1, dataFull2];
 
         //data.sort([{column: 1}, {column: 0}]);
         //data.sort([{column: 1}, {column: 0}]);
@@ -328,8 +284,7 @@ var dataFull = [dataFull1, dataFull2];
 
 
         // Create a dashboard.
-        dashboard = new google.visualization.Dashboard(
-            document.getElementById('dashboard_div'));
+        dashboard = new google.visualization.Dashboard( document.getElementById('dashboard_div')) ;
 
         // Create a range slider, passing some options
         var donutRangeSlider = new google.visualization.ControlWrapper({
@@ -337,7 +292,6 @@ var dataFull = [dataFull1, dataFull2];
           'containerId': 'filter_div',
           'options': {
             'filterColumnLabel': 'Población'
-
           }
         });
 
@@ -356,123 +310,111 @@ var dataFull = [dataFull1, dataFull2];
               'easing': 'out',
             },
             'tooltip': {'isHtml': true}
-
           }
         });
 
-// =====================================================================================
-// =================
-// REVISAR ESTO !!!
-// =================
-// https://developers.google.com/chart/interactive/docs/basic_interactivity
-// https://developers.google.com/chart/interactive/docs/animation
-// https://developers.google.com/chart/interactive/docs/events
-//  https://developers.google.com/chart/interactive/docs/overlays#fullpage2  ****
-// http://a32.me/2018/01/change-tooltip-position-on-google-charts/
-// =====================================================================================
+        var mi_aux = 0;
+        // Instantiate and draw our chart, passing in some options.
+        //chartTool = new google.visualization.ColumnChart(document.getElementById('chartDetail'));
+        chartTool = new google.visualization.BarChart(document.getElementById('chartDetail'));
+
+        google.visualization.events.addListener(barChart, 'select', function () {
+          console.log("Click: " + barChart.getChart().getSelection());
+          var selection = barChart.getChart().getSelection();
+          //var selectedRow = selection[i].row;
+          /*
+          var selectedRow = selection[i].row;
+          var dataTableRow = barChart.getView().rows[selectedRow];
+          var values = '';
+          for (var col = 0; col < data.getNumberOfColumns(); col++) {
+            if (values !== '') {
+              values += ' -- ';
+            }
+            values += data.getValue(dataTableRow, col);
+          }*/
+          message ='';
+          for (var i = 0; i < selection.length; i++) {
+            var item = selection[i];
+            if (item.row != null && item.column != null) {
+              message += '{row:' + item.row + ',column:' + item.column + '}';
+            } else if (item.row != null) {
+              message += '{row:' + item.row + '}';
+            } else if (item.column != null) {
+              message += '{column:' + item.column + '}';
+            }
+          }
+          if (message == '') {
+            message = 'nothing';
+          }
+          var id = barChart.getDataTable().getValue(item.row,0);
+          var originalRow = data.getFilteredRows([{column: 0, value: id }]);
+          originalRow = parseInt(originalRow);
+          var originalData = data.getFormattedValue(originalRow, 1);
+
+          console.log("originalIndexRow: " + originalRow);
+          console.log("originalDataRow: " + originalData);
+          console.log("*** values: " + message);
+
+          var selection = barChart.getChart().getSelection();
+
+          var selectedItem = barChart.getChart().getSelection()[0];
+          if (selectedItem) {
+            var value = data.getValue(selectedItem.row, selectedItem.column);
+            //console.log('- The user selected ' + value + ', '+barChart.getChart().getSelection()[0][1] );
 
 
-var mi_aux = 0;
-      // Instantiate and draw our chart, passing in some options.
-      //chartTool = new google.visualization.ColumnChart(document.getElementById('chartDetail'));
-      chartTool = new google.visualization.BarChart(document.getElementById('chartDetail'));
+            var id = barChart.getDataTable().getValue(item.row,0);
+            var originalRow = data.getFilteredRows([{column: 0, value: id }]);
+            originalRow = parseInt(originalRow);
+            var originalData = data.getFormattedValue(originalRow, 1);
+            var originalNameData = data.getFormattedValue(originalRow, 0);
+            
 
-google.visualization.events.addListener(barChart, 'select', function () {
-  console.log("Click: " + barChart.getChart().getSelection());
-  var selection = barChart.getChart().getSelection();
-  //var selectedRow = selection[i].row;
-  /*
-  var selectedRow = selection[i].row;
-  var dataTableRow = barChart.getView().rows[selectedRow];
-  var values = '';
-  for (var col = 0; col < data.getNumberOfColumns(); col++) {
-    if (values !== '') {
-      values += ' -- ';
-    }
-    values += data.getValue(dataTableRow, col);
-  }*/
-  message ='';
-  for (var i = 0; i < selection.length; i++) {
-    var item = selection[i];
-    if (item.row != null && item.column != null) {
-      message += '{row:' + item.row + ',column:' + item.column + '}';
-    } else if (item.row != null) {
-      message += '{row:' + item.row + '}';
-    } else if (item.column != null) {
-      message += '{column:' + item.column + '}';
-    }
-  }
-  if (message == '') {
-    message = 'nothing';
-  }
-  var id = barChart.getDataTable().getValue(item.row,0);
-  var originalRow = data.getFilteredRows([{column: 0, value: id }]);
-  originalRow = parseInt(originalRow);
-  var originalData = data.getFormattedValue(originalRow, 1);
+            var optionsTool = {
+              width: 600,
+              height: 600,
+              title: 'Detalle para ' + originalNameData,
+              colors: ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6'],
 
-  console.log("originalIndexRow: " + originalRow);
-  console.log("originalDataRow: " + originalData);
-  console.log("*** values: " + message);
+              animation:{
+                duration: 1000,
+                easing: 'out',
+              },
 
-  var selection = barChart.getChart().getSelection();
+             chartArea: {
+              'width': '40%', 'height': '80%',
+              left:200,
+              right:40, // !!! works !!!
+              //bottom:20,  // !!! works !!!
+              //top:20
+            },
+             legend: {'position': 'bottom'}
+            };
 
-  var selectedItem = barChart.getChart().getSelection()[0];
-  if (selectedItem) {
-    var value = data.getValue(selectedItem.row, selectedItem.column);
-    //console.log('- The user selected ' + value + ', '+barChart.getChart().getSelection()[0][1] );
+            var message = '';
 
-
-    var id = barChart.getDataTable().getValue(item.row,0);
-    var originalRow = data.getFilteredRows([{column: 0, value: id }]);
-    originalRow = parseInt(originalRow);
-    var originalData = data.getFormattedValue(originalRow, 1);
-    var originalNameData = data.getFormattedValue(originalRow, 0);
-    
-
-    var optionsTool = {
-      width: 600,
-      height: 600,
-      title: 'Detalle para ' + originalNameData,
-      colors: ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6'],
-
-      animation:{
-        duration: 1000,
-        easing: 'out',
-      },
-
-     chartArea: {
-      'width': '40%', 'height': '80%',
-      left:200,
-      right:40, // !!! works !!!
-      //bottom:20,  // !!! works !!!
-      //top:20
-    },
-     legend: {'position': 'bottom'}
-    };
-
-    var message = '';
-
-    for (var i = 0; i < selection.length; i++) {
-      var item = selection[i];
-      if (item.row != null && item.column != null) {
-        message += '{row:' + item.row + ',column:' + item.column + '}'  + ' ===> (' + data.getValue(item.row, 0)+': '+ data.getValue(item.row, 1)+')';
-      } else if (item.row != null) {
-        message += '{row:' + item.row + '}';
-      } else if (item.column != null) {
-        message += '{column:' + item.column + '}';
-      }
-    }
-    if (message == '') {
-      message = 'nothing';
-    }
-    console.log('You selected ' + message);
-    chartTool.draw(dataFull[(mi_aux++)%2], optionsTool);
-  }
+            for (var i = 0; i < selection.length; i++) {
+              var item = selection[i];
+              if (item.row != null && item.column != null) {
+                message += '{row:' + item.row + ',column:' + item.column + '}'  + ' ===> (' + data.getValue(item.row, 0)+': '+ data.getValue(item.row, 1)+')';
+              } else if (item.row != null) {
+                message += '{row:' + item.row + '}';
+              } else if (item.column != null) {
+                message += '{column:' + item.column + '}';
+              }
+            }
+            if (message == '') {
+              message = 'nothing';
+            }
+            console.log('You selected ' + message);
+            
+            chartTool.draw(dataFull[(mi_aux++)%2], optionsTool);
+          }
 
 
 
 
-}); // FIN google.visualization.events.addListener(barChart, 'select', function () {
+        }); // FIN google.visualization.events.addListener(barChart, 'select', function () {
 
         // Establish dependencies, declaring that 'filter' drives 'barChart',
         // so that the pie chart will only display entries that are let through
@@ -481,42 +423,40 @@ google.visualization.events.addListener(barChart, 'select', function () {
 
         // Draw the dashboard.
         //dashboard.draw(data);
-
-
-//dashboard.draw(data, {allowHtml: true, showRowNumber: true, width: '100%', height: '100%'});
+        //dashboard.draw(data, {allowHtml: true, showRowNumber: true, width: '100%', height: '100%'});
 
         //dashboard.draw(data, options);
         //dashboard.draw(excludeEmptyRows(data), options);
         dashboard.draw((data), options);
 
-      }
+      } // FIN drawDashboard
 /// Dashboard <=
 
 
       function updateChart(){
-      /*
-      FILTROS:
-      =========
-      - población
-      - norte a sur
-      - costeras o mediterráneas
-      - metropolitanas o no
-      - porcentaje
-      - per cápita
+        /*
+        FILTROS:
+        =========
+        - población
+        - norte a sur
+        - costeras o mediterráneas
+        - metropolitanas o no
+        - porcentaje
+        - per cápita
 
-        ORDEN:
-      =========
-      - de mayor a menor indicador por dimensión,
-      - de mayor a menor indicador por dimensión ICVU como índice sintético, ó
-      - geográficamente (norte a sur).
-      */
-      order1 =  parseInt($("#order1 option:selected").val());
-      order2 =  parseInt($("#order2 option:selected").val());
+          ORDEN:
+        =========
+        - de mayor a menor indicador por dimensión,
+        - de mayor a menor indicador por dimensión ICVU como índice sintético, ó
+        - geográficamente (norte a sur).
+        */
+        order1 =  parseInt($("#order1 option:selected").val());
+        order2 =  parseInt($("#order2 option:selected").val());
 
-      data.sort([{column: order1, desc: (order2%2 == 0)}]);
-      dashboard.draw(data, options);
+        data.sort([{column: order1, desc: (order2%2 == 0)}]);
+        dashboard.draw(data, options);
 
-      }
+      } // FIN updateChart
 
       var order1 = 1;
       $( document ).ready(function() {
@@ -532,7 +472,7 @@ google.visualization.events.addListener(barChart, 'select', function () {
               updateChart();
           });
 
-      });
+      }); // FIN $( document ).ready(
 
 
 
