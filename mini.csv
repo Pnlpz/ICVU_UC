@@ -1,4 +1,4 @@
-COMUNA,Población,D1,D2
-Alto Hospicio,172,123,223
-Angol,558,245,323
-Antofagasta,812,334,676
+COMUNA,Población,D1,D2, Depende
+Alto Hospicio,72,23,23, 1
+Angol,58,45,23, 1
+Antofagasta,12,34,76, 1

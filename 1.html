@@ -355,97 +355,99 @@ var theTitle = '';
           }
           if (message == '') {
             message = 'nothing';
-          }
-          var id = barChart.getDataTable().getValue(item.row,0);
-          var originalRow = data.getFilteredRows([{column: 0, value: id }]);
-          originalRow = parseInt(originalRow);
-          var originalData = data.getFormattedValue(originalRow, 1);
-
-          console.log("originalIndexRow: " + originalRow);
-          console.log("originalDataRow: " + originalData);
-          console.log("*** values: " + message);
-
-           selection = barChart.getChart().getSelection();
-
-          var selectedItem = barChart.getChart().getSelection()[0];
-          if (selectedItem) {
-            var value = data.getValue(selectedItem.row, selectedItem.column);
-            //console.log('- The user selected ' + value + ', '+barChart.getChart().getSelection()[0][1] );
-
-
-            var id = barChart.getDataTable().getValue(item.row,0);
-            var originalRow = data.getFilteredRows([{column: 0, value: id }]);
-            originalRow = parseInt(originalRow);
-            var originalData = data.getFormattedValue(originalRow, 1);
-            var originalNameData = data.getFormattedValue(originalRow, 0);
             
-
-            var optionsTool = {
-              width: 600,
-              height: 600,
-              title: 'Detalle para ' + originalNameData,
-              colors: ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6'],
-
-              animation:{
-                duration: 1000,
-                easing: 'out',
-              },
-
-              hAxis: {'minValue': '0'},
-             chartArea: {
-              'width': '40%', 'height': '80%',
-              left:200,
-              right:40, // !!! works !!!
-              //bottom:20,  // !!! works !!!
-              //top:20
-            },
-             legend: {'position': 'bottom'}
-            };
-
-            var message = '';
-
-            for (var i = 0; i < selection.length; i++) {
-              var item = selection[i];
-              if (item.row != null && item.column != null) {
-                message += '{row:' + item.row + ',column:' + item.column + '}'  + ' ===> (' + data.getValue(item.row, 0)+': '+ data.getValue(item.row, 1)+')';
-              } else if (item.row != null) {
-                message += '{row:' + item.row + '}';
-              } else if (item.column != null) {
-                message += '{column:' + item.column + '}';
-              }
-            }
-            if (message == '') {
-              message = 'nothing';
-            }
-            console.log('You selected ' + message);
-
-
-        //dashboard.draw(data, options);
-
-            // chartTool.draw(dataFull[(mi_aux++)%2], optionsTool);
-            //chartTool.draw(selection, optionsTool);
-            s = data.getFilteredRows([{column: 0, value: id}]) ;
-            console.log("data.getFilteredRows([{column: 0, value: id }])=== "+ s);
-            
-var view = new google.visualization.DataView(data);
-indexPopulation = 1;
-  view.setRows(data.getFilteredRows([
-    {column: 0, value: id}
-  ]));
-  N = view.getNumberOfColumns();
-  //if(N > 2)
-  {
-    //view.setColumns([1,2,3]);
-    view.hideColumns([indexPopulation]);
-  }
-chartTool.draw(view, optionsTool);
-
-
-
-
-
-
           }
+          if (item != null && item.row != null ){
+                    var id = barChart.getDataTable().getValue(item.row,0);
+                    var originalRow = data.getFilteredRows([{column: 0, value: id }]);
+                    originalRow = parseInt(originalRow);
+                    var originalData = data.getFormattedValue(originalRow, 1);
+          
+                    console.log("originalIndexRow: " + originalRow);
+                    console.log("originalDataRow: " + originalData);
+                    console.log("*** values: " + message);
+          
+                     selection = barChart.getChart().getSelection();
+          
+                    var selectedItem = barChart.getChart().getSelection()[0];
+                    if (selectedItem) {
+                      var value = data.getValue(selectedItem.row, selectedItem.column);
+                      //console.log('- The user selected ' + value + ', '+barChart.getChart().getSelection()[0][1] );
+          
+          
+                      var id = barChart.getDataTable().getValue(item.row,0);
+                      var originalRow = data.getFilteredRows([{column: 0, value: id }]);
+                      originalRow = parseInt(originalRow);
+                      var originalData = data.getFormattedValue(originalRow, 1);
+                      var originalNameData = data.getFormattedValue(originalRow, 0);
+                      
+          
+                      var optionsTool = {
+                        width: 600,
+                        height: 600,
+                        title: 'Detalle para ' + originalNameData,
+                        colors: ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6'],
+          
+                        animation:{
+                          duration: 1000,
+                          easing: 'out',
+                        },
+          
+                        hAxis: {'minValue': '0'},
+                       chartArea: {
+                        'width': '40%', 'height': '80%',
+                        left:200,
+                        right:40, // !!! works !!!
+                        //bottom:20,  // !!! works !!!
+                        //top:20
+                      },
+                       legend: {'position': 'bottom'}
+                      };
+          
+                      var message = '';
+          
+                      for (var i = 0; i < selection.length; i++) {
+                        var item = selection[i];
+                        if (item.row != null && item.column != null) {
+                          message += '{row:' + item.row + ',column:' + item.column + '}'  + ' ===> (' + data.getValue(item.row, 0)+': '+ data.getValue(item.row, 1)+')';
+                        } else if (item.row != null) {
+                          message += '{row:' + item.row + '}';
+                        } else if (item.column != null) {
+                          message += '{column:' + item.column + '}';
+                        }
+                      }
+                      if (message == '') {
+                        message = 'nothing';
+                      }
+                      console.log('You selected ' + message);
+          
+          
+                      //dashboard.draw(data, options);
+          
+                      // chartTool.draw(dataFull[(mi_aux++)%2], optionsTool);
+                      //chartTool.draw(selection, optionsTool);
+                      s = data.getFilteredRows([{column: 0, value: id}]) ;
+                      console.log("data.getFilteredRows([{column: 0, value: id }])=== "+ s);
+                      
+                      var view = new google.visualization.DataView(data);
+                      indexPopulation = 1;
+                        view.setRows(data.getFilteredRows([
+                          {column: 0, value: id}
+                        ]));
+                        N = view.getNumberOfColumns();
+                        //if(N > 2)
+                        {
+                          //view.setColumns([1,2,3]);
+                          view.hideColumns([indexPopulation]);
+                        }
+                      chartTool.draw(view, optionsTool);
+          
+          
+          
+          
+          
+          
+                    }}
 
 
 
@@ -536,19 +538,19 @@ LINK PARA AGREGAR BOOLEAN
 https://stackoverflow.com/questions/41944874/color-google-virtualization-boolean-column
 -->
       <textarea id="textInput" style="height:50px;width: 800px">
-COMUNA,Población,D1,D2
-Alto Hospicio,172,123,223
-Angol,558,245,323
-Antofagasta,812,334,676
+COMUNA,Población,D1,D2, Depende
+Alto Hospicio,72,23,23, 1
+Angol,58,45,23, 1
+Antofagasta,12,34,76, 1
 </textarea>
 
+<!--
       <textarea id="textInput2" style="height:50px;width: 800px">
 COMUNA,VIVIENDA Y ENTORNO, SALUD Y MEDIO AMBIENTE, CONDICIONES SOCIOCULTURALES, AMBIENTE DE NEGOCIOS, CONDICIÌÒN LABORAL, CONECTIVIDAD Y MOVILIDAD
 Alto Hospicio,124.872,123,223,234,345,564
 Angol,55.845,245,323,234,345,234
 Antofagasta,389.812,334,676,453,123,654
-</textarea>
-
+</textarea>-->
       <input id="run" type="button"  value="Run" />
       <hr />
 
