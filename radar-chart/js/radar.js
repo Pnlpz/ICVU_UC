@@ -1,6 +1,19 @@
 var randomScalingFactor = function() {
     return Math.round(Math.random() * 100);
+    //return 1;
 };
+
+/////////////////////////////////
+var datos = [
+[1,2,3,4,5],
+[2,3,4,5,6],
+[2,3,8,5,6],
+[2,13,4,5,6]
+];
+var index = 0;
+
+/////////////////////////////////
+
 
 var color = Chart.helpers.color;
 var config = {
@@ -12,14 +25,9 @@ var config = {
             backgroundColor: color(window.chartColors.green).alpha(0.2).rgbString(),
             borderColor: window.chartColors.green,
             pointBackgroundColor: window.chartColors.green,
-            data: [
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor()
-            ]
-        }, {
+            data:datos[index++]
+        }
+        /*, {
             label: 'Antofagasta',
             backgroundColor: color(window.chartColors.blue).alpha(0.2).rgbString(),
             borderColor: window.chartColors.blue,
@@ -31,7 +39,8 @@ var config = {
                 randomScalingFactor(),
                 randomScalingFactor()
             ]
-        }]
+        }*/
+        ]
     },
     options: {
         legend: {
@@ -57,13 +66,24 @@ window.onload = function() {
 
 document.getElementById('randomizeData').addEventListener('click', function() {
     config.data.datasets.forEach(function(dataset) {
+        /*
         dataset.data = dataset.data.map(function() {
             return randomScalingFactor();
         });
+        */
+        dataset.data = datos[(index++)];
+
     });
 
     window.myRadar.update();
 });
+
+
+
+
+
+
+
 
 var colorNames = Object.keys(window.chartColors);
 document.getElementById('addDataset').addEventListener('click', function() {
