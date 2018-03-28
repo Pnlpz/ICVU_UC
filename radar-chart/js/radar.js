@@ -1,16 +1,16 @@
-var randomScalingFactor = function() {
+﻿var randomScalingFactor = function() {
     return Math.round(Math.random() * 100);
     //return 1;
 };
 
 /////////////////////////////////
-var datos = [
+var datos = [ //Hola hola
 [1,2,3,4,5],
 [2,3,4,5,6],
 [2,3,8,5,6],
 [2,13,4,5,6]
 ];
-var index = 0;
+var index = 0; 
 
 /////////////////////////////////
 
