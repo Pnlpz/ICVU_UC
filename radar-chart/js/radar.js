@@ -4,7 +4,7 @@ var randomScalingFactor = function() {
 };
 
 /////////////////////////////////
-var datos = [
+var datos = [ // ALGO
 [1,2,3,4,5],
 [2,3,4,5,6],
 [2,3,8,5,6],
