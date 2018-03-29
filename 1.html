@@ -6,26 +6,18 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  
-    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-    
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">  
+  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>    
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-
-
   <script src="jquery.csv.min.js"></script>
-
-
-
-
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
   <style type="text/css">
     .hidden {
-  display: none;
-  visibility: hidden;
-}
+    display: none;
+    visibility: hidden;
+  }
   </style>
 
   <script type="text/javascript">
@@ -159,6 +151,7 @@ var theTitle = '';
     }
   };
 
+/*
   function excludeEmptyRows(dataTable)
   {
     var view = new google.visualization.DataView(dataTable);
@@ -180,7 +173,7 @@ var theTitle = '';
     view.hideRows(rowIndexes); //hide empty rows
     return view.toDataTable();
   } // FIN excludeEmptyRows
-
+*/
 
     // Load the Visualization API and the controls package.
     //google.charts.load('current', {'packages':['corechart', 'controls']});
@@ -188,41 +181,6 @@ var theTitle = '';
     // Set a callback to run when the Google Visualization API is loaded.
     google.charts.setOnLoadCallback(drawDashboard);
 
-
-    // this has to be a global function
-    function loadData(filename) {
-       // grab the CSV
-       $.get(filename, function(csvString) {
-          // transform the CSV string into a 2-dimensional array
-          var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
-          console.log(arrayData);
-
-          // this new DataTable object holds all the data
-          var data = new google.visualization.arrayToDataTable(arrayData);
-          
-
-          //data.addColumn('string', 'Name');
-          //data.addColumn('number', 'Población');
-          /*
-          // this view can select a subset of the data at a time
-          var view = new google.visualization.DataView(data);
-          view.setColumns([0,1]);
-
-         // set chart options
-         var options = {
-            title: "A Chart from a CSV!",
-            hAxis: {title: data.getColumnLabel(0), minValue: data.getColumnRange(0).min, maxValue: data.getColumnRange(0).max},
-            vAxis: {title: data.getColumnLabel(1), minValue: data.getColumnRange(1).min, maxValue: data.getColumnRange(1).max},
-            legend: 'none'
-         };
-
-         // create the chart object and draw it
-         var chart = new google.visualization.ScatterChart(document.getElementById('chart'));
-         chart.draw(view, options);
-
-         */
-      });
-    } // FIN loadData
 
 
     // plots the data input into the textarea
@@ -250,6 +208,8 @@ var theTitle = '';
 
         var table = new google.visualization.Table(document.getElementById('tabla'));
         table.draw(data, {showRowNumber: true, width: '90%', height: '100%'});
+
+
 
         //flotTextData();
         $('#run').bind('click', flotTextData);
@@ -432,25 +392,18 @@ var theTitle = '';
                       
                       var view = new google.visualization.DataView(data);
                       indexPopulation = 1;
-                        view.setRows(data.getFilteredRows([
-                          {column: 0, value: id}
-                        ]));
-                        N = view.getNumberOfColumns();
-                        //if(N > 2)
-                        {
-                          //view.setColumns([1,2,3]);
-                          view.hideColumns([indexPopulation]);
-                        }
-                      chartTool.draw(view, optionsTool);
-          
-          
-          
-          
-          
+                      view.setRows(data.getFilteredRows([
+                        {column: 0, value: id}
+                      ]));
+                      N = view.getNumberOfColumns();
+                      //if(N > 2)
+                      {
+                        //view.setColumns([1,2,3]);
+                        view.hideColumns([indexPopulation]);
+                      }
+                      chartTool.draw(view, optionsTool);          
           
                     }}
-
-
 
 
         }); // FIN google.visualization.events.addListener(barChart, 'select', function () {
@@ -508,8 +461,6 @@ var theTitle = '';
           console.log( "text_commune! " + order1 );
 
           $('#order1').change(function() {
-
-
               updateChart();
           });
 
@@ -518,9 +469,6 @@ var theTitle = '';
           });
 
       }); // FIN $( document ).ready(
-
-
-
   </script>
 
   </head>
@@ -545,17 +493,11 @@ Angol,58,45,23, 1
 Antofagasta,12,34,76, 1
 </textarea>
 
-<!--
-      <textarea id="textInput2" style="height:50px;width: 800px">
-COMUNA,VIVIENDA Y ENTORNO, SALUD Y MEDIO AMBIENTE, CONDICIONES SOCIOCULTURALES, AMBIENTE DE NEGOCIOS, CONDICIÌÒN LABORAL, CONECTIVIDAD Y MOVILIDAD
-Alto Hospicio,124.872,123,223,234,345,564
-Angol,55.845,245,323,234,345,234
-Antofagasta,389.812,334,676,453,123,654
-</textarea>-->
+
       <input id="run" type="button"  value="Run" />
       <hr />
 
-<div id="tabla"></div>
+      <div id="tabla"></div>
 
       <h3>Orden:</h3><br>
 
@@ -575,8 +517,8 @@ Antofagasta,389.812,334,676,453,123,654
         <option value=2>Descendente (Z..A)</option>
       </select>
 
-            <!--Divs that will hold each control and chart-->
-            <div id="filter_div"></div>
+      <!--Divs that will hold each control and chart-->
+      <div id="filter_div"></div>
       <div class="row">
 
 
@@ -587,27 +529,18 @@ Antofagasta,389.812,334,676,453,123,654
 
             <div id="chartDetail"></div>
           </div>
+      </div>
     </div>
-    </div>
 
-<!-- Dashboard < -->
-
-
-<div id="dual_x_div"></div>
-<canvas class="" id="canvas"></canvas>
-<button id="button1">
-  EXPORTAR Ranking
-</button>
-<button id="button2">
-  EXPORTAR Detalle
-</button>
-
-<!--
-<h2>Ranking ICVU 2018:</h2>
-<div id="dual_x_div"></div>
-<canvas class="" id="canvas"></canvas>
--->
-
+    <!-- Dashboard < -->
+    <div id="dual_x_div"></div>
+    <canvas class="" id="canvas"></canvas>
+    <button id="button1">
+      EXPORTAR Ranking
+    </button>
+    <button id="button2">
+      EXPORTAR Detalle
+    </button>
 
   </body>
 </html>
