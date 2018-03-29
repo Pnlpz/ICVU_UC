@@ -210,6 +210,10 @@ var theTitle = '';
         table.draw(data, {showRowNumber: true, width: '90%', height: '100%'});
 
 
+                        
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0,1]);
+
 
         //flotTextData();
         $('#run').bind('click', flotTextData);
@@ -420,7 +424,7 @@ var theTitle = '';
         //dashboard.draw(data, options);
         //dashboard.draw(excludeEmptyRows(data), options);
         barChart.setOption('title', 'Ranking ICVU 2017 para '+ theTitle );
-        dashboard.draw((data), options);
+        dashboard.draw((view), options);
 
       } // FIN drawDashboard
 /// Dashboard <=
