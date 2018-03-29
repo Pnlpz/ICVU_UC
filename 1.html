@@ -199,10 +199,19 @@ var theTitle = '';
       // instantiates a dashboard, a range slider and a pie chart,
       // passes in the data and draws it.
       function drawDashboard() {
-
+        
         var data1 = $.csv.toArrays($('#textInput').val(), {
           onParseValue: $.csv.hooks.castToScalar
         });
+        
+
+   //$.get("detalle.csv", function(csvString) { // INICIO get
+    /*
+        var data1 = $.csv.toArrays("detalle.csv", {
+          onParseValue: $.csv.hooks.castToScalar
+        });
+        */
+
         // this new DataTable object holds all the data
         data = new google.visualization.arrayToDataTable(data1);
 
@@ -402,8 +411,9 @@ var theTitle = '';
                       N = view.getNumberOfColumns();
                       //if(N > 2)
                       {
-                        //view.setColumns([1,2,3]);
-                        view.hideColumns([indexPopulation]);
+                        view.setColumns([0,7, 8,9,10,11,12,13]); // AQUIIII
+
+                        //view.hideColumns([indexPopulation]);
                       }
                       chartTool.draw(view, optionsTool);          
           
@@ -426,6 +436,7 @@ var theTitle = '';
         barChart.setOption('title', 'Ranking ICVU 2017 para '+ theTitle );
         dashboard.draw((view), options);
 
+      // }); // FIN GET
       } // FIN drawDashboard
 /// Dashboard <=
 
@@ -491,10 +502,11 @@ LINK PARA AGREGAR BOOLEAN
 https://stackoverflow.com/questions/41944874/color-google-virtualization-boolean-column
 -->
       <textarea id="textInput" style="height:50px;width: 800px">
-COMUNA,Población,D1,D2, Depende
-Alto Hospicio,72,23,23, 1
-Angol,58,45,23, 1
-Antofagasta,12,34,76, 1
+Comuna,Población,Distribución Geográfica,Localización Geográfica,Comuna Metropolitana ,Dependencia FCM (%),Gasto total municipal por cada habitante de la comuna  M$ / Habitante (promedio 2013-2015),ICVU2017,CL,AN,CS,CM,SM,VE,RANGO
+Alto Hospicio,124872,Norte,Costa,si,55.60,109.50,33.40,47.40,6.00,14.70,46.10,41.50,31.50,INFERIOR
+Angol,55845,Sur,Interior,no,69.70,170.20,47.70,53.90,22.70,45.20,40.80,55.40,58.20,SUPERIOR
+Antofagasta,389812,Norte,Costa,si,14.30,187.30,40.40,51.30,32.60,30.60,56.90,38.10,28.90,PROMEDIO
+Arica,243701,Norte,Costa,no,46.20,113.30,38.00,48.50,16.10,23.60,51.40,40.00,37.40,PROMEDIO
 </textarea>
 
 
