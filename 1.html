@@ -131,7 +131,7 @@ var theTitle = '';
 
 
 
-
+var MAXHeight = 2800;
 
   /// Dashboard =>
   var data;
@@ -142,7 +142,7 @@ var theTitle = '';
 
   var options = {
     width: 600,
-    height: 600,
+    height: MAXHeight,
     title: 'AAaaa ',
     colors: ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6'],
     animation:{
@@ -182,7 +182,7 @@ var theTitle = '';
     google.charts.setOnLoadCallback(drawDashboard);
 
 
-
+    /*
     // plots the data input into the textarea
     function flotTextData() {
       var data1 = $.csv.toArrays($('#textInput').val(), {
@@ -193,6 +193,7 @@ var theTitle = '';
         barChart.setOption('title', 'Ranking ICVU 2017 para '+ theTitle );
        dashboard.draw((data), options);
     } // FIN flotTextData
+    */
 
 
       // Callback that creates and populates a data table,
@@ -216,7 +217,11 @@ var theTitle = '';
         data = new google.visualization.arrayToDataTable(data1);
 
         var table = new google.visualization.Table(document.getElementById('tabla'));
-        table.draw(data, {showRowNumber: true, width: '90%', height: '100%'});
+        table.draw(data, {
+          showRowNumber: true, 
+          width: '90%', 
+          height: '200'}
+          );
 
 
                         
@@ -225,7 +230,7 @@ var theTitle = '';
 
 
         //flotTextData();
-        $('#run').bind('click', flotTextData);
+        //$('#run').bind('click', flotTextData);
 
         // labels = ["VIVIENDA Y ENTORNO", "SALUD Y MEDIO AMBIENTE", "CONDICIONES SOCIOCULTURALES", "AMBIENTE DE NEGOCIOS", "CONDICIÓN LABORAL", "CONECTIVIDAD Y MOVILIDAD"];
 
@@ -283,7 +288,7 @@ var theTitle = '';
           'containerId': 'chartRanking',
           'options': {
             'width': 600,
-            'height': 600,
+            'height': MAXHeight,
             'pieSliceText': 'value',
             'legend': 'right',
             title: 'Ranking ICVU 2017 para '+ theTitle,
@@ -501,6 +506,7 @@ var theTitle = '';
 LINK PARA AGREGAR BOOLEAN
 https://stackoverflow.com/questions/41944874/color-google-virtualization-boolean-column
 -->
+<!--
       <textarea id="textInput" style="height:50px;width: 800px">
 Comuna,Población,Distribución Geográfica,Localización Geográfica,Comuna Metropolitana ,Dependencia FCM (%),Gasto total municipal por cada habitante de la comuna  M$ / Habitante (promedio 2013-2015),ICVU2017,CL,AN,CS,CM,SM,VE,RANGO
 Alto Hospicio,124872,Norte,Costa,si,55.60,109.50,33.40,47.40,6.00,14.70,46.10,41.50,31.50,INFERIOR
@@ -508,12 +514,14 @@ Angol,55845,Sur,Interior,no,69.70,170.20,47.70,53.90,22.70,45.20,40.80,55.40,58.
 Antofagasta,389812,Norte,Costa,si,14.30,187.30,40.40,51.30,32.60,30.60,56.90,38.10,28.90,PROMEDIO
 Arica,243701,Norte,Costa,no,46.20,113.30,38.00,48.50,16.10,23.60,51.40,40.00,37.40,PROMEDIO
 </textarea>
-
-
       <input id="run" type="button"  value="Run" />
       <hr />
+-->
 
-      <div id="tabla"></div>
+
+      <div id="tabla" style="
+    
+"></div>
 
       <h3>Orden:</h3><br>
 
