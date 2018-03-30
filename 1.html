@@ -119,7 +119,7 @@ google.charts.load('current', {
 }); // FIN }).then(function () {
 
 
-  var MAXHeight = 3000;
+  var MAXHeight = 300;
   /// Dashboard --->
   var data;
   var dashboard;
@@ -315,7 +315,8 @@ google.charts.load('current', {
                         //bottom:20,  // !!! works !!!
                         //top:20
                         },
-                        legend: {'position': 'bottom'}
+                        legend: {'position': 'bottom'},
+                        //colors: ["green","blue"]
                       };
                       /*
           
@@ -346,10 +347,30 @@ google.charts.load('current', {
                       viewDetail.setRows(data.getFilteredRows([
                         {column: 0, value: id}
                       ]));
-                      N = viewDetail.getNumberOfColumns();
-                      viewDetail.setColumns([0,7, 8,9,10,11,12,13]); // AQUIIII INDICE DE LAS DIMENSIONES
-                      chartDetail.draw(viewDetail, optionsTool);
-                    }}
+                      Ncols = viewDetail.getNumberOfColumns();
+                      Nrows = viewDetail.getNumberOfRows();
+                      console.log("Ncols: "+Ncols+" , Nrows: "+Nrows)
+                      viewDetail.setColumns([0,7,8,9,10,11,12,13]); // AQUIIII INDICE DE LAS DIMENSIONES
+
+
+
+                      // rawData is the base DataTable from the query
+                      var newData = new google.visualization.DataTable();
+                      rawData = viewDetail;
+                      newData.addColumn('string', 'domain data label'); // change this label to whatever is appropriate for you
+                      for (var i = 0; i < rawData.getNumberOfRows(); i++) {
+                          newData.addColumn('number', rawData.getValue(i, 0));
+                      }
+                      for (var i = 1; i < rawData.getNumberOfColumns(); i++) {
+                          var row = [rawData.getColumnLabel(i)];
+                          for (var j = 0; j < rawData.getNumberOfRows(); j++) {
+                              row.push(rawData.getValue(j, i));
+                          }
+                          newData.addRow(row);
+                      }                 
+                      chartDetail.draw(newData, optionsTool);
+                    }
+                  }
 
 
         }); // FIN google.visualization.events.addListener(barChart, 'select', function () {
@@ -436,7 +457,7 @@ google.charts.load('current', {
         - de mayor a menor indicador por dimensión ICVU como índice sintético, ó
         - geográficamente (norte a sur).
         -->
-      <h3>Orden:</h3><br>
+      <h3>Ordenamiento:</h3><br>
 
 
       <label for="order1">Orden por:</label>
