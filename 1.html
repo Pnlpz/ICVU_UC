@@ -99,18 +99,22 @@ google.charts.load('current', {
       // add svg namespace to chart
       domURL = window.URL || window.webkitURL || window;
       svgParent = chartContainerDETAIL.getElementsByTagName('svg')[0];
-      svgParent.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-      imageNode = chartContainerDETAIL.cloneNode(true);
-      imageURL = domURL.createObjectURL(new Blob([svgParent.outerHTML], {type: 'image/svg+xml'}));
-      image = new Image();
-      image.onload = function() {
-        canvas = document.getElementById('canvas');
-        canvas.setAttribute('width', parseFloat(svgParent.getAttribute('width')));
-        canvas.setAttribute('height', parseFloat(svgParent.getAttribute('height')));
-        canvas.getContext('2d').drawImage(image, 0, 0);
-        downloadCanvas(this, 'canvas', 'Ranking.png');
+      if(svgParent){
+        svgParent.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+        imageNode = chartContainerDETAIL.cloneNode(true);
+        imageURL = domURL.createObjectURL(new Blob([svgParent.outerHTML], {type: 'image/svg+xml'}));
+        image = new Image();
+        image.onload = function() {
+          canvas = document.getElementById('canvas');
+          canvas.setAttribute('width', parseFloat(svgParent.getAttribute('width')));
+          canvas.setAttribute('height', parseFloat(svgParent.getAttribute('height')));
+          canvas.getContext('2d').drawImage(image, 0, 0);
+          downloadCanvas(this, 'canvas', 'Ranking.png');
+        }
+        image.src = imageURL;
+      }else{
+        alert("Primero debes seleccionar una comuna");
       }
-      image.src = imageURL;
     });
 }); // FIN }).then(function () {
 
@@ -227,9 +231,8 @@ google.charts.load('current', {
               columns: [0, order1]
             }
         });
-
+        /*
         tableChart  = new google.visualization.ChartWrapper({
-          //'chartType': 'BarChart',
           'chartType': 'Table',
           'containerId': 'tableRanking',
           'options': {
@@ -249,6 +252,7 @@ google.charts.load('current', {
               columns: [0, order1]
             }
         });
+        */
 
         var selection;
         // Instantiate and draw our chart, passing in some options.
@@ -350,8 +354,8 @@ google.charts.load('current', {
 
         }); // FIN google.visualization.events.addListener(barChart, 'select', function () {
 
-        //dashboard.bind([PoblacionRangeSlider, MetropolitanaFilter, LocalizacionFilter, DistribucionFilter], barChart);
-        dashboard.bind([PoblacionRangeSlider, MetropolitanaFilter, LocalizacionFilter, DistribucionFilter], [barChart, tableChart]);
+        //dashboard.bind([PoblacionRangeSlider, MetropolitanaFilter, LocalizacionFilter, DistribucionFilter], [barChart, tableChart]);
+        dashboard.bind([PoblacionRangeSlider, MetropolitanaFilter, LocalizacionFilter, DistribucionFilter], [barChart]);
         //dashboard.draw(data, {allowHtml: true, showRowNumber: true, width: '100%', height: '100%'});
         barChart.setOption('title', 'Ranking ICVU 2017 para '+ theTitle );
         dashboard.draw((view), options);
@@ -475,10 +479,9 @@ google.charts.load('current', {
 
           <div class="col-md-6">
             <div id="chartRanking"></div>
-            <div id="tableRanking"></div>
+            <!--<div id="tableRanking"></div>-->
           </div>
           <div class="col-md-6">
-
             <div id="chartDetail"></div>
           </div>
       </div>
