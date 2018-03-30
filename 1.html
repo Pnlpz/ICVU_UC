@@ -199,18 +199,18 @@ var theTitle = '';
       // instantiates a dashboard, a range slider and a pie chart,
       // passes in the data and draws it.
       function drawDashboard() {
-        
+        /*
         var data1 = $.csv.toArrays($('#textInput').val(), {
           onParseValue: $.csv.hooks.castToScalar
         });
-        
-
-   //$.get("detalle.csv", function(csvString) { // INICIO get
-    /*
-        var data1 = $.csv.toArrays("detalle.csv", {
-          onParseValue: $.csv.hooks.castToScalar
-        });
         */
+        var data1;
+
+   $.get("datos_icvu2.csv", function(csvString) { // INICIO get
+   
+        //var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+        data1 = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+        
 
         // this new DataTable object holds all the data
         data = new google.visualization.arrayToDataTable(data1);
@@ -436,7 +436,7 @@ var theTitle = '';
         barChart.setOption('title', 'Ranking ICVU 2017 para '+ theTitle );
         dashboard.draw((view), options);
 
-      // }); // FIN GET
+       }); // FIN GET
       } // FIN drawDashboard
 /// Dashboard <=
 
@@ -473,7 +473,7 @@ var theTitle = '';
         theTitle = $("#order1 option:selected").text();
           order1 =  parseInt($("#order1 option:selected").val());
           order2 =  parseInt($("#order2 option:selected").val());
-          console.log( "text_commune! " + order1 );
+          //console.log( "text_commune! " + order1 );
 
           $('#order1').change(function() {
               updateChart();
