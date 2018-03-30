@@ -133,19 +133,18 @@ google.charts.load('current', {
     }
   };
 
-    // Set a callback to run when the Google Visualization API is loaded.
-    google.charts.setOnLoadCallback(drawDashboard);
+  // Set a callback to run when the Google Visualization API is loaded.
+  google.charts.setOnLoadCallback(drawDashboard);
 
 
-      // Callback that creates and populates a data table,
-      // instantiates a dashboard, a range slider and a pie chart,
-      // passes in the data and draws it.
-      function drawDashboard() {
+  // Callback that creates and populates a data table,
+  // instantiates a dashboard, a range slider and a pie chart,
+  // passes in the data and draws it.
+  function drawDashboard() {
 
-      var data1;
+    var data1;
 
-   $.get("datos_icvu2.csv", function(csvString) { // INICIO get
-        //var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+    $.get("datos_icvu2.csv", function(csvString) { // INICIO get
         data1 = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
         
         // this new DataTable object holds all the data
@@ -161,7 +160,7 @@ google.charts.load('current', {
         view = new google.visualization.DataView(data);
         //view.setColumns([0,1,2,3,4,5,6]);
         //data.sort([{column: 1}, {column: 0}]);
-        data.sort([{column: 1, desc: true}]);
+        data.sort([{column: order1, desc: true}]);
 
         // Create a dashboard
         dashboard = new google.visualization.Dashboard( document.getElementById('dashboard_div')) ;
@@ -228,6 +227,7 @@ google.charts.load('current', {
               columns: [0, order1]
             }
         });
+
         tableChart  = new google.visualization.ChartWrapper({
           //'chartType': 'BarChart',
           'chartType': 'Table',
@@ -250,13 +250,12 @@ google.charts.load('current', {
             }
         });
 
-        var mi_aux = 0;
         var selection;
         // Instantiate and draw our chart, passing in some options.
         chartDetail = new google.visualization.BarChart(document.getElementById('chartDetail'));
 
         google.visualization.events.addListener(barChart, 'select', function () {
-          console.log("Click: " + barChart.getChart().getSelection());
+          //console.log("Click: " + barChart.getChart().getSelection());
           selection = barChart.getChart().getSelection();
 
           message ='';
@@ -280,11 +279,11 @@ google.charts.load('current', {
                     originalRow = parseInt(originalRow);
                     var originalData = data.getFormattedValue(originalRow, 1);
           
-                    console.log("originalIndexRow: " + originalRow);
-                    console.log("originalDataRow: " + originalData);
-                    console.log("*** values: " + message);
+                    //console.log("originalIndexRow: " + originalRow);
+                    //console.log("originalDataRow: " + originalData);
+                    //console.log("*** values: " + message);
           
-                     selection = barChart.getChart().getSelection();
+                    selection = barChart.getChart().getSelection();
           
                     var selectedItem = barChart.getChart().getSelection()[0];
                     if (selectedItem) {
@@ -300,22 +299,21 @@ google.charts.load('current', {
                         height: 600,
                         title: 'Detalle para ' + originalNameData,
                         colors: ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6'],
-          
                         animation:{
                           duration: 1000,
                           easing: 'out',
                         },
-          
                         hAxis: {'minValue': '0'},
-                       chartArea: {
+                        chartArea: {
                         'width': '40%', 'height': '80%',
                         left:200,
                         right:40, // !!! works !!!
                         //bottom:20,  // !!! works !!!
                         //top:20
-                      },
-                       legend: {'position': 'bottom'}
+                        },
+                        legend: {'position': 'bottom'}
                       };
+                      /*
           
                       var message = '';
           
@@ -333,10 +331,11 @@ google.charts.load('current', {
                         message = 'nothing';
                       }
                       console.log('You selected ' + message);
+                      */
                       //dashboard.draw(data, options);
                       //chartDetail.draw(selection, optionsTool);
                       s = data.getFilteredRows([{column: 0, value: id}]) ;
-                      console.log("data.getFilteredRows([{column: 0, value: id }])=== "+ s);
+                      //console.log("data.getFilteredRows([{column: 0, value: id }])=== "+ s);
                       
                       var viewDetail = new google.visualization.DataView(data);
                       indexPopulation = 1;
@@ -344,28 +343,16 @@ google.charts.load('current', {
                         {column: 0, value: id}
                       ]));
                       N = viewDetail.getNumberOfColumns();
-                      {
-                         viewDetail.setColumns([0,7, 8,9,10,11,12,13]); // AQUIIII
-                        //viewDetail.hideColumns([indexPopulation]);
-                      }
-                      chartDetail.draw(viewDetail, optionsTool);          
-          
+                      viewDetail.setColumns([0,7, 8,9,10,11,12,13]); // AQUIIII INDICE DE LAS DIMENSIONES
+                      chartDetail.draw(viewDetail, optionsTool);
                     }}
 
 
         }); // FIN google.visualization.events.addListener(barChart, 'select', function () {
 
-        // Establish dependencies, declaring that 'filter' drives 'barChart',
-        // so that the pie chart will only display entries that are let through
-        // given the chosen slider range.
         //dashboard.bind([PoblacionRangeSlider, MetropolitanaFilter, LocalizacionFilter, DistribucionFilter], barChart);
         dashboard.bind([PoblacionRangeSlider, MetropolitanaFilter, LocalizacionFilter, DistribucionFilter], [barChart, tableChart]);
-        //dashboard.bind(MetropolitanaFilter, barChart);
-        //dashboard.bind([PoblacionRangeSlider], barChart);
-        
-
         //dashboard.draw(data, {allowHtml: true, showRowNumber: true, width: '100%', height: '100%'});
-
         barChart.setOption('title', 'Ranking ICVU 2017 para '+ theTitle );
         dashboard.draw((view), options);
 
@@ -378,20 +365,16 @@ google.charts.load('current', {
         order1 =  parseInt($("#order1 option:selected").val());
         order2 =  parseInt($("#order2 option:selected").val());
         theTitle = $("#order1 option:selected").text();
-        console.log("order1: "+order1);
-        console.log("view: "+view);
-
-
-        //data.sort([{column: order1, desc: (order2%2 == 0)}]);
-        //data.sort([{column: order1, desc: (order2%2 == 0)}]);
-
+        //console.log("order1: "+order1);
+        //console.log("view: "+view);
         barChart.setOption('title', 'Ranking ICVU 2017 para '+ theTitle );
 
         //barChart.view(columns: [0, 8]);
         //index = (order1==0)?7:order1;
-        barChart.setView({columns:[0, order1]}); // use the first three DataTable columns
+        barChart.setView({columns:[0, order1]}); // AQUIIII ACTUALIZO LA COLUMNA A MOSTRAR, SEGUN ORDEN
 
-
+        data.sort([{column: order1, desc: true}]);
+        
         dashboard.draw(data, options);
         //view.setColumns([0,1,2,3,4,5,6]);
         //dashboard.draw(viewDetail, options);
