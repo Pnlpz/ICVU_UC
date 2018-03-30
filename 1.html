@@ -121,7 +121,6 @@ google.charts.load('current', {
   var dashboard;
   var barChart;
   var chartDetail;
-  var dataFull;
 
   var options = {
     width: 600,
@@ -335,22 +334,21 @@ google.charts.load('current', {
                       }
                       console.log('You selected ' + message);
                       //dashboard.draw(data, options);
-                      // chartDetail.draw(dataFull[(mi_aux++)%2], optionsTool);
                       //chartDetail.draw(selection, optionsTool);
                       s = data.getFilteredRows([{column: 0, value: id}]) ;
                       console.log("data.getFilteredRows([{column: 0, value: id }])=== "+ s);
                       
-                      var view = new google.visualization.DataView(data);
+                      var viewDetail = new google.visualization.DataView(data);
                       indexPopulation = 1;
-                      view.setRows(data.getFilteredRows([
+                      viewDetail.setRows(data.getFilteredRows([
                         {column: 0, value: id}
                       ]));
-                      N = view.getNumberOfColumns();
+                      N = viewDetail.getNumberOfColumns();
                       {
-                         view.setColumns([0,7, 8,9,10,11,12,13]); // AQUIIII
-                        //view.hideColumns([indexPopulation]);
+                         viewDetail.setColumns([0,7, 8,9,10,11,12,13]); // AQUIIII
+                        //viewDetail.hideColumns([indexPopulation]);
                       }
-                      chartDetail.draw(view, optionsTool);          
+                      chartDetail.draw(viewDetail, optionsTool);          
           
                     }}
 
