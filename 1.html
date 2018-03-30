@@ -147,7 +147,13 @@ google.charts.load('current', {
   function drawDashboard() {
 
     var data1;
-
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // ORDEN NECESARIO DE DATOS DE ENTRADA:
+    // Comuna,Población,Distribución,Localización,Metropolitana,Dependencia FCM (%),Gasto total municipal por cada habitante de la comuna  M$ / Habitante (promedio 2013-2015),ICVU2017,CL,AN,CS,CM,SM,VE,RANGO
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     $.get("datos_icvu2.csv", function(csvString) { // INICIO get
         data1 = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
         
@@ -174,7 +180,8 @@ google.charts.load('current', {
           'controlType': 'NumberRangeFilter',
           'containerId': 'filter_poblacion_div',
           'options': {
-            'filterColumnLabel': 'Población',
+            //'filterColumnLabel': 'Población',
+            'filterColumnIndex': 1,
             'minValue': '0',
           }
         });
@@ -206,8 +213,8 @@ google.charts.load('current', {
           'controlType': 'CategoryFilter',
           'containerId': 'filter_metropolitana_div',
           'options': {
-            //'filterColumnIndex': 4,
-            'filterColumnLabel': 'Metropolitana',
+            'filterColumnIndex': 4,
+            //'filterColumnLabel': 'Metropolitana',
           }
         });
 
@@ -216,8 +223,8 @@ google.charts.load('current', {
           'controlType': 'CategoryFilter',
           'containerId': 'filter_localizacion_div',
           'options': {
-            //'filterColumnIndex': 4,
-            'filterColumnLabel': 'Localización',
+            'filterColumnIndex': 3,
+            //'filterColumnLabel': 'Localización',
           }
         });
 
@@ -226,8 +233,8 @@ google.charts.load('current', {
           'controlType': 'CategoryFilter',
           'containerId': 'filter_distribucion_div',
           'options': {
-            //'filterColumnIndex': 4,
-            'filterColumnLabel': 'Distribución',
+            'filterColumnIndex': 2,
+            //'filterColumnLabel': 'Distribución',
           }
         });
 
