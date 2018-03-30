@@ -49,6 +49,7 @@
 // =====================================================================================
 ***************************/
 
+      var order1 = 0;
 var theTitle = '';
 
     google.charts.load('current', {
@@ -129,7 +130,7 @@ var theTitle = '';
 
 
 
-var MAXHeight = 2800;
+var MAXHeight = 280;
 
   /// Dashboard =>
   var data;
@@ -149,49 +150,12 @@ var MAXHeight = 2800;
     }
   };
 
-/*
-  function excludeEmptyRows(dataTable)
-  {
-    var view = new google.visualization.DataView(dataTable);
-    //var rowIndexes = view.getFilteredRows([{column: 1, maxValue: 50}]); //get rows with 0 values
-    //getFilteredRows([{column: 3, value: 42}, {column: 2, minValue: 10, maxValue: 50}]) 
-
-    var rowIndexes = view.getFilteredRows([ {column: 1, minValue: 200, maxValue: 500}]) 
-
-    // removeRows(rowIndex, numberOfRows) 
-    // getTableRowIndex(viewRowIndex)  // Example: If setRows([3, 1, 4]) was previously called, then getTableRowIndex(2) will return 4.
-    // getViewRowIndex(tableRowIndex) // Example: If setRows([3, 1, 4]) was previously called, then getViewRowIndex(4) will return 2.
-
-    // hideRows(min, max) // Hides all rows with indexes that lie between min and max (inclusive) from the current view. This is a convenience syntax for hideRows(rowIndexes) above. For example, hideRows(5, 10) is equivalent to hideRows([5, 6, 7, 8, 9, 10]).
-    
-    // hideRows(rowIndexes)  // Example: If you have a table with 10 rows, and you call setRows([2,7,1,7,9]), and then hideRows([7,9]), the rows in the view will then be [2,1].
-
-
-
-    view.hideRows(rowIndexes); //hide empty rows
-    return view.toDataTable();
-  } // FIN excludeEmptyRows
-*/
 
     // Load the Visualization API and the controls package.
     //google.charts.load('current', {'packages':['corechart', 'controls']});
 
     // Set a callback to run when the Google Visualization API is loaded.
     google.charts.setOnLoadCallback(drawDashboard);
-
-
-    /*
-    // plots the data input into the textarea
-    function flotTextData() {
-      var data1 = $.csv.toArrays($('#textInput').val(), {
-        onParseValue: $.csv.hooks.castToScalar
-      });
-      // this new DataTable object holds all the data
-       data = new google.visualization.arrayToDataTable(data1);
-        barChart.setOption('title', 'Ranking ICVU 2017 para '+ theTitle );
-       dashboard.draw((data), options);
-    } // FIN flotTextData
-    */
 
 
       // Callback that creates and populates a data table,
@@ -221,14 +185,10 @@ var MAXHeight = 2800;
           height: '200'}
           );
 
-
                         
         var view = new google.visualization.DataView(data);
-        view.setColumns([0,1]);
+        view.setColumns([0,1,2,3,4,5,6]);
 
-
-        //flotTextData();
-        //$('#run').bind('click', flotTextData);
 
         // labels = ["VIVIENDA Y ENTORNO", "SALUD Y MEDIO AMBIENTE", "CONDICIONES SOCIOCULTURALES", "AMBIENTE DE NEGOCIOS", "CONDICIÓN LABORAL", "CONECTIVIDAD Y MOVILIDAD"];
 
@@ -271,18 +231,51 @@ var MAXHeight = 2800;
         dashboard = new google.visualization.Dashboard( document.getElementById('dashboard_div')) ;
 
         // Create a range slider, passing some options
-        var donutRangeSlider = new google.visualization.ControlWrapper({
+        var PoblacionRangeSlider = new google.visualization.ControlWrapper({
           'controlType': 'NumberRangeFilter',
-          'containerId': 'filter_div',
+          'containerId': 'filter_poblacion_div',
           'options': {
             'filterColumnLabel': 'Población',
             'minValue': '0',
           }
         });
 
+
+        // Create a CategoryFilter, passing some options
+        var MetropolitanaFilter = new google.visualization.ControlWrapper({
+          'controlType': 'CategoryFilter',
+          'containerId': 'filter_metropolitana_div',
+          'options': {
+            //'filterColumnIndex': 4,
+            'filterColumnLabel': 'Metropolitana',
+          }
+        });
+
+        // Create a CategoryFilter, passing some options
+        var LocalizacionFilter = new google.visualization.ControlWrapper({
+          'controlType': 'CategoryFilter',
+          'containerId': 'filter_localizacion_div',
+          'options': {
+            //'filterColumnIndex': 4,
+            'filterColumnLabel': 'Localización',
+          }
+        });
+
+        // Create a CategoryFilter, passing some options
+        var DistribucionFilter = new google.visualization.ControlWrapper({
+          'controlType': 'CategoryFilter',
+          'containerId': 'filter_distribucion_div',
+          'options': {
+            //'filterColumnIndex': 4,
+            'filterColumnLabel': 'Distribución',
+          }
+        });
+        
+
         // Create a pie chart, passing some options
         barChart = new google.visualization.ChartWrapper({
-          'chartType': 'BarChart',
+          //'chartType': 'BarChart',
+          'chartType': 'Table',
           'containerId': 'chartRanking',
           'options': {
             'width': 600,
@@ -307,18 +300,8 @@ var MAXHeight = 2800;
 
         google.visualization.events.addListener(barChart, 'select', function () {
           console.log("Click: " + barChart.getChart().getSelection());
-           selection = barChart.getChart().getSelection();
-          //var selectedRow = selection[i].row;
-          /*
-          var selectedRow = selection[i].row;
-          var dataTableRow = barChart.getView().rows[selectedRow];
-          var values = '';
-          for (var col = 0; col < data.getNumberOfColumns(); col++) {
-            if (values !== '') {
-              values += ' -- ';
-            }
-            values += data.getValue(dataTableRow, col);
-          }*/
+          selection = barChart.getChart().getSelection();
+
           message ='';
           for (var i = 0; i < selection.length; i++) {
             var item = selection[i];
@@ -349,15 +332,11 @@ var MAXHeight = 2800;
                     var selectedItem = barChart.getChart().getSelection()[0];
                     if (selectedItem) {
                       var value = data.getValue(selectedItem.row, selectedItem.column);
-                      //console.log('- The user selected ' + value + ', '+barChart.getChart().getSelection()[0][1] );
-          
-          
                       var id = barChart.getDataTable().getValue(item.row,0);
                       var originalRow = data.getFilteredRows([{column: 0, value: id }]);
                       originalRow = parseInt(originalRow);
                       var originalData = data.getFormattedValue(originalRow, 1);
                       var originalNameData = data.getFormattedValue(originalRow, 0);
-                      
           
                       var optionsTool = {
                         width: 600,
@@ -414,7 +393,8 @@ var MAXHeight = 2800;
                       N = view.getNumberOfColumns();
                       //if(N > 2)
                       {
-                        view.setColumns([0,7, 8,9,10,11,12,13]); // AQUIIII
+                         view.setColumns([0,7, 8,9,10,11,12,13]); // AQUIIII
+                        //order1
 
                         //view.hideColumns([indexPopulation]);
                       }
@@ -428,7 +408,10 @@ var MAXHeight = 2800;
         // Establish dependencies, declaring that 'filter' drives 'barChart',
         // so that the pie chart will only display entries that are let through
         // given the chosen slider range.
-        dashboard.bind(donutRangeSlider, barChart);
+        dashboard.bind([PoblacionRangeSlider, MetropolitanaFilter, LocalizacionFilter, DistribucionFilter], barChart);
+        //dashboard.bind(MetropolitanaFilter, barChart);
+        //dashboard.bind([PoblacionRangeSlider], barChart);
+        
 
         // Draw the dashboard.
         //dashboard.draw(data);
@@ -445,22 +428,6 @@ var MAXHeight = 2800;
 
 
       function updateChart(){
-        /*
-        FILTROS:
-        =========
-        - población
-        - norte a sur
-        - costeras o mediterráneas
-        - metropolitanas o no
-        - porcentaje
-        - per cápita
-
-          ORDEN:
-        =========
-        - de mayor a menor indicador por dimensión,
-        - de mayor a menor indicador por dimensión ICVU como índice sintético, ó
-        - geográficamente (norte a sur).
-        */
         order1 =  parseInt($("#order1 option:selected").val());
         order2 =  parseInt($("#order2 option:selected").val());
 
@@ -471,7 +438,6 @@ var MAXHeight = 2800;
 
       } // FIN updateChart
 
-      var order1 = 1;
       $( document ).ready(function() {
         theTitle = $("#order1 option:selected").text();
           order1 =  parseInt($("#order1 option:selected").val());
@@ -500,38 +466,51 @@ var MAXHeight = 2800;
 
     <!--Div that will hold the dashboard-->
     <div id="dashboard_div">
-<!--
-LINK PARA AGREGAR BOOLEAN
-https://stackoverflow.com/questions/41944874/color-google-virtualization-boolean-column
--->
-<!--
-      <textarea id="textInput" style="height:50px;width: 800px">
-Comuna,Población,Distribución Geográfica,Localización Geográfica,Comuna Metropolitana ,Dependencia FCM (%),Gasto total municipal por cada habitante de la comuna  M$ / Habitante (promedio 2013-2015),ICVU2017,CL,AN,CS,CM,SM,VE,RANGO
-Alto Hospicio,124872,Norte,Costa,si,55.60,109.50,33.40,47.40,6.00,14.70,46.10,41.50,31.50,INFERIOR
-Angol,55845,Sur,Interior,no,69.70,170.20,47.70,53.90,22.70,45.20,40.80,55.40,58.20,SUPERIOR
-Antofagasta,389812,Norte,Costa,si,14.30,187.30,40.40,51.30,32.60,30.60,56.90,38.10,28.90,PROMEDIO
-Arica,243701,Norte,Costa,no,46.20,113.30,38.00,48.50,16.10,23.60,51.40,40.00,37.40,PROMEDIO
-</textarea>
-      <input id="run" type="button"  value="Run" />
-      <hr />
--->
 
 
       <div id="tabla" style="
     
 "></div>
 
+        <!--
+        FILTROS:
+        =========
+        - población
+        - norte a sur
+        - costeras o mediterráneas
+        - metropolitanas o no
+        - porcentaje
+        - per cápita
+
+          ORDEN:
+        =========
+        - de mayor a menor indicador por dimensión,
+        - de mayor a menor indicador por dimensión ICVU como índice sintético, ó
+        - geográficamente (norte a sur).
+        -->
       <h3>Orden:</h3><br>
 
 
       <label for="order1">Orden por:</label>
+      <!--
       <select name="order1" id="order1">
         <option value=0>Comuna</option>
         <option value=1 selected="true">Población</option>
         <option value=2>D1</option>
         <option value=3>D2</option>
       </select><br>
+    -->
       
+      <select name="order1" id="order1">
+        <option value=0>Comuna</option>
+        <option value=7 selected="true">ICVU</option>
+        <option value=8> CL</option>
+        <option value=9> AN</option>
+        <option value=10> CS</option>
+        <option value=11> CM</option>
+        <option value=12> SM</option>
+        <option value=13> VE</option>
+      </select><br>
       <br>
       <label for="order2">en forma:</label>
       <select name="order2" id="order2">
@@ -540,7 +519,11 @@ Arica,243701,Norte,Costa,no,46.20,113.30,38.00,48.50,16.10,23.60,51.40,40.00,37.
       </select>
 
       <!--Divs that will hold each control and chart-->
-      <div id="filter_div"></div>
+      <div id="filter_poblacion_div"></div>
+      <div id="filter_metropolitana_div"></div>
+      <div id="filter_localizacion_div"></div>
+      <div id="filter_distribucion_div"></div>
+
       <div class="row">
 
 
