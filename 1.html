@@ -59,10 +59,25 @@ google.charts.load('current', {
 
 
   function downloadCanvas(link, canvasId, filename) {
-    //console.log("SI");
+    console.log("SI");
       link.href = document.getElementById(canvasId).toDataURL();
       link.download = filename;
+console.log("link: "+link);
+console.log("canvasId: "+canvasId);
+console.log("filename: "+filename);
+//console.log("link.href: "+link.href);
+//console.log("- link.download: "+link.download);
+
+
+  //e.href = url;
+  //e.download = 'test.txt'
+
+    link.click();
+
+      //image.href = imageURL;
+      //image.download = 'test.txt'
   }
+
 
   $( "#button1" ).click(function() {
       var canvas;
@@ -86,6 +101,18 @@ google.charts.load('current', {
         downloadCanvas(this, 'canvas', 'Ranking.png');
       }
       image.src = imageURL;
+
+      //////
+      var svgUrl = imageURL //URL.createObjectURL(svgBlob);
+      var downloadLink = document.createElement("a");
+      downloadLink.href = svgUrl;
+      downloadLink.setAttribute('width', parseFloat(svgParent.getAttribute('width')));
+      downloadLink.setAttribute('height', parseFloat(svgParent.getAttribute('height')));
+      downloadLink.download = "Ranking.svg";
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+
     });
 
 
@@ -109,9 +136,21 @@ google.charts.load('current', {
           canvas.setAttribute('width', parseFloat(svgParent.getAttribute('width')));
           canvas.setAttribute('height', parseFloat(svgParent.getAttribute('height')));
           canvas.getContext('2d').drawImage(image, 0, 0);
-          downloadCanvas(this, 'canvas', 'Ranking.png');
+          downloadCanvas(this, 'canvas', 'Detalle.png');
         }
-        image.src = imageURL;
+        
+      image.src = imageURL;
+
+      //////
+      var svgUrl = imageURL //URL.createObjectURL(svgBlob);
+      var downloadLink = document.createElement("a");
+      downloadLink.href = svgUrl;
+      downloadLink.setAttribute('width', parseFloat(svgParent.getAttribute('width')));
+      downloadLink.setAttribute('height', parseFloat(svgParent.getAttribute('height')));
+      downloadLink.download = "Detalle.svg";
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
       }else{
         alert("Primero debes seleccionar una comuna");
       }
@@ -512,6 +551,15 @@ google.charts.load('current', {
 <!-- Dashboard > -->
 
     <!--Div that will hold the dashboard-->
+
+    <button id="button1">
+      EXPORTAR Ranking
+    </button>
+    <button id="button2">
+      EXPORTAR Detalle
+    </button>
+
+
     <div id="dashboard_div">
 
 
@@ -592,12 +640,6 @@ google.charts.load('current', {
     <!-- Dashboard < -->
     <div id="dual_x_div"></div>
     <canvas class="" id="canvas"></canvas>
-    <button id="button1">
-      EXPORTAR Ranking
-    </button>
-    <button id="button2">
-      EXPORTAR Detalle
-    </button>
 
   </body>
 </html>
