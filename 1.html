@@ -115,7 +115,7 @@ google.charts.load('current', {
 }); // FIN }).then(function () {
 
 
-  var MAXHeight = 280;
+  var MAXHeight = 3000;
   /// Dashboard --->
   var data;
   var dashboard;
@@ -379,15 +379,22 @@ google.charts.load('current', {
         order2 =  parseInt($("#order2 option:selected").val());
         theTitle = $("#order1 option:selected").text();
         console.log("order1: "+order1);
+        console.log("view: "+view);
+
 
         //data.sort([{column: order1, desc: (order2%2 == 0)}]);
         //data.sort([{column: order1, desc: (order2%2 == 0)}]);
 
         barChart.setOption('title', 'Ranking ICVU 2017 para '+ theTitle );
 
+        //barChart.view(columns: [0, 8]);
+        //index = (order1==0)?7:order1;
+        barChart.setView({columns:[0, order1]}); // use the first three DataTable columns
+
+
         dashboard.draw(data, options);
         //view.setColumns([0,1,2,3,4,5,6]);
-        //dashboard.draw(view, options);
+        //dashboard.draw(viewDetail, options);
 
       } // FIN updateChart
 
@@ -456,7 +463,9 @@ google.charts.load('current', {
     -->
       
       <select name="order1" id="order1">
+        <!--
         <option value=0>Comuna</option>
+      -->
         <option value=7 selected="true">ICVU</option>
         <option value=8> CL</option>
         <option value=9> AN</option>
