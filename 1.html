@@ -1,9 +1,6 @@
-
 <!DOCTYPE html>
-
-      <html>
+<html>
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">  
@@ -12,7 +9,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script src="jquery.csv.min.js"></script>
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
   <style type="text/css">
     .hidden {
     display: none;
@@ -21,7 +17,6 @@
   </style>
 
   <script type="text/javascript">
-
 /***************************
 // REVISAR
 // https://jsfiddle.net/PN03/4th0e7e6/8/
@@ -48,24 +43,18 @@
 // http://a32.me/2018/01/change-tooltip-position-on-google-charts/
 // =====================================================================================
 ***************************/
-
-      var order1 = 0;
+var order1 = 0;
 var theTitle = '';
 var view;
-    google.charts.load('current', {
+
+google.charts.load('current', {
   packages:['bar', 'table',
   'corechart', 'controls']
 }).then(function () {
 
-
-
-
-
-
   // AQUI DEFINO EL ID DEL GRAFICO A EXPORTAR
   var chartContainerRANKING = document.getElementById('chartRanking');
   var chartContainerDETAIL = document.getElementById('chartDetail');
-
   var button = document.getElementById('button');
 
 
@@ -74,7 +63,6 @@ var view;
       link.href = document.getElementById(canvasId).toDataURL();
       link.download = filename;
   }
-
 
   $( "#button1" ).click(function() {
       var canvas;
@@ -99,7 +87,6 @@ var view;
       }
       image.src = imageURL;
     });
-
 
 
   $( "#button2" ).click(function() {
@@ -128,15 +115,12 @@ var view;
 }); // FIN }).then(function () {
 
 
-
-
-var MAXHeight = 280;
-
+  var MAXHeight = 280;
   /// Dashboard --->
   var data;
   var dashboard;
   var barChart;
-  var chartTool;
+  var chartDetail;
   var dataFull;
 
   var options = {
@@ -150,10 +134,6 @@ var MAXHeight = 280;
     }
   };
 
-
-    // Load the Visualization API and the controls package.
-    //google.charts.load('current', {'packages':['corechart', 'controls']});
-
     // Set a callback to run when the Google Visualization API is loaded.
     google.charts.setOnLoadCallback(drawDashboard);
 
@@ -162,19 +142,13 @@ var MAXHeight = 280;
       // instantiates a dashboard, a range slider and a pie chart,
       // passes in the data and draws it.
       function drawDashboard() {
-        /*
-        var data1 = $.csv.toArrays($('#textInput').val(), {
-          onParseValue: $.csv.hooks.castToScalar
-        });
-        */
-        var data1;
+
+      var data1;
 
    $.get("datos_icvu2.csv", function(csvString) { // INICIO get
-   
         //var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
         data1 = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
         
-
         // this new DataTable object holds all the data
         data = new google.visualization.arrayToDataTable(data1);
 
@@ -184,48 +158,11 @@ var MAXHeight = 280;
           width: '90%', 
           height: '200'}
           );
-
                         
         view = new google.visualization.DataView(data);
         //view.setColumns([0,1,2,3,4,5,6]);
-
-
-        // labels = ["VIVIENDA Y ENTORNO", "SALUD Y MEDIO AMBIENTE", "CONDICIONES SOCIOCULTURALES", "AMBIENTE DE NEGOCIOS", "CONDICIÓN LABORAL", "CONECTIVIDAD Y MOVILIDAD"];
-
-        dataFull1 = //google.visualization.arrayToDataTable(array);
-        new google.visualization.arrayToDataTable([
-         ['Employee Name', 'Salary'],
-         ['Vivienda y Entorno', {v:22500, f:'22,500'}], // Format as "22,500".
-         ['Salud y Medio Ambiente', 35000],
-         ['Condiciones Socioculturales', 44000],
-         ['Ambiente de Negocios', 27000],
-         ['Condicion Laboral', 92000],
-         ['Conectividad y Movilidad', 18500]
-        ],
-        false); // 'false' means that the first row contains labels, not data.
-
-
-
-        dataFull2 = //google.visualization.arrayToDataTable(array);
-          new google.visualization.arrayToDataTable([
-         ['Employee Name', 'Salary'],
-         ['Vivienda y Entorno', {v:2250, f:'22,500'}], // Format as "22,500".
-         ['Salud y Medio Ambiente', 3500],
-         ['Condiciones Socioculturales', 4400],
-         ['Ambiente de Negocios', 2700],
-         ['Condición Laboral', 9200],
-         ['Conectividad y Movilidad', 1850]
-        ],
-        false); // 'false' means that the first row contains labels, not data.
-
-        var dataFull = [dataFull1, dataFull2];
-
-        //data.sort([{column: 1}, {column: 0}]);
         //data.sort([{column: 1}, {column: 0}]);
         data.sort([{column: 1, desc: true}]);
-
-
-
 
         // Create a dashboard
         dashboard = new google.visualization.Dashboard( document.getElementById('dashboard_div')) ;
@@ -239,7 +176,6 @@ var MAXHeight = 280;
             'minValue': '0',
           }
         });
-
 
         // Create a CategoryFilter, passing some options
         var MetropolitanaFilter = new google.visualization.ControlWrapper({
@@ -270,7 +206,6 @@ var MAXHeight = 280;
             'filterColumnLabel': 'Distribución',
           }
         });
-        
 
         // Create a pie chart, passing some options
         barChart = new google.visualization.ChartWrapper({
@@ -291,15 +226,35 @@ var MAXHeight = 280;
             'tooltip': {'isHtml': true}
           },
             view: {
-              columns: [0, 1]
+              columns: [0, order1]
+            }
+        });
+        tableChart  = new google.visualization.ChartWrapper({
+          //'chartType': 'BarChart',
+          'chartType': 'Table',
+          'containerId': 'tableRanking',
+          'options': {
+            'width': 600,
+            'height': MAXHeight,
+            'pieSliceText': 'value',
+            'legend': 'right',
+            title: 'Ranking ICVU 2017 para '+ theTitle,
+            'hAxis': {'minValue': '0'},
+            'animation':{
+              'duration': '1000',
+              'easing': 'out',
+            },
+            'tooltip': {'isHtml': true}
+          },
+            view: {
+              columns: [0, order1]
             }
         });
 
         var mi_aux = 0;
         var selection;
         // Instantiate and draw our chart, passing in some options.
-        //chartTool = new google.visualization.ColumnChart(document.getElementById('chartDetail'));
-        chartTool = new google.visualization.BarChart(document.getElementById('chartDetail'));
+        chartDetail = new google.visualization.BarChart(document.getElementById('chartDetail'));
 
         google.visualization.events.addListener(barChart, 'select', function () {
           console.log("Click: " + barChart.getChart().getSelection());
@@ -379,12 +334,9 @@ var MAXHeight = 280;
                         message = 'nothing';
                       }
                       console.log('You selected ' + message);
-          
-          
                       //dashboard.draw(data, options);
-          
-                      // chartTool.draw(dataFull[(mi_aux++)%2], optionsTool);
-                      //chartTool.draw(selection, optionsTool);
+                      // chartDetail.draw(dataFull[(mi_aux++)%2], optionsTool);
+                      //chartDetail.draw(selection, optionsTool);
                       s = data.getFilteredRows([{column: 0, value: id}]) ;
                       console.log("data.getFilteredRows([{column: 0, value: id }])=== "+ s);
                       
@@ -394,14 +346,11 @@ var MAXHeight = 280;
                         {column: 0, value: id}
                       ]));
                       N = view.getNumberOfColumns();
-                      //if(N > 2)
                       {
                          view.setColumns([0,7, 8,9,10,11,12,13]); // AQUIIII
-                        //order1
-
                         //view.hideColumns([indexPopulation]);
                       }
-                      chartTool.draw(view, optionsTool);          
+                      chartDetail.draw(view, optionsTool);          
           
                     }}
 
@@ -411,7 +360,8 @@ var MAXHeight = 280;
         // Establish dependencies, declaring that 'filter' drives 'barChart',
         // so that the pie chart will only display entries that are let through
         // given the chosen slider range.
-        dashboard.bind([PoblacionRangeSlider, MetropolitanaFilter, LocalizacionFilter, DistribucionFilter], barChart);
+        //dashboard.bind([PoblacionRangeSlider, MetropolitanaFilter, LocalizacionFilter, DistribucionFilter], barChart);
+        dashboard.bind([PoblacionRangeSlider, MetropolitanaFilter, LocalizacionFilter, DistribucionFilter], [barChart, tableChart]);
         //dashboard.bind(MetropolitanaFilter, barChart);
         //dashboard.bind([PoblacionRangeSlider], barChart);
         
@@ -429,18 +379,25 @@ var MAXHeight = 280;
       function updateChart(){
         order1 =  parseInt($("#order1 option:selected").val());
         order2 =  parseInt($("#order2 option:selected").val());
-
-        data.sort([{column: order1, desc: (order2%2 == 0)}]);
         theTitle = $("#order1 option:selected").text();
+        console.log("order1: "+order1);
+
+        //data.sort([{column: order1, desc: (order2%2 == 0)}]);
+        //data.sort([{column: order1, desc: (order2%2 == 0)}]);
+
         barChart.setOption('title', 'Ranking ICVU 2017 para '+ theTitle );
+
         dashboard.draw(data, options);
+        //view.setColumns([0,1,2,3,4,5,6]);
+        //dashboard.draw(view, options);
 
       } // FIN updateChart
 
       $( document ).ready(function() {
-        theTitle = $("#order1 option:selected").text();
           order1 =  parseInt($("#order1 option:selected").val());
           order2 =  parseInt($("#order2 option:selected").val());
+          theTitle = $("#order1 option:selected").text();
+
           //console.log( "text_commune! " + order1 );
 
           $('#order1').change(function() {
@@ -528,6 +485,7 @@ var MAXHeight = 280;
 
           <div class="col-md-6">
             <div id="chartRanking"></div>
+            <div id="tableRanking"></div>
           </div>
           <div class="col-md-6">
 
