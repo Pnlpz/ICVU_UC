@@ -51,7 +51,7 @@
 
       var order1 = 0;
 var theTitle = '';
-
+var view;
     google.charts.load('current', {
   packages:['bar', 'table',
   'corechart', 'controls']
@@ -132,7 +132,7 @@ var theTitle = '';
 
 var MAXHeight = 280;
 
-  /// Dashboard =>
+  /// Dashboard --->
   var data;
   var dashboard;
   var barChart;
@@ -186,8 +186,8 @@ var MAXHeight = 280;
           );
 
                         
-        var view = new google.visualization.DataView(data);
-        view.setColumns([0,1,2,3,4,5,6]);
+        view = new google.visualization.DataView(data);
+        //view.setColumns([0,1,2,3,4,5,6]);
 
 
         // labels = ["VIVIENDA Y ENTORNO", "SALUD Y MEDIO AMBIENTE", "CONDICIONES SOCIOCULTURALES", "AMBIENTE DE NEGOCIOS", "CONDICIÓN LABORAL", "CONECTIVIDAD Y MOVILIDAD"];
@@ -227,7 +227,7 @@ var MAXHeight = 280;
 
 
 
-        // Create a dashboard.
+        // Create a dashboard
         dashboard = new google.visualization.Dashboard( document.getElementById('dashboard_div')) ;
 
         // Create a range slider, passing some options
@@ -274,8 +274,8 @@ var MAXHeight = 280;
 
         // Create a pie chart, passing some options
         barChart = new google.visualization.ChartWrapper({
-          //'chartType': 'BarChart',
-          'chartType': 'Table',
+          'chartType': 'BarChart',
+          //'chartType': 'Table',
           'containerId': 'chartRanking',
           'options': {
             'width': 600,
@@ -289,7 +289,10 @@ var MAXHeight = 280;
               'easing': 'out',
             },
             'tooltip': {'isHtml': true}
-          }
+          },
+            view: {
+              columns: [0, 1]
+            }
         });
 
         var mi_aux = 0;
@@ -413,12 +416,8 @@ var MAXHeight = 280;
         //dashboard.bind([PoblacionRangeSlider], barChart);
         
 
-        // Draw the dashboard.
-        //dashboard.draw(data);
         //dashboard.draw(data, {allowHtml: true, showRowNumber: true, width: '100%', height: '100%'});
 
-        //dashboard.draw(data, options);
-        //dashboard.draw(excludeEmptyRows(data), options);
         barChart.setOption('title', 'Ranking ICVU 2017 para '+ theTitle );
         dashboard.draw((view), options);
 
