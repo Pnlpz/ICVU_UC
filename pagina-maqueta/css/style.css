@@ -1,0 +1,92 @@
+.row{margin:0;}
+.container{margin: 0; padding: 0;}
+
+#ordenamiento{
+  position: fixed;
+  background-color: #333; 
+  max-width: 275px; 
+  color: white;
+  z-index: 10;
+  padding: 2em;
+  height: 100%;
+  font-size: 12px;
+}
+
+#ordenamiento h3{
+  font-size: 14px;
+  width: fit-content;
+  background-color: #333333;
+  position: relative;
+  top: 15px;
+  left: 26%;
+  padding: 0 0.5em;
+}
+
+#ordenamiento #filtros{
+  left: 38%;
+}
+
+.icvu-indicador{padding: 3em;}
+.hidden {display: none; visibility: hidden;}
+
+#scrolleable{display:inline-flex; margin-left: 280px;}
+
+.parte-orden{border: 1px solid #fff; padding: 1em;}
+
+#data-vista{margin-left: 280px;}
+
+/*Selectores para charts*/
+.goog-inline-block .google-visualization-controls-rangefilter-thumblabel{
+    color: #fff !important;
+    font-weight: 400 !important;
+    position: relative;
+    font-size: 10px;
+    top: 38px;
+    z-index: 15;
+    display: block;
+}
+
+label{display: block;}
+select{width: 100%;}
+
+
+/*Segundo valor del slider*/
+.google-visualization-controls-rangefilter-thumblabel:last-child{
+    display: inline-block;
+    top: 20px;
+    right: 45px;
+    text-align: right;
+}
+
+/*Solo afecta al slider Poblacion*/
+#filter_poblacion_div .goog-inline-block:first-child{top: -25px;}
+
+/*Marcas "moradas/rosadas" slider*/
+.google-visualization-controls-slider-thumb {
+    width: 7px !important;
+    height: 14px !important;
+    background-color: #E91E63 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+}
+
+/*.google-visualization-controls-slider-horizontal .google-visualization-controls-slider-handle{
+   height: auto !important;
+}*/
+
+/*Barra horizontal slider*/
+.google-visualization-controls-slider-horizontal {
+    border: none;
+    background-color: #9E9E9E !important;
+    border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    height: 5px !important;   
+}
+
+/*Selección rango en slider*/
+.google-visualization-controls-slider-handle{
+    background-color: #fff !important;
+    opacity: 1 !important;
+    height: 5px !important;
+}

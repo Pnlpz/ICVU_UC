@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!--Estilos-->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!--JS -->
+  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="js/jquery.csv.min.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+  <!--Corrí lo que iba aquí a un nuevo  JS-->
+  <script type="text/javascript" src="js/icvu-js.js"></script>
+
+  </head>
+  <body>
+
+<!--
+FILTROS:
+=========
+- población
+- norte a sur
+- costeras o mediterráneas
+- metropolitanas o no
+- porcentaje
+- per cápita
+
+ORDEN:
+=========
+- de mayor a menor indicador por dimensión,
+- de mayor a menor indicador por dimensión ICVU como índice sintético, ó
+- geográficamente (norte a sur).
+-->
+<div class="container" >
+  <div class="row">
+    <div class="col-md-3" id="ordenamiento">
+      
+      <div class="icvu-indicador"></div>
+      <h3>Ordenamiento</h3>
+      
+      <div class="parte-orden">
+        <label for="order1">Orden por:</label>
+        <!--
+        <select name="order1" id="order1">
+        <option value=0>Comuna</option>
+        <option value=1 selected="true">Población</option>
+        <option value=2>D1</option>
+        <option value=3>D2</option>
+        </select><br>
+        -->
+        <select name="order1" id="order1">
+        <!--
+        <option value=0>Comuna</option>
+        -->
+        <option value=7 selected="true">ICVU</option>
+        <option value=8> CL</option>
+        <option value=9> AN</option>
+        <option value=10> CS</option>
+        <option value=11> CM</option>
+        <option value=12> SM</option>
+        <option value=13> VE</option>
+        </select><br>
+        <br>
+        <label for="order2">En forma:</label>
+        <select name="order2" id="order2">
+        <option value=1>Ascendente (A..Z)</option>
+        <option value=2 selected="true">Descendente (Z..A)</option>
+        </select>
+      </div>
+      
+      <h3 id="filtros">Filtros</h3>
+      <!--Divs that will hold each control and chart-->
+      <div class="parte-orden">
+        <div id="filter_poblacion_div"></div>
+        <div id="filter_metropolitana_div"></div>
+        <div id="filter_localizacion_div"></div>
+        <div id="filter_distribucion_div"></div>
+        <div id="filter_dependencia_div"></div>
+        <div id="filter_per_capita_div"></div>
+      </div>
+    </div>
+  </div>
+
+  
+    <!-- Dashboard > -->
+
+    <div class="col-md-4" id="scrolleable">
+      <div id="chartRanking"></div>
+      <!--<div id="tableRanking"></div>-->
+    </div>
+    <div class="col-md-3">
+      <div id="chartDetail"></div>
+    </div>
+  
+</div><!--Fin del container-->
+
+    <!-- Dashboard < -->
+  
+    <div id="dual_x_div"></div>
+    <canvas class="" id="canvas"></canvas>
+
+    <!--Div that will hold the dashboard-->
+    <div class="row">
+      <div class="col-md-8" id="data-vista">
+        <button id="button1">
+        EXPORTAR Ranking
+        </button>
+        <button id="button2">
+        EXPORTAR Detalle
+        </button>
+
+        <div id="dashboard_div">
+          <div id="tabla" style=""></div>
+          <!--Fin de lo que corrí-->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
