@@ -47,6 +47,13 @@ var order1 = 0;
 var theTitle = '';
 var view;
 
+
+  //function cmToInches(dataTable, rowNum, colNum){
+  function AddLabel(dataTable, rowNum){
+    //return Math.floor(dataTable.getValue(rowNum, 1) / 2);
+    return ""+dataTable.getValue(rowNum, order1);
+  }
+
 google.charts.load('current', {
   packages:['bar', 'table',
   'corechart', 'controls']
@@ -313,11 +320,6 @@ console.log("filename: "+filename);
             //'filterColumnLabel': 'Distribución',
           }
         });
-        //function cmToInches(dataTable, rowNum, colNum){
-          function AddLabel(dataTable, rowNum){
-  //return Math.floor(dataTable.getValue(rowNum, 1) / 2);
-  return ""+dataTable.getValue(rowNum, order1);
-}
 
 
         // Create a pie chart, passing some options
