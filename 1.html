@@ -333,7 +333,11 @@ console.log("filename: "+filename);
             'pieSliceText': 'value',
             'legend': 'top',
             title: 'Ranking ICVU 2017 para '+ theTitle,
-            'hAxis': {'minValue': '0'},
+            'hAxis': {
+              'minValue': '0',
+            'showTextEvery': 1
+          },
+
             'animation':{
               'duration': '1000',
               'easing': 'out',
