@@ -313,6 +313,11 @@ console.log("filename: "+filename);
             //'filterColumnLabel': 'Distribución',
           }
         });
+        function cmToInches(dataTable, rowNum){
+  //return Math.floor(dataTable.getValue(rowNum, 1) / 2);
+  return ""+Math.floor(dataTable.getValue(rowNum, 1) / 2);
+}
+
 
         // Create a pie chart, passing some options
         barChart = new google.visualization.ChartWrapper({
@@ -333,7 +338,7 @@ console.log("filename: "+filename);
             'tooltip': {'isHtml': true}
           },
             view: {
-              columns: [0, order1]
+              columns: [0, order1, {calc:cmToInches, type:'string', role: 'annotation', label:'Height in Inches'}]
             }
         });
         /*
