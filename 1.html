@@ -314,7 +314,7 @@ console.log("filename: "+filename);
           }
         });
         //function cmToInches(dataTable, rowNum, colNum){
-          function cmToInches(dataTable, rowNum){
+          function AddLabel(dataTable, rowNum){
   //return Math.floor(dataTable.getValue(rowNum, 1) / 2);
   return ""+dataTable.getValue(rowNum, order1);
 }
@@ -339,7 +339,7 @@ console.log("filename: "+filename);
             'tooltip': {'isHtml': true}
           },
             view: {
-              columns: [0, order1, {calc:cmToInches, type:'string', role: 'annotation', label:'Height in Inches'}]
+              columns: [0, order1, {calc:AddLabel, type:'string', role: 'annotation', label:'Height in Inches'}]
             }
         });
         /*
@@ -520,7 +520,7 @@ console.log("filename: "+filename);
 
         //barChart.view(columns: [0, 8]);
         //index = (order1==0)?7:order1;
-        barChart.setView({columns:[0, order1]}); // AQUIIII ACTUALIZO LA COLUMNA A MOSTRAR, SEGUN ORDEN
+        barChart.setView({columns:[0, order1, {calc:AddLabel, type:'string', role: 'annotation', label:'Height in Inches'}]}); // AQUIIII ACTUALIZO LA COLUMNA A MOSTRAR, SEGUN ORDEN
 
         data.sort([{column: order1, desc: order2==2}]);
 
