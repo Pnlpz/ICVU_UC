@@ -313,9 +313,10 @@ console.log("filename: "+filename);
             //'filterColumnLabel': 'Distribución',
           }
         });
-        function cmToInches(dataTable, rowNum){
+        //function cmToInches(dataTable, rowNum, colNum){
+          function cmToInches(dataTable, rowNum){
   //return Math.floor(dataTable.getValue(rowNum, 1) / 2);
-  return ""+Math.floor(dataTable.getValue(rowNum, 1) / 2);
+  return ""+dataTable.getValue(rowNum, order1);
 }
 
 
