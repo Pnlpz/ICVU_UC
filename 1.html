@@ -86,6 +86,13 @@ console.log("filename: "+filename);
   }
 
 
+  function setColor(dataTable, rowNum){
+    val = dataTable.getValue(rowNum, 1);
+    if(val > 5)
+      return "#F00";
+    return "000";
+  }
+
   $( "#button1" ).click(function() {
       var canvas;
       var domURL;
@@ -182,6 +189,12 @@ console.log("filename: "+filename);
       easing: 'out',
     }
   };
+  /*******************************************/
+  // PARA ACTUALIZAR ALTURA DEL RANKING
+//options.height = newHeight;
+//dashboard.draw((view), options);
+  /*******************************************/
+
 
   // Set a callback to run when the Google Visualization API is loaded.
   google.charts.setOnLoadCallback(drawDashboard);
@@ -355,7 +368,7 @@ console.log("filename: "+filename);
             'tooltip': {'isHtml': true}
           },
             view: {
-              columns: [0, order1, {calc:AddLabel, type:'string', role: 'annotation', label:'Height in Inches'}]
+              columns: [0, order1, {calc:AddLabel, type:'string', role: 'annotation', label:'Height in Inches'}, {calc:setColor, type:'string', role: 'style', label:'Color'}]
             }
         });
         /*
