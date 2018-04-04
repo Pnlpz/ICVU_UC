@@ -54,6 +54,15 @@ var view;
     return ""+dataTable.getValue(rowNum, order1);
   }
 
+  
+  function setColor(dataTable, rowNum){
+    val = dataTable.getValue(rowNum, 1);
+    if(val > 5)
+      return "#F00";
+    return "000";
+  }
+
+  
 google.charts.load('current', {
   packages:['bar', 'table',
   'corechart', 'controls']
