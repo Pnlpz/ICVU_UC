@@ -14,7 +14,7 @@
 
 .goog-menuitem {
   color: #000;
-  font: normal 11px Arial, sans-serif;
+  font: normal 13px Arial, sans-serif;
   list-style: none;
   margin: 0;
   padding: 4px 7em 4px 28px;
@@ -265,7 +265,7 @@
 
 .goog-menu-button-hover .goog-menu-button-outer-box,
 .goog-menu-button-hover .goog-menu-button-inner-box {
-  border-color: #222 !important;
+  border-color: #9cf #69e #69e #7af !important;
 }
 
 .goog-menu-button-active,
@@ -346,19 +346,19 @@
 }
 
 .google-visualization-controls-categoryfilter li .goog-link-button:hover {
-  color: #222;
+  color: #6389d6
 }
 
 .google-visualization-controls-categoryfilter li .goog-link-button-disabled {
-  display: inline;
+  display: none
 }
 
 .google-visualization-controls-categoryfilter li:hover {
-  border: 1px solid #222;
+  border: 1px solid #a3b9e6
 }
 
 .google-visualization-controls-slider-horizontal {
-  border: 1px solid yellow;
+  border: 1px solid #6a7eac;
   background-color: #fff;
   width: 200px;
   height: 10px;
@@ -380,13 +380,15 @@
   position: relative
 }
 
-/*HOLAAAA*/
 .google-visualization-controls-slider-thumb {
-  width: 6px !important;
-  height: 14px !important;
-  background-color: #9E005D !important;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  background-color: #6391de;
+  border: 1px solid #426dc9;
   position: absolute;
-  top: -3px;
+  top: -3px
 }
 
 .google-visualization-controls-slider-horizontal

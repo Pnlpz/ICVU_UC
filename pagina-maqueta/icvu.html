@@ -7,12 +7,7 @@
   <!--Estilos-->
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
-  <link rel="stylesheet" href="css/controls.css">
-  <link rel="stylesheet" href="css/columnas_trece.css">
   <link rel="stylesheet" href="css/style.css">
-
-
 
   <!--JS -->
   <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -23,12 +18,6 @@
 
   <!--Corrí lo que iba aquí a un nuevo  JS-->
   <script type="text/javascript" src="js/icvu-js.js"></script>
-
-    <!--JS-->
-    <script src="js/Chart.bundle.js"></script>
-    <script src="js/utils.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="js/radar.js"></script>
 
   </head>
   <body>
@@ -48,22 +37,15 @@ ORDEN:
 - de mayor a menor indicador por dimensión,
 - de mayor a menor indicador por dimensión ICVU como índice sintético, ó
 - geográficamente (norte a sur).
-
-GUARDAR O IMPRIMIR CHARTS (EXPORT OPTIONS-REVISAR):
-https://www.amcharts.com/kbase/exporting-charts-and-maps-to-images-or-pdf/
 -->
 <div class="container" >
   <div class="row">
-    <div class="col-lg-3ths" id="ordenamiento">
-
-      <div class="icvu-indicador">
-        <h1 id="titulo">ICVU</h1>
-        <span class="bajada-titulo">Indicador de calidad de vida urbano</span>
-
-      </div>
-
+    <div class="col-md-3" id="ordenamiento">
+      
+      <div class="icvu-indicador"></div>
+      <h3>Ordenamiento</h3>
+      
       <div class="parte-orden">
-        <h3>Ordenamiento</h3>
         <label for="order1">Orden por:</label>
         <!--
         <select name="order1" id="order1">
@@ -92,7 +74,7 @@ https://www.amcharts.com/kbase/exporting-charts-and-maps-to-images-or-pdf/
         <option value=2 selected="true">Descendente (Z..A)</option>
         </select>
       </div>
-
+      
       <h3 id="filtros">Filtros</h3>
       <!--Divs that will hold each control and chart-->
       <div class="parte-orden">
@@ -106,41 +88,23 @@ https://www.amcharts.com/kbase/exporting-charts-and-maps-to-images-or-pdf/
     </div>
   </div>
 
-
+  
     <!-- Dashboard > -->
-    <div class="definicion">
-        <!-- Button trigger modal <h6 id="que-es">¿Qué es el ICVU? </h3> -->
-        <input type="button" value="¿Qué es el ICVU?" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="position: absolute; right: 20px;">
-    </div>
-    <div class="col-lg-5th" id="scrolleable">
+
+    <div class="col-md-4" id="scrolleable">
       <div id="chartRanking"></div>
       <!--<div id="tableRanking"></div>-->
     </div>
-    <!--Reemplazar radar-chart-->
-    <div class="col-lg-5th" id="porfiado">
-        <h2>Detalle ICVU para comuna</h2>
-          <canvas id="spider"></canvas>
-          <!--div class="botones">
-            <button id="randomizeData" alt="Podría ser: Comunas">Randomize Data</button>
-            <button id="addDataset">Add Dataset</button>
-            <button id="removeDataset">Remove Dataset</button>
-            <button id="addData">Add Data</button>
-            <button id="removeData">Remove Data</button>
-          </div-->
+    <div class="col-md-3">
       <div id="chartDetail"></div>
-
-      <!--canvas id="myLineChart" width="740" height="200"></canvas-->
     </div>
-
-
-
+  
 </div><!--Fin del container-->
 
     <!-- Dashboard < -->
-  <div class="sin-visualizar">
+  
     <div id="dual_x_div"></div>
     <canvas class="" id="canvas"></canvas>
-  </div>
 
     <!--Div that will hold the dashboard-->
     <div class="row">
@@ -158,36 +122,6 @@ https://www.amcharts.com/kbase/exporting-charts-and-maps-to-images-or-pdf/
         </div>
       </div>
     </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Definición del ICVU</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p>
-              Las condiciones de vida de la población generadas a partir de las actuaciones y dinámicas de transformación del espacio urbano inducidas por actores públicos,
-            privados y la sociedad civil, medidas y comparadas con información estadística provistas por fuentes oficiales públicas y privadas lo más actualizadas posibles.
-            </p>
-            <h4>Vivienda y Entorno</h4>
-            <h4>Salud y Medio Ambiente</h4>
-            <h4>Condiciones Socioculturales</h4>
-            <h4>Ambiente Laboral</h4>
-            <h4>Ambiente de Negocios</h4>
-            <h4>Conectividad y Movilidad</h4>
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary pull-right " data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </body>
 </html>
+
