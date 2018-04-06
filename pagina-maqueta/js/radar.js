@@ -1,3 +1,17 @@
+var config;
+
+function actualizar(datos){
+      config.data.datasets.forEach(function(dataset) {
+        /*  dataset.data = dataset.data.map(function() {
+              return randomScalingFactor();
+          });
+          */
+          dataset.data = datos;
+      });
+
+      window.myRadar.update();
+}
+
 function createRadar(datos){
 
 console.log("radar chart por aqui");
@@ -18,30 +32,25 @@ var randomScalingFactor = function() {
 /////////////////////////////////
 
 var color = Chart.helpers.color;
-var config = {
+config = {
     type: 'radar',
     data: {
         labels: ['SM1', 'SM4', 'SM5', 'SM6', 'SM',"6!"], /*, 'CM1', 'CM3', 'CM5'*/
         datasets: [{
             label: 'Alto Hospicio',
-            backgroundColor: color(window.chartColors.purple).alpha(0.6).rgbString(),
+            backgroundColor: color(window.chartColors.purple).alpha(0.9).rgbString(),
             borderColor: window.chartColors.purple,
             pointBackgroundColor: window.chartColors.purple,
             data:datos
+        },
+        {
+            label: 'Promedio',
+            backgroundColor: color(window.chartColors.grey).alpha(0.2).rgbString(),
+            borderColor: window.chartColors.grey,
+            pointBackgroundColor: window.chartColors.grey,
+            data: [4,2,4,3,3,4]
         }
-        /*, {
-            label: 'Antofagasta',
-            backgroundColor: color(window.chartColors.blue).alpha(0.2).rgbString(),
-            borderColor: window.chartColors.blue,
-            pointBackgroundColor: window.chartColors.blue,
-            data: [
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor()
-            ]
-        }*/
+
       ]
     },
   /*  options: {
@@ -66,17 +75,7 @@ window.onload = function() {
     window.myRadar = new Chart(document.getElementById('spider'), config);
 };
 
-function actualizar(){
-      config.data.datasets.forEach(function(dataset) {
-        /*  dataset.data = dataset.data.map(function() {
-              return randomScalingFactor();
-          });
-          */
-          dataset.data = datos;
-      });
 
-      window.myRadar.update();
-}
 $(document).ready(
   function(){
     document.getElementById('randomizeData').addEventListener('click', function() {

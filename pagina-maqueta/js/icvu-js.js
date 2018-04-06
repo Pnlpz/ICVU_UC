@@ -335,7 +335,7 @@ console.log("filename: "+filename);
           //'chartType': 'Table',
           'containerId': 'chartRanking',
           'options': {
-            'width': 400,
+            'width': 300,
             'height': MAXHeight,
             'pieSliceText': 'value',
             'color': '#FCEE21',
@@ -353,10 +353,10 @@ console.log("filename: "+filename);
             },
                         chartArea: {
                         'width': '40%', 'height': '80%',
-                        left:0,
+                        left:100,
                         right:0, // !!! works !!!
                         //bottom:20,  // !!! works !!!
-                        //top:20
+                      top:20
                         },
             'tooltip': {'isHtml': true}
           },
@@ -568,7 +568,8 @@ console.log("filename: "+filename);
           $('#order2').change(function() {
               updateChart();
           });
-          var ejemplo=[3,2,4,3,4,5];
+
+          var ejemplo=[6,5,3,2,4,5];
 
           createRadar(ejemplo);
 

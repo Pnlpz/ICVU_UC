@@ -44,17 +44,46 @@ body{font-family: 'Barlow', sans-serif;}
 }
 .hidden {display: none; visibility: hidden;}
 
-#scrolleable{display:inline-flex; padding: 2em;
+/*Primer div: Bar Chart*/
+#scrolleable{
+    position: fixed;
+    text-align: center;
+    padding: 0 0 1em 1em;
     margin-left: 284px;
-    margin-top: 10px;
-    border: 4px solid grey;}
+    margin-top: 60px;
+    border: 3px solid grey;
+    width: 38%;
+    box-sizing: border-box;
+    z-index: -100;
+    height: 90%;
+  }
+
+#scrolleable h5{
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.scrollable {
+    height: 90%;
+    overflow: -webkit-paged-y;
+}
+
+/*Scrollbar: modificar estilo
+.scrollable::-webkit-scrollbar {
+    width: 5px;
+}
+.scrollable::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}*/
 
 .definicion{
   width:100%;
   padding: 0.5em;
   background-color: #4D4D4D;
-  position: relative;
+  position: fixed;
   height: 50px;
+  z-index: 5;
 }
 #que-es{
   text-align: right;
@@ -87,15 +116,20 @@ select{width: 100%;}
     right: 20px;
     top:60px;
     bottom: 20px;
-    padding: 1.5em;
+    padding: 0 2em;
     background-color: white;
-    border: 4px solid grey;
+    border: 3px solid grey;
     z-index: 10;
     height: 90%;
     width: 38%;
     box-sizing: border-box;
 }
 
+#scrolleable h3, #porfiado h3{
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+}
 #chartDetail{
   float: right;
 }
@@ -108,7 +142,7 @@ select{width: 100%;}
     text-align: right;
 }
 
-/*HOLAAAA*/
+/*Slider-selector del rango*/
 .google-visualization-controls-slider-thumb {
   width: 6px !important;
   height: 14px !important;
@@ -144,6 +178,8 @@ select{width: 100%;}
     height: 5px !important;
 }
 
+#dashboard_div{display:none;}
+
 /*Modificación para Modal de bootstrap*/
 .btn-primary {
     color: #fff;
@@ -155,3 +191,14 @@ select{width: 100%;}
       max-width: 800px !important;
   }
 }
+
+
+.modal-body p{padding: 0 10em;text-align: center; font-size: 12px;}
+
+h4{
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.dimension_icvu{text-align: center; padding: 1em;}

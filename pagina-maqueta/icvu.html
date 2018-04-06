@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
-  <link rel="stylesheet" href="css/controls.css">
   <link rel="stylesheet" href="css/columnas_trece.css">
   <link rel="stylesheet" href="css/style.css">
 
@@ -106,19 +105,20 @@ https://www.amcharts.com/kbase/exporting-charts-and-maps-to-images-or-pdf/
     </div>
   </div>
 
-
     <!-- Dashboard > -->
     <div class="definicion">
         <!-- Button trigger modal <h6 id="que-es">¿Qué es el ICVU? </h3> -->
         <input type="button" value="¿Qué es el ICVU?" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="position: absolute; right: 20px;">
     </div>
     <div class="col-lg-5th" id="scrolleable">
-      <div id="chartRanking"></div>
+      <h3>Ranking comunas ICVU</h3>
+      <h5>Gráficos desarrollados en base al cálculo ICVU 2018</h5>
+      <div id="chartRanking" class="scrollable"></div>
       <!--<div id="tableRanking"></div>-->
     </div>
     <!--Reemplazar radar-chart-->
     <div class="col-lg-5th" id="porfiado">
-        <h2>Detalle ICVU para comuna</h2>
+        <h3>Detalle ICVU para comuna</h3>
           <canvas id="spider"></canvas>
           <!--div class="botones">
             <button id="randomizeData" alt="Podría ser: Comunas">Randomize Data</button>
@@ -131,8 +131,6 @@ https://www.amcharts.com/kbase/exporting-charts-and-maps-to-images-or-pdf/
 
       <!--canvas id="myLineChart" width="740" height="200"></canvas-->
     </div>
-
-
 
 </div><!--Fin del container-->
 
@@ -152,8 +150,10 @@ https://www.amcharts.com/kbase/exporting-charts-and-maps-to-images-or-pdf/
         EXPORTAR Detalle
         </button>
 
+
         <div id="dashboard_div">
           <div id="tabla" style=""></div>
+
           <!--Fin de lo que corrí-->
         </div>
       </div>
@@ -170,17 +170,46 @@ https://www.amcharts.com/kbase/exporting-charts-and-maps-to-images-or-pdf/
             </button>
           </div>
           <div class="modal-body">
-            <p>
-              Las condiciones de vida de la población generadas a partir de las actuaciones y dinámicas de transformación del espacio urbano inducidas por actores públicos,
-            privados y la sociedad civil, medidas y comparadas con información estadística provistas por fuentes oficiales públicas y privadas lo más actualizadas posibles.
-            </p>
-            <h4>Vivienda y Entorno</h4>
-            <h4>Salud y Medio Ambiente</h4>
-            <h4>Condiciones Socioculturales</h4>
-            <h4>Ambiente Laboral</h4>
-            <h4>Ambiente de Negocios</h4>
-            <h4>Conectividad y Movilidad</h4>
+            <div class="row">
+              <p>
+                Las condiciones de vida de la población generadas a partir de las actuaciones y dinámicas de transformación del espacio urbano inducidas por actores públicos,
+              privados y la sociedad civil, medidas y comparadas con información estadística provistas por fuentes oficiales públicas y privadas lo más actualizadas posibles.
+              </p>
+              <div class="col-md-4 dimension_icvu">
+                <svg height="50" width="50">
+                  <circle cx="25" cy="25" r="10"/>
+                </svg>
+                <h4>Vivienda y Entorno</h4>
 
+                <svg height="50" width="50">
+                  <circle cx="25" cy="25" r="10"/>
+                </svg>
+                <h4>Ambiente Laboral</h4>
+              </div>
+              <div class="col-md-4 dimension_icvu">
+                <svg height="50" width="50">
+                  <circle cx="25" cy="25" r="10"/>
+                </svg>
+                <h4>Salud y Medio Ambiente</h4>
+
+                <svg height="50" width="50">
+                  <circle cx="25" cy="25" r="10"/>
+                </svg>
+                <h4>Ambiente de Negocios</h4>
+
+              </div>
+              <div class="col-md-4 dimension_icvu">
+                <svg height="50" width="50">
+                  <circle cx="25" cy="25" r="10"/>
+                </svg>
+                <h4>Condiciones Socioculturales</h4>
+
+                <svg height="50" width="50">
+                  <circle cx="25" cy="25" r="10"/>
+                </svg>
+                <h4>Conectividad y Movilidad</h4>
+              </div>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary pull-right " data-dismiss="modal">Close</button>
