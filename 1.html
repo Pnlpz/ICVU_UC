@@ -369,7 +369,8 @@ console.log("filename: "+filename);
             'width': 600,
             'height': MAXHeight,
             'pieSliceText': 'value',
-            'legend': 'top',
+            //'legend': 'top',
+            'legend': 'none',
             title: 'Ranking ICVU 2017 para '+ theTitle,
             'hAxis': {
               'minValue': '0',
@@ -573,9 +574,7 @@ Ncommunes = 93;
 //chartHeight = MAXHeight - (Ncommunes-N)*26;
 chartHeight = 20 + (N)*25;
 min = 100
-if(chartHeight > min)
-  ;
-  else
+if(chartHeight < min)
     chartHeight = min;
 options.height = chartHeight;
 
