@@ -46,7 +46,23 @@
 var order1 = 0;
 var theTitle = '';
 var view;
+var colorsRanges = [
+"#FF0000",
+"#00FF00",
+"#0000FF"
+];
 
+var colorsRangesEXAMPLE = [40,60];
+
+var ranges = [
+colorsRangesEXAMPLE,
+colorsRangesEXAMPLE,
+colorsRangesEXAMPLE,
+colorsRangesEXAMPLE,
+colorsRangesEXAMPLE,
+colorsRangesEXAMPLE,
+colorsRangesEXAMPLE
+]
 
   //function cmToInches(dataTable, rowNum, colNum){
   function AddLabel(dataTable, rowNum){
@@ -56,10 +72,16 @@ var view;
 
   
   function setColor(dataTable, rowNum){
+    aux = order1-7;
+    console.log("order1: "+order1)
     val = dataTable.getValue(rowNum, order1);
-    if(val > 50)
-      return "#F00";
-    return "000";
+    if(val < ranges[aux][0])
+      return colorsRanges[0];
+
+    else if(val < ranges[aux][1])
+      return colorsRanges[1];
+
+    return colorsRanges[2];
   }
 
 
@@ -95,12 +117,6 @@ console.log("filename: "+filename);
   }
 
 
-  function setColor(dataTable, rowNum){
-    val = dataTable.getValue(rowNum, 1);
-    if(val > 5)
-      return "#F00";
-    return "000";
-  }
 
   $( "#button1" ).click(function() {
       var canvas;
@@ -558,7 +574,11 @@ console.log("filename: "+filename);
 
         //barChart.view(columns: [0, 8]);
         //index = (order1==0)?7:order1;
-        barChart.setView({columns:[0, order1, {calc:AddLabel, type:'string', role: 'annotation', label:'Height in Inches'}]}); // AQUIIII ACTUALIZO LA COLUMNA A MOSTRAR, SEGUN ORDEN
+        barChart.setView({
+              columns: [0, order1, {calc:AddLabel, type:'string', role: 'annotation', label:'Height in Inches'}, {calc:setColor, type:'string', role: 'style', label:'Color'}]
+            });
+
+        //barChart.setView({columns:[0, order1, {calc:AddLabel, type:'string', role: 'annotation', label:'Height in Inches'}]}); // AQUIIII ACTUALIZO LA COLUMNA A MOSTRAR, SEGUN ORDEN
 
         data.sort([{column: order1, desc: order2==2}]);
 
@@ -569,6 +589,7 @@ console.log("filename: "+filename);
       } // FIN updateChart
 
       $( document ).ready(function() {
+        $("#tabla").hide();
           order1 =  parseInt($("#order1 option:selected").val());
           order2 =  parseInt($("#order2 option:selected").val());
           theTitle = $("#order1 option:selected").text();
