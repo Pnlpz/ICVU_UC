@@ -73,7 +73,6 @@ colorsRangesEXAMPLE
   
   function setColor(dataTable, rowNum){
     aux = order1-7;
-    console.log("order1: "+order1)
     val = dataTable.getValue(rowNum, order1);
     if(val < ranges[aux][0])
       return colorsRanges[0];
@@ -387,13 +386,13 @@ console.log("filename: "+filename);
                         'width': '40%', 'height': '80%',
                         left:200,
                         right:40, // !!! works !!!
-                        //bottom:20,  // !!! works !!!
-                        //top:20
+                        bottom:20,  // !!! works !!!
+                        top:100
                         },
             'tooltip': {'isHtml': true}
           },
             view: {
-              columns: [0, order1, {calc:AddLabel, type:'string', role: 'annotation', label:'Height in Inches'}, {calc:setColor, type:'string', role: 'style', label:'Color'}]
+              columns: [0, order1, {calc:AddLabel, type:'string', role: 'annotation', label:'Color'}, {calc:setColor, type:'string', role: 'style', label:'Color'}]
             }
         });
         /*
@@ -559,6 +558,35 @@ console.log("filename: "+filename);
         barChart.setOption('title', 'Ranking ICVU 2017 para '+ theTitle );
         dashboard.draw((view), options);
 
+  google.visualization.events.addListener(dashboard, 'ready', function () {
+    // get number of rows
+    N = barChart.getDataTable().getNumberOfRows();
+    
+
+              var paddingHeight = 40;
+              var rowHeight = data.getNumberOfRows() * 5;
+              var chartHeight = rowHeight + paddingHeight;
+
+Ncommunes = 93;
+
+//chartHeight = N*MAXHeight/Ncommunes;
+//chartHeight = MAXHeight - (Ncommunes-N)*26;
+chartHeight = 20 + (N)*25;
+min = 100
+if(chartHeight > min)
+  ;
+  else
+    chartHeight = min;
+options.height = chartHeight;
+
+barChart.getOption('height')
+    barChart.setOption('height', chartHeight);
+    console.log("N: "+N + ", barChart: "+ barChart.getOptions()  );
+    
+        //dashboard.draw(data, options);
+  });
+
+
        }); // FIN GET
       } // FIN drawDashboard
 /// Dashboard <=
@@ -575,18 +603,24 @@ console.log("filename: "+filename);
         //barChart.view(columns: [0, 8]);
         //index = (order1==0)?7:order1;
         barChart.setView({
-              columns: [0, order1, {calc:AddLabel, type:'string', role: 'annotation', label:'Height in Inches'}, {calc:setColor, type:'string', role: 'style', label:'Color'}]
-            });
+          columns: [0, order1, {calc:AddLabel, type:'string', role: 'annotation', label:'Color'}, {calc:setColor, type:'string', role: 'style', label:'Color'}]
+        });
 
         //barChart.setView({columns:[0, order1, {calc:AddLabel, type:'string', role: 'annotation', label:'Height in Inches'}]}); // AQUIIII ACTUALIZO LA COLUMNA A MOSTRAR, SEGUN ORDEN
 
         data.sort([{column: order1, desc: order2==2}]);
+
+
+
+        //console.log("getNumberOfRows(): " + barChart.getDataTable().getNumberOfRows() );
 
         dashboard.draw(data, options);
         //view.setColumns([0,1,2,3,4,5,6]);
         //dashboard.draw(viewDetail, options);
 
       } // FIN updateChart
+
+
 
       $( document ).ready(function() {
         $("#tabla").hide();
