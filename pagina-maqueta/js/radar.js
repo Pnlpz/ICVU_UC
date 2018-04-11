@@ -76,14 +76,13 @@ window.onload = function() {
 };
 
 
+var colorNames = Object.keys(window.chartColors);
+/*
 $(document).ready(
   function(){
+
     document.getElementById('randomizeData').addEventListener('click', function() {
         config.data.datasets.forEach(function(dataset) {
-          /*  dataset.data = dataset.data.map(function() {
-                return randomScalingFactor();
-            });
-            */
             dataset.data = datos;
         });
 
@@ -92,8 +91,6 @@ $(document).ready(
 
 }
 )
-
-var colorNames = Object.keys(window.chartColors);
 
 $(document).ready(
   function(){
@@ -151,5 +148,6 @@ document.getElementById('removeData').addEventListener('click', function() {
 
 }
 )
+*/
 
 }//cierre función createRadar
