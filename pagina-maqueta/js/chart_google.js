@@ -105,13 +105,15 @@ function downloadImageSvg(imageContainer, filename){
         imageNode = imageContainer.cloneNode(true);
         imageURL = domURL.createObjectURL(new Blob([svgParent.outerHTML], {type: 'image/svg+xml'}));
         image = new Image();
+        /*
         image.onload = function() {
           canvas = document.getElementById('canvas');
           canvas.setAttribute('width', parseFloat(svgParent.getAttribute('width')));
           canvas.setAttribute('height', parseFloat(svgParent.getAttribute('height')));
           canvas.getContext('2d').drawImage(image, 0, 0);
-          downloadCanvas(this, 'canvas', 'Ranking.png');
+          downloadCanvas(this, 'canvas', 'Rankingasdasda.png');
         }
+        */
         image.src = imageURL;
 
         //////
@@ -136,7 +138,7 @@ function downloadImageSvg(imageContainer, filename){
 
   $( "#button1" ).click(function() {
         downloadImageSvg(chartContainerRANKING, 'Ranking.svg');
-        
+
     });
 
 
