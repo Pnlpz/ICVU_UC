@@ -1,3 +1,23 @@
+
+console.log("hola");
+
+$.getScript( "js/jquery.csv.min.js" )
+  .done(function( script, textStatus ) {
+    console.log( "---- ok" );
+  })
+  .fail(function( jqxhr, settings, exception ) {
+    console.log( "Triggered ajaxError handler." );
+});
+
+$.getScript( "js/radar.js" )
+  .done(function( script, textStatus ) {
+    console.log( "---- ok2" );
+  })
+  .fail(function( jqxhr, settings, exception ) {
+    console.log( "Triggered ajaxError handler." );
+});
+
+
 var order1 = 0;
 var theTitle = '';
 var view;
@@ -53,7 +73,7 @@ google.charts.load('current', {
 
   // AQUI DEFINO EL ID DEL GRAFICO A EXPORTAR
   var chartContainerRANKING = document.getElementById('chartRanking');
-  var chartContainerDETAIL = document.getElementById('chartDetail');
+  var chartContainerDETAIL = document.getElementById('spider');
   var button = document.getElementById('button');
 
 
@@ -68,7 +88,7 @@ google.charts.load('current', {
 
   }
 
-function downloadImage(imageContainer, filename){
+function downloadImageSvg(imageContainer, filename){
 
       var canvas;
       var domURL;
@@ -81,45 +101,50 @@ function downloadImage(imageContainer, filename){
       svgParent = imageContainer.getElementsByTagName('svg')[0];
 
       if(svgParent){
-      svgParent.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-      imageNode = chartContainerRANKING.cloneNode(true);
-      imageURL = domURL.createObjectURL(new Blob([svgParent.outerHTML], {type: 'image/svg+xml'}));
-      image = new Image();
-      image.onload = function() {
-        canvas = document.getElementById('canvas');
-        canvas.setAttribute('width', parseFloat(svgParent.getAttribute('width')));
-        canvas.setAttribute('height', parseFloat(svgParent.getAttribute('height')));
-        canvas.getContext('2d').drawImage(image, 0, 0);
-        downloadCanvas(this, 'canvas', 'Ranking.png');
-      }
-      image.src = imageURL;
+        svgParent.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+        imageNode = imageContainer.cloneNode(true);
+        imageURL = domURL.createObjectURL(new Blob([svgParent.outerHTML], {type: 'image/svg+xml'}));
+        image = new Image();
+        image.onload = function() {
+          canvas = document.getElementById('canvas');
+          canvas.setAttribute('width', parseFloat(svgParent.getAttribute('width')));
+          canvas.setAttribute('height', parseFloat(svgParent.getAttribute('height')));
+          canvas.getContext('2d').drawImage(image, 0, 0);
+          downloadCanvas(this, 'canvas', 'Ranking.png');
+        }
+        image.src = imageURL;
 
-      //////
-      var svgUrl = imageURL //URL.createObjectURL(svgBlob);
-      var downloadLink = document.createElement("a");
-      downloadLink.href = svgUrl;
-      downloadLink.setAttribute('width', parseFloat(svgParent.getAttribute('width')));
-      downloadLink.setAttribute('height', parseFloat(svgParent.getAttribute('height')));
-      /********************************************************************************/
-      //downloadLink.download = "Ranking.svg"; // CAMBIAR NOMBRE PARA DESCARGAR
-      downloadLink.download = filename;
-      /********************************************************************************/
-      document.body.appendChild(downloadLink);
-      downloadLink.click();
-      document.body.removeChild(downloadLink);
+        //////
+        var svgUrl = imageURL //URL.createObjectURL(svgBlob);
+        var downloadLink = document.createElement("a");
+        downloadLink.href = svgUrl;
+        downloadLink.setAttribute('width', parseFloat(svgParent.getAttribute('width')));
+        downloadLink.setAttribute('height', parseFloat(svgParent.getAttribute('height')));
+        /********************************************************************************/
+        //downloadLink.download = "Ranking.svg"; // CAMBIAR NOMBRE PARA DESCARGAR
+        downloadLink.download = filename;
+        /********************************************************************************/
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
       }else{
         alert("Primero debes seleccionar una comuna");
       }
+
+
 }
 
   $( "#button1" ).click(function() {
-        downloadImage(chartContainerRANKING, 'Ranking.svg');
+        downloadImageSvg(chartContainerRANKING, 'Ranking.svg');
+        
     });
 
 
   $( "#button2" ).click(function() {
-        downloadImage(chartContainerDETAIL, 'Secundario.svg');
+        downloadImageSvg(chartContainerDETAIL, 'Secundario.svg');
+
     });
+
 }); // FIN }).then(function () {
 
 
@@ -558,5 +583,8 @@ barChart.getOption('height')
           $('#order2').change(function() {
               updateChart();
           });
+          var ejemplo=[6,5,3,2,4,5];
+
+          createRadar(ejemplo);
 
       }); // FIN $( document ).ready(
