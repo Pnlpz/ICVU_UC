@@ -128,9 +128,9 @@ function downloadImageSvg(imageContainer, filename){
 }
 
   $( "#button1" ).click(function() {
-        downloadImageSvg(chartContainerRANKING, 'Ranking.svg');
+    downloadImageSvg(chartContainerRANKING, 'Ranking.svg');
+  });
 
-    });
 
 
               /**
@@ -149,6 +149,24 @@ function downloadImageSvg(imageContainer, filename){
               */
               document.getElementById('download').addEventListener('click', function() {
                  downloadCanvas(this, 'spider', 'test.png');
+              });
+              document.getElementById('downloadRanking').addEventListener('click', function() {
+                 
+                 
+
+
+        var downloadLink = document.createElement("a");
+        downloadLink.href = barChart.getChart().getImageURI();
+        /********************************************************************************/
+        //downloadLink.download = "Ranking.svg"; // CAMBIAR NOMBRE PARA DESCARGAR
+        downloadLink.download = "Ranking ICVU 2018.png";
+        /********************************************************************************/
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+
+
+
               });
 
 
