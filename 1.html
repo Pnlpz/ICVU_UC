@@ -153,7 +153,9 @@ console.log("filename: "+filename);
       downloadLink.href = svgUrl;
       downloadLink.setAttribute('width', parseFloat(svgParent.getAttribute('width')));
       downloadLink.setAttribute('height', parseFloat(svgParent.getAttribute('height')));
-      downloadLink.download = "Ranking.svg";
+      /********************************************************************************/
+      downloadLink.download = "Ranking.svg"; // CAMBIAR NOMBRE PARA DESCARGAR
+      /********************************************************************************/
       document.body.appendChild(downloadLink);
       downloadLink.click();
       document.body.removeChild(downloadLink);
