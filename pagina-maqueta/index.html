@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hello world</title>
+</head>
+<style media="screen">
+  #printableArea {
+    padding: 3em;
+  }
+@media print {
+  #printableArea {
+      background-color: white;
+      height: 100%;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      margin: 0;
+      padding: 15px;
+      font-size: 14px;
+      line-height: 18px;
+  }
+}
+</style>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+
+
+<script type="text/javascript">
+function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+</script>
+
+
+<body>
+  <div id="printableArea">
+      <h1>Print me</h1>
+      <img src="grafico.png" alt="" />
+</div>
+
+<input type="button" onclick="printDiv('printableArea')" value="print a div!" />
+</body>
+
+</html>
+
+
+
+<input type="button" value="save" onclick="javascript:saveAspdf()"/>

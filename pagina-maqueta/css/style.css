@@ -63,19 +63,12 @@ body{font-family: 'Barlow', sans-serif;}
   font-weight: bold;
 }
 
+/*scrollear en Y*/
 .scrollable {
-    height: 90%;
-    overflow: -webkit-paged-y;
+    height: 84%;
+    margin-right: 2%;
+    overflow-y: scroll;
 }
-
-/*Scrollbar: modificar estilo
-.scrollable::-webkit-scrollbar {
-    width: 5px;
-}
-.scrollable::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
-  outline: 1px solid slategrey;
-}*/
 
 .definicion{
   width:100%;
@@ -85,12 +78,20 @@ body{font-family: 'Barlow', sans-serif;}
   height: 50px;
   z-index: 5;
 }
+.btn{
+  border-radius: 0;
+  background-color: #111;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 0.5em 1.5em;
+}
 #que-es{
   text-align: right;
 }
 
-button{
- color: black;
+.btn-primary{
+  font-size: 0.8em !important;
 }
 .parte-orden{border: 2px solid #4D4D4D; padding: 1em; margin-top: 1em;}
 
@@ -106,7 +107,11 @@ button{
     z-index: 15;
     display: block;
 }
+#filter_distribucion_div{display: none;}
 
+/*Nonono*/
+#filter_dependencia_div .google-visualization-controls-rangefilter .goog-inline-block,
+#filter_per_capita_div .google-visualization-controls-rangefilter .goog-inline-block{bottom: 25px !important;}
 label{display: block;}
 select{width: 100%;}
 
@@ -131,9 +136,17 @@ select{width: 100%;}
   margin-top: 10px;
 }
 #chartDetail{
+  display: none;
   float: right;
 }
 
+#spider{
+  margin: 1em 0;
+}
+.radar-body{height:75vh;}
+.footer{
+  justify-content: center;
+}
 /*Segundo valor del slider*/
 .google-visualization-controls-rangefilter-thumblabel:last-child{
     display: inline-block;

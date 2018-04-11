@@ -98,7 +98,7 @@ https://www.amcharts.com/kbase/exporting-charts-and-maps-to-images-or-pdf/
         <div id="filter_poblacion_div"></div>
         <div id="filter_metropolitana_div"></div>
         <div id="filter_localizacion_div"></div>
-        <div id="filter_distribucion_div"></div>
+        <div class="hidden" id="filter_distribucion_div"></div>
         <div id="filter_dependencia_div"></div>
         <div id="filter_per_capita_div"></div>
       </div>
@@ -114,11 +114,15 @@ https://www.amcharts.com/kbase/exporting-charts-and-maps-to-images-or-pdf/
       <h3>Ranking comunas ICVU</h3>
       <h5>Gráficos desarrollados en base al cálculo ICVU 2018</h5>
       <div id="chartRanking" class="scrollable"></div>
+      <div class="footer">
+        <button type="button" class="btn">Exportar</button>
+      </div>
       <!--<div id="tableRanking"></div>-->
     </div>
     <!--Reemplazar radar-chart-->
     <div class="col-lg-5th" id="porfiado">
         <h3>Detalle ICVU para comuna</h3>
+        <div class="radar-body">
           <canvas id="spider"></canvas>
           <!--div class="botones">
             <button id="randomizeData" alt="Podría ser: Comunas">Randomize Data</button>
@@ -127,6 +131,10 @@ https://www.amcharts.com/kbase/exporting-charts-and-maps-to-images-or-pdf/
             <button id="addData">Add Data</button>
             <button id="removeData">Remove Data</button>
           </div-->
+        </div>
+          <div class="footer">
+            <button type="button" class="btn">Exportar</button>
+          </div>
       <div id="chartDetail"></div>
 
       <!--canvas id="myLineChart" width="740" height="200"></canvas-->
@@ -218,5 +226,7 @@ https://www.amcharts.com/kbase/exporting-charts-and-maps-to-images-or-pdf/
       </div>
     </div>
 
+
+    
   </body>
 </html>
