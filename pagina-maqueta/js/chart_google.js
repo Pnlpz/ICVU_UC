@@ -52,7 +52,7 @@ rangesVE
     return ""+dataTable.getValue(rowNum, order1);
   }
 
-  
+
   function setColor(dataTable, rowNum){
     aux = order1-7;
     val = dataTable.getValue(rowNum, order1);
@@ -133,8 +133,27 @@ function downloadImageSvg(imageContainer, filename){
     });
 
 
+              /**
+              * This is the function that will take care of image extracting and
+              * setting proper filename for the download.
+              * IMPORTANT: Call it from within a onclick event.
+              */
+              function downloadCanvas(link, canvasId, filename) {
+                 link.href = document.getElementById(canvasId).toDataURL();
+                 link.download = filename;
+              }
+
+              /**
+              * The event handler for the link's onclick event. We give THIS as a
+              * parameter (=the link element), ID of the canvas and a filename.
+              */
+              document.getElementById('download').addEventListener('click', function() {
+                 downloadCanvas(this, 'spider', 'test.png');
+              });
+
+
   $( "#button2" ).click(function() {
-        downloadImageSvg(chartContainerDETAIL, 'Secundario.svg');
+      //  downloadImageSvg(chartContainerDETAIL, 'Secundario.svg');
 
     });
 
@@ -173,22 +192,22 @@ function downloadImageSvg(imageContainer, filename){
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // ORDEN NECESARIO DE DATOS DE ENTRADA:
     // Comuna,Población,Distribución,Localización,Metropolitana,Dependencia FCM (%),Gasto total municipal por cada habitante de la comuna  M$ / Habitante (promedio 2013-2015),ICVU2017,CL,AN,CS,CM,SM,VE,RANGO
-    
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     $.get("datos_icvu2.csv", function(csvString) { // INICIO get
         data1 = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
-        
+
         // this new DataTable object holds all the data
         data = new google.visualization.arrayToDataTable(data1);
 
         var table = new google.visualization.Table(document.getElementById('tabla'));
         table.draw(data, {
-          showRowNumber: true, 
-          width: '90%', 
+          showRowNumber: true,
+          width: '90%',
           height: '200'}
           );
-                        
+
         view = new google.visualization.DataView(data);
         //view.setColumns([0,1,2,3,4,5,6]);
         //data.sort([{column: 1}, {column: 0}]);
@@ -379,20 +398,20 @@ function downloadImageSvg(imageContainer, filename){
           }
           if (message == '') {
             message = 'nothing';
-            
+
           }
           if (item != null && item.row != null ){
                     var id = barChart.getDataTable().getValue(item.row,0);
                     var originalRow = data.getFilteredRows([{column: 0, value: id }]);
                     originalRow = parseInt(originalRow);
                     var originalData = data.getFormattedValue(originalRow, 1);
-          
+
                     //console.log("originalIndexRow: " + originalRow);
                     //console.log("originalDataRow: " + originalData);
                     //console.log("*** values: " + message);
-          
+
                     selection = barChart.getChart().getSelection();
-          
+
                     var selectedItem = barChart.getChart().getSelection()[0];
                     if (selectedItem) {
                       var value = data.getValue(selectedItem.row, selectedItem.column);
@@ -401,7 +420,7 @@ function downloadImageSvg(imageContainer, filename){
                       originalRow = parseInt(originalRow);
                       var originalData = data.getFormattedValue(originalRow, 1);
                       var originalNameData = data.getFormattedValue(originalRow, 0);
-          
+
                       var optionsTool = {
                         width: 600,
                         height: 600,
@@ -423,9 +442,9 @@ function downloadImageSvg(imageContainer, filename){
                         //colors: ["green","blue"]
                       };
                       /*
-          
+
                       var message = '';
-          
+
                       for (var i = 0; i < selection.length; i++) {
                         var item = selection[i];
                         if (item.row != null && item.column != null) {
@@ -445,7 +464,7 @@ function downloadImageSvg(imageContainer, filename){
                       //chartDetail.draw(selection, optionsTool);
                       s = data.getFilteredRows([{column: 0, value: id}]) ;
                       //console.log("data.getFilteredRows([{column: 0, value: id }])=== "+ s);
-                      
+
                       var viewDetail = new google.visualization.DataView(data);
                       indexPopulation = 1;
                       viewDetail.setRows(data.getFilteredRows([
@@ -502,7 +521,7 @@ function downloadImageSvg(imageContainer, filename){
   google.visualization.events.addListener(dashboard, 'ready', function () {
     // get number of rows
     N = barChart.getDataTable().getNumberOfRows();
-    
+
 
               var paddingHeight = 40;
               var rowHeight = data.getNumberOfRows() * 5;
@@ -521,7 +540,7 @@ options.height = chartHeight;
 barChart.getOption('height')
     barChart.setOption('height', chartHeight);
     console.log("N: "+N + ", barChart: "+ barChart.getOptions()  );
-    
+
         //dashboard.draw(data, options);
   });
 
