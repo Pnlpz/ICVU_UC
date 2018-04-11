@@ -76,7 +76,7 @@ google.charts.load('current', {
   var chartContainerDETAIL = document.getElementById('spider');
   var button = document.getElementById('button');
 
-
+/*
   function downloadCanvas(link, canvasId, filename) {
     console.log("SI");
       link.href = document.getElementById(canvasId).toDataURL();
@@ -86,7 +86,7 @@ google.charts.load('current', {
       console.log("filename: "+filename);
       link.click();
 
-  }
+  }*/
 
 function downloadImageSvg(imageContainer, filename){
 
@@ -105,15 +105,6 @@ function downloadImageSvg(imageContainer, filename){
         imageNode = imageContainer.cloneNode(true);
         imageURL = domURL.createObjectURL(new Blob([svgParent.outerHTML], {type: 'image/svg+xml'}));
         image = new Image();
-        /*
-        image.onload = function() {
-          canvas = document.getElementById('canvas');
-          canvas.setAttribute('width', parseFloat(svgParent.getAttribute('width')));
-          canvas.setAttribute('height', parseFloat(svgParent.getAttribute('height')));
-          canvas.getContext('2d').drawImage(image, 0, 0);
-          downloadCanvas(this, 'canvas', 'Rankingasdasda.png');
-        }
-        */
         image.src = imageURL;
 
         //////
@@ -369,7 +360,7 @@ function downloadImageSvg(imageContainer, filename){
 
         var selection;
         // Instantiate and draw our chart, passing in some options.
-        chartDetail = new google.visualization.BarChart(document.getElementById('chartDetail'));
+        //chartDetail = new google.visualization.BarChart(document.getElementById('chartDetail'));
 
         google.visualization.events.addListener(barChart, 'select', function () {
           //console.log("Click: " + barChart.getChart().getSelection());
@@ -495,7 +486,7 @@ function downloadImageSvg(imageContainer, filename){
                       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
                       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                      chartDetail.draw(newData, optionsTool);
+                      //chartDetail.draw(newData, optionsTool);
                     }
                   }
 
