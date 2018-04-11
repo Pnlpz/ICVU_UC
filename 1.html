@@ -122,9 +122,8 @@ console.log("filename: "+filename);
       //image.download = 'test.txt'
   }
 
+function downloadImage(imageContainer, filename){
 
-
-  $( "#button1" ).click(function() {
       var canvas;
       var domURL;
       var imageNode;
@@ -133,7 +132,9 @@ console.log("filename: "+filename);
 
       // add svg namespace to chart
       domURL = window.URL || window.webkitURL || window;
-      svgParent = chartContainerRANKING.getElementsByTagName('svg')[0];
+      svgParent = imageContainer.getElementsByTagName('svg')[0];
+      
+      if(svgParent){
       svgParent.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
       imageNode = chartContainerRANKING.cloneNode(true);
       imageURL = domURL.createObjectURL(new Blob([svgParent.outerHTML], {type: 'image/svg+xml'}));
@@ -154,53 +155,26 @@ console.log("filename: "+filename);
       downloadLink.setAttribute('width', parseFloat(svgParent.getAttribute('width')));
       downloadLink.setAttribute('height', parseFloat(svgParent.getAttribute('height')));
       /********************************************************************************/
-      downloadLink.download = "Ranking.svg"; // CAMBIAR NOMBRE PARA DESCARGAR
+      //downloadLink.download = "Ranking.svg"; // CAMBIAR NOMBRE PARA DESCARGAR
+      downloadLink.download = filename;
       /********************************************************************************/
-      document.body.appendChild(downloadLink);
-      downloadLink.click();
-      document.body.removeChild(downloadLink);
-
-    });
-
-
-  $( "#button2" ).click(function() {
-      var canvas;
-      var domURL;
-      var imageNode;
-      var imageURL;
-      var svgParent;
-
-      // add svg namespace to chart
-      domURL = window.URL || window.webkitURL || window;
-      svgParent = chartContainerDETAIL.getElementsByTagName('svg')[0];
-      if(svgParent){
-        svgParent.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-        imageNode = chartContainerDETAIL.cloneNode(true);
-        imageURL = domURL.createObjectURL(new Blob([svgParent.outerHTML], {type: 'image/svg+xml'}));
-        image = new Image();
-        image.onload = function() {
-          canvas = document.getElementById('canvas');
-          canvas.setAttribute('width', parseFloat(svgParent.getAttribute('width')));
-          canvas.setAttribute('height', parseFloat(svgParent.getAttribute('height')));
-          canvas.getContext('2d').drawImage(image, 0, 0);
-          downloadCanvas(this, 'canvas', 'Detalle.png');
-        }
-        
-      image.src = imageURL;
-
-      //////
-      var svgUrl = imageURL //URL.createObjectURL(svgBlob);
-      var downloadLink = document.createElement("a");
-      downloadLink.href = svgUrl;
-      downloadLink.setAttribute('width', parseFloat(svgParent.getAttribute('width')));
-      downloadLink.setAttribute('height', parseFloat(svgParent.getAttribute('height')));
-      downloadLink.download = "Detalle.svg";
       document.body.appendChild(downloadLink);
       downloadLink.click();
       document.body.removeChild(downloadLink);
       }else{
         alert("Primero debes seleccionar una comuna");
       }
+}
+
+  $( "#button1" ).click(function() {
+
+        downloadImage(chartContainerRANKING, 'Ranking.svg');
+    });
+
+
+  $( "#button2" ).click(function() {
+        downloadImage(chartContainerDETAIL, 'Secundario.svg');
+
     });
 }); // FIN }).then(function () {
 
