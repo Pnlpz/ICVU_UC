@@ -127,6 +127,14 @@ function downloadImageSvg(imageContainer, filename){
 
 }
 
+
+  $( "#map" ).click(function() {
+    //downloadImageSvg(chartContainerRANKING, 'ejemplo.jpg');
+
+
+  });
+
+
   $( "#button1" ).click(function() {
     downloadImageSvg(chartContainerRANKING, 'Ranking.svg');
   });
