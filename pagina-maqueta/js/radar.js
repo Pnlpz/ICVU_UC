@@ -11,6 +11,28 @@ function actualizar(datos, titulo){
       });
       
 
+canvasId = "spider";
+var canvas = document.getElementById(canvasId);
+var ctx = canvas.getContext("2d");
+/*
+ctx.beginPath();
+ctx.rect(0, 0, c.width, c.height);
+ctx.fillStyle = "white";
+ctx.fill();
+*/
+// change non-opaque pixels to white
+var imgData=ctx.getImageData(0,0,canvas.width,canvas.height);
+var data=imgData.data;
+for(var i=0;i<data.length;i+=4){
+    if(data[i+3]<255){
+        data[i] = 255 - data[i];
+        data[i+1] = 255 - data[i+1];
+        data[i+2] = 255 - data[i+2];
+        data[i+3] = 255 - data[i+3];
+    }
+}
+
+
       window.myRadar.update();
 }
 
@@ -36,7 +58,10 @@ config = {
     type: 'radar',
     data: {
       //'ICVU2017','CL','AN','CS','CM','SM','VE'
-        labels: ['ICVU','CL','AN','CS','CM','SM','VE'], /*, 'CM1', 'CM3', 'CM5'*/
+      // labels: ['ICVU','CL','AN','CS','CM','SM','VE'], /*, 'CM1', 'CM3', 'CM5'*/
+            
+        labels: ['ICVU','Condiciones Laborales','Ambiente de Negocios','Condiciones Socio Culturales',
+        'Conectividad y Movilidad','Salud y Medio Ambiente','Vivienda y Entorno'], /*, 'CM1', 'CM3', 'CM5'*/
         datasets: [{
             label: titulo,
             backgroundColor: color(window.chartColors.purple).alpha(0.9).rgbString(),
