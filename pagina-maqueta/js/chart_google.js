@@ -3,10 +3,10 @@ console.log("hola");
 
 $.getScript( "js/jquery.csv.min.js" )
   .done(function( script, textStatus ) {
-    console.log( "---- ok" );
+    console.log( "---- ok " );
   })
   .fail(function( jqxhr, settings, exception ) {
-    console.log( "Triggered ajaxError handler." );
+    console.log( "FALTA: jquery.csv.min.js" );
 });
 
 $.getScript( "js/radar.js" )
@@ -14,7 +14,7 @@ $.getScript( "js/radar.js" )
     console.log( "---- ok2" );
   })
   .fail(function( jqxhr, settings, exception ) {
-    console.log( "Triggered ajaxError handler." );
+    console.log( "FALTA: radar.js" );
 });
 
 
