@@ -36,7 +36,7 @@ config = {
     type: 'radar',
     data: {
       //'ICVU2017','CL','AN','CS','CM','SM','VE'
-        labels: ['ICVU2017','CL','AN','CS','CM','SM','VE'], /*, 'CM1', 'CM3', 'CM5'*/
+        labels: ['ICVU','CL','AN','CS','CM','SM','VE'], /*, 'CM1', 'CM3', 'CM5'*/
         datasets: [{
             label: titulo,
             backgroundColor: color(window.chartColors.purple).alpha(0.9).rgbString(),
