@@ -381,12 +381,12 @@ setBackgroundWhite(canvasId);
           'containerId': 'chartRanking',
           'options': {
             //bar: { groupWidth: '25%' },
-            'width': 350,
+            'width': 450,
             'height': MAXHeight,
             'pieSliceText': 'value',
             //'legend': 'top',
             'legend': 'none',
-            title: 'Ranking ICVU 2017 para '+ theTitle,
+            title: theTitle,
             'hAxis': {
               'minValue': '0',
             'showTextEvery': 1,
@@ -399,7 +399,8 @@ setBackgroundWhite(canvasId);
               'easing': 'out',
             },
                         chartArea: {
-                        'width': '40%', 'height': '80%',
+                        'width': '100%', 
+                        'height': '80%',
                         left:200,
                         right:40, // !!! works !!!
                         bottom:20,  // !!! works !!!
@@ -572,7 +573,7 @@ setBackgroundWhite(canvasId);
         //dashboard.bind([PopulationRangeSlider, MetropolitanaFilter, LocalizacionFilter, DistribucionFilter], [barChart, tableChart]);
         dashboard.bind([PopulationRangeSlider, MetropolitanaFilter, LocalizacionFilter, DistribucionFilter, DependenciaRangeSlider, PerCapitaRangeSlider], [barChart]);
         //dashboard.draw(data, {allowHtml: true, showRowNumber: true, width: '100%', height: '100%'});
-        barChart.setOption('title', 'Ranking ICVU 2017 para '+ theTitle );
+        barChart.setOption('title', theTitle );
         dashboard.draw((view), options);
 
   google.visualization.events.addListener(dashboard, 'ready', function () {
@@ -613,7 +614,15 @@ barChart.getOption('height')
         theTitle = $("#order1 option:selected").text();
         //console.log("order1: "+order1);
         //console.log("view: "+view);
-        barChart.setOption('title', 'Ranking ICVU 2017 para '+ theTitle );
+
+        if(order1 > 7){
+          theTitle = 'Ranking ICVU 2017 para ' + theTitle;
+        }else{
+          theTitle = "Ranking ICVU 2017 General";
+        }
+
+
+        barChart.setOption('title', theTitle );
 
         //barChart.view(columns: [0, 8]);
         //index = (order1==0)?7:order1;
@@ -642,6 +651,13 @@ barChart.getOption('height')
           order1 =  parseInt($("#order1 option:selected").val());
           order2 =  parseInt($("#order2 option:selected").val());
           theTitle = $("#order1 option:selected").text();
+
+        if(order1 > 7){
+          theTitle = 'Ranking ICVU 2017 para ' + theTitle;
+        }else{
+          theTitle = "Ranking ICVU 2017 General";
+        }
+
 
           //console.log( "text_commune! " + order1 );
 
