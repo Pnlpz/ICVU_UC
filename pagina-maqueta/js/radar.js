@@ -35,7 +35,8 @@ var color = Chart.helpers.color;
 config = {
     type: 'radar',
     data: {
-        labels: ['SM1', 'SM4', 'SM5', 'SM6', 'SM',"6!"], /*, 'CM1', 'CM3', 'CM5'*/
+      //'ICVU2017','CL','AN','CS','CM','SM','VE'
+        labels: ['ICVU2017','CL','AN','CS','CM','SM','VE'], /*, 'CM1', 'CM3', 'CM5'*/
         datasets: [{
             label: 'Alto Hospicio',
             backgroundColor: color(window.chartColors.purple).alpha(0.9).rgbString(),

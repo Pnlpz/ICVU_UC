@@ -235,7 +235,7 @@ function downloadImageSvg(imageContainer, filename){
         dashboard = new google.visualization.Dashboard( document.getElementById('dashboard_div')) ;
 
         // Create a range slider, passing some options
-        var PoblacionRangeSlider = new google.visualization.ControlWrapper({
+        var PopulationRangeSlider = new google.visualization.ControlWrapper({
           'controlType': 'NumberRangeFilter',
           'containerId': 'filter_poblacion_div',
           'options': {
@@ -250,6 +250,13 @@ function downloadImageSvg(imageContainer, filename){
             }
           }
         });
+        /************************************************************************************/
+          // RETOMAR ESTA PARTE PARA SETEAR VALOR
+          //PopulationRangeSlider.setState({'lowValue': 2, 'highValue': 5});
+          //PopulationRangeSlider.setState({'currentValue': 200});
+
+          //PopulationRangeSlider.setValue(200);
+        /************************************************************************************/
 
         // Create a range slider, passing some options
         var DependenciaRangeSlider = new google.visualization.ControlWrapper({
@@ -530,8 +537,8 @@ function downloadImageSvg(imageContainer, filename){
 
         }); // FIN google.visualization.events.addListener(barChart, 'select', function () {
 
-        //dashboard.bind([PoblacionRangeSlider, MetropolitanaFilter, LocalizacionFilter, DistribucionFilter], [barChart, tableChart]);
-        dashboard.bind([PoblacionRangeSlider, MetropolitanaFilter, LocalizacionFilter, DistribucionFilter, DependenciaRangeSlider, PerCapitaRangeSlider], [barChart]);
+        //dashboard.bind([PopulationRangeSlider, MetropolitanaFilter, LocalizacionFilter, DistribucionFilter], [barChart, tableChart]);
+        dashboard.bind([PopulationRangeSlider, MetropolitanaFilter, LocalizacionFilter, DistribucionFilter, DependenciaRangeSlider, PerCapitaRangeSlider], [barChart]);
         //dashboard.draw(data, {allowHtml: true, showRowNumber: true, width: '100%', height: '100%'});
         barChart.setOption('title', 'Ranking ICVU 2017 para '+ theTitle );
         dashboard.draw((view), options);
