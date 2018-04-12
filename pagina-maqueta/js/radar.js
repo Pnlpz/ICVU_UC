@@ -14,7 +14,7 @@ function actualizar(datos, titulo){
       window.myRadar.update();
 }
 
-function createRadar(datos){
+function createRadar(datos, titulo){
 
 var randomScalingFactor = function() {
     return Math.round(Math.random() * 100);
@@ -38,7 +38,7 @@ config = {
       //'ICVU2017','CL','AN','CS','CM','SM','VE'
         labels: ['ICVU2017','CL','AN','CS','CM','SM','VE'], /*, 'CM1', 'CM3', 'CM5'*/
         datasets: [{
-            label: 'Alto Hospicio',
+            label: titulo,
             backgroundColor: color(window.chartColors.purple).alpha(0.9).rgbString(),
             borderColor: window.chartColors.purple,
             pointBackgroundColor: window.chartColors.purple,

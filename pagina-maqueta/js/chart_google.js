@@ -620,8 +620,9 @@ barChart.getOption('height')
           $('#order2').change(function() {
               updateChart();
           });
-          var ejemplo=[6,5,3,2,4,5];
+          var ejemplo=[0,0,0,0,0,0,0];
+          message = "Haz click en alguna comuna"
 
-          createRadar(ejemplo);
+          createRadar(ejemplo, message);
 
       }); // FIN $( document ).ready(
