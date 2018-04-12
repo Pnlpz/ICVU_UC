@@ -14,8 +14,6 @@ function actualizar(datos){
 
 function createRadar(datos){
 
-console.log("radar chart por aqui");
-
 var randomScalingFactor = function() {
     return Math.round(Math.random() * 100);
 };
@@ -53,22 +51,22 @@ config = {
 
       ]
     },
-  /*  options: {
+    options: {
         legend: {
             position: 'top',
         },
         title: {
             display: true,
-            text: 'Revisar por Comuna'
+            text: ' '
         },
         scale: {
             ticks: {
                 beginAtZero: true,
-                fontSize: 10,
+                fontSize: 12,
                 display: true/*Cotas numéricas del radar*/
-    /*        }
+              }
         }
-    }*/
+    }
 };
 
 window.onload = function() {
