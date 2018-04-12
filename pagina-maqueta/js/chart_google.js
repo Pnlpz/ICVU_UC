@@ -186,7 +186,7 @@ function downloadImageSvg(imageContainer, filename){
   var chartDetail;
 
   var options = {
-    width: 600,
+    width: 350,
     height: MAXHeight,
     title: 'AAaaa ',
     colors: ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6'],
@@ -349,7 +349,7 @@ function downloadImageSvg(imageContainer, filename){
           'containerId': 'chartRanking',
           'options': {
             //bar: { groupWidth: '25%' },
-            'width': 600,
+            'width': 350,
             'height': MAXHeight,
             'pieSliceText': 'value',
             //'legend': 'top',
@@ -458,7 +458,7 @@ function downloadImageSvg(imageContainer, filename){
                         hAxis: {'minValue': '0'},
                         chartArea: {
                         'width': '40%', 'height': '80%',
-                        left:200,
+                        left:100,
                         right:40, // !!! works !!!
                         //bottom:20,  // !!! works !!!
                         //top:20
