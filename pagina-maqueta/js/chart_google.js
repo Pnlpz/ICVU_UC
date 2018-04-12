@@ -479,7 +479,7 @@ setBackgroundWhite(canvasId);
                         },
                         hAxis: {'minValue': '0'},
                         chartArea: {
-                        'width': '40%', 'height': '80%',
+                        //'width': '40%', 'height': '80%',
                         left:100,
                         right:40, // !!! works !!!
                         //bottom:20,  // !!! works !!!
@@ -579,7 +579,7 @@ Ncommunes = 93;
 //chartHeight = N*MAXHeight/Ncommunes;
 //chartHeight = MAXHeight - (Ncommunes-N)*26;
 chartHeight = 20 + (N)*25;
-min = 100
+min = 400
 if(chartHeight < min)
     chartHeight = min;
 options.height = chartHeight;
