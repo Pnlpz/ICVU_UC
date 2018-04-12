@@ -1,13 +1,15 @@
 var config;
 
-function actualizar(datos){
+function actualizar(datos, titulo){
       config.data.datasets.forEach(function(dataset) {
         /*  dataset.data = dataset.data.map(function() {
               return randomScalingFactor();
           });
           */
           dataset.data = datos;
+          dataset.label = titulo;
       });
+      
 
       window.myRadar.update();
 }
@@ -41,14 +43,14 @@ config = {
             borderColor: window.chartColors.purple,
             pointBackgroundColor: window.chartColors.purple,
             data:datos
-        },
+        }/*,
         {
             label: 'Promedio',
             backgroundColor: color(window.chartColors.grey).alpha(0.2).rgbString(),
             borderColor: window.chartColors.grey,
             pointBackgroundColor: window.chartColors.grey,
             data: [4,2,4,3,3,4]
-        }
+        }*/
 
       ]
     },

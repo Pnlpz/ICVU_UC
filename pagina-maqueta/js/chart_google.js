@@ -524,7 +524,7 @@ function downloadImageSvg(imageContainer, filename){
                         DATOS_EN_ARREGLO.push(rawData.getValue(0, i));
                       }
                       console.log("*** COMUNA: "+ originalNameData);
-                      actualizar(DATOS_EN_ARREGLO);
+                      actualizar(DATOS_EN_ARREGLO, originalNameData);
                       // console.log("* TITULO: "+ theTitle);
                       console.log("DATOS_EN_ARREGLO: "+ DATOS_EN_ARREGLO);
                       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
