@@ -17,7 +17,7 @@ $.getScript( "js/radar.js" )
     console.log( "FALTA: radar.js" );
 });
 
-
+var order0 = 0;
 var order1 = 0;
 var theTitle = '';
 var view;
@@ -128,13 +128,6 @@ function downloadImageSvg(imageContainer, filename){
 }
 
 
-  $( "#map" ).click(function() {
-    //downloadImageSvg(chartContainerRANKING, 'ejemplo.jpg');
-
-
-  });
-
-
   $( "#button1" ).click(function() {
     downloadImageSvg(chartContainerRANKING, 'Ranking.svg');
   });
@@ -202,10 +195,6 @@ setBackgroundWhite(canvasId);
               });
 
 
-  $( "#button2" ).click(function() {
-      //  downloadImageSvg(chartContainerDETAIL, 'Secundario.svg');
-
-    });
 
 }); // FIN }).then(function () {
 
@@ -647,6 +636,15 @@ barChart.getOption('height')
 
 
       $( document ).ready(function() {
+
+  $( "#order0" ).change(function() {
+      //  downloadImageSvg(chartContainerDETAIL, 'Secundario.svg');
+          order0 =  parseInt($("#order0 option:selected").val());
+          (order0==3)? $("#filtros").hide() :  $("#filtros").show();
+          (order0==3)? $("#div_filtros").hide() :  $("#div_filtros").show();
+
+    });
+
         $("#tabla").hide();
           order1 =  parseInt($("#order1 option:selected").val());
           order2 =  parseInt($("#order2 option:selected").val());
