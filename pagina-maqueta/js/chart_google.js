@@ -25,7 +25,12 @@ var colorsRanges = [
 "#e055a8",
 "#9E005D",
 '#380021'
-]; /*Modifiqué los colores del bar chart*/
+];
+/*Modifiqué los colores del bar chart
+['#bebeff',
+'#5c5cff',
+'#1b1464'
+]*/
 
 var rangesICVU = [37.5, 47.65];
 var rangesCL = [37.5, 47.65];
