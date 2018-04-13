@@ -36,7 +36,7 @@ function actualizar(datos, titulo){
         chart.data.datasets[0].data = datos;
         chart.data.datasets[0].label = titulo;
 
-          //chart.options.title.text = titulo;
+          chart.options.title.text = "Detalle ICVU para "+titulo;
           chart.update();
       }
 
