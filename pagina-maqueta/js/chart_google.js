@@ -22,14 +22,14 @@ var order1 = 0;
 var theTitle = '';
 var view;
 var colorsRanges = [
-"#e055a8",
+  '#bebeff',
+  '#5c5cff',
+  '#1b1464'
+  ];
+/*Duda: ¿ex-colores del barchart?
+["#e055a8",
 "#9E005D",
 '#600039'
-];
-/*Modifiqué los colores del bar chart
-['#bebeff',
-'#5c5cff',
-'#1b1464'
 ]*/
 
 var rangesICVU = [37.5, 47.65];
