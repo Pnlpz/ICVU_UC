@@ -24,7 +24,7 @@ var view;
 var colorsRanges = [
 "#e055a8",
 "#9E005D",
-'#380021'
+'#600039'
 ];
 /*Modifiqué los colores del bar chart
 ['#bebeff',

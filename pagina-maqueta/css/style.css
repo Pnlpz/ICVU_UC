@@ -175,9 +175,8 @@ select{width: 100%;}
 }
 /*Barra horizontal slider*/
 .google-visualization-controls-slider-horizontal {
-    border: none;
     background-color: #9E9E9E !important;
-    border-radius: 0px !important;
+    border: 0px !important;
     -moz-border-radius: 0px !important;
     height: 5px !important;
 }
