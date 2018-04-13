@@ -34,8 +34,9 @@ function actualizar(datos, titulo){
         console.log("X> "+x);
         console.log(":> "+chart.data.datasets[0]);
         chart.data.datasets[0].data = datos;
+        chart.data.datasets[0].label = titulo;
 
-          chart.options.title.text = titulo;
+          //chart.options.title.text = titulo;
           chart.update();
       }
 
