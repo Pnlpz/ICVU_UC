@@ -1,5 +1,8 @@
 var config;
-
+/******************************************************************/
+// DOCUMENTACION DE LA LIBRERIA
+// http://www.chartjs.org/docs/latest/charts/radar.html
+/******************************************************************/
 function actualizar(datos, titulo){
 /*
       config.data.datasets.forEach(function(dataset) {
