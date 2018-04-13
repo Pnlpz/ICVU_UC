@@ -22,10 +22,10 @@ var order1 = 0;
 var theTitle = '';
 var view;
 var colorsRanges = [
-"#BEBEFF",
-"#5C5CFF",
-"#1B1464"
-];
+"#e055a8",
+"#9E005D",
+'#380021'
+]; /*Modifiqué los colores del bar chart*/
 
 var rangesICVU = [37.5, 47.65];
 var rangesCL = [37.5, 47.65];
@@ -176,8 +176,8 @@ setBackgroundWhite(canvasId);
                  downloadCanvas(this, 'spider', 'test.png');
               });
               document.getElementById('downloadRanking').addEventListener('click', function() {
-                 
-                 
+
+
 
 
         var downloadLink = document.createElement("a");
@@ -370,7 +370,7 @@ setBackgroundWhite(canvasId);
           'containerId': 'chartRanking',
           'options': {
             //bar: { groupWidth: '25%' },
-            'width': 450,
+            'width': 400,
             'height': MAXHeight,
             'pieSliceText': 'value',
             //'legend': 'top',
@@ -388,9 +388,9 @@ setBackgroundWhite(canvasId);
               'easing': 'out',
             },
                         chartArea: {
-                        'width': '100%', 
+                        'width': '100%',
                         'height': '80%',
-                        left:200,
+                        left:150,
                         right:40, // !!! works !!!
                         bottom:20,  // !!! works !!!
                         top:100

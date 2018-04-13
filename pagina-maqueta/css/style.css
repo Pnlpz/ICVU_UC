@@ -32,7 +32,8 @@ body{font-family: 'Barlow', sans-serif;}
   /*width: 10%;*/
 }
 
-#ordenamiento #filtros{left: 38%; top: 19px;}
+#ordenamiento #filtros{left: 38%; /*top: 19px;*/}
+#ordenamiento #datos{left: 38%;}
 .icvu-indicador{padding: 0em;}
 .bajada-titulo{
     float: right;
@@ -45,7 +46,7 @@ body{font-family: 'Barlow', sans-serif;}
 #scrolleable{
     position: fixed;
     text-align: center;
-    padding: 0 0 1em 1em;
+    padding: 0  1em 1em 1em;
     margin-left: 284px;
     margin-top: 60px;
     border: 3px solid grey;
@@ -63,7 +64,6 @@ body{font-family: 'Barlow', sans-serif;}
 /*scrollear en Y*/
 .scrollable {
     height: 84%;
-    margin-right: 2%;
     overflow-y: scroll;
 }
 
@@ -82,6 +82,7 @@ body{font-family: 'Barlow', sans-serif;}
   font-size: 12px;
   font-weight: bold;
   padding: 0.5em 1.5em;
+  margin-bottom: 0.5em;
 }
 #que-es{
   text-align: right;
@@ -109,9 +110,9 @@ body{font-family: 'Barlow', sans-serif;}
 /*Nonono*/
 #filter_dependencia_div .google-visualization-controls-rangefilter .goog-inline-block,
 #filter_per_capita_div .google-visualization-controls-rangefilter .goog-inline-block{bottom: 25px !important;}
-label{display: block;}
+label{display: block; margin-bottom: 5px}
 select{width: 100%;}
-
+#order0{margin-bottom: 0px;}
 #porfiado{
     text-align: center;
     position: fixed;
@@ -139,7 +140,7 @@ select{width: 100%;}
 #spider{
   margin: 1em 0;
 }
-.radar-body{height:75vh;}
+.radar-body{height:70vh;}
 .footer{
   justify-content: center;
 }
@@ -156,9 +157,10 @@ select{width: 100%;}
   width: 6px !important;
   height: 14px !important;
   background-color: #9E005D !important;
+  border: #9E005D !important;
   position: absolute;
   top: -3px;
-  border-radius: 0 !important;
+  border: 0 !important;
 }
 
 /*Solo afecta al slider Poblacion*/
