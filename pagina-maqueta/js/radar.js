@@ -1,36 +1,38 @@
 var config;
 
 function actualizar(datos, titulo){
+
       config.data.datasets.forEach(function(dataset) {
-        /*  dataset.data = dataset.data.map(function() {
-              return randomScalingFactor();
-          });
-          */
+        // dataset.data = dataset.data.map(function() {
+        //      return randomScalingFactor();
+        //});
+          
           dataset.data = datos;
           dataset.label = titulo;
       });
+
       
 
-canvasId = "spider";
-var canvas = document.getElementById(canvasId);
-var ctx = canvas.getContext("2d");
-/*
-ctx.beginPath();
-ctx.rect(0, 0, c.width, c.height);
-ctx.fillStyle = "white";
-ctx.fill();
-*/
-// change non-opaque pixels to white
-var imgData=ctx.getImageData(0,0,canvas.width,canvas.height);
-var data=imgData.data;
-for(var i=0;i<data.length;i+=4){
-    if(data[i+3]<255){
-        data[i] = 255 - data[i];
-        data[i+1] = 255 - data[i+1];
-        data[i+2] = 255 - data[i+2];
-        data[i+3] = 255 - data[i+3];
-    }
-}
+      canvasId = "spider";
+      var canvas = document.getElementById(canvasId);
+      var ctx = canvas.getContext("2d");
+      /*
+      ctx.beginPath();
+      ctx.rect(0, 0, c.width, c.height);
+      ctx.fillStyle = "white";
+      ctx.fill();
+      */
+      // change non-opaque pixels to white
+      var imgData=ctx.getImageData(0,0,canvas.width,canvas.height);
+      var data=imgData.data;
+      for(var i=0;i<data.length;i+=4){
+          if(data[i+3]<255){
+              data[i] = 255 - data[i];
+              data[i+1] = 255 - data[i+1];
+              data[i+2] = 255 - data[i+2];
+              data[i+3] = 255 - data[i+3];
+          }
+      }
 
 
       window.myRadar.update();
@@ -52,8 +54,23 @@ var randomScalingFactor = function() {
 
 
 /////////////////////////////////
+var beginAtZero=[0,0,0,0,0,0,0];
 
 var color = Chart.helpers.color;
+var datasets_min = {
+            label: 'mínimo del Rango Promedio',
+            backgroundColor: color(window.chartColors.grey).alpha(0.2).rgbString(),
+            borderColor: window.chartColors.grey,
+            pointBackgroundColor: window.chartColors.grey,
+            data: [40,40,40,40,40,40,40]
+        };
+var datasets_max = {
+            label: 'máximo del Rango Promedio',
+            backgroundColor: color(window.chartColors.grey).alpha(0.2).rgbString(),
+            borderColor: window.chartColors.grey,
+            pointBackgroundColor: window.chartColors.grey,
+            data: [70,70,70,70,70,70,70]
+        };
 config = {
     type: 'radar',
     data: {
@@ -68,15 +85,9 @@ config = {
             borderColor: window.chartColors.purple,
             pointBackgroundColor: window.chartColors.purple,
             data:datos
-        }/*,
-        {
-            label: 'Promedio',
-            backgroundColor: color(window.chartColors.grey).alpha(0.2).rgbString(),
-            borderColor: window.chartColors.grey,
-            pointBackgroundColor: window.chartColors.grey,
-            data: [4,2,4,3,3,4]
-        }*/
-
+        },
+        datasets_min,
+        datasets_max
       ]
     },
     options: {
@@ -90,6 +101,7 @@ config = {
         scale: {
             ticks: {
                 beginAtZero: true,
+                max: 100,
                 fontSize: 12,
                 display: true/*Cotas numéricas del radar*/
               }
