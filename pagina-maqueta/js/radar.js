@@ -1,7 +1,7 @@
 var config;
 
 function actualizar(datos, titulo){
-
+/*
       config.data.datasets.forEach(function(dataset) {
         // dataset.data = dataset.data.map(function() {
         //      return randomScalingFactor();
@@ -11,8 +11,35 @@ function actualizar(datos, titulo){
           dataset.label = titulo;
       });
 
-      
+*/
+      function addData(chart, label, data) {
+          chart.data.labels.push(label);
+          chart.data.datasets.forEach((dataset) => {
+              dataset.data.push(data);
+          });
+          chart.update();
+      }
 
+      function removeData(chart) {
+          chart.data.labels.pop();
+          chart.data.datasets.forEach((dataset) => {
+              dataset.data.pop();
+          });
+          chart.update();
+      }
+
+      function updateConfigByMutating(chart) {
+        //removeData(chart);
+        x = chart.data.datasets.length;
+        console.log("X> "+x);
+        console.log(":> "+chart.data.datasets[0]);
+        chart.data.datasets[0].data = datos;
+
+          chart.options.title.text = titulo;
+          chart.update();
+      }
+
+      updateConfigByMutating(window.myRadar);
       canvasId = "spider";
       var canvas = document.getElementById(canvasId);
       var ctx = canvas.getContext("2d");
@@ -56,19 +83,27 @@ var randomScalingFactor = function() {
 /////////////////////////////////
 var beginAtZero=[0,0,0,0,0,0,0];
 
+var colorsRanges = [
+"#BEBEFF",
+"#5C5CFF",
+"#1B1464"
+];
+
 var color = Chart.helpers.color;
 var datasets_min = {
             label: 'mínimo del Rango Promedio',
             backgroundColor: color(window.chartColors.grey).alpha(0.2).rgbString(),
             borderColor: window.chartColors.grey,
-            pointBackgroundColor: window.chartColors.grey,
+            //pointBackgroundColor: window.chartColors.grey,
+            pointBackgroundColor: colorsRanges[0],
             data: [40,40,40,40,40,40,40]
         };
 var datasets_max = {
             label: 'máximo del Rango Promedio',
             backgroundColor: color(window.chartColors.grey).alpha(0.2).rgbString(),
             borderColor: window.chartColors.grey,
-            pointBackgroundColor: window.chartColors.grey,
+            //pointBackgroundColor: window.chartColors.grey,
+            pointBackgroundColor: colorsRanges[1],
             data: [70,70,70,70,70,70,70]
         };
 config = {
