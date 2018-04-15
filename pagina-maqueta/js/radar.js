@@ -9,7 +9,7 @@ function actualizar(datos, titulo){
         // dataset.data = dataset.data.map(function() {
         //      return randomScalingFactor();
         //});
-          
+
           dataset.data = datos;
           dataset.label = titulo;
       });
@@ -96,18 +96,18 @@ var colorsRanges = [
 var color = Chart.helpers.color;
 var datasets_min = {
             label: 'mínimo del Rango Promedio',
-            //backgroundColor: color(window.chartColors.grey).alpha(0.2).rgbString(),
-            backgroundColor: colorsRanges[0],
-            borderColor: window.chartColors.grey,
+            backgroundColor: color(window.chartColors.grey).alpha(0).rgbString(),
+            //backgroundColor: colorsRanges[0],
+            borderColor: colorsRanges[0],
             //pointBackgroundColor: window.chartColors.grey,
             pointBackgroundColor: colorsRanges[0],
             data: [40,40,40,40,40,40,40]
         };
 var datasets_max = {
             label: 'máximo del Rango Promedio',
-            //backgroundColor: color(window.chartColors.grey).alpha(0.2).rgbString(),
-            backgroundColor: colorsRanges[1],
-            borderColor: window.chartColors.grey,
+            backgroundColor: color(window.chartColors.grey).alpha(0).rgbString(),
+            //backgroundColor: colorsRanges[1],
+            borderColor: colorsRanges[1],
             //pointBackgroundColor: window.chartColors.grey,
             pointBackgroundColor: colorsRanges[1],
             data: [70,70,70,70,70,70,70]
@@ -117,7 +117,7 @@ config = {
     data: {
       //'ICVU2017','CL','AN','CS','CM','SM','VE'
       // labels: ['ICVU','CL','AN','CS','CM','SM','VE'], /*, 'CM1', 'CM3', 'CM5'*/
-            
+
         labels: ['ICVU','Condiciones Laborales','Ambiente de Negocios','Condiciones Socio Culturales',
         'Conectividad y Movilidad','Salud y Medio Ambiente','Vivienda y Entorno'], /*, 'CM1', 'CM3', 'CM5'*/
         datasets: [{
