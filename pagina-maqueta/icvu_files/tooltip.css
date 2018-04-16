@@ -1,54 +1,60 @@
 /* Copyright 2012 Google Inc. All Rights Reserved. */
 
 .google-visualization-tooltip-action: hover {
-  background-color: red;
-  font-size: 10px !important;
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  font-size: 12px !important;
+  -webkit-transition: all 0.4s ease-out !important;
+  -moz-transition: all 0.4s ease-out !important;
+  -o-transition: all 0.4s ease-out !important;
+  transition: all 0.4s ease-out !important;
 }
 .google-visualization-tooltip {
-
-  border-radius: 2px;
-  background-color: rgba(0, 0, 0, 0.7) !important;
+  border-radius: 4px !important;
+  border: 0px !important;
+  background-color: rgba(0, 0, 0, 0.8) !important;
   position: absolute;
-  box-shadow: 0px 2px 2px 0px rgba(204, 204, 204, 0.6);
-  font-size: 10px !important;
-  padding: 0px;
-  -moz-box-shadow: 0px 2px 2px 0px rgba(204, 204, 204, 0.6);
-  -webkit-box-shadow: 0px 2px 2px 0px rgba(204, 204, 204, 0.6);
+  box-shadow: none !important;
+  padding: 0;
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
   z-index: 10000;
 }
 .google-visualization-tooltip-action-list {
   list-style-type: none;
   margin: 0;
-  padding: 0.5em 0em 0.5em 0em;
+  padding: 0;
   cursor: hand;
+
 }
 .google-visualization-tooltip-action {
   margin: 0;
   cursor: pointer;
-  padding: 0.5em 2em 0.5em 1em;
+  padding: 0;
   font-size: 10px !important;
 }
 .google-visualization-tooltip-action:hover {
-  background-color: red;
+  -webkit-transition: all 0.4s ease-out;
+  -moz-transition: all 0.4s ease-out;
+  -o-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
 }
 .google-visualization-tooltip-item-list {
   list-style-type: none;
-  margin: 1em 0 1em 0;
+  margin: 0;
   padding: 0em;
 }
 .google-visualization-tooltip-item {
-  margin: 0.65em 0em 0.65em 0em;
-  padding: 0em 2em 0em 1em;
+  margin: 0;
+  padding: 0;
 }
 .google-visualization-tooltip-item-list
 .google-visualization-tooltip-item:first-child {
-  margin: 1em 0em 1em 0em;
+  margin: 0;
 }
 .google-visualization-tooltip-separator {
   margin: 0;
   padding: 0;
   height: 1px;
-  background-color: red;
 }
 .google-visualization-tooltip-square {
   display: inline-block;
@@ -57,6 +63,6 @@
   clear: none;
   width: 0.5em;
   height: 0.5em;
-  margin: 0.16em 0.7em 0em 0em;
-  border-bottom: solid 0.1em white;
+  margin: 0;
+  border-bottom: 0;
 }

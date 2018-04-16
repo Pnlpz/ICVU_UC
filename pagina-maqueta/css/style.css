@@ -3,6 +3,16 @@ body{font-family: 'Barlow', sans-serif;}
 .row{margin:0;}
 .container{margin: 0; padding: 0; max-width: 100%;}
 
+a:hover {
+  color: white !important;
+  opacity: 0.8 !important;
+  -webkit-transition: all 0.4s ease-out;
+  -moz-transition: all 0.4s ease-out;
+  -o-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
+
+}
+
 #ordenamiento{
   position: fixed;
   background-color: #111;
@@ -139,7 +149,9 @@ select{width: 100%;}
 
 #spider{
   margin: 1em 0;
+  background-color: white;
 }
+
 .radar-body{height:70vh;}
 .footer{
   justify-content: center;
@@ -213,7 +225,21 @@ h4{
 
 .dimension_icvu{text-align: center; padding: 1em;}
 
+.google-visualization-tooltip-item{
+  width: auto;
+  max-width: 250px;
+  min-width: 70px;
+  margin: 0 !important;
+  padding: 0;
+  text-align: left;
+}
+
+.google-visualization-tooltip-item-list{
+  margin: 0.2em !important;
+}
 .google-visualization-tooltip-item span{
-  font-size: 10px !important;
-  color: red !important;
+  font-size: 12px !important;
+  color: white !important;
+  height: 5px;
+  margin: 0 !important;
 }
