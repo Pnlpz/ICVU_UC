@@ -329,7 +329,8 @@ setBackgroundWhite(canvasId);
                 labelStacking: 'vertical',
                 allowTyping: false,
                 allowMultiple: false,
-                height: 100
+                height: 100,
+                caption : 'Elige si es Zona Metropolitana'
             }
             //'filterColumnLabel': 'Metropolitana',
           }
@@ -345,7 +346,8 @@ setBackgroundWhite(canvasId);
                 labelStacking: 'vertical',
                 allowTyping: false,
                 allowMultiple: false,
-                height: 100
+                height: 100,
+                caption : 'Elige Localización'
             }
             //'filterColumnLabel': 'Localización',
           }
@@ -361,9 +363,11 @@ setBackgroundWhite(canvasId);
                 labelStacking: 'vertical',
                 allowTyping: false,
                 allowMultiple: false,
-                height: 100
-            }
-            //'filterColumnLabel': 'Distribución',
+                height: 100,
+                caption : 'Elige Zona',
+                sortValues: false
+            },
+            //'filterColumnLabel': 'Zona',
           }
         });
 

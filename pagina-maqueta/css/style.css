@@ -115,7 +115,7 @@ a:hover {
     z-index: 15;
     display: block;
 }
-#filter_distribucion_div{display: none;}
+/*#filter_distribucion_div{display: none;}*/
 
 /*Nonono*/
 #filter_dependencia_div .google-visualization-controls-rangefilter .goog-inline-block,
