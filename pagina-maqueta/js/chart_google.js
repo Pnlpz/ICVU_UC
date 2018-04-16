@@ -219,7 +219,16 @@ setBackgroundWhite(canvasId);
     animation:{
       duration: 1000,
       easing: 'out',
+    },
+
+    titleTextStyle: {
+        //color: <string>,    // any HTML string color ('red', '#cc00cc')
+        fontName: "Barlow", // i.e. 'Times New Roman'
+        //fontSize: <number>, // 12, 18 whatever you want (don't specify px)
+        //bold: <boolean>,    // true or false
+        //italic: <boolean>   // true of false
     }
+
   };
 
   // Set a callback to run when the Google Visualization API is loaded.
@@ -551,11 +560,13 @@ setBackgroundWhite(canvasId);
                       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
                       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
                       var DATOS_EN_ARREGLO = []; // ESTO ES LO QUE TIENES QUE TOMAR
-                      for (var i = 1; i < rawData.getNumberOfColumns(); i++) {
+                      for (var i = 2; i < rawData.getNumberOfColumns(); i++) {
                         DATOS_EN_ARREGLO.push(rawData.getValue(0, i));
                       }
                       console.log("*** COMUNA: "+ originalNameData);
-                      actualizar(DATOS_EN_ARREGLO, originalNameData);
+                      icvu = rawData.getValue(0, 1);
+                      position = 5;
+                      actualizar(icvu, position, DATOS_EN_ARREGLO, originalNameData);
                       // console.log("* TITULO: "+ theTitle);
                       console.log("DATOS_EN_ARREGLO: "+ DATOS_EN_ARREGLO);
                       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
