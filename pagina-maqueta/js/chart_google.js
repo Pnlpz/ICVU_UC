@@ -222,7 +222,7 @@ setBackgroundWhite(canvasId);
     },
 
     titleTextStyle: {
-        //color: <string>,    // any HTML string color ('red', '#cc00cc')
+        color: "#00cc00",    // any HTML string color ('red', '#cc00cc')
         fontName: "Barlow", // i.e. 'Times New Roman'
         //fontSize: <number>, // 12, 18 whatever you want (don't specify px)
         //bold: <boolean>,    // true or false
@@ -397,7 +397,15 @@ setBackgroundWhite(canvasId);
             'hAxis': {
               'minValue': '0',
             'showTextEvery': 1,
-            'gridlines':{'count': 0}
+            'gridlines':{'count': 0},
+
+    titleTextStyle: {
+        color: "#00cc00",    // any HTML string color ('red', '#cc00cc')
+        fontName: "Barlow", // i.e. 'Times New Roman'
+        //fontSize: <number>, // 12, 18 whatever you want (don't specify px)
+        //bold: <boolean>,    // true or false
+        //italic: <boolean>   // true of false
+    }
 
           },
 
@@ -419,6 +427,8 @@ setBackgroundWhite(canvasId);
               columns: [0, order1, {calc:AddLabel, type:'string', role: 'annotation', label:'Color'}, {calc:setColor, type:'string', role: 'style', label:'Color'}]
             }
         });
+        
+        barChart.setOption('titleTextStyle.fontName', "Barlow" );
         /*
         tableChart  = new google.visualization.ChartWrapper({
           'chartType': 'Table',
@@ -632,6 +642,7 @@ barChart.getOption('height')
 
 
         barChart.setOption('title', theTitle );
+        barChart.setOption('titleTextStyle.fontName', "Barlow" );
 
         //barChart.view(columns: [0, 8]);
         //index = (order1==0)?7:order1;
@@ -690,5 +701,6 @@ barChart.getOption('height')
           message = "Haz click en alguna comuna"
 
           createRadar(ejemplo, message);
+          //$("#chartRanking").css("");
 
       }); // FIN $( document ).ready(
