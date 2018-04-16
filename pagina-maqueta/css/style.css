@@ -212,3 +212,8 @@ h4{
 }
 
 .dimension_icvu{text-align: center; padding: 1em;}
+
+.google-visualization-tooltip-item span{
+  font-size: 10px !important;
+  color: red !important;
+}
