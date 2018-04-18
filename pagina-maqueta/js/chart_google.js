@@ -219,7 +219,16 @@ setBackgroundWhite(canvasId);
     animation:{
       duration: 1000,
       easing: 'out',
+    },
+
+    titleTextStyle: {
+        color: "#00cc00",    // any HTML string color ('red', '#cc00cc')
+        fontName: "Barlow", // i.e. 'Times New Roman'
+        //fontSize: <number>, // 12, 18 whatever you want (don't specify px)
+        //bold: <boolean>,    // true or false
+        //italic: <boolean>   // true of false
     }
+
   };
 
   // Set a callback to run when the Google Visualization API is loaded.
@@ -329,7 +338,8 @@ setBackgroundWhite(canvasId);
                 labelStacking: 'vertical',
                 allowTyping: false,
                 allowMultiple: false,
-                height: 100
+                height: 100,
+                caption : 'Elige si es Zona Metropolitana'
             }
             //'filterColumnLabel': 'Metropolitana',
           }
@@ -345,7 +355,8 @@ setBackgroundWhite(canvasId);
                 labelStacking: 'vertical',
                 allowTyping: false,
                 allowMultiple: false,
-                height: 100
+                height: 100,
+                caption : 'Elige Localización'
             }
             //'filterColumnLabel': 'Localización',
           }
@@ -361,9 +372,11 @@ setBackgroundWhite(canvasId);
                 labelStacking: 'vertical',
                 allowTyping: false,
                 allowMultiple: false,
-                height: 100
-            }
-            //'filterColumnLabel': 'Distribución',
+                height: 100,
+                caption : 'Elige Zona',
+                sortValues: false
+            },
+            //'filterColumnLabel': 'Zona',
           }
         });
 
@@ -384,7 +397,15 @@ setBackgroundWhite(canvasId);
             'hAxis': {
               'minValue': '0',
             'showTextEvery': 1,
-            'gridlines':{'count': 0}
+            'gridlines':{'count': 0},
+
+    titleTextStyle: {
+        color: "#00cc00",    // any HTML string color ('red', '#cc00cc')
+        fontName: "Barlow", // i.e. 'Times New Roman'
+        //fontSize: <number>, // 12, 18 whatever you want (don't specify px)
+        //bold: <boolean>,    // true or false
+        //italic: <boolean>   // true of false
+    }
 
           },
 
@@ -406,6 +427,8 @@ setBackgroundWhite(canvasId);
               columns: [0, order1, {calc:AddLabel, type:'string', role: 'annotation', label:'Color'}, {calc:setColor, type:'string', role: 'style', label:'Color'}]
             }
         });
+        
+        barChart.setOption('titleTextStyle.fontName', "Barlow" );
         /*
         tableChart  = new google.visualization.ChartWrapper({
           'chartType': 'Table',
@@ -547,11 +570,13 @@ setBackgroundWhite(canvasId);
                       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
                       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
                       var DATOS_EN_ARREGLO = []; // ESTO ES LO QUE TIENES QUE TOMAR
-                      for (var i = 1; i < rawData.getNumberOfColumns(); i++) {
+                      for (var i = 2; i < rawData.getNumberOfColumns(); i++) {
                         DATOS_EN_ARREGLO.push(rawData.getValue(0, i));
                       }
                       console.log("*** COMUNA: "+ originalNameData);
-                      actualizar(DATOS_EN_ARREGLO, originalNameData);
+                      icvu = rawData.getValue(0, 1);
+                      position = 5;
+                      actualizar(icvu, position, DATOS_EN_ARREGLO, originalNameData);
                       // console.log("* TITULO: "+ theTitle);
                       console.log("DATOS_EN_ARREGLO: "+ DATOS_EN_ARREGLO);
                       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -617,6 +642,7 @@ barChart.getOption('height')
 
 
         barChart.setOption('title', theTitle );
+        barChart.setOption('titleTextStyle.fontName', "Barlow" );
 
         //barChart.view(columns: [0, 8]);
         //index = (order1==0)?7:order1;
@@ -675,5 +701,6 @@ barChart.getOption('height')
           message = "Haz click en alguna comuna"
 
           createRadar(ejemplo, message);
+          //$("#chartRanking").css("");
 
       }); // FIN $( document ).ready(
