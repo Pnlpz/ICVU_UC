@@ -3,7 +3,7 @@ var config;
 // DOCUMENTACION DE LA LIBRERIA
 // http://www.chartjs.org/docs/latest/charts/radar.html
 /******************************************************************/
-function actualizar(datos, titulo){
+function actualizar(icvu, lugar, datos, titulo){
 /*
       config.data.datasets.forEach(function(dataset) {
         // dataset.data = dataset.data.map(function() {
@@ -39,7 +39,7 @@ function actualizar(datos, titulo){
         chart.data.datasets[0].data = datos;
         chart.data.datasets[0].label = titulo;
 
-          chart.options.title.text = "Detalle ICVU para "+titulo;
+          chart.options.title.text = titulo+ ", valor icvu "+icvu+" (lugar "+lugar+"/93)";
           chart.update();
       }
 
@@ -118,7 +118,8 @@ config = {
       //'ICVU2017','CL','AN','CS','CM','SM','VE'
       // labels: ['ICVU','CL','AN','CS','CM','SM','VE'], /*, 'CM1', 'CM3', 'CM5'*/
 
-        labels: ['ICVU','Condiciones Laborales','Ambiente de Negocios','Condiciones Socio Culturales',
+        //labels: ['ICVU','Condiciones Laborales','Ambiente de Negocios','Condiciones Socio Culturales','Conectividad y Movilidad','Salud y Medio Ambiente','Vivienda y Entorno'], /*, 'CM1', 'CM3', 'CM5'*/
+        labels: ['Condiciones Laborales','Ambiente de Negocios','Condiciones Socio Culturales',
         'Conectividad y Movilidad','Salud y Medio Ambiente','Vivienda y Entorno'], /*, 'CM1', 'CM3', 'CM5'*/
         datasets: [{
             label: titulo,

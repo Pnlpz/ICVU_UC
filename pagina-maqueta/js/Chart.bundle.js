@@ -10724,7 +10724,7 @@ defaults._set('global', {
 	onClick: null,
 	defaultColor: 'rgba(0,0,0,0.1)',
 	defaultFontColor: '#666',
-	defaultFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+	defaultFontFamily: "''Barlow', sans-serif",
 	defaultFontSize: 12,
 	defaultFontStyle: 'normal',
 	showLines: true,
@@ -13537,7 +13537,7 @@ module.exports = function(Chart) {
 		 * @returns {Point} the tooltip position
 		 */
 		nearest: function(elements, eventPosition) {
-			var x = eventPosition.x;
+			var x = eventPosition.x; 
 			var y = eventPosition.y;
 			var minDistance = Number.POSITIVE_INFINITY;
 			var i, len, nearestElement;
@@ -16631,7 +16631,7 @@ var Title = Element.extend({
 		var opts = me.options;
 		var globalDefaults = defaults.global;
 
-		if (opts.display) { 
+		if (opts.display) {
 			var fontSize = valueOrDefault(opts.fontSize, globalDefaults.defaultFontSize);
 			var fontStyle = valueOrDefault(opts.fontStyle, globalDefaults.defaultFontStyle);
 			var fontFamily = valueOrDefault(opts.fontFamily, globalDefaults.defaultFontFamily);

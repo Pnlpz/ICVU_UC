@@ -230,7 +230,7 @@ h4{
   max-width: 250px;
   min-width: 70px;
   margin: 0 !important;
-  padding: 0;
+  padding: 0 !important;
   text-align: left;
 }
 
