@@ -243,26 +243,58 @@ a:hover {
 }
 @media (min-width: 576px){
   .modal-dialog {
-      width: 700px;
+      width: 800px;
   }
 }
 
 
-.modal-body p{text-align: left; font-size: 13px;}
+.modal-body p{
+    font-size: 13px;
+    margin: 0 0 1em 0;
+  }
 
 .iconos-icvu{max-width: 70px;}
 .dimension_icvu h5{
   font-size: 14px;
+  margin: 0.5em;
+}
+
+.menu-opciones{
+    position: absolute;
+    top: 2px;
+}
+
+.imagen-flotante{
+  position: absolute;
+  left: 0px;
+  width: 180px;
+  bottom: 37px;
 }
 h4{
   font-size: 16px;
   font-weight: bold;
   text-transform: uppercase;
+  margin: 1em;
 }
 
-.dimension_icvu{text-align: center; padding: 1em; margin: 1%;}
+.col-md-9 span{
+  font-weight: 600;
+}
+.dimension_icvu{text-align: center; padding: 0 1em; margin: 1%;}
 
+.dimension_icvu hr{
+  width: 30px;
+  border: 1.5px solid #111;
+  margin: 0.5em auto;
+}
 
+.modal-footer{
+  border: none;
+}
+
+.rangos-radar p{
+  margin: 1em 0;
+}
 .parte-orden.primer-filtro {
   padding: 0 1em;
 }
