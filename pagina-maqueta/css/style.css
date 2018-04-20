@@ -243,20 +243,24 @@ a:hover {
 }
 @media (min-width: 576px){
   .modal-dialog {
-      width: 900px;
+      width: 700px;
   }
 }
 
 
-.modal-body p{padding: 0 10em;text-align: center; font-size: 12px;}
+.modal-body p{text-align: left; font-size: 13px;}
 
+.iconos-icvu{max-width: 70px;}
+.dimension_icvu h5{
+  font-size: 14px;
+}
 h4{
   font-size: 16px;
   font-weight: bold;
   text-transform: uppercase;
 }
 
-.dimension_icvu{text-align: center; padding: 1em;}
+.dimension_icvu{text-align: center; padding: 1em; margin: 1%;}
 
 
 .parte-orden.primer-filtro {
