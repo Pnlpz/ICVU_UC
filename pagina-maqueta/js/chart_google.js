@@ -388,7 +388,7 @@ setBackgroundWhite(canvasId);
           'containerId': 'chartRanking',
           'options': {
             //bar: { groupWidth: '25%' },
-            'width': 400,
+            'width': 450,
             'height': MAXHeight,
             'pieSliceText': 'value',
             //'legend': 'top',
@@ -419,7 +419,7 @@ setBackgroundWhite(canvasId);
                         left:150,
                         right:40, // !!! works !!!
                         bottom:20,  // !!! works !!!
-                        top:100
+                        top:50
                         },
             'tooltip': {'isHtml': true}
           },
@@ -427,7 +427,7 @@ setBackgroundWhite(canvasId);
               columns: [0, order1, {calc:AddLabel, type:'string', role: 'annotation', label:'Color'}, {calc:setColor, type:'string', role: 'style', label:'Color'}]
             }
         });
-        
+
         barChart.setOption('titleTextStyle.fontName', "Barlow" );
         /*
         tableChart  = new google.visualization.ChartWrapper({

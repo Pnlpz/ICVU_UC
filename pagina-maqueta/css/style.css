@@ -139,14 +139,7 @@ a:hover {
   background-color: white;
 }
 
-.radar-body{height:70vh; max-height: 500px;}
-.footer{
-  justify-content: center;
-  position: absolute;
-  bottom: 10px;
-  right: 33%;
-}
-
+.radar-body{height:67vh; max-height: 500px;}
 
 
 /*INICIO FILTROS ORDENAMIENTO*/
@@ -248,7 +241,7 @@ a:hover {
 }
 
 
-.modal-body p{
+.dimension_icvu p{
     font-size: 13px;
     margin: 0 0 1em 0;
   }
@@ -267,8 +260,8 @@ a:hover {
 .imagen-flotante{
   position: absolute;
   left: 0px;
-  width: 180px;
-  bottom: 37px;
+  width: 240px;
+  bottom: 24px;
 }
 h4{
   font-size: 16px;
@@ -277,7 +270,7 @@ h4{
   margin: 1em;
 }
 
-.col-md-9 span{
+.col-md-8 span{
   font-weight: 600;
 }
 .dimension_icvu{text-align: center; padding: 0 1em; margin: 1%;}
@@ -300,7 +293,11 @@ h4{
 }
 /*Estilos del Modal*/
 .modal-header{
-  padding: 15px 15px 0 15px;
+  padding: 15px 15px 0 3em;
+}
+
+.parrafo-calc-icvu{
+  padding: 0 1em;
 }
 .modal-header .close {
   margin-top: -35px;
