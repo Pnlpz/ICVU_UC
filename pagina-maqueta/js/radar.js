@@ -144,7 +144,7 @@ config = {
             ticks: {
                 beginAtZero: true,
                 max: 100,
-                fontSize: 12,
+                fontSize: 13,
                 display: true/*Cotas numéricas del radar*/
               }
         }

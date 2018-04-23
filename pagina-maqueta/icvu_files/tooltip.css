@@ -14,7 +14,7 @@
   background-color: rgba(0, 0, 0, 0.8) !important;
   position: absolute;
   box-shadow: none !important;
-  padding: 0;
+  padding: 0 0.2em !important;
   -moz-box-shadow: none !important;
   -webkit-box-shadow: none !important;
   z-index: 10000;
