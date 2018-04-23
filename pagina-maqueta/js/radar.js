@@ -38,8 +38,10 @@ function actualizar(icvu, lugar, datos, titulo){
         console.log(":> "+chart.data.datasets[0]);
         chart.data.datasets[0].data = datos;
         chart.data.datasets[0].label = titulo;
-
+        /************************************************/
+        // REVISAR AQUI PARA CAMBIAR LA FUENTE
           chart.options.title.text = titulo+ ", valor icvu "+icvu+" (lugar "+lugar+"/93)";
+        /************************************************/
           chart.update();
       }
 

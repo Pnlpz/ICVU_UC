@@ -508,12 +508,13 @@ setBackgroundWhite(canvasId);
                       var originalRow = data.getFilteredRows([{column: 0, value: id }]);
                       originalRow = parseInt(originalRow);
                       var originalData = data.getFormattedValue(originalRow, 1);
-                      var originalNameData = data.getFormattedValue(originalRow, 0);
+                      //var originalNameData = data.getFormattedValue(originalRow, 0);
+                      var comuna = data.getFormattedValue(originalRow, 0);
 
                       var optionsTool = {
                         width: 600,
                         height: 600,
-                        title: 'Detalle para ' + originalNameData,
+                        title: 'Detalle para ' + comuna,
                         colors: ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6'],
                         animation:{
                           duration: 1000,
@@ -562,7 +563,8 @@ setBackgroundWhite(canvasId);
                       Ncols = viewDetail.getNumberOfColumns();
                       Nrows = viewDetail.getNumberOfRows();
 
-                      viewDetail.setColumns([0,7,8,9,10,11,12,13]); // AQUIIII INDICE DE LAS DIMENSIONES
+                      //viewDetail.setColumns([0,7,8,9,10,11,12,13]); // AQUIIII INDICE DE LAS DIMENSIONES
+                      viewDetail.setColumns([0,7,8,9,10,11,12,13, 17]); // AQUIIII INDICE DE LAS DIMENSIONES
 
 
 
@@ -584,14 +586,20 @@ setBackgroundWhite(canvasId);
                       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
                       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
                       var DATOS_EN_ARREGLO = []; // ESTO ES LO QUE TIENES QUE TOMAR
-                      for (var i = 2; i < rawData.getNumberOfColumns(); i++) {
+                      for (var i = 2; i < rawData.getNumberOfColumns() -1; i++) {
                         DATOS_EN_ARREGLO.push(rawData.getValue(0, i));
                       }
-                      console.log("*** COMUNA: "+ originalNameData);
+
+                      for (var i = 0; i < rawData.getNumberOfColumns(); i++) {
+                        console.log("I: "+i+", "+rawData.getValue(0, i));
+                      }
+
+                      console.log("*** COMUNA: "+ comuna);
                       icvu = rawData.getValue(0, 1);
-                      position = 5;
-                      actualizar(icvu, position, DATOS_EN_ARREGLO, originalNameData);
+                      position = rawData.getValue(0, 8);
+                      actualizar(icvu, position, DATOS_EN_ARREGLO, comuna);
                       // console.log("* TITULO: "+ theTitle);
+                      console.log("position: "+ position);
                       console.log("DATOS_EN_ARREGLO: "+ DATOS_EN_ARREGLO);
                       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
                       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
