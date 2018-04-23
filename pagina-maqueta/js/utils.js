@@ -8,7 +8,8 @@ window.chartColors = {
 	blue: 'rgb(54, 162, 235)',
 	purple: '#9E005D',
 	grey: 'rgb(201, 203, 207)',
-	white: '#ffffff'
+	white: '#ffffff',
+	custom_grey: 'rgb(57, 57, 56)'
 };
 
 (function(global) {

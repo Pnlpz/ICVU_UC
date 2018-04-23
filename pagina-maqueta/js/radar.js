@@ -88,14 +88,19 @@ var randomScalingFactor = function() {
 var beginAtZero=[0,0,0,0,0,0,0];
 
 var colorsRanges = [
+  '#C1272D',
+  '#FBB03B',
+  '#22B573'
+  /*
 "#BEBEFF",
 "#5C5CFF",
 "#1B1464"
+*/
 ];
 
 var color = Chart.helpers.color;
 var datasets_min = {
-            label: 'mínimo del Rango Promedio',
+            label: 'Rango Inferior',
             backgroundColor: color(window.chartColors.grey).alpha(0).rgbString(),
             //backgroundColor: colorsRanges[0],
             borderColor: colorsRanges[0],
@@ -103,14 +108,23 @@ var datasets_min = {
             pointBackgroundColor: colorsRanges[0],
             data: [40,40,40,40,40,40,40]
         };
-var datasets_max = {
-            label: 'máximo del Rango Promedio',
+var datasets_avg = {
+            label: 'Rango Promedio',
             backgroundColor: color(window.chartColors.grey).alpha(0).rgbString(),
             //backgroundColor: colorsRanges[1],
             borderColor: colorsRanges[1],
             //pointBackgroundColor: window.chartColors.grey,
             pointBackgroundColor: colorsRanges[1],
             data: [70,70,70,70,70,70,70]
+        };
+var datasets_max = {
+            label: 'Rango Superior',
+            backgroundColor: color(window.chartColors.grey).alpha(0).rgbString(),
+            //backgroundColor: colorsRanges[1],
+            borderColor: colorsRanges[2],
+            //pointBackgroundColor: window.chartColors.grey,
+            pointBackgroundColor: colorsRanges[2],
+            data: [100,100,100,100,100,100,100]
         };
 config = {
     type: 'radar',
@@ -123,12 +137,16 @@ config = {
         'Conectividad y Movilidad','Salud y Medio Ambiente','Vivienda y Entorno'], /*, 'CM1', 'CM3', 'CM5'*/
         datasets: [{
             label: titulo,
-            backgroundColor: color(window.chartColors.purple).alpha(0.9).rgbString(),
-            borderColor: window.chartColors.purple,
-            pointBackgroundColor: window.chartColors.purple,
+            //backgroundColor: color(window.chartColors.grey).alpha(0.6).rgbString(),
+            //borderColor: window.chartColors.grey,
+            //pointBackgroundColor: window.chartColors.grey,
+            backgroundColor: color(window.chartColors.custom_grey).alpha(0.6).rgbString(),
+            borderColor: window.chartColors.custom_grey,
+            pointBackgroundColor: window.chartColors.custom_grey,
             data:datos
         },
         datasets_min,
+        datasets_avg,
         datasets_max
       ]
     },
