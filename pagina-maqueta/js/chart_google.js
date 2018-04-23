@@ -22,9 +22,14 @@ var order1 = 0;
 var theTitle = '';
 var view;
 var colorsRanges = [
+/*
   '#bebeff',
   '#5c5cff',
   '#1b1464'
+  */
+  '#C1272D',
+  '#FBB03B',
+  '#22B573'
   ];
 /*Duda: ¿ex-colores del barchart?
 ["#e055a8",
