@@ -361,7 +361,7 @@ setBackgroundWhite(canvasId);
             //'filterColumnLabel': 'Localización',
           }
         });
-
+/* ESTO ES LO PENDIENTE A SUBIR  -> **/
         // Create a CategoryFilter, passing some options
         var DistribucionFilter = new google.visualization.ControlWrapper({
           'controlType': 'CategoryFilter',
@@ -376,10 +376,19 @@ setBackgroundWhite(canvasId);
                 caption : 'Elige Zona',
                 sortValues: false
             },
+            values: ["Norte", "Centro", "Sur"],
+        // use month name
+        useFormattedValue: true,
+      // state needs formatted value
+      /*
+      state: {
+        selectedValues: [data.getFormattedValue(selectedRow, 0)]
+      }*/
             //'filterColumnLabel': 'Zona',
           }
         });
 
+/* ESTO ES LO PENDIENTE A SUBIR  <- **/
 
         // Create a pie chart, passing some options
         barChart = new google.visualization.ChartWrapper({
@@ -427,7 +436,7 @@ setBackgroundWhite(canvasId);
               columns: [0, order1, {calc:AddLabel, type:'string', role: 'annotation', label:'Color'}, {calc:setColor, type:'string', role: 'style', label:'Color'}]
             }
         });
-        
+
         barChart.setOption('titleTextStyle.fontName', "Barlow" );
         /*
         tableChart  = new google.visualization.ChartWrapper({
