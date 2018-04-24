@@ -10724,7 +10724,7 @@ defaults._set('global', {
 	onClick: null,
 	defaultColor: 'rgba(0,0,0,0.1)',
 	defaultFontColor: '#666',
-	defaultFontFamily: "''Barlow', sans-serif",
+	defaultFontFamily: "Barlow",
 	defaultFontSize: 12,
 	defaultFontStyle: 'normal',
 	showLines: true,
@@ -13272,7 +13272,7 @@ module.exports = function(Chart) {
 				ctx.textAlign = vm._titleAlign;
 				ctx.textBaseline = 'top';
 
-				var titleFontSize = vm.titleFontSize;
+				var titleFontSize = vm.titleFontSize; //*Font Size de los tooltip
 				var titleSpacing = vm.titleSpacing;
 
 				ctx.fillStyle = mergeOpacity(vm.titleFontColor, opacity);
@@ -13537,7 +13537,7 @@ module.exports = function(Chart) {
 		 * @returns {Point} the tooltip position
 		 */
 		nearest: function(elements, eventPosition) {
-			var x = eventPosition.x; 
+			var x = eventPosition.x;
 			var y = eventPosition.y;
 			var minDistance = Number.POSITIVE_INFINITY;
 			var i, len, nearestElement;

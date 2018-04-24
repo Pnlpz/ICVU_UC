@@ -229,7 +229,7 @@ setBackgroundWhite(canvasId);
     titleTextStyle: {
         color: "#00cc00",    // any HTML string color ('red', '#cc00cc')
         fontName: "Barlow", // i.e. 'Times New Roman'
-        //fontSize: <number>, // 12, 18 whatever you want (don't specify px)
+        fontSize: 12, // 12, 18 whatever you want (don't specify px)
         //bold: <boolean>,    // true or false
         //italic: <boolean>   // true of false
     }
@@ -416,7 +416,7 @@ setBackgroundWhite(canvasId);
     titleTextStyle: {
         color: "#00cc00",    // any HTML string color ('red', '#cc00cc')
         fontName: "Barlow", // i.e. 'Times New Roman'
-        //fontSize: <number>, // 12, 18 whatever you want (don't specify px)
+        fontSize: 12, // 12, 18 whatever you want (don't specify px)
         //bold: <boolean>,    // true or false
         //italic: <boolean>   // true of false
     }

@@ -3,6 +3,9 @@ var config;
 // DOCUMENTACION DE LA LIBRERIA
 // http://www.chartjs.org/docs/latest/charts/radar.html
 /******************************************************************/
+
+var image = document.getElementById('source');
+
 function actualizar(icvu, lugar, datos, titulo){
 /*
       config.data.datasets.forEach(function(dataset) {
@@ -77,6 +80,7 @@ var randomScalingFactor = function() {
     return Math.round(Math.random() * 100);
 };
 
+
 /////////////////////////////////
 /*var datos = [
 [1,2,3,4,5],
@@ -104,6 +108,7 @@ var color = Chart.helpers.color;
 var datasets_min = {
             label: 'Rango Inferior',
             backgroundColor: color(window.chartColors.grey).alpha(0).rgbString(),
+            fontSize: 12,
             //backgroundColor: colorsRanges[0],
             borderColor: colorsRanges[0],
             //pointBackgroundColor: window.chartColors.grey,
@@ -113,6 +118,7 @@ var datasets_min = {
 var datasets_avg = {
             label: 'Rango Promedio',
             backgroundColor: color(window.chartColors.grey).alpha(0).rgbString(),
+            fontSize: 12,
             //backgroundColor: colorsRanges[1],
             borderColor: colorsRanges[1],
             //pointBackgroundColor: window.chartColors.grey,
@@ -122,6 +128,7 @@ var datasets_avg = {
 var datasets_max = {
             label: 'Rango Superior',
             backgroundColor: color(window.chartColors.grey).alpha(0).rgbString(),
+            fontSize: 12,
             //backgroundColor: colorsRanges[1],
             borderColor: colorsRanges[2],
             //pointBackgroundColor: window.chartColors.grey,
@@ -154,18 +161,26 @@ config = {
     },
     options: {
         legend: {
-            position: 'top',
+            position: 'bottom',
+            fullWidth: true,
+            labels: {
+                fontSize: 13,
+                fullWidth: true,
+                /*padding: 40,*/
+            }
         },
         title: {
             display: true,
-            text: ' '
+            text: 'Selecciona una Comuna',
+            fontSize: 18,
+            fullWidth: true,
         },
         scale: {
-            ticks: {
+            ticks: { /*Cotas numéricas del radar*/
                 beginAtZero: true,
                 max: 100,
                 fontSize: 13,
-                display: true/*Cotas numéricas del radar*/
+                display: true
               }
         }
     }
