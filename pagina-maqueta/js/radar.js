@@ -4,8 +4,6 @@ var config;
 // http://www.chartjs.org/docs/latest/charts/radar.html
 /******************************************************************/
 
-var image = document.getElementById('source');
-
 function actualizar(icvu, lugar, datos, titulo){
 /*
       config.data.datasets.forEach(function(dataset) {
@@ -108,7 +106,6 @@ var color = Chart.helpers.color;
 var datasets_min = {
             label: 'Rango Inferior',
             backgroundColor: color(window.chartColors.grey).alpha(0).rgbString(),
-            fontSize: 12,
             //backgroundColor: colorsRanges[0],
             borderColor: colorsRanges[0],
             //pointBackgroundColor: window.chartColors.grey,
@@ -118,7 +115,6 @@ var datasets_min = {
 var datasets_avg = {
             label: 'Rango Promedio',
             backgroundColor: color(window.chartColors.grey).alpha(0).rgbString(),
-            fontSize: 12,
             //backgroundColor: colorsRanges[1],
             borderColor: colorsRanges[1],
             //pointBackgroundColor: window.chartColors.grey,
@@ -128,7 +124,6 @@ var datasets_avg = {
 var datasets_max = {
             label: 'Rango Superior',
             backgroundColor: color(window.chartColors.grey).alpha(0).rgbString(),
-            fontSize: 12,
             //backgroundColor: colorsRanges[1],
             borderColor: colorsRanges[2],
             //pointBackgroundColor: window.chartColors.grey,
@@ -163,9 +158,10 @@ config = {
         legend: {
             position: 'bottom',
             fullWidth: true,
+            padding: 40,
             labels: {
                 fontSize: 13,
-                fullWidth: true,
+                fullWidth: true, /*Se supone que ésto debería funcionar, pero no*/
                 /*padding: 40,*/
             }
         },

@@ -135,11 +135,10 @@ a:hover {
 }
 
 #spider{
-  margin: 1em 0;
   background-color: white;
 }
 
-.radar-body{height:67vh; max-height: 500px;}
+.radar-body{/*height:67vh; max-height: 500px;*/}
 
 
 /*INICIO FILTROS ORDENAMIENTO*/
@@ -227,6 +226,13 @@ a:hover {
 }
 
 #dashboard_div{display:none;}
+
+.footer{
+  position: absolute;
+  box-sizing: border-box;
+  width: 89%;
+  bottom: 20px;
+}
 
 /*Modificación para Modal de bootstrap*/
 .btn-primary {
