@@ -36,9 +36,9 @@ function actualizar(icvu, lugar, datos, titulo){
         //removeData(chart);
         x = chart.data.datasets.length;
         console.log("X> "+x);
-        console.log(":> "+chart.data.datasets[0]);
-        chart.data.datasets[0].data = datos;
-        chart.data.datasets[0].label = titulo;
+        console.log(":> "+chart.data.datasets[3]);
+        chart.data.datasets[3].data = datos;
+        chart.data.datasets[3].label = titulo;
         /************************************************/
         // REVISAR AQUI PARA CAMBIAR LA FUENTE
           chart.options.title.text = titulo+ ", valor icvu "+icvu+" (lugar "+lugar+"/93)";
@@ -90,11 +90,16 @@ var randomScalingFactor = function() {
 
 /////////////////////////////////
 var beginAtZero=[0,0,0,0,0,0,0];
-
+alpha = 0.5;
 var colorsRanges = [
-  '#C1272D',
+'rgba(193, 39, 45, '+alpha+')',
+'rgba(251, 176, 59, '+alpha+')',
+'rgba(34, 181, 115, '+alpha+')'
+
+  /*'#C1272D',
   '#FBB03B',
   '#22B573'
+  */
   /*
 "#BEBEFF",
 "#5C5CFF",
@@ -110,7 +115,9 @@ var datasets_min = {
             borderColor: colorsRanges[0],
             //pointBackgroundColor: window.chartColors.grey,
             pointBackgroundColor: colorsRanges[0],
-            data: [40,40,40,40,40,40,40]
+            //data: [40,40,40,40,40,40,40]
+            //data: [28.92, 13.06, 42.09, 57.71, 55.63, 33.69, 42.75]
+            data: [28.92, 13.06, 42.09, 57.71, 55.63, 33.69]
         };
 var datasets_avg = {
             label: 'Rango Promedio',
@@ -119,7 +126,8 @@ var datasets_avg = {
             borderColor: colorsRanges[1],
             //pointBackgroundColor: window.chartColors.grey,
             pointBackgroundColor: colorsRanges[1],
-            data: [70,70,70,70,70,70,70]
+            //data: [70,70,70,70,70,70,70]
+            data: [41.02, 25.46, 49.44, 75.10, 65.24, 48.30]
         };
 var datasets_max = {
             label: 'Rango Superior',
@@ -128,7 +136,12 @@ var datasets_max = {
             borderColor: colorsRanges[2],
             //pointBackgroundColor: window.chartColors.grey,
             pointBackgroundColor: colorsRanges[2],
-            data: [100,100,100,100,100,100,100]
+            //data: [100,100,100,100,100,100,100]
+            data: [75.1309663453, 59.2774690646, 65.4363055131, 99.4124815535, 81.4680047065, 89.4304629718]
+            
+
+
+
         };
 config = {
     type: 'radar',
@@ -139,7 +152,11 @@ config = {
         //labels: ['ICVU','Condiciones Laborales','Ambiente de Negocios','Condiciones Socio Culturales','Conectividad y Movilidad','Salud y Medio Ambiente','Vivienda y Entorno'], /*, 'CM1', 'CM3', 'CM5'*/
         labels: ['Condiciones Laborales','Ambiente de Negocios','Condiciones Socio Culturales',
         'Conectividad y Movilidad','Salud y Medio Ambiente','Vivienda y Entorno'], /*, 'CM1', 'CM3', 'CM5'*/
-        datasets: [{
+        datasets: [
+        datasets_min,
+        datasets_avg,
+        datasets_max,
+        {
             label: titulo,
             //backgroundColor: color(window.chartColors.grey).alpha(0.6).rgbString(),
             //borderColor: window.chartColors.grey,
@@ -148,10 +165,7 @@ config = {
             borderColor: window.chartColors.custom_grey,
             pointBackgroundColor: window.chartColors.custom_grey,
             data:datos
-        },
-        datasets_min,
-        datasets_avg,
-        datasets_max
+        }
       ]
     },
     options: {
