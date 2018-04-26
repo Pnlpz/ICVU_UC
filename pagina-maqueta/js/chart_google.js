@@ -344,7 +344,7 @@ setBackgroundWhite(canvasId);
                 allowTyping: false,
                 allowMultiple: false,
                 height: 100,
-                caption : 'Mostrar ambas'
+                caption : 'Metropolitanas y no Metropolitanas'
             }
             //'filterColumnLabel': 'Metropolitana',
           }
@@ -412,29 +412,27 @@ setBackgroundWhite(canvasId);
               'minValue': '0',
             'showTextEvery': 1,
             'gridlines':{'count': 0},
-
-    titleTextStyle: {
-        color: "#00cc00",    // any HTML string color ('red', '#cc00cc')
-        fontName: "Barlow", // i.e. 'Times New Roman'
-        fontSize: 12, // 12, 18 whatever you want (don't specify px)
-        //bold: <boolean>,    // true or false
-        //italic: <boolean>   // true of false
-    }
-
+            titleTextStyle: {
+                color: "#00cc00",    // any HTML string color ('red', '#cc00cc')
+                fontName: "Barlow", // i.e. 'Times New Roman'
+                fontSize: 12, // 12, 18 whatever you want (don't specify px)
+                //bold: <boolean>,    // true or false
+                //italic: <boolean>   // true of false
+            }
           },
 
             'animation':{
               'duration': '1000',
               'easing': 'out',
             },
-                        chartArea: {
-                        'width': '100%',
-                        'height': '80%',
-                        left:150,
-                        right:40, // !!! works !!!
-                        bottom:20,  // !!! works !!!
-                        top:50
-                        },
+            chartArea: {
+            'width': '100%',
+            //'height': '80%',
+            left:150,
+            right:40, // !!! works !!!
+            bottom:20,  // !!! works !!!
+            top:50
+            },
             'tooltip': {'isHtml': true}
           },
             view: {
