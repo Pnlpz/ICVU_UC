@@ -344,7 +344,7 @@ setBackgroundWhite(canvasId);
                 allowTyping: false,
                 allowMultiple: false,
                 height: 100,
-                caption : 'Elige si es Zona Metropolitana'
+                caption : 'Mostrar ambas'
             }
             //'filterColumnLabel': 'Metropolitana',
           }
@@ -361,7 +361,7 @@ setBackgroundWhite(canvasId);
                 allowTyping: false,
                 allowMultiple: false,
                 height: 100,
-                caption : 'Elige Localización'
+                caption : 'Cualquiera'
             }
             //'filterColumnLabel': 'Localización',
           }
@@ -378,7 +378,7 @@ setBackgroundWhite(canvasId);
                 allowTyping: false,
                 allowMultiple: false,
                 height: 100,
-                caption : 'Elige Zona',
+                caption : 'Cualquiera',
                 sortValues: false
             },
             values: ["Norte", "Centro", "Sur"],
