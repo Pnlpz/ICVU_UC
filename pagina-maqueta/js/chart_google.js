@@ -209,7 +209,7 @@ setBackgroundWhite(canvasId);
 }); // FIN }).then(function () {
 
 
-  var MAXHeight = 3000;
+  var MAXHeight = 3046;
   /// Dashboard --->
   var data;
   var dashboard;
@@ -344,7 +344,7 @@ setBackgroundWhite(canvasId);
                 allowTyping: false,
                 allowMultiple: false,
                 height: 100,
-                caption : 'Elige si es Zona Metropolitana'
+                caption : 'Metropolitanas y no Metropolitanas'
             }
             //'filterColumnLabel': 'Metropolitana',
           }
@@ -361,7 +361,7 @@ setBackgroundWhite(canvasId);
                 allowTyping: false,
                 allowMultiple: false,
                 height: 100,
-                caption : 'Elige Localización'
+                caption : 'Cualquiera'
             }
             //'filterColumnLabel': 'Localización',
           }
@@ -378,7 +378,7 @@ setBackgroundWhite(canvasId);
                 allowTyping: false,
                 allowMultiple: false,
                 height: 100,
-                caption : 'Elige Zona',
+                caption : 'Cualquiera',
                 sortValues: false
             },
             values: ["Norte", "Centro", "Sur"],
@@ -412,29 +412,26 @@ setBackgroundWhite(canvasId);
               'minValue': '0',
             'showTextEvery': 1,
             'gridlines':{'count': 0},
-
-    titleTextStyle: {
-        color: "#00cc00",    // any HTML string color ('red', '#cc00cc')
-        fontName: "Barlow", // i.e. 'Times New Roman'
-        fontSize: 12, // 12, 18 whatever you want (don't specify px)
-        //bold: <boolean>,    // true or false
-        //italic: <boolean>   // true of false
-    }
-
+            titleTextStyle: {
+                color: "#00cc00",    // any HTML string color ('red', '#cc00cc')
+                fontName: "Barlow", // i.e. 'Times New Roman'
+                fontSize: 12, // 12, 18 whatever you want (don't specify px)
+                //bold: <boolean>,    // true or false
+                //italic: <boolean>   // true of false
+            }
           },
 
             'animation':{
               'duration': '1000',
               'easing': 'out',
             },
-                        chartArea: {
-                        'width': '100%',
-                        'height': '80%',
-                        left:150,
-                        right:40, // !!! works !!!
-                        bottom:20,  // !!! works !!!
-                        top:50
-                        },
+            chartArea: {
+            'width': '100%',
+            left:150,
+            right:40, // !!! works !!!
+            bottom:20,  // !!! works !!!
+            top:50
+            },
             'tooltip': {'isHtml': true}
           },
             view: {
@@ -443,28 +440,6 @@ setBackgroundWhite(canvasId);
         });
 
         barChart.setOption('titleTextStyle.fontName', "Barlow" );
-        /*
-        tableChart  = new google.visualization.ChartWrapper({
-          'chartType': 'Table',
-          'containerId': 'tableRanking',
-          'options': {
-            'width': 600,
-            'height': MAXHeight,
-            'pieSliceText': 'value',
-            'legend': 'right',
-            title: 'Ranking ICVU 2017 para '+ theTitle,
-            'hAxis': {'minValue': '0'},
-            'animation':{
-              'duration': '1000',
-              'easing': 'out',
-            },
-            'tooltip': {'isHtml': true}
-          },
-            view: {
-              columns: [0, order1]
-            }
-        });
-        */
 
         var selection;
         // Instantiate and draw our chart, passing in some options.
@@ -628,17 +603,13 @@ setBackgroundWhite(canvasId);
 
 Ncommunes = 93;
 
-//chartHeight = N*MAXHeight/Ncommunes;
-//chartHeight = MAXHeight - (Ncommunes-N)*26;
-chartHeight = 20 + (N)*25;
-min = 400
-if(chartHeight < min)
-    chartHeight = min;
-options.height = chartHeight;
+chartHeight = 70 + (N)*32;
+    options.height = chartHeight;
 
-barChart.getOption('height')
+    barChart.getOption('height')
     barChart.setOption('height', chartHeight);
-    console.log("N: "+N + ", barChart: "+ barChart.getOptions()  );
+    console.log("N: "+N + ", barChart: "+ barChart.getOptions().height  );
+    console.log("--> chartHeight: "+chartHeight);
 
         //dashboard.draw(data, options);
   });
