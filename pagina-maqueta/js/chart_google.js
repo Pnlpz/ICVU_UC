@@ -209,7 +209,7 @@ setBackgroundWhite(canvasId);
 }); // FIN }).then(function () {
 
 
-  var MAXHeight = 3000;
+  var MAXHeight = 3046;
   /// Dashboard --->
   var data;
   var dashboard;
@@ -427,7 +427,6 @@ setBackgroundWhite(canvasId);
             },
             chartArea: {
             'width': '100%',
-            //'height': '80%',
             left:150,
             right:40, // !!! works !!!
             bottom:20,  // !!! works !!!
@@ -604,18 +603,12 @@ setBackgroundWhite(canvasId);
 
 Ncommunes = 93;
 
-//chartHeight = N*MAXHeight/Ncommunes;
-chartHeight = MAXHeight - (Ncommunes-N)*25;
-//chartHeight = 20 + (N)*25;
-//min = 400
-//if(chartHeight < min)
-    //chartHeight = min;
-  //chartHeight = "100%";
+chartHeight = 70 + (N)*32;
     options.height = chartHeight;
 
     barChart.getOption('height')
     barChart.setOption('height', chartHeight);
-    console.log("N: "+N + ", barChart: "+ barChart.getOptions()  );
+    console.log("N: "+N + ", barChart: "+ barChart.getOptions().height  );
     console.log("--> chartHeight: "+chartHeight);
 
         //dashboard.draw(data, options);
