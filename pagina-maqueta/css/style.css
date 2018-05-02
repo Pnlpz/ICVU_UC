@@ -136,8 +136,15 @@ a:hover {
 
 #spider{
   background-color: white;
+  position: relative;
 }
 
+.leyenda{
+  position: absolute;
+  right: 30px;
+  top: 50px;
+  font-size: 10px;
+}
 .radar-body{/*height:67vh; max-height: 500px;*/}
 
 
@@ -275,7 +282,7 @@ h4{
   margin: 1em;
 }
 
-.col-md-8 span{
+.col-lg-8 span{
   font-weight: 600;
 }
 .dimension_icvu{text-align: center; padding: 0 1em; margin: 1%;}
@@ -310,4 +317,30 @@ h4{
   border: none;
   font-size: 30px;
   float: right;
+}
+
+.mensaje-nodesktop{
+  display: none;
+}
+
+
+@media (max-width: 1100px){
+  .col-lg-8, .col-lg-5, .col-lg-3, .definicion{
+    display: none;
+  }
+  body{
+    background-color: #222;
+  }
+  .container{
+    background-color: #222;
+  }
+  .mensaje-nodesktop{
+    display: block;
+    color: white;
+    padding: 2em;
+    background-color: #222;
+    width: 70vw;
+    margin: 30vh auto;
+
+  }
 }

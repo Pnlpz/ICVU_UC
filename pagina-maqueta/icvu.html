@@ -50,9 +50,17 @@ GUARDAR O IMPRIMIR CHARTS (EXPORT OPTIONS-REVISAR):
 https://www.amcharts.com/kbase/exporting-charts-and-maps-to-images-or-pdf/
 -->
 <div class="container" >
+  <div class="mensaje-nodesktop">
+    <h2>ICVU 2018</h2>
+    <hr>
+    <p>
+      Para mejorar tu experiencia en el sitio, te recomendamos ingresar desde un computador.
+    </p>
+  </div>
   <div class="row">
+
     <!--Inicio Filtros para ordenamiento-->
-    <div class="col-md-3" id="ordenamiento">
+    <div class="col-lg-3" id="ordenamiento">
 
         <div class="icvu-indicador">
           <h1 id="titulo">ICVU</h1>
@@ -133,7 +141,7 @@ https://www.amcharts.com/kbase/exporting-charts-and-maps-to-images-or-pdf/
         </div>
     </div>
 
-      <div class="col-md-5 div-graficos">
+      <div class="col-lg-5 div-graficos">
         <div class="borde"  id="scrolleable">
           <!--h3>Ranking comunas ICVU</h3>
           <h5>Gráficos desarrollados en base al cálculo ICVU 2018</h5-->
@@ -145,10 +153,11 @@ https://www.amcharts.com/kbase/exporting-charts-and-maps-to-images-or-pdf/
           <!--  </div>Fin borde -->
         </div>
       </div>
-      <div class="col-md-5 ultimo div-graficos" >
+      <div class="col-lg-5 ultimo div-graficos" >
           <div class="borde" id="scrolleable">
             <div class="radar-body">
               <canvas id="spider"></canvas>
+              <p class="leyenda"> Hola, soy lo que necesitas :o</p>
             </div>
               <div class="footer">
                 <!--button  id="button2" type="button" class="btn">Exportar</button-->
@@ -170,7 +179,7 @@ https://www.amcharts.com/kbase/exporting-charts-and-maps-to-images-or-pdf/
 
     <!--Div that will hold the dashboard-->
     <div class="row">
-      <div class="col-md-2" id="data-vista">
+      <div class="col-lg-2" id="data-vista">
         <button>
         EXPORTAR Ranking
         </button>
@@ -199,32 +208,32 @@ https://www.amcharts.com/kbase/exporting-charts-and-maps-to-images-or-pdf/
           </div>
           <div class="modal-body">
             <div class="row">
-              <div class="col-md-11 col-md-offset-1">
+              <div class="col-lg-11 col-lg-offset-1">
                 <p>
                   Las condiciones de vida de la población generadas a partir de las actuaciones y dinámicas de transformación del espacio urbano inducidas por actores públicos,
                 privados y la sociedad civil, medidas y comparadas con información estadística provistas por fuentes oficiales públicas y privadas lo más actualizadas posibles.</p>
               </div>
             </div>
             <div class="row">
-              <div class="col-md-11">
+              <div class="col-lg-11">
                 <hr>
                 <h4>El ICVU se construye por medio de la medición de 6 dimensiones:</h4>
               </div>
             </div>
             <div class="row">
-              <div class="col-md-4 dimension_icvu">
+              <div class="col-lg-4 dimension_icvu">
                 <img class="iconos-icvu" src="iconos-svg/vivienda-entorno.svg" alt="Vivienda y Entorno" />
                 <h5>Vivienda y Entorno</h5>
                 <hr>
                 <p> Variables que dan cuenta de la calidad de la vivienda, nivel de hacinamiento e inversión en el espacio público más próximo para sus residentes.  </p>
               </div>
-              <div class="col-md-4 dimension_icvu">
+              <div class="col-lg-4 dimension_icvu">
                 <img class="iconos-icvu" src="iconos-svg/condiciones-socioculturales.svg" alt="Condiciones socioculturales" />
                 <h5>Condiciones Socioculturales</h5>
                 <hr>
                 <p>Variables relativas al nivel de participación de la población en organizaciones sociales, así como a los niveles de seguridad y educación que afectan la formación de capital social. </p>
               </div>
-              <div class="col-md-4 dimension_icvu">
+              <div class="col-lg-4 dimension_icvu">
                 <img class="iconos-icvu" src="iconos-svg/ambiente-negocios.svg" alt="Ambiente de negocios" />
                   <h5>Ambiente de Negocios</h5>
                   <hr>
@@ -233,21 +242,21 @@ https://www.amcharts.com/kbase/exporting-charts-and-maps-to-images-or-pdf/
               </div>
             </div>
             <div class="row">
-              <div class="col-md-4 dimension_icvu">
+              <div class="col-lg-4 dimension_icvu">
                 <img class="iconos-icvu" src="iconos-svg/condicion-laboral.svg" alt="Ambiente laboral" />
                   <h5>Condiciones Laborales</h5>
                   <hr>
                   <p> Variables que miden las facilidades de acceso al mercado laboral, ingresos, capacitaciones, desarrollo profesional y protección social de los residentes.</p>
 
               </div>
-              <div class="col-md-4 dimension_icvu">
+              <div class="col-lg-4 dimension_icvu">
                 <img class="iconos-icvu" src="iconos-svg/salud-medio-ambiente.svg" alt="Condiciones de Salud" />
                 <h5>Condiciones de Salud</h5>
                 <hr>
                 <p>  Condiciones de salud de la población en relación a enfermedades que presentan una mayor correlación con las condiciones ambientales y su medio antrópico.
                 </p>
               </div>
-              <div class="col-md-4 dimension_icvu">
+              <div class="col-lg-4 dimension_icvu">
                 <img class="iconos-icvu" src="iconos-svg/conectividad-movilidad.svg" alt="Conectividad y movilidad" />
                 <h5>Conectividad y Movilidad</h5>
                 <hr>
@@ -256,23 +265,14 @@ https://www.amcharts.com/kbase/exporting-charts-and-maps-to-images-or-pdf/
               </div>
 
             </div>
+    
             <div class="row">
-              <hr>
-              <div class="col-md-13">
-                <h4>¿Cómo se calcula el Indice de Calidad de Vida Urbana (ICVU) ?</h4>
-                <p class="parrafo-calc-icvu">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-              </div>
-
-            </div>
-            <div class="row">
-              <div class="col-md-11">
+              <div class="col-lg-11">
                 <hr>
                 <h4>¿Cuáles son los rangos promedio?</h4>
 
               </div>
-              <div class="col-md-8 col-md-offset-4 rangos-radar">
+              <div class="col-lg-8 col-lg-offset-4 rangos-radar">
                 <span>Rango Promedio</span>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc molestie nisi et tortor hendrerit vestibulum. Nunc condimentum risus in sollicitudin congue. Sed ut purus non.
                 </p>
