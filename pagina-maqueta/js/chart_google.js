@@ -441,28 +441,6 @@ setBackgroundWhite(canvasId);
         });
 
         barChart.setOption('titleTextStyle.fontName', "Barlow" );
-        /*
-        tableChart  = new google.visualization.ChartWrapper({
-          'chartType': 'Table',
-          'containerId': 'tableRanking',
-          'options': {
-            'width': 600,
-            'height': MAXHeight,
-            'pieSliceText': 'value',
-            'legend': 'right',
-            title: 'Ranking ICVU 2017 para '+ theTitle,
-            'hAxis': {'minValue': '0'},
-            'animation':{
-              'duration': '1000',
-              'easing': 'out',
-            },
-            'tooltip': {'isHtml': true}
-          },
-            view: {
-              columns: [0, order1]
-            }
-        });
-        */
 
         var selection;
         // Instantiate and draw our chart, passing in some options.
@@ -627,16 +605,18 @@ setBackgroundWhite(canvasId);
 Ncommunes = 93;
 
 //chartHeight = N*MAXHeight/Ncommunes;
-//chartHeight = MAXHeight - (Ncommunes-N)*26;
-chartHeight = 20 + (N)*25;
-min = 400
-if(chartHeight < min)
-    chartHeight = min;
-options.height = chartHeight;
+chartHeight = MAXHeight - (Ncommunes-N)*25;
+//chartHeight = 20 + (N)*25;
+//min = 400
+//if(chartHeight < min)
+    //chartHeight = min;
+  //chartHeight = "100%";
+    options.height = chartHeight;
 
-barChart.getOption('height')
+    barChart.getOption('height')
     barChart.setOption('height', chartHeight);
     console.log("N: "+N + ", barChart: "+ barChart.getOptions()  );
+    console.log("--> chartHeight: "+chartHeight);
 
         //dashboard.draw(data, options);
   });
