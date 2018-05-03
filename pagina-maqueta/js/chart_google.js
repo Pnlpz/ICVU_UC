@@ -604,16 +604,16 @@ google.visualization.events.addListener(MetropolitanaFilter, 'statechange', func
 
     var div=document.getElementById(id);
     h = h + "px";
-
+/*
     var w=parseInt(div.style.width);
     if($(this).width() >= 1200){
         w = 1200 + "px";
     }else{
         w = ($(this).width()-30) + "px";
-    }
+    }*/
 
     $(div).height(h);
-    $(div).width(w);
+    //$(div).width(w);
 
 }
 
