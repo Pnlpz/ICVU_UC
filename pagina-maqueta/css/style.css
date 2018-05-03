@@ -1,6 +1,6 @@
 body{font-family: 'Barlow', sans-serif; background-color: #eee;}
 
-.row{margin:0;}
+.row{margin:0 0 8px 0}
 .container{margin: 0 auto; padding: 0; max-width: 100%; background-color: white; position: relative;}
 
 a:hover {
@@ -23,6 +23,7 @@ a:hover {
   padding: 1em 2em 2em 2em;
   font-size: 12px;
   box-sizing: border-box;
+  max-width: 300px;
   max-height: 800px;
   min-height: 700px;
 }
@@ -50,15 +51,17 @@ a:hover {
 .icvu-indicador{padding: 0em;}
 .bajada-titulo{
     float: right;
-    width: 50%;
-    margin-top: 1em;
+    width: 40%;
+    margin-top: 1.1em;
+    margin-right: 1em;
+    font-size: 13px;
 }
 .hidden {display: none; visibility: hidden;}
 
 /*Primer div: Bar Chart*/
 #scrolleable{
     text-align: center;
-    padding: 1em;
+    padding: 1em 2em;
     border: 3px solid grey;
     box-sizing: border-box;
   }
@@ -77,10 +80,9 @@ a:hover {
 }
 
 .definicion{
-  width:80%;
+  width:100%;
   padding: 0.5em;
   background-color: #4D4D4D;
-  position: absolute;
   top: 0;
   right: 0;
   height: 40px;
@@ -131,7 +133,7 @@ a:hover {
 }
 
 .div-graficos{
-  margin-top: 55px;
+  margin-top: 10px;
 }
 
 #spider{
@@ -228,7 +230,7 @@ a:hover {
 
 #titulo{
   display: inline;
-  font-size: 4rem;
+  font-size: 4.5rem;
   font-weight: 400;
 }
 
@@ -282,10 +284,10 @@ h4{
   margin: 1em;
 }
 
-.col-lg-8 span{
+.col-md-8 span{
   font-weight: 600;
 }
-.dimension_icvu{text-align: center; padding: 0 1em; margin: 1%;}
+.dimension_icvu{text-align: center; /*padding: 0 1em; margin: 1%;*/}
 
 .dimension_icvu hr{
   width: 30px;
@@ -323,9 +325,8 @@ h4{
   display: none;
 }
 
-
-@media (max-width: 1100px){
-  .col-lg-8, .col-lg-5, .col-lg-3, .definicion{
+@media (max-width: 1000px){
+  .col-md-8, .col-md-5, .col-md-6, .col-md-3, .definicion{
     display: none;
   }
   body{
