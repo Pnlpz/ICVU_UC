@@ -591,7 +591,48 @@ setBackgroundWhite(canvasId);
         //dashboard.draw(data, {allowHtml: true, showRowNumber: true, width: '100%', height: '100%'});
         barChart.setOption('title', theTitle );
         dashboard.draw((view), options);
+// NUEVO => 
+// https://stackoverflow.com/questions/5990755/google-chart-altering-height-of-chart-dynamically-based-on-total-rows
+/*
+google.visualization.events.addListener(MetropolitanaFilter, 'statechange', function() {
+  alert(barChart.getDataTable().getNumberOfRows());
+});*/
+// NUEVO <=
 
+
+  function Div(id,h) {
+
+    var div=document.getElementById(id);
+    h = h + "px";
+
+    var w=parseInt(div.style.width);
+    if($(this).width() >= 1200){
+        w = 1200 + "px";
+    }else{
+        w = ($(this).width()-30) + "px";
+    }
+
+    $(div).height(h);
+    $(div).width(w);
+
+}
+
+
+    google.visualization.events.addListener(dashboard, 'ready', function() {
+        // Dashboard redraw, have a look at how many rows the barChart is displaying
+        var numRows = barChart.getDataTable().getNumberOfRows();
+        var expectedHeight = (numRows * 40)+50;
+        if (parseInt(barChart.getOption('height'), 10) != expectedHeight) {
+            // Update the chart options and redraw just it
+            Div("chartRanking", expectedHeight);
+            barChart.setOption('height', expectedHeight);
+            barChart.draw();
+
+        }
+
+    });
+
+/*
   google.visualization.events.addListener(dashboard, 'ready', function () {
     // get number of rows
     N = barChart.getDataTable().getNumberOfRows();
@@ -613,6 +654,7 @@ chartHeight = 70 + (N)*32;
 
         //dashboard.draw(data, options);
   });
+  */
 
 
        }); // FIN GET
