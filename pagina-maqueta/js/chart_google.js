@@ -145,23 +145,28 @@ function downloadImageSvg(imageContainer, filename){
 
               function setBackgroundWhite(canvasId){
 
-//document.getElementById("spider").setBackgroundColor('rgba(255, 73, 64, 0.6)');
-var canvas = document.getElementById(canvasId);
-var ctx = canvas.getContext("2d");
-// change non-opaque pixels to white
-var imgData=ctx.getImageData(0,0,canvas.width,canvas.height);
-var data=imgData.data;
-for(var i=0;i<data.length;i+=4){
-    if(data[i+3] == 0){
-        data[i] = 255 - data[i];
-        data[i+1] = 255 - data[i+1];
-        data[i+2] = 255 - data[i+2];
-        data[i+3] = 255 - data[i+3];
-    }
-}
-ctx.putImageData(imgData,0,0);
+                  //document.getElementById("spider").setBackgroundColor('rgba(255, 73, 64, 0.6)');
+                  var canvas = document.getElementById(canvasId);
+                  var ctx = canvas.getContext("2d");
+                  // change non-opaque pixels to white
+                  var imgData=ctx.getImageData(0,0,canvas.width,canvas.height+20);
+                  var data=imgData.data;
+                  for(var i=0;i<data.length;i+=4){
+                      if(data[i+3] == 0){
+                          data[i] = 255 - data[i];
+                          data[i+1] = 255 - data[i+1];
+                          data[i+2] = 255 - data[i+2];
+                          data[i+3] = 255 - data[i+3];
+                      }
+                  }
+                  ctx.putImageData(imgData,0,0);
 
-              }
+                  //AÑADIENDO LEYENDA POR FIN//
+                  ctx.font = "10px Arial";
+                  ctx.fillStyle = "#aaaaaa";
+                  ctx.fillText("ICVU desarrollado por CCHC. Gráficos y plataforma desarrollados por OCUC",canvas.width/2,canvas.height-10);
+
+                                }
 
               /**
               * This is the function that will take care of image extracting and
@@ -170,12 +175,9 @@ ctx.putImageData(imgData,0,0);
               */
               function downloadCanvas(link, canvasId, filename) {
 
-
-
-setBackgroundWhite(canvasId);
-
-                 link.href = document.getElementById(canvasId).toDataURL();
-                 link.download = filename;
+                  setBackgroundWhite(canvasId);
+                   link.href = document.getElementById(canvasId).toDataURL();
+                   link.download = filename;
               }
 
               /**
@@ -187,20 +189,15 @@ setBackgroundWhite(canvasId);
               });
               document.getElementById('downloadRanking').addEventListener('click', function() {
 
-
-
-
-        var downloadLink = document.createElement("a");
-        downloadLink.href = barChart.getChart().getImageURI();
-        /********************************************************************************/
-        //downloadLink.download = "Ranking.svg"; // CAMBIAR NOMBRE PARA DESCARGAR
-        downloadLink.download = "Ranking ICVU 2018.png";
-        /********************************************************************************/
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-        document.body.removeChild(downloadLink);
-
-
+                var downloadLink = document.createElement("a");
+                downloadLink.href = barChart.getChart().getImageURI();
+                /********************************************************************************/
+                //downloadLink.download = "Ranking.svg"; // CAMBIAR NOMBRE PARA DESCARGAR
+                downloadLink.download = "Ranking ICVU 2018.png";
+                /********************************************************************************/
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
 
               });
 

@@ -58,7 +58,7 @@ function actualizar(icvu, lugar, datos, titulo){
       ctx.fill();
       */
       // change non-opaque pixels to white
-      var imgData=ctx.getImageData(0,0,canvas.width,canvas.height);
+      var imgData=ctx.getImageData(0,0,canvas.width,canvas.height+20);
       var data=imgData.data;
       for(var i=0;i<data.length;i+=4){
           if(data[i+3]<255){
@@ -69,6 +69,10 @@ function actualizar(icvu, lugar, datos, titulo){
           }
       }
 
+      //AÑADIENDO LEYENDA POR FIN//
+      ctx.font = "10px Arial";
+      ctx.fillStyle = "#aaaaaa";
+      ctx.fillText("ICVU desarrollado por CCHC. Gráficos y plataforma desarrollados por OCUC",canvas.width/2,canvas.height-5);
 
       window.myRadar.update();
 }
@@ -173,11 +177,10 @@ config = {
         legend: {
             position: 'bottom',
             fullWidth: true,
-            padding: 40,
             labels: {
                 fontSize: 13,
-                fullWidth: true, /*Se supone que ésto debería funcionar, pero no*/
-                /*padding: 40,*/
+                fullWidth: true,
+                padding: 10,
             }
         },
         title: {
