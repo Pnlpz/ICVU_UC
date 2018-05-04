@@ -140,6 +140,7 @@ a:hover {
 #spider{
   /*background-color: white;*/
   position: relative;
+  height: 500px
 }
 
 .leyenda{
@@ -152,7 +153,6 @@ a:hover {
 
 
 /*INICIO FILTROS ORDENAMIENTO*/
-
 /*Filtros, parte del ordenamiento*/
 
   label{display: block; margin-bottom: 5px}

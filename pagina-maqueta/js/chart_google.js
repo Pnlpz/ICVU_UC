@@ -148,6 +148,7 @@ function downloadImageSvg(imageContainer, filename){
                   //document.getElementById("spider").setBackgroundColor('rgba(255, 73, 64, 0.6)');
                   var canvas = document.getElementById(canvasId);
                   var ctx = canvas.getContext("2d");
+                  ctx.height = 500;
                   // change non-opaque pixels to white
                   var imgData=ctx.getImageData(0,0,canvas.width,canvas.height+20);
                   var data=imgData.data;

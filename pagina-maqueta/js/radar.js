@@ -174,12 +174,13 @@ config = {
       ]
     },
     options: {
+        maintainAspectRatio: false, /*gráfico "libre" de reglas, ahora altura desde #spider en CSS*/
         legend: {
             position: 'bottom',
             fullWidth: true,
             labels: {
                 fontSize: 13,
-                fullWidth: true,
+                fullWidth: false,
                 padding: 10,
             }
         },
