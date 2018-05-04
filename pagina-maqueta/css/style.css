@@ -76,7 +76,8 @@ a:hover {
 .scrollable {
   height: 80vh;
   overflow-y: scroll;
-  max-height: 570px;
+  max-height: 550px;
+  min-height: 300px;
 }
 
 .definicion{
@@ -137,7 +138,7 @@ a:hover {
 }
 
 #spider{
-  background-color: white;
+  /*background-color: white;*/
   position: relative;
 }
 
@@ -147,7 +148,7 @@ a:hover {
   top: 50px;
   font-size: 10px;
 }
-.radar-body{/*height:67vh; max-height: 500px;*/}
+#radar-body{/*height:67vh; max-height: 500px;*/}
 
 
 /*INICIO FILTROS ORDENAMIENTO*/

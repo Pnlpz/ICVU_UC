@@ -591,7 +591,7 @@ setBackgroundWhite(canvasId);
         //dashboard.draw(data, {allowHtml: true, showRowNumber: true, width: '100%', height: '100%'});
         barChart.setOption('title', theTitle );
         dashboard.draw((view), options);
-// NUEVO => 
+// NUEVO =>
 // https://stackoverflow.com/questions/5990755/google-chart-altering-height-of-chart-dynamically-based-on-total-rows
 /*
 google.visualization.events.addListener(MetropolitanaFilter, 'statechange', function() {

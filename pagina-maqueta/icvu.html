@@ -49,16 +49,18 @@ ORDEN:
 GUARDAR O IMPRIMIR CHARTS (EXPORT OPTIONS-REVISAR):
 https://www.amcharts.com/kbase/exporting-charts-and-maps-to-images-or-pdf/
 -->
-<div class="container" >
-  <div class="mensaje-nodesktop">
-    <h2>ICVU 2018</h2>
-    <hr>
-    <img class="pc-alerta" src="iconos-svg/icono_pc.svg" alt="Te recomendamos ingresar desde un computador" />
-  </div>
-  <div class="row">
 
+<div class="mensaje-nodesktop">
+  <h2>ICVU 2018</h2>
+  <hr>
+  <img class="pc-alerta" src="iconos-svg/icono_pc.svg" alt="Te recomendamos ingresar desde un computador" />
+</div>
+
+
+<div class="container" >
+  <div class="row">
     <!--Inicio Filtros para ordenamiento-->
-    <div class="col-lg-3" id="ordenamiento">
+    <section class="col-lg-3" id="ordenamiento">
 
         <div class="icvu-indicador">
           <h1 id="titulo">ICVU</h1>
@@ -129,7 +131,7 @@ https://www.amcharts.com/kbase/exporting-charts-and-maps-to-images-or-pdf/
           <div id="filter_dependencia_div"></div>
           <div id="filter_per_capita_div"></div>
         </div>
-    </div>
+    </section>
 
     <div class="gris-input-modal">
         <!-- Boton modal: qué es icvu + exportar data > -->
@@ -139,21 +141,19 @@ https://www.amcharts.com/kbase/exporting-charts-and-maps-to-images-or-pdf/
         </div>
     </div>
 
-      <div class="col-lg-5 div-graficos">
+      <section class="col-lg-5 div-graficos">
         <div class="borde"  id="scrolleable">
-          <!--h3>Ranking comunas ICVU</h3>
-          <h5>Gráficos desarrollados en base al cálculo ICVU 2018</h5-->
           <div id="chartRanking" class="scrollable"></div>
-          <!--<div class="footer">
-            <button  id="button1" type="button" class="btn">Exportar SVG</button>
+          <div class="footer">
+          <!--  <button  id="button1" type="button" class="btn">Exportar SVG</button>
           -->
               <a id="downloadRanking"  class="btn" href="#">Exportar PNG</a>
-          <!--  </div>Fin borde -->
+          </div>
         </div>
-      </div>
-      <div class="col-lg-5 ultimo div-graficos" >
+      </section>
+      <section class="col-lg-5 ultimo div-graficos" >
           <div class="borde" id="scrolleable">
-            <div class="radar-body">
+            <div id="radar-body">
               <canvas id="spider"></canvas>
               <p class="leyenda"> Hola, soy lo que necesitas :o</p>
             </div>
@@ -167,7 +167,7 @@ https://www.amcharts.com/kbase/exporting-charts-and-maps-to-images-or-pdf/
           <!--Hola-->
           <!--canvas id="myLineChart" width="740" height="200"></canvas-->
         </div><!--Fin borde -->
-      </div><!--Fin 5 columnas-->
+      </section><!--Fin 5 columnas-->
   </div>
 
 </div><!--Fin del container-->
@@ -176,7 +176,7 @@ https://www.amcharts.com/kbase/exporting-charts-and-maps-to-images-or-pdf/
 
 
     <!--Div that will hold the dashboard-->
-    <div class="row">
+    <div class="hidden">
       <div class="col-lg-2" id="data-vista">
         <button>
         EXPORTAR Ranking
@@ -186,7 +186,7 @@ https://www.amcharts.com/kbase/exporting-charts-and-maps-to-images-or-pdf/
         </button>
 
 
-        <div id="dashboard_div">
+        <div id="hidden">
           <div id="tabla" style=""></div>
 
           <!--Fin de lo que corrí-->
@@ -292,6 +292,7 @@ https://www.amcharts.com/kbase/exporting-charts-and-maps-to-images-or-pdf/
         </div>
       </div>
     </div>
+
 
   </body>
 </html>

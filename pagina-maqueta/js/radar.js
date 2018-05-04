@@ -50,6 +50,7 @@ function actualizar(icvu, lugar, datos, titulo){
       canvasId = "spider";
       var canvas = document.getElementById(canvasId);
       var ctx = canvas.getContext("2d");
+
       /*
       ctx.beginPath();
       ctx.rect(0, 0, c.width, c.height);
@@ -138,7 +139,7 @@ var datasets_max = {
             pointBackgroundColor: colorsRanges[2],
             //data: [100,100,100,100,100,100,100]
             data: [75.1309663453, 59.2774690646, 65.4363055131, 99.4124815535, 81.4680047065, 89.4304629718]
-            
+
 
 
 
