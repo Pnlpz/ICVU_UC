@@ -140,7 +140,8 @@ a:hover {
 #spider{
   /*background-color: white;*/
   position: relative;
-  height: 500px
+  min-height: 400px;
+  max-height: 500px;
 }
 
 .leyenda{

@@ -164,8 +164,10 @@ function downloadImageSvg(imageContainer, filename){
 
                   //AÑADIENDO LEYENDA POR FIN//
                   ctx.font = "10px Arial";
-                  ctx.fillStyle = "#aaaaaa";
-                  ctx.fillText("ICVU desarrollado por CCHC. Gráficos y plataforma desarrollados por OCUC",canvas.width/2,canvas.height-10);
+                  ctx.fillStyle = "#cccccc";
+                  ctx.fillText("ICVU desarrollado por CCHC.",canvas.width/2,50);
+                  ctx.fillText("Gráficos y plataforma desarrollados por OCUC",canvas.width/2,65);
+
 
                                 }
 
