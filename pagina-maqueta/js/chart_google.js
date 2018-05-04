@@ -148,7 +148,6 @@ function downloadImageSvg(imageContainer, filename){
                   //document.getElementById("spider").setBackgroundColor('rgba(255, 73, 64, 0.6)');
                   var canvas = document.getElementById(canvasId);
                   var ctx = canvas.getContext("2d");
-                  ctx.height = 500;
                   // change non-opaque pixels to white
                   var imgData=ctx.getImageData(0,0,canvas.width,canvas.height+20);
                   var data=imgData.data;
@@ -165,8 +164,8 @@ function downloadImageSvg(imageContainer, filename){
                   //AÑADIENDO LEYENDA POR FIN//
                   ctx.font = "10px Arial";
                   ctx.fillStyle = "#cccccc";
-                  ctx.fillText("ICVU desarrollado por CCHC.",canvas.width/2,50);
-                  ctx.fillText("Gráficos y plataforma desarrollados por OCUC",canvas.width/2,65);
+                  ctx.fillText("ICVU desarrollado por CCHC.",canvas.width/2,(canvas.height/9)-10);
+                  ctx.fillText("Gráficos y plataforma desarrollados por OCUC",canvas.width/2,(canvas.height/8)-5);
 
 
                                 }

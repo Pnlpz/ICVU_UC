@@ -156,7 +156,7 @@ config = {
 
         //labels: ['ICVU','Condiciones Laborales','Ambiente de Negocios','Condiciones Socio Culturales','Conectividad y Movilidad','Salud y Medio Ambiente','Vivienda y Entorno'], /*, 'CM1', 'CM3', 'CM5'*/
         labels: ['Condiciones Laborales','Ambiente de Negocios','Condiciones Socio Culturales',
-        'Conectividad y Movilidad','Salud y Medio Ambiente','Vivienda y Entorno'], /*, 'CM1', 'CM3', 'CM5'*/
+      'Conectividad y Movilidad','Salud y Medio Ambiente','Vivienda y Entorno'], /*, 'CM1', 'CM3', 'CM5'*/
         datasets: [
         datasets_min,
         datasets_avg,
@@ -174,14 +174,14 @@ config = {
       ]
     },
     options: {
-        maintainAspectRatio: false, /*gráfico "libre" de reglas, ahora altura desde #spider en CSS*/
+        maintainAspectRatio: false, /*gráfico "libre", ahora altura desde #spider en CSS*/
         legend: {
             position: 'bottom',
             fullWidth: true,
             labels: {
                 fontSize: 13,
-                fullWidth: false,
-                padding: 10,
+                fullWidth: true,
+                /*padding: 10,*/
             }
         },
         title: {
