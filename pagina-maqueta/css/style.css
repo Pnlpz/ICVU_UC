@@ -283,6 +283,7 @@ a:hover {
 .grafico-max{width: 153px; left: 104px; bottom: 138px;}
 .area-grafico{position: absolute; width: 25px; left: 230px; bottom: 358px;}
 
+.pc-alerta{width: 100%;}
 h4{
   font-size: 16px;
   font-weight: bold;
@@ -331,8 +332,8 @@ h4{
   display: none;
 }
 
-@media (max-width: 999px){
-  .col-md-8, .col-md-5, .col-md-6, .col-md-3, .definicion{
+@media (max-width: 1099px){
+  .col-md-8, .col-md-5, .col-md-6, .col-md-3, .col-lg-8, .col-lg-3, .col-lg-5, .definicion{
     display: none;
   }
   body{
@@ -345,9 +346,16 @@ h4{
     display: block;
     color: white;
     padding: 2em;
-    background-color: #222;
+    background-color: #fff;
     width: 70vw;
     margin: 30vh auto;
-
+    text-align: center;
+  }
+  .mensaje-nodesktop h2{
+    color: #222;
+    font-size: 2em;
+  }
+  hr{
+    border: 2px solid #222;
   }
 }
