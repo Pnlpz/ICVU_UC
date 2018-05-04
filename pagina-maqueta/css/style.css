@@ -61,7 +61,7 @@ a:hover {
 /*Primer div: Bar Chart*/
 #scrolleable{
     text-align: center;
-    padding: 1em 2em;
+    padding: 1em;
     border: 3px solid grey;
     box-sizing: border-box;
   }
@@ -271,12 +271,18 @@ a:hover {
     top: 2px;
 }
 
-.imagen-flotante{
+.grafico-ej, .grafico-max, .grafico-inf, .grafico-sup{
   position: absolute;
-  left: 0px;
-  width: 240px;
-  bottom: 24px;
+  left: -1px;
+  width: 185px;
+  bottom: 53px;
 }
+
+.grafico-inf{width: 185px; left: 73px; bottom: 270px;}
+.grafico-sup{width: 156px; left: 102px; bottom: 203px;}
+.grafico-max{width: 153px; left: 104px; bottom: 138px;}
+.area-grafico{position: absolute; width: 25px; left: 230px; bottom: 358px;}
+
 h4{
   font-size: 16px;
   font-weight: bold;
@@ -325,7 +331,7 @@ h4{
   display: none;
 }
 
-@media (max-width: 1000px){
+@media (max-width: 999px){
   .col-md-8, .col-md-5, .col-md-6, .col-md-3, .definicion{
     display: none;
   }
