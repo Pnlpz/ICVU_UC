@@ -610,6 +610,22 @@ function downloadImageSvg(imageContainer, filename){
 
         }); // FIN google.visualization.events.addListener(barChart, 'select', function () {
 
+
+// When the orgchart is selected, update the table chart.
+google.visualization.events.addListener(TypeFilter, 'statechange', function() {
+  //table.setSelection(orgchart.getSelection());
+
+         var selectedVals = TypeFilter.getState().selectedValues; 
+
+
+
+          //order0 =  parseInt($("#order0 option:selected").val());
+          //console.log("order0: "+order0);
+          (selectedVals == "Ciudades Metropolitanas")? $("#filtros").hide() :  $("#filtros").show();
+          (selectedVals == "Ciudades Metropolitanas")? $("#div_filtros").hide() :  $("#div_filtros").show();
+
+});
+
         //dashboard.bind([PopulationRangeSlider, MetropolitanaFilter, LocalizacionFilter, DistribucionFilter], [barChart, tableChart]);
         dashboard.bind([TypeFilter, PopulationRangeSlider, MetropolitanaFilter, LocalizacionFilter, DistribucionFilter, DependenciaRangeSlider, PerCapitaRangeSlider], [barChart]);
         //dashboard.draw(data, {allowHtml: true, showRowNumber: true, width: '100%', height: '100%'});
@@ -688,9 +704,8 @@ chartHeight = 70 + (N)*32;
 
       function Base(){
 
-//getState
+        
         order1 =  parseInt($("#order1 option:selected").val());
-        //order1 =  parseInt($("#order1 option:selected").val());
         order2 =  parseInt($("#order2 option:selected").val());
         theTitle = $("#order1 option:selected").text();
         console.log("order1: "+order1);
@@ -733,17 +748,10 @@ chartHeight = 70 + (N)*32;
 
       $( document ).ready(function() {
 
-  $( "#order0" ).change(function() {
-      //  downloadImageSvg(chartContainerDETAIL, 'Secundario.svg');
-          order0 =  parseInt($("#order0 option:selected").val());
-          console.log("order0: "+order0);
-          (order0==3)? $("#filtros").hide() :  $("#filtros").show();
-          (order0==3)? $("#div_filtros").hide() :  $("#div_filtros").show();
-
-    });
+  
 
         $("#tabla").hide();
-        /*
+
           order1 =  parseInt($("#order1 option:selected").val());
           order2 =  parseInt($("#order2 option:selected").val());
           theTitle = $("#order1 option:selected").text();
@@ -752,7 +760,7 @@ chartHeight = 70 + (N)*32;
           theTitle = 'Ranking ICVU 2017 para ' + theTitle;
         }else{
           theTitle = "Ranking ICVU 2017 General";
-        }*/
+        }
         Base();
 
 
