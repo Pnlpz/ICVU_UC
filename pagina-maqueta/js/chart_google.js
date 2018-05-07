@@ -369,9 +369,10 @@ function downloadImageSvg(imageContainer, filename){
                 allowMultiple: false,
                 height: 100,
                 caption : 'Metropolitanas y no Metropolitanas'
-            }
+            },values: ["Solo metropolitana", "Solo no Metropolitanas"]
             //'filterColumnLabel': 'Metropolitana',
           }
+
         });
 
         // Create a CategoryFilter, passing some options
@@ -386,7 +387,7 @@ function downloadImageSvg(imageContainer, filename){
                 allowMultiple: false,
                 height: 100,
                 caption : 'Cualquiera'
-            }
+            },values: ["Costa", "Interior"]
             //'filterColumnLabel': 'Localización',
           }
           /*
