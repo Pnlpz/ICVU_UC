@@ -269,6 +269,7 @@ function downloadImageSvg(imageContainer, filename){
         view = new google.visualization.DataView(data);
         //view.setColumns([0,1,2,3,4,5,6]);
         //data.sort([{column: 1}, {column: 0}]);
+        console.log("order1: "+order1);
         data.sort([{column: order1, desc: true}]);
 
         // Create a dashboard
@@ -289,6 +290,29 @@ function downloadImageSvg(imageContainer, filename){
                 height: 100
             }
           }
+        });
+
+
+
+        // Create a CategoryFilter, passing some options
+        var TypeFilter = new google.visualization.ControlWrapper({
+          'controlType': 'CategoryFilter',
+          'containerId': 'filter_type_div',
+          'options': {
+            'filterColumnIndex': 16,
+            ui: {
+                labelStacking: 'vertical',
+                allowTyping: false,
+                allowMultiple: false,
+                height: 100,
+                caption : 'Mostrar',
+            'allowNone': false
+            }
+            //'filterColumnLabel': 'Localización',
+          },state: {
+            selectedValues: ['Comunas']
+          }
+
         });
         /************************************************************************************/
           // RETOMAR ESTA PARTE PARA SETEAR VALOR
@@ -587,7 +611,7 @@ function downloadImageSvg(imageContainer, filename){
         }); // FIN google.visualization.events.addListener(barChart, 'select', function () {
 
         //dashboard.bind([PopulationRangeSlider, MetropolitanaFilter, LocalizacionFilter, DistribucionFilter], [barChart, tableChart]);
-        dashboard.bind([PopulationRangeSlider, MetropolitanaFilter, LocalizacionFilter, DistribucionFilter, DependenciaRangeSlider, PerCapitaRangeSlider], [barChart]);
+        dashboard.bind([TypeFilter, PopulationRangeSlider, MetropolitanaFilter, LocalizacionFilter, DistribucionFilter, DependenciaRangeSlider, PerCapitaRangeSlider], [barChart]);
         //dashboard.draw(data, {allowHtml: true, showRowNumber: true, width: '100%', height: '100%'});
         barChart.setOption('title', theTitle );
         dashboard.draw((view), options);
@@ -662,11 +686,14 @@ chartHeight = 70 + (N)*32;
 /// Dashboard <=
 
 
-      function updateChart(){
+      function Base(){
+
+//getState
         order1 =  parseInt($("#order1 option:selected").val());
+        //order1 =  parseInt($("#order1 option:selected").val());
         order2 =  parseInt($("#order2 option:selected").val());
         theTitle = $("#order1 option:selected").text();
-        //console.log("order1: "+order1);
+        console.log("order1: "+order1);
         //console.log("view: "+view);
 
         if(order1 > 7){
@@ -674,6 +701,9 @@ chartHeight = 70 + (N)*32;
         }else{
           theTitle = "Ranking ICVU 2017 General";
         }
+      }
+      function updateChart(){
+        Base();
 
 
         barChart.setOption('title', theTitle );
@@ -706,12 +736,14 @@ chartHeight = 70 + (N)*32;
   $( "#order0" ).change(function() {
       //  downloadImageSvg(chartContainerDETAIL, 'Secundario.svg');
           order0 =  parseInt($("#order0 option:selected").val());
+          console.log("order0: "+order0);
           (order0==3)? $("#filtros").hide() :  $("#filtros").show();
           (order0==3)? $("#div_filtros").hide() :  $("#div_filtros").show();
 
     });
 
         $("#tabla").hide();
+        /*
           order1 =  parseInt($("#order1 option:selected").val());
           order2 =  parseInt($("#order2 option:selected").val());
           theTitle = $("#order1 option:selected").text();
@@ -720,7 +752,8 @@ chartHeight = 70 + (N)*32;
           theTitle = 'Ranking ICVU 2017 para ' + theTitle;
         }else{
           theTitle = "Ranking ICVU 2017 General";
-        }
+        }*/
+        Base();
 
 
           //console.log( "text_commune! " + order1 );
