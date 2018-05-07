@@ -389,6 +389,13 @@ function downloadImageSvg(imageContainer, filename){
             }
             //'filterColumnLabel': 'Localización',
           }
+          /*
+          ELIMINAR ESTADO
+          ,
+          state: {
+              value: id
+          }  
+          */
         });
 /* ESTO ES LO PENDIENTE A SUBIR  -> **/
         // Create a CategoryFilter, passing some options
@@ -712,9 +719,9 @@ chartHeight = 70 + (N)*32;
         //console.log("view: "+view);
 
         if(order1 > 7){
-          theTitle = 'Ranking ICVU 2017 para ' + theTitle;
+          theTitle = 'Ranking ICVU 2018 para ' + theTitle;
         }else{
-          theTitle = "Ranking ICVU 2017 General";
+          theTitle = "Ranking ICVU 2018 General";
         }
       }
       function updateChart(){
@@ -749,6 +756,8 @@ chartHeight = 70 + (N)*32;
       $( document ).ready(function() {
 
   
+
+
 
         $("#tabla").hide();
 
