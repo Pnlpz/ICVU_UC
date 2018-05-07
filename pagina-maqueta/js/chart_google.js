@@ -187,7 +187,7 @@ function downloadImageSvg(imageContainer, filename){
               * parameter (=the link element), ID of the canvas and a filename.
               */
               document.getElementById('download').addEventListener('click', function() {
-                 downloadCanvas(this, 'spider', 'test.png');
+                 downloadCanvas(this, 'spider', 'icvu2018.png');
               });
               document.getElementById('downloadRanking').addEventListener('click', function() {
 
