@@ -252,7 +252,8 @@ function downloadImageSvg(imageContainer, filename){
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    $.get("datos_icvu2.csv", function(csvString) { // INICIO get
+    ///$.get("datos_icvu2.csv", function(csvString) { // INICIO get
+      $.get("datos_icvu2018.csv", function(csvString) { // INICIO get
         data1 = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
 
         // this new DataTable object holds all the data
