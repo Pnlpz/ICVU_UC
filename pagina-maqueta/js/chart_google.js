@@ -149,7 +149,7 @@ function downloadImageSvg(imageContainer, filename){
                   var canvas = document.getElementById(canvasId);
                   var ctx = canvas.getContext("2d");
                   // change non-opaque pixels to white
-                  var imgData=ctx.getImageData(0,0,canvas.width,canvas.height+20);
+                  var imgData=ctx.getImageData(0,0,canvas.width,canvas.height);
                   var data=imgData.data;
                   for(var i=0;i<data.length;i+=4){
                       if(data[i+3] == 0){
@@ -164,8 +164,10 @@ function downloadImageSvg(imageContainer, filename){
                   //AÑADIENDO LEYENDA POR FIN//
                   ctx.font = "10px Arial";
                   ctx.fillStyle = "#cccccc";
-                  ctx.fillText("ICVU desarrollado por CCHC.",canvas.width/2,(canvas.height/9)-10);
-                  ctx.fillText("Gráficos y plataforma desarrollados por OCUC",canvas.width/2,(canvas.height/8)-5);
+                  //Centrar texto en canvas
+                  ctx.textAlign = "center";
+                  ctx.fillText("ICVU desarrollado por CCHC. Gráficos y plataforma desarrollados por OCUC",canvas.width/2,canvas.height - 10);
+                  //ctx.fillText("Gráficos y plataforma desarrollados por OCUC",canvas.width/2,(canvas.height/8)-5);
 
 
                                 }
@@ -395,7 +397,7 @@ function downloadImageSvg(imageContainer, filename){
           ,
           state: {
               value: id
-          }  
+          }
           */
         });
 /* ESTO ES LO PENDIENTE A SUBIR  -> **/
@@ -623,7 +625,7 @@ function downloadImageSvg(imageContainer, filename){
 google.visualization.events.addListener(TypeFilter, 'statechange', function() {
   //table.setSelection(orgchart.getSelection());
 
-         var selectedVals = TypeFilter.getState().selectedValues; 
+         var selectedVals = TypeFilter.getState().selectedValues;
 
 
 
@@ -713,7 +715,7 @@ chartHeight = 70 + (N)*32;
 
       function Base(){
 
-        
+
         order1 =  parseInt($("#order1 option:selected").val());
         order2 =  parseInt($("#order2 option:selected").val());
         theTitle = $("#order1 option:selected").text();
@@ -757,7 +759,7 @@ chartHeight = 70 + (N)*32;
 
       $( document ).ready(function() {
 
-  
+
 
 
 

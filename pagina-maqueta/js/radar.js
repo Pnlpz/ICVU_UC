@@ -58,7 +58,7 @@ function actualizar(icvu, lugar, datos, titulo){
       ctx.fill();
       */
       // change non-opaque pixels to white
-      var imgData=ctx.getImageData(0,0,canvas.width,canvas.height+20);
+      var imgData=ctx.getImageData(0,0,canvas.width,canvas.height);
       var data=imgData.data;
       for(var i=0;i<data.length;i+=4){
           if(data[i+3]<255){
@@ -71,8 +71,13 @@ function actualizar(icvu, lugar, datos, titulo){
 
       //AÑADIENDO LEYENDA POR FIN//
       ctx.font = "10px Arial";
-      ctx.fillStyle = "#aaaaaa";
-      ctx.fillText("ICVU desarrollado por CCHC. Gráficos y plataforma desarrollados por OCUC",canvas.width/2,canvas.height-5);
+      ctx.fillStyle = "#cccccc";
+      //Centrar texto en canvas
+      ctx.textAlign = "center";
+      ctx.fillText("ICVU desarrollado por CCHC. Gráficos y plataforma desarrollados por OCUC",canvas.width/2,canvas.height-10);
+      //ctx.fillText("Gráficos y plataforma desarrollados por OCUC",canvas.width/2,(canvas.height/8)-5);
+
+
 
       window.myRadar.update();
 }
