@@ -571,6 +571,29 @@ function downloadImageSvg(imageContainer, filename){
                       ]));
                       Ncols = viewDetail.getNumberOfColumns();
                       Nrows = viewDetail.getNumberOfRows();
+                      I = 18;
+
+                      aaa = [];
+                      for (var i = 0; i < viewDetail.getNumberOfColumns(); i++) {
+                        aaa.push(viewDetail.getValue(0, i));
+                      }
+                      
+                      // mapas/AMV/AMV_ICVU.jpg
+                      folder = viewDetail.getValue(0, I);
+                      dimension = ["ICVU","laboral","movilidad","negocios","salud","sociocultural","vivienda"];
+                      indexDimension = $("#order1").val()-7;
+
+                      console.log("=> aaa: " + indexDimension);
+                      if(folder.length > 1){
+                        $("#map").show();
+                        mapa = folder+"_"+dimension[indexDimension]+".jpg";
+                        url = "mapas/"+folder+"/"+mapa;
+                        $("#map").attr("href", url);
+                        $("#map").attr("download", mapa);
+                      }else{
+                        $("#map").hide();
+                      }
+
 
                       //viewDetail.setColumns([0,7,8,9,10,11,12,13]); // AQUIIII INDICE DE LAS DIMENSIONES
                       viewDetail.setColumns([0,7,8,9,10,11,12,13, 17]); // AQUIIII INDICE DE LAS DIMENSIONES
@@ -598,10 +621,10 @@ function downloadImageSvg(imageContainer, filename){
                       for (var i = 2; i < rawData.getNumberOfColumns() -1; i++) {
                         DATOS_EN_ARREGLO.push(rawData.getValue(0, i));
                       }
-
+                      /*
                       for (var i = 0; i < rawData.getNumberOfColumns(); i++) {
                         console.log("I: "+i+", "+rawData.getValue(0, i));
-                      }
+                      }*/
 
                       console.log("*** COMUNA: "+ comuna);
                       icvu = rawData.getValue(0, 1);
