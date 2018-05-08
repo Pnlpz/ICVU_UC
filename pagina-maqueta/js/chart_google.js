@@ -580,7 +580,13 @@ function downloadImageSvg(imageContainer, filename){
                       
                       // mapas/AMV/AMV_ICVU.jpg
                       folder = viewDetail.getValue(0, I);
-                      dimension = ["ICVU","laboral","movilidad","negocios","salud","sociocultural","vivienda"];
+                      dimension = ["ICVU",
+                      "laboral",
+                      "negocios",
+                      "sociocultural",
+                      "movilidad",
+                      "salud",
+                      "vivienda"];
                       indexDimension = $("#order1").val()-7;
 
                       console.log("=> aaa: " + indexDimension);
@@ -789,7 +795,7 @@ chartHeight = 70 + (N)*32;
         $("#tabla").hide();
 
                         $("#map").hide();
-                        
+
           order1 =  parseInt($("#order1 option:selected").val());
           order2 =  parseInt($("#order2 option:selected").val());
           theTitle = $("#order1 option:selected").text();
