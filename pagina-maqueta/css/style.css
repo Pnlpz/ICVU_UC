@@ -335,7 +335,7 @@ h4{
 }
 
 @media (max-width: 1099px){
-  .col-md-8, .col-md-5, .col-md-6, .col-md-3, .col-lg-8, .col-lg-3, .col-lg-5, .definicion{
+  .col-md-8, .col-md-5, .col-md-6, .col-md-3, .col-lg-8, .col-lg-3, .col-lg-5, .definicion, .footer_main{
     display: none;
   }
   body{
