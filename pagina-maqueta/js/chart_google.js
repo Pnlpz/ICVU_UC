@@ -788,6 +788,8 @@ chartHeight = 70 + (N)*32;
 
         $("#tabla").hide();
 
+                        $("#map").hide();
+                        
           order1 =  parseInt($("#order1 option:selected").val());
           order2 =  parseInt($("#order2 option:selected").val());
           theTitle = $("#order1 option:selected").text();
