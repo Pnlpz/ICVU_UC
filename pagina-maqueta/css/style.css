@@ -1,7 +1,18 @@
-body{font-family: 'Barlow', sans-serif; background-color: #eee;}
+body{
+  font-family: 'Barlow', sans-serif;
+  background-color: #eee;
+}
 
-.row{margin:0 0 8px 0}
-.container{margin: 0 auto; padding: 0; max-width: 100%; background-color: white; position: relative;}
+.row{
+  margin:0 0 8px 0;
+}
+.container{
+  margin: 0 auto;
+  padding: 0;
+  max-width: 100%;
+  background-color: white;
+  position: relative;
+}
 
 a:hover {
   color: white !important;
@@ -10,12 +21,13 @@ a:hover {
   -moz-transition: all 0.4s ease-out;
   -o-transition: all 0.4s ease-out;
   transition: all 0.4s ease-out;
-
 }
+
 .borde{
   height: 95vh;
   max-height: 635px;
 }
+
 #ordenamiento{
   background-color: #111;
   color: white;
@@ -46,9 +58,19 @@ a:hover {
   /*width: 10%;*/
 }
 
-#ordenamiento #filtros{left: 38%; /*top: 19px;*/}
-#ordenamiento #datos{left: 38%; top: -10px;}
-.icvu-indicador{padding: 0em;}
+#ordenamiento #filtros{
+  left: 38%; /*top: 19px;*/
+}
+
+#ordenamiento #datos{
+  left: 38%;
+  top: -10px;
+}
+
+.icvu-indicador{
+  padding: 0em;
+}
+
 .bajada-titulo{
     float: right;
     width: 40%;
@@ -56,7 +78,11 @@ a:hover {
     margin-right: 1em;
     font-size: 13px;
 }
-.hidden {display: none; visibility: hidden;}
+
+.hidden {
+    display: none;
+    visibility: hidden;
+  }
 
 /*Primer div: Bar Chart*/
 #scrolleable{
@@ -65,7 +91,10 @@ a:hover {
     border: 3px solid grey;
     box-sizing: border-box;
   }
-.ultimo{padding-left: 0em;}
+
+.ultimo{
+  padding-left: 0em;
+}
 
 #scrolleable h5{
   font-size: 14px;
@@ -89,6 +118,7 @@ a:hover {
   height: 40px;
   z-index: 5;
 }
+
 .btn{
   border-radius: 0;
   background-color: #111;
@@ -98,6 +128,7 @@ a:hover {
   padding: 0.5em 1.5em;
   margin-bottom: 0.5em;
 }
+
 #que-es{
   text-align: right;
 }
@@ -105,9 +136,16 @@ a:hover {
 .btn-primary{
   font-size: 1em !important;
 }
-.parte-orden{border: 2px solid #4D4D4D; padding: 0 1em 1em 1em; margin-top: 1em;}
+.parte-orden{
+  border: 2px solid #4D4D4D;
+  padding: 0 1em 1em 1em;
+  margin-top: 1em;
+}
 
-#data-vista{/*margin-left: 280px;*/ display: none;}
+#data-vista{
+  /*margin-left: 280px;*/
+  display: none;
+}
 
 
 #porfiado{
@@ -156,14 +194,26 @@ a:hover {
 /*INICIO FILTROS ORDENAMIENTO*/
 /*Filtros, parte del ordenamiento*/
 
-  label{display: block; margin-bottom: 5px}
-  select{width: 100%; color: black;}
-  #order0{margin-bottom: 0px;}
+  label{
+    display: block;
+    margin-bottom: 5px
+  }
+  select{
+    width: 100%;
+    color: black;
+  }
+  #order0{
+    margin-bottom: 0px;
+  }
 
   /*Solo afecta al slider Poblacion*/
-  #filter_poblacion_div .goog-inline-block:first-child{top: -25px;}
+  #filter_poblacion_div .goog-inline-block:first-child{
+    top: -25px;
+  }
   #filter_dependencia_div .google-visualization-controls-rangefilter .goog-inline-block,
-  #filter_per_capita_div .google-visualization-controls-rangefilter .goog-inline-block{bottom: 25px !important;}
+  #filter_per_capita_div .google-visualization-controls-rangefilter .goog-inline-block{
+    bottom: 25px !important;
+  }
   #filter_per_capita_div .google-visualization-controls-rangefilter-thumblabel:last-child, #filter_dependencia_div .google-visualization-controls-rangefilter-thumblabel:last-child{
       right: 25px;
   }
@@ -262,7 +312,9 @@ a:hover {
     margin: 0 0 1em 0;
   }
 
-.iconos-icvu{max-width: 70px;}
+.iconos-icvu{
+  max-width: 70px;
+}
 .dimension_icvu h5{
   font-size: 14px;
   margin: 0.5em;
@@ -283,9 +335,17 @@ a:hover {
 .grafico-inf{width: 185px; left: 73px; bottom: 270px;}
 .grafico-sup{width: 156px; left: 102px; bottom: 203px;}
 .grafico-max{width: 153px; left: 104px; bottom: 138px;}
-.area-grafico{position: absolute; width: 25px; left: 230px; bottom: 358px;}
+.area-grafico{
+  position: absolute;
+  width: 25px;
+  left: 230px;
+  bottom: 358px;
+}
 
-.pc-alerta{width: 100%;}
+.pc-alerta{
+  width: 100%;
+}
+
 h4{
   font-size: 16px;
   font-weight: bold;
@@ -296,7 +356,10 @@ h4{
 .col-md-8 span{
   font-weight: 600;
 }
-.dimension_icvu{text-align: center; /*padding: 0 1em; margin: 1%;*/}
+.dimension_icvu{
+  text-align: center;
+  /*padding: 0 1em; margin: 1%;*/
+}
 
 .dimension_icvu hr{
   width: 30px;
