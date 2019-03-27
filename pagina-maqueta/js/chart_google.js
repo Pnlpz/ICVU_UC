@@ -162,7 +162,7 @@ function downloadImageSvg(imageContainer, filename){
                   ctx.putImageData(imgData,0,0);
 
                   //AÑADIENDO LEYENDA POR FIN//
-                  ctx.font = "10px Arial";
+                  ctx.font = "10px Barlow";
                   ctx.fillStyle = "#cccccc";
                   //Centrar texto en canvas
                   ctx.textAlign = "center";
@@ -577,7 +577,7 @@ function downloadImageSvg(imageContainer, filename){
                       for (var i = 0; i < viewDetail.getNumberOfColumns(); i++) {
                         aaa.push(viewDetail.getValue(0, i));
                       }
-                      
+
                       // mapas/AMV/AMV_ICVU.jpg
                       folder = viewDetail.getValue(0, I);
                       dimension = ["ICVU",

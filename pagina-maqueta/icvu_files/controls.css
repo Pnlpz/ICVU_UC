@@ -4,7 +4,7 @@
   border-style: solid;
   border-width: 1px;
   cursor: default;
-  font: normal 13px Arial, sans-serif;
+  font: normal 13px Barlow, sans-serif;
   margin: 0;
   outline: none;
   padding: 4px 0;
@@ -14,7 +14,7 @@
 
 .goog-menuitem {
   color: #000;
-  font: normal 11px Arial, sans-serif;
+  font: normal 11px Barlow, sans-serif;
   list-style: none;
   margin: 0;
   padding: 4px 7em 4px 28px;
@@ -37,7 +37,7 @@
 
 .goog-menuitem-content {
   color: #000;
-  font: normal 13px Arial, sans-serif
+  font: normal 13px Barlow, sans-serif
 }
 
 .goog-menuitem-disabled .goog-menuitem-accel,
@@ -120,7 +120,7 @@
   background: #ddd repeat-x scroll left top
     url('//ssl.gstatic.com/closure/button-bg.gif');
   border: 1px solid #b5b6b5;
-  font: normal small arial, sans-serif
+  font: normal small Barlow, sans-serif
 }
 
 .goog-combobox input {
@@ -128,7 +128,7 @@
   border: 0;
   border-right: 1px solid #b5b6b5;
   color: #000;
-  font: normal small arial, sans-serif;
+  font: normal small Barlow, sans-serif;
   margin: 0;
   padding: 0 0 0 2px;
   vertical-align: bottom;

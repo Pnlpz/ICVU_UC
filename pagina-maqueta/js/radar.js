@@ -70,7 +70,7 @@ function actualizar(icvu, lugar, datos, titulo){
       }
 
       //AÑADIENDO LEYENDA POR FIN//
-      ctx.font = "10px Arial";
+      ctx.font = "10px Barlow";
       ctx.fillStyle = "#cccccc";
       //Centrar texto en canvas
       ctx.textAlign = "center";
