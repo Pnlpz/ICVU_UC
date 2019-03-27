@@ -184,6 +184,7 @@ config = {
             position: 'bottom',
             fullWidth: true,
             labels: {
+                fontFamily: Barlow;
                 fontSize: 13,
                 fullWidth: true,
                 /*padding: 10,*/
@@ -192,6 +193,7 @@ config = {
         title: {
             display: true,
             text: 'Selecciona una Comuna',
+            fontFamily: Barlow;
             fontSize: 18,
             fullWidth: true,
         },
@@ -199,6 +201,7 @@ config = {
             ticks: { /*Cotas numéricas del radar*/
                 beginAtZero: true,
                 max: 100,
+                fontFamily: Barlow;
                 fontSize: 13,
                 display: true
               }
