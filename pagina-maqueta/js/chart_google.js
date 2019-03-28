@@ -820,7 +820,7 @@ chartHeight = 70 + (N)*32;
           var ejemplo=[0,0,0,0,0,0,0];
           message = "Haz click en alguna comuna"
 
-          // createRadar(ejemplo, message);
-          // $("#chartRanking").css("");
+          createRadar(ejemplo, message);
+          $("#chartRanking").css("");
 
       }); // FIN $( document ).ready(
