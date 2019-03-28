@@ -184,7 +184,7 @@ config = {
             position: 'bottom',
             fullWidth: true,
             labels: {
-                fontFamily: Barlow,
+                fontFamily: 'Barlow',
                 fontSize: 13,
                 fullWidth: true,
                 /*padding: 10,*/
@@ -203,7 +203,7 @@ config = {
                 max: 100,
                 fontFamily: 'Barlow',
                 fontSize: 13,
-                display: true
+                display: true,
               }
         }
     }
