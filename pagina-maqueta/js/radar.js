@@ -193,7 +193,7 @@ config = {
         title: {
             display: true,
             text: 'Selecciona una Comuna',
-            fontFamily: Barlow,
+            fontFamily: 'Barlow',
             fontSize: 18,
             fullWidth: true,
         },
