@@ -6,12 +6,12 @@ body{
 .row{
   margin:0 0 8px 0;
 }
-.container{
+.wrap{
   margin: 0 auto;
   padding: 0;
   max-width: 100%;
   background-color: white;
-  position: relative;
+  /* position: relative; */
 }
 
 a:hover {
