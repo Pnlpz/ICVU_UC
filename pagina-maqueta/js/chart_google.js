@@ -443,13 +443,13 @@ function downloadImageSvg(imageContainer, filename){
             'legend': 'none',
             title: theTitle,
             'hAxis': {
-              'minValue': '0',
+            'minValue': '0',
             'showTextEvery': 1,
             'gridlines':{'count': 0},
             titleTextStyle: {
                 color: "#00cc00",    // any HTML string color ('red', '#cc00cc')
                 fontName: "Barlow", // i.e. 'Times New Roman'
-                fontSize: 12, // 12, 18 whatever you want (don't specify px)
+                fontSize: 10, // 12, 18 whatever you want (don't specify px)
                 //bold: <boolean>,    // true or false
                 //italic: <boolean>   // true of false
             }
