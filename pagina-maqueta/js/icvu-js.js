@@ -482,3 +482,6 @@ console.log("filename: "+filename);
       }); // FIN $( document ).ready(
 
 */
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
