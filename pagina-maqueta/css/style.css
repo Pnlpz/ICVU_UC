@@ -439,4 +439,6 @@ h4{
 text {
   font-family: 'Barlow', sans-serif !important;
   font-size: 0.9vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

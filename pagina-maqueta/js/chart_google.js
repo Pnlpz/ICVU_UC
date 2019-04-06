@@ -257,7 +257,6 @@ function downloadImageSvg(imageContainer, filename){
     ///$.get("datos_icvu2.csv", function(csvString) { // INICIO get
       $.get("datos_icvu2018.csv", function(csvString) { // INICIO get
         data1 = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
-
         // this new DataTable object holds all the data
         data = new google.visualization.arrayToDataTable(data1);
 
@@ -428,33 +427,37 @@ function downloadImageSvg(imageContainer, filename){
         });
 
 /* ESTO ES LO PENDIENTE A SUBIR  <- **/
-
+// Acá están las opciones del gráfico:
         // Create a pie chart, passing some options
         barChart = new google.visualization.ChartWrapper({
           'chartType': 'BarChart',
           //'chartType': 'Table',
           'containerId': 'chartRanking',
           'options': {
-            //bar: { groupWidth: '25%' },
-            'width': 450,
+            // bar: { groupWidth: '70%' },
+            'width': 485,
             'height': MAXHeight,
             'pieSliceText': 'value',
             //'legend': 'top',
             'legend': 'none',
             title: theTitle,
             'hAxis': {
-            'minValue': '0',
-            'showTextEvery': 1,
-            'gridlines':{'count': 0},
-            titleTextStyle: {
-                color: "#00cc00",    // any HTML string color ('red', '#cc00cc')
-                fontName: "Barlow", // i.e. 'Times New Roman'
-                fontSize: 10, // 12, 18 whatever you want (don't specify px)
-                //bold: <boolean>,    // true or false
-                //italic: <boolean>   // true of false
-            }
-          },
-
+              'minValue': '0',
+              'showTextEvery': 1,
+              'gridlines':{'count': 0},
+              titleTextStyle: {
+                  color: "#00cc00",    // any HTML string color ('red', '#cc00cc')
+                  fontName: "Barlow", // i.e. 'Times New Roman'
+                  fontSize: 10, // 12, 18 whatever you want (don't specify px)
+                  //bold: <boolean>,    // true or false
+                  //italic: <boolean>   // true of false
+              }
+            },
+            vAxis:{
+              textStyle: {
+                fontSize: 10
+              }
+            },
             'animation':{
               'duration': '1000',
               'easing': 'out',
@@ -472,17 +475,16 @@ function downloadImageSvg(imageContainer, filename){
               columns: [0, order1, {calc:AddLabel, type:'string', role: 'annotation', label:'Color'}, {calc:setColor, type:'string', role: 'style', label:'Color'}]
             }
         });
-
+        
         barChart.setOption('titleTextStyle.fontName', "Barlow" );
 
         var selection;
         // Instantiate and draw our chart, passing in some options.
         //chartDetail = new google.visualization.BarChart(document.getElementById('chartDetail'));
-
+// Selector de barritas del gráfico
         google.visualization.events.addListener(barChart, 'select', function () {
           //console.log("Click: " + barChart.getChart().getSelection());
           selection = barChart.getChart().getSelection();
-
           message ='';
           for (var i = 0; i < selection.length; i++) {
             var item = selection[i];
@@ -624,6 +626,7 @@ function downloadImageSvg(imageContainer, filename){
                       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
                       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
                       var DATOS_EN_ARREGLO = []; // ESTO ES LO QUE TIENES QUE TOMAR
+                      
                       for (var i = 2; i < rawData.getNumberOfColumns() -1; i++) {
                         DATOS_EN_ARREGLO.push(rawData.getValue(0, i));
                       }
@@ -637,7 +640,6 @@ function downloadImageSvg(imageContainer, filename){
                       position = rawData.getValue(0, 8);
                       actualizar(icvu, position, DATOS_EN_ARREGLO, comuna);
                       // console.log("* TITULO: "+ theTitle);
-                      console.log("position: "+ position);
                       console.log("DATOS_EN_ARREGLO: "+ DATOS_EN_ARREGLO);
                       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
                       ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -655,19 +657,26 @@ google.visualization.events.addListener(TypeFilter, 'statechange', function() {
   //table.setSelection(orgchart.getSelection());
 
          var selectedVals = TypeFilter.getState().selectedValues;
-
+         console.log(selectedVals);
 
 
           //order0 =  parseInt($("#order0 option:selected").val());
           //console.log("order0: "+order0);
           (selectedVals == "Ciudades Metropolitanas" || selectedVals == "Ciudades Intermedias")? $("#filtros").hide() :  $("#filtros").show();
           (selectedVals == "Ciudades Metropolitanas" || selectedVals == "Ciudades Intermedias")? $("#div_filtros").hide() :  $("#div_filtros").show();
-
-          (selectedVals == "Ciudades Intermedias")? $("#map").hide() :  $("#map").show();
-});
-
-        //dashboard.bind([PopulationRangeSlider, MetropolitanaFilter, LocalizacionFilter, DistribucionFilter], [barChart, tableChart]);
+          if(selectedVals != 'Comunas'){
+            dashboard.unbind([PopulationRangeSlider, MetropolitanaFilter, LocalizacionFilter, DistribucionFilter, DependenciaRangeSlider, PerCapitaRangeSlider], [barChart])
+            $("#filtros").hide()
+            $("#div_filtros").hide()
+            selectedVals == "Ciudades Intermedias" ? $("#map").hide() :  $("#map").show();
+          } else {
+            $("#filtros").show();
+            $("#div_filtros").show();
+          }
+        });
+        
         dashboard.bind([TypeFilter, PopulationRangeSlider, MetropolitanaFilter, LocalizacionFilter, DistribucionFilter, DependenciaRangeSlider, PerCapitaRangeSlider], [barChart]);
+        //dashboard.bind([PopulationRangeSlider, MetropolitanaFilter, LocalizacionFilter, DistribucionFilter], [barChart, tableChart]);
         //dashboard.draw(data, {allowHtml: true, showRowNumber: true, width: '100%', height: '100%'});
         barChart.setOption('title', theTitle );
         dashboard.draw((view), options);
@@ -701,15 +710,18 @@ google.visualization.events.addListener(MetropolitanaFilter, 'statechange', func
     google.visualization.events.addListener(dashboard, 'ready', function() {
         // Dashboard redraw, have a look at how many rows the barChart is displaying
         var numRows = barChart.getDataTable().getNumberOfRows();
+        
         var expectedHeight = (numRows * 40)+50;
         if (parseInt(barChart.getOption('height'), 10) != expectedHeight) {
             // Update the chart options and redraw just it
             Div("chartRanking", expectedHeight);
             barChart.setOption('height', expectedHeight);
             barChart.draw();
-
-        }
-
+            if (numRows === 0){
+              setTimeout(() => {alert('No hay datos')}, 0);
+            }
+          }
+          
     });
 
 /*
