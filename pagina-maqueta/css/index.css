@@ -15,13 +15,30 @@ body{
     height: 250px;
     z-index: 0;
 }
+
 .title {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Barlow', sans-serif !important;
+    font-weight: bold;
+    font-size: 90px;
     z-index: 100;
     position: absolute;
-    top: 20%; /* 11 vw*/
-    left: 45%;
+    top: 18%; /* 11 vw*/
+    left: 44%;
 } 
+@media screen and (max-width: 550px) {
+  .title {
+    left: 30%;
+    top: 20%;
+  }
+}
+
+@media (min-width: 551px) and (max-width: 900px) {
+  .title {
+    left: 35%;
+    top: 21%;
+  }
+}
+
 
 .accordion {
     align-self: center;
@@ -75,12 +92,13 @@ body{
     font-weight: 600;
   }
 
-@media (max-width: 1099px){
+/* @media (max-width: 1099px){
     .col-md-8, .col-md-5, .col-md-6, .col-md-3, .col-lg-8, .col-lg-3, .col-lg-5, .definicion, .footer_main{
       display: none;
-    } 
+    }  */
 /* modal */
 
 .modal{
-  width: 800px;
+  align-self: center;
+
 }
