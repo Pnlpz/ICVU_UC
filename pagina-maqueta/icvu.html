@@ -64,8 +64,9 @@
               <span class="bajada-titulo">Índice de calidad de vida urbano</span>
           </div>
           <div class="parte-orden">
-              <h3 id="datos">Datos<span><i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Seleccione el tipo de dato a mostrar."></i></span>
-              </h3>
+              <h3 id="datos">Datos</h3>
+              <label for="order1">División Político Administrativa:<span><i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Corresponde a la división político administrativa a visualizar, estas pueden ser, áreas metropolitanas (cualquier ciudad de más de 250.000 hab. que aglomere a más de una comuna), ciudades intermedias (son comunas de más de 40.000 y menos de 250.000  habitantes) ó comunas del país."></i></span></label>
+
               <!--
               <label for="order0">Mostrar:</label>
               <select name="order0" id="order0">
@@ -79,7 +80,7 @@
           </div>
           <div class="parte-orden">
               <h3>Orden</h3>
-              <label for="order1">Mostrar<span><i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Seleccione el tipo de dato a mostrar."></i></span></label>
+              <label for="order1">Mostrar<span><i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="El ICVU puede visualizarse como un índice sintético, es decir una medición que combina sus seis dimensiones o también puedes analizar el ranking de cada dimensión por sí sola."></i></span></label>
               <!--
               <select name="order1" id="order1">
               <option value=0>Comuna</option>
@@ -101,7 +102,7 @@
                   <option value=13> Vivienda y Entorno</option>
               </select><br>
               <br>
-              <label for="order2">Forma<span><i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Seleccione el tipo de dato a mostrar."></i></span></label>
+              <label for="order2">Forma<span><i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="El ranking puede visualizarse de forma descendiente (de la comuna con mejor puntaje a la que tiene el puntaje más bajo) o de forma ascendente ( de la comuna con menor puntaje a la que tiene el puntaje más alto)."></i></span></label>
               <select name="order2" id="order2">
                   <option value=1>Ascendente</option>
                   <option value=2 selected="true">Descendente</option>
@@ -112,7 +113,7 @@
           <div class="parte-orden primer-filtro" id="div_filtros">
               <h3 id="filtros">Filtros</h3>
               <div id="filter_poblacion_div"></div>
-              <span><i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Seleccione el tipo de dato a mostrar."></i></span>
+              <span><i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Las comunas metropolitanas son aquellas que están dentro de un área metropolitana, y las que no son aquellas que quedan fuera de un área metropolitana."></i></span>
               <div id="filter_metropolitana_div"></div>
               <div id="filter_distribucion_div"></div>
               <div id="filter_localizacion_div"></div>

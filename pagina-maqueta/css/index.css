@@ -79,15 +79,8 @@ body{
     .col-md-8, .col-md-5, .col-md-6, .col-md-3, .col-lg-8, .col-lg-3, .col-lg-5, .definicion, .footer_main{
       display: none;
     } 
-/* .footer_main{
-        text-align: right;
-        margin-right: 3vw;
-      } */
-/* .footer_main > div, img, p{
-        display: inline-block;
-        margin-top: 0;
-        height: 100px;
-        width: auto;
-        float: left;
-      } */
+/* modal */
 
+.modal{
+  width: 800px;
+}

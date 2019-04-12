@@ -313,7 +313,6 @@ function downloadImageSvg(imageContainer, filename){
                 allowTyping: false,
                 allowMultiple: false,
                 height: 100,
-                caption : 'Mostrar',
             'allowNone': false
             }
             //'filterColumnLabel': 'Localización',
@@ -323,9 +322,7 @@ function downloadImageSvg(imageContainer, filename){
 
         });
 
-        // clear = function(){
-
-        // }
+     
 
     
 
@@ -383,6 +380,7 @@ function downloadImageSvg(imageContainer, filename){
                 allowTyping: false,
                 allowMultiple: false,
                 height: 100,
+                label: 'Tipo de comuna',
                 caption : 'Metropolitanas y no Metropolitanas'
             },values: ["Solo metropolitana", "Solo no Metropolitanas"]
             //'filterColumnLabel': 'Metropolitana',
