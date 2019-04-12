@@ -322,6 +322,13 @@ function downloadImageSvg(imageContainer, filename){
           }
 
         });
+
+        // clear = function(){
+
+        // }
+
+    
+
         /************************************************************************************/
           // RETOMAR ESTA PARTE PARA SETEAR VALOR
           //PopulationRangeSlider.setState({'lowValue': 2, 'highValue': 5});

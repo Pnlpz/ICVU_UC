@@ -442,3 +442,7 @@ text {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.clear {
+  float: right;
+  margin-right: 30%;
+}

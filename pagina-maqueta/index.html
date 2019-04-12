@@ -77,7 +77,7 @@
                                         inseguridad en los barrios.  </p>
                                     <hr class="mini my-2">
                                     <p class="font-italic mt-0 mb-2">%19.9 del índice sintético ICVU</p>
-                                    <button class="btn btn-secondary btn-sm">Ver variables utilizadas</button>
+                                    <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#vivienda">Ver variables utilizadas</button>
                                 </div>
                             
                                 <div class="col-lg-4 dimension_icvu">
@@ -101,7 +101,7 @@
                                     </p>
                                     <hr class="mini my-2">
                                     <p class="font-italic mt-0 mb-2">%11.5 del índice sintético ICVU</p>
-                                    <button class="btn btn-secondary btn-sm">Ver variables utilizadas</button>
+                                    <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#negocios">Ver variables utilizadas</button>
                                 </div>
                             </div>
                             <div class="row mt-4">
@@ -114,7 +114,7 @@
                                         nivel de endeudamiento.</p>
                                     <hr class="mini my-2">
                                     <p class="font-italic mt-0 mb-2">%16.7 del índice sintético ICVU</p>
-                                    <button class="btn btn-secondary btn-sm">Ver variables utilizadas</button>
+                                    <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#laboral">Ver variables utilizadas</button>
                                 </div>
                                 <div class="col-lg-4 dimension_icvu">
                                     <img class="iconos-icvu" src="iconos-svg/salud-medio-ambiente.svg" alt="Condiciones de Salud" />
@@ -124,7 +124,7 @@
                                         exposición ambiental en su entorno.</p>
                                     <hr class="mini my-3">
                                     <p class="font-italic mt-0 mb-2">%18.1 del índice sintético ICVU</p>
-                                    <button class="btn btn-secondary btn-sm">Ver variables utilizadas</button>
+                                    <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#salud">Ver variables utilizadas</button>
                                 </div>
                                 <div class="col-lg-4 dimension_icvu">
                                     <img class="iconos-icvu" src="iconos-svg/conectividad-movilidad.svg" alt="Conectividad y movilidad" />
@@ -135,7 +135,7 @@
                                         conexión a internet.</p>
                                     <hr class="mini my-3">
                                     <p class="font-italic mt-0 mb-2">%19.3 del índice sintético ICVU</p>
-                                    <button class="btn btn-secondary btn-sm">Ver variables utilizadas</button>
+                                    <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#movilidad">Ver variables utilizadas</button>
                                 </div>
                             </div>
                             <div class="row mt-4">
@@ -167,16 +167,16 @@
                                     <br>
                                     <br>
                                     <p class="text-success">2019: sobre XX</p>
-                                    <p class="text-success">2018: sobre XX</p>
+                                    <p class="text-success">2018: sobre 50,47</p>
                                     <br>
                                     <br>
                                     <p class="text-warning">2019: sobre XX</p>
-                                    <p class="text-warning">2018: sobre XX</p>
+                                    <p class="text-warning">2018: sobre 42,75 y 50,47</p>
                                     <br>
                                     <br>
                                     <br>
                                     <p class="text-danger">2019: sobre XX</p>
-                                    <p class="text-danger">2018: sobre XX</p>
+                                    <p class="text-danger">2018: sobre 42,75</p>
 
                                 </div>
                             </div> 
@@ -210,6 +210,38 @@
 </section>
 
 <!-- Inicio Modales -->
+<div class="modal fade" id="vivienda" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+                  <h2 class="modal-title font-weight-bold" id="exampleModalCenterTitle">Vivienda y Entorno</h2>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+            <span aria-hidden="false">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h4 class="font-weight-bold">2018</h4>
+          <p> - Metros Cuadrados (m²) de Áreas Verdes con Mantenimiento por Habitante (m²) 2017, 2017, SINIM</p>
+          <p> - Gasto total municipal por cada habitante de la comuna M$ / Habitante (promedio 2014-2016), 2017, SINIM</p>
+          <p> - Carencia indicador hacinamiento, 2015, CASEN</p>
+          <p> - Porcentaje de predios exentos de pago de contribuciones 2015, 2017, SII</p>
+          <p> - Tasa de Denuncias por Delitos de Mayor Connotación Social 2016, 2016, Carabineros de Chile</p>
+
+    
+          <h4 class="font-weight-bold">2019</h4>
+          <p> - M2 de áreas verdes con mantenimiento por habitante, 2017, SINIM</p> 
+          <p>- Gasto total municipal por cada habitante de la comuna M$/habitante, 2015-2017, SINIM</p> 
+          <p>- Porcentaje de viviendas en hacinamiento , 2017, Censo</p> 
+          <p>- Tasa de delitos de mayor connotación social , 2018, Subsecretaría de Prevención del Delito</p> 
+          <p>- Porcentaje predios exentos de pago de contribuciones, 2017, SINIM</p> 
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
 <div class="modal fade" id="sociocultural" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -221,26 +253,156 @@
           </button>
         </div>
         <div class="modal-body">
-        <h3>Aspectos relativos al desarrollo de capital social, conforme la oferta y resultados en educación,
-                participación ciudadana y convivencia social.</h3>
-        <h4 class="font-weight-bold">2019</h4>
-        <p>Ingreso promedio de los hogares, 2015, Casen</p>
-        <p>Porcentaje de Ocupados Asalariados con contrato de trabajo rmado, 2015</p>
-        <p>Ingreso promedio de los hogares, 2015, Casen</p>
-        <p>Ingreso promedio de los hogares, 2015, Casen</p>
-        <p>Ingreso promedio de los hogares, 2015, Casen</p>  
-        <h4 class="font-weight-bold">2018</h4>
-        <p>Ingreso promedio de los hogares, 2015, Casen</p>
-        <p>Porcentaje de Ocupados Asalariados con contrato de trabajo rmado, 2015</p>
-        <p>Ingreso promedio de los hogares, 2015, Casen</p>
-        <p>Ingreso promedio de los hogares, 2015, Casen</p>
-        <p>Ingreso promedio de los hogares, 2015, Casen</p> 
+          <h3>Aspectos relativos al desarrollo de capital social, conforme la oferta y resultados en educación,
+                  participación ciudadana y convivencia social.</h3>
+    
+          <h4 class="font-weight-bold">2018</h4>
+          <p>- Porcentaje de participación en organizaciones sociales, 2015, CASEN</p>
+          <p>- Tasa de denuncias por delitos de violencia Intrafamiliar 2016, 2016, SPD Ministerio del Interior</p>
+          <p>- Promedio SIMCE 4° Básico 2016 MATEMÁTICAS, 2016, MINEDUC</p>
+          <p> - Promedio SIMCE 4° Básico 2016 LENGUAJE, 2016, MINEDUC</p>
+          <p> - Tasa de embarazo adolescente 2015, 2016, DEIS-MINSAL</p>
+          <p> - Razón entre disponibilidad efectiva de matrículas y demanda potencial por educación básica, 2016, OCUC-MINEDUC</p>
+          <p> - Porcentaje de Puntajes PSU Igual o Superior a 450 puntos Establecimientos Municipales (2017), 2017, SINIM-DEMRE</p>
+          <p> - Porcentaje de población con carencia en la dimensión Educación de la Pobreza Multidimensional, 2015, CASEN</p>
+          <p> - Porcentaje de población con carencia en la dimensión Redes y Cohesión Social de la Pobreza Multidimensional, 2015, CASEN</p>
+            
+          <h4 class="font-weight-bold">2019</h4>
+          <p> -  Número de organizaciones comunitarias cada 10.000 habitantes [ACP], 2016, SINIM  </p>                  
+          <p> - Tasa de denuncia de violencia intrafamiliar cada 100.000 habitantes, 2018, Carabineros de Chile</p> 
+          <p> - Promedio SIMCE 4° básico 2017 MAT, 2017, MINEDUC</p> 
+          <p> - Promedio SIMCE 4° básico 2017 LEN, 2017, MINEDUC</p> 
+          <p>  - Tasa de embarazo adolescente 2016, 2016, DEIS-MINSAL</p> 
+          <p>  - Porcentaje de Puntajes PSU igual o superior a 450 puntos Establecimientos Municipales, 2017, SINIM-DEMRE</p> 
+          <p> - Razón entre disponibilidad efectiva de matrículas y demanda potencial por educación básica, OCUC, MINEDUC</p> 
+          <p>  - Porcentaje de población con carencia en la dimensión Educación de la Pobreza Multidimensional, 2017, CASEN</p> 
+          <p>  - Porcentaje de población con carencia en la dimensión Redes y Cohesión Social de la Pobreza Multidimensional, 2017, CASEN</p> 
+          <p>  - Distancia establecimientos de Ed. Básica, SIEDU</p> 
 
         </div>
       </div>
     </div>
   </div>
 
+<div class="modal fade" id="laborales" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+          <div class="modal-header text-center">
+                    <h2 class="modal-title font-weight-bold" id="exampleModalCenterTitle">Condiciones Laborales</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="false">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h4 class="font-weight-bold">2018</h4>
+            <p> - Ingreso promedio de los hogares, 2015, CASEN</p>
+            <p> - Porcentaje de Ocupados Asalariados con contrato de trabajo firmado, 2015, CASEN</p>
+            <p> - Porcentaje de ocupados con jornadas inferiores a 30 horas y que estarían dispuestos a trabajar más, 2015, CASEN</p>
+            <p> - Índice de mora consumo 90 días o más (agosto 2016), 2017, SBIF</p>
+            <p> - Costo de Vida ($) Precio canasta 130 productos 2015 (*), 2015, INE</p>
+            <p> - Porcentaje de población con carencia en la dimensión Trabajo y Seguridad de la Pobreza Multidimensional, 2015, CASEN</p>
+
+            <h4 class="font-weight-bold">2019</h4>
+            <p>- Índice de mora consumo 90 días o más, 2018, SBIF</p> 
+            <p>- Porcentaje de población con carencia en la dimensión Trabajo y Seguridad de la Pobreza Multidimensional, 2017, CASEN</p>
+            <p>- Porcentaje población con pensiones básicas solidaria vejez, 2017, SINIM</p>
+            <p>- Porcentaje población con subsidio único familiar, 2017, SINIM</p>
+            <p>- Porcentaje personas inscritas en la municipalidad en busca de empleo, 2017, SINIM</p>
+
+          </div>
+      </div>
+    </div>
+</div>
+
+<div class="modal fade" id="negocios" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+                   <h2 class="modal-title font-weight-bold" id="exampleModalCenterTitle">Ambiente de negocios</h2>
+                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="false">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h4 class="font-weight-bold">2018</h4>
+          <p> - Número de cajeros automáticos por cada 10 mil habitantes, enero 2018 SBIF, 2018, SBIF</p>
+           <p>- Metros cuadrados obra aprobada Servicios (promedio 2014-2016) por cada 10.000 habitantes, 2017, INE</p>
+          <p>- Unidades nuevas por cada 1.000 habitantes (promedio 2014-2016), 2017, INE</p>
+           <p>- Empresas nuevas por cada 10.000 habitantes, 2017, SII</p>
+          <p>- Superficie promedio de vivienda, 2017, INE</p>
+           <p>- Porcentaje de población que ha recibido capacitación laboral en el último año, 2015, CASEN</p>
+
+          <h4 class="font-weight-bold">2019</h4>
+          <p> - Número de cajeros automáticos por cada 10 mil hab., 2018, SBIF</p>
+          <p>- Metros cuadrados obra aprobada Servicios por cada 10 mil hab., 2016-2018, INE</p>
+          <p>- Unidades nuevas de vivienda por cada 1.000 habitantes, 2016-2018, INE</p>
+          <p>- Empresas nuevas por cada 10.000 habitantes, 2017, SII</p>
+          <p>- Superficie promedio de vivienda, 2016-2018, INE</p>
+          <p>- Tasa logro de egresos de capacitación, 2017, SINIM</p>
+          <p>- Porcentaje ingresos Fondo Común Municipal sobre ingresos totales municipales, 2017, SINIM</p>
+
+         </div>
+      </div>
+    </div>
+  </div>
+
+<div class="modal fade" id="salud" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+     <div class="modal-content">
+       <div class="modal-header text-center">
+                  <h2 class="modal-title font-weight-bold" id="exampleModalCenterTitle">Salud y medio ambiente</h2>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="false">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body">
+         <h4 class="font-weight-bold">2018</h4>
+         <p>- Tasa años de vida potencialmente perdidos por cada 1.000 habitantes ambos sexos 2014, 2017, DEIS-MINSAL</p> 
+         <p>- Total Número de Camas Hospitales y Clínicas por cada 1.000 habitantes 2015 (*), 2015, DEIS-MINSAL</p> 
+         <p>- Distancia Promedio a Centro de Salud Primaria Públicos, 2017, OCUC</p> 
+         <p>- Tasa de Mortalidad Infantil 2017, 2017, SINIM</p> 
+         <p>- Porcentaje de población con carencia en la dimensión Salud de la Pobreza Multidimensional, 2015, CASEN</p> 
+         <p>- Carencia por medioambiente: Esta variable considera los problemas de sanidad en el entorno, 2015, CASEN</p> 
+
+  
+        <h4 class="font-weight-bold">2019</h4>
+        <p> - Tasa de mortalidad infantil, 2017, SINIM</p>
+        <p> - Distancia promedio a centro de salud primaria públicos, 2017, OCUC</p>
+        <p> - Porcentaje de población con carencia en la dimensión Salud de la Pobreza Multidimensional, 2017, CASEN</p>
+        <p> - Ingresos total salud per cápita por comuna, 2017, SINIM</p>
+  
+       </div>
+    </div>
+  </div>  </div>
+
+<div class="modal fade" id="movilidad" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered" role="document">
+     <div class="modal-content">
+       <div class="modal-header text-center">
+                  <h2 class="modal-title font-weight-bold" id="exampleModalCenterTitle">Conectividad y movilidad</h2>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="false">&times;</span>
+         </button>
+      </div>
+       <div class="modal-body">
+          <h4 class="font-weight-bold">2018</h4>
+          <p> - Porcentaje de hogares que tienen conexión a Internet,2015, CASEN</p> 
+          <p> - N° de víctimas mortales en accidentes de tránsito por cada 100.000 habitantes, 2016, INE</p> 
+          <p> - N° de lesionados en accidentes de tránsito por cada 100.000 habitantes, 2016, INE</p> 
+          <p> - Carencia por accesibilidad - accesibilidad a transporte y cercanía a servicios, 2015, CASEN</p> 
+
+      
+          <h4 class="font-weight-bold">2019</h4>
+          <p> - Tasa de conexiones residenciales fijas de internet cada 1.000 habitantes, 2016, SIEDU</p>
+          <p>- N° de lesionados en accidentes de tránsito por 100.000 habitantes, 2016, Carabineros de Chile</p>
+          <p>- N° de víctimas mortales en accidentes de tránsito por cada 100.000 habitantes, 2016, Carabineros de Chile</p>
+          <p>- Distancia a centros de trabajo, 2017, OCUC</p>
+          <p>- Permeabilidad urbana, 2017, OCUC</p>
+
+        </div>
+     </div>
+  </div>
+ </div>
 <!-- Footer -->
 <footer class="footer_main mt-5">
     <div class="text-center mx-auto">
