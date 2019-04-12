@@ -19,13 +19,15 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.csv.min.js"></script>
+    <script src="js/index.js"></script>
 
   </head>
   <body>
+
+    <!-- Header -->
 <header class="hero text-center">
     <div class="image img-fluid"> 
         <div class="container ">
-            <!-- <img src="assets/home_icvu.jpg" alt="" class="img-fluid" height="20%" width="100%">   -->
             <h1 class="display-1 mt-5 pt-5"></h1>
         </div>
         <h1 class="title display-1 mt-5 pt-5 align-text-bottom font-weight-bold">ICVU</h1>
@@ -34,8 +36,8 @@
     <hr class="underscore">
 </header>
 
-
-<section class="row mt-4 pt-4">
+<!-- Acordeón  -->
+<section class="row mt-4 pt-4" id="inicio">
         <div class="accordion col-md-10" id="accordionExample">
                 <div class="card border-0 mb-4">
                   <div class="card-header col-md-offset-3" id="headingOne">
@@ -52,12 +54,12 @@
                                     <div class="col-lg-12 ">
                                         <h4 class="font-weight-bold">¿Qué es el Índice de Calidad de Vida Urbana (ICVU)?</h4>
                                         <p>Un índice sintético que mide y compara en términos relativos la calidad de vida urbana de comunas y
-                                                ciudades en Chile, a partir de un conjunto de variables referidas a seis dimensiones que expresan el estado
-                                                de situación en la provisión de bienes y servicios públicos y privados a la población residente y sus
-                                                correspondientes impactos socio-territoriales, tanto a la escala de ciudades intermedias como de ciudades
-                                                metropolitanas. <br>
-                                                El objetivo del ICVU es aportar al diseño de políticas públicas y a la focalización de recursos destinados a
-                                                mejorar las condiciones de vida de las personas que habitan en las diversas comunas de país.</p>
+                                            ciudades en Chile, a partir de un conjunto de variables referidas a seis dimensiones que expresan el estado
+                                            de situación en la provisión de bienes y servicios públicos y privados a la población residente y sus
+                                            correspondientes impactos socio-territoriales, tanto a la escala de ciudades intermedias como de ciudades
+                                            metropolitanas. <br>
+                                            El objetivo del ICVU es aportar al diseño de políticas públicas y a la focalización de recursos destinados a
+                                            mejorar las condiciones de vida de las personas que habitan en las diversas comunas de país.</p>
                                     </div>
                             </div>
                             <div class="row">
@@ -70,64 +72,75 @@
                                     <img class="iconos-icvu" src="iconos-svg/vivienda-entorno.svg" alt="Vivienda y Entorno" />
                                     <h5 class="font-weight-bold">Vivienda y Entorno</h5>
                                     <p> Nivel de precariedad de la vivienda, así
-                                            como condición del espacio público en
-                                            términos de su mantenimiento y nivel de
-                                            inseguridad en los barrios.  </p>
-                                    <hr class="mini">
+                                        como condición del espacio público en
+                                        términos de su mantenimiento y nivel de
+                                        inseguridad en los barrios.  </p>
+                                    <hr class="mini my-2">
+                                    <p class="font-italic mt-0 mb-2">%19.9 del índice sintético ICVU</p>
+                                    <button class="btn btn-secondary btn-sm">Ver variables utilizadas</button>
                                 </div>
                             
                                 <div class="col-lg-4 dimension_icvu">
                                     <img class="iconos-icvu" src="iconos-svg/condiciones-socioculturales.svg" alt="Condiciones socioculturales" />
                                     <h5>Condiciones Socioculturales</h5>
                                     <p>Aspectos relativos al desarrollo de capital
-                                            social, conforme la oferta y resultados en
-                                            educación, participación ciudadana y
-                                            convivencia social. </p>
-                                    <hr class="mini">
+                                        social, conforme la oferta y resultados en
+                                        educación, participación ciudadana y
+                                        convivencia social. </p>
+                                    <hr class="mini my-4">
+                                    <p class="font-italic mt-0 mb-2">%14.5 del índice sintético ICVU</p>
+                                    <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#sociocultural">Ver variables utilizadas</button>
                                 </div>
                                 <div class="col-lg-4 dimension_icvu">
                                     <img class="iconos-icvu" src="iconos-svg/ambiente-negocios.svg" alt="Ambiente de negocios" />
                                     <h5>Ambiente de Negocios</h5>
                                     <p>Capacidad de atraer actividad económica
-                                            y nuevos emprendimientos, desarrollos
-                                            inmobiliarios y nuevos servicios públicos y
-                                            privados.
+                                        y nuevos emprendimientos, desarrollos
+                                        inmobiliarios y nuevos servicios públicos y
+                                        privados.
                                     </p>
-                                    <hr class="mini">
+                                    <hr class="mini my-2">
+                                    <p class="font-italic mt-0 mb-2">%11.5 del índice sintético ICVU</p>
+                                    <button class="btn btn-secondary btn-sm">Ver variables utilizadas</button>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row mt-4">
                                 <div class="col-lg-4 dimension_icvu">
                                     <img class="iconos-icvu" src="iconos-svg/condicion-laboral.svg" alt="Ambiente laboral" />
                                     <h5>Condiciones Laborales</h5>
                                     <p> Condiciones laborales de la población
-                                            residente en términos de ingreso,
-                                            condiciones contractuales, costo de vida y
-                                            nivel de endeudamiento.</p>
-                                    <hr class="mini">
+                                        residente en términos de ingreso,
+                                        condiciones contractuales, costo de vida y
+                                        nivel de endeudamiento.</p>
+                                    <hr class="mini my-2">
+                                    <p class="font-italic mt-0 mb-2">%16.7 del índice sintético ICVU</p>
+                                    <button class="btn btn-secondary btn-sm">Ver variables utilizadas</button>
                                 </div>
                                 <div class="col-lg-4 dimension_icvu">
                                     <img class="iconos-icvu" src="iconos-svg/salud-medio-ambiente.svg" alt="Condiciones de Salud" />
                                     <h5>Salud y medioambiente</h5>
-                                    <p>  Acceso y proximidad a la red de salud,
-                                            carencias en materia de salud y nivel de
-                                            exposición ambiental en su entorno.</p>
-                                    <hr class="mini">
+                                    <p> Acceso y proximidad a la red de salud,
+                                        carencias en materia de salud y nivel de
+                                        exposición ambiental en su entorno.</p>
+                                    <hr class="mini my-3">
+                                    <p class="font-italic mt-0 mb-2">%18.1 del índice sintético ICVU</p>
+                                    <button class="btn btn-secondary btn-sm">Ver variables utilizadas</button>
                                 </div>
                                 <div class="col-lg-4 dimension_icvu">
                                     <img class="iconos-icvu" src="iconos-svg/conectividad-movilidad.svg" alt="Conectividad y movilidad" />
                                     <h5>Conectividad y Movilidad</h5>
                                     <p> Acceso y proximidad a los servicios
-                                            asociados al transporte público, nivel
-                                            exposición a accidentes de tránsito y
-                                            conexión a internet.</p>
-                                    <hr class="mini">
+                                        asociados al transporte público, nivel
+                                        exposición a accidentes de tránsito y
+                                        conexión a internet.</p>
+                                    <hr class="mini my-3">
+                                    <p class="font-italic mt-0 mb-2">%19.3 del índice sintético ICVU</p>
+                                    <button class="btn btn-secondary btn-sm">Ver variables utilizadas</button>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row mt-4">
                                 <div class="col-lg-11">
                                     <h4 class="font-weight-bold">Distribución de resultados por rangos</h4>
-                    
                                 </div>
                                 <div class="col-5">
                                     <img src="assets/figura resultados_Mesa de trabajo 1.svg" alt="Figura resultados mesa de trabajo">
@@ -135,20 +148,20 @@
                                 <div class="col-5 text-left">
                                     <span class="font-weight-bold text-success">Rango Superior</span>
                                     <p>Clasifica aquellas comunas o ciudades que superan el valor
-                                            máximo del rango promedio, es decir, presentan una mayor
-                                            cantidad de atributos o menores falencias en su desarrollo
-                                            urbano en una dimensión o en el ICVU.</p>
+                                        máximo del rango promedio, es decir, presentan una mayor
+                                        cantidad de atributos o menores falencias en su desarrollo
+                                        urbano en una dimensión o en el ICVU.</p>
                                     <span class="font-weight-bold text-warning">Rango Promedio</span>
                                     <p> Clasifica aquellas comunas o ciudades que se encuentran entre
-                                            el valor mínimo y máximo calculado en torno a la media
-                                            aritmética, es decir, combinan tanto atributos como falencias en
-                                            una dimensión o ICVU en su desarrollo urbano similar al
-                                            promedio que alcanza el país.</p>
+                                        el valor mínimo y máximo calculado en torno a la media
+                                        aritmética, es decir, combinan tanto atributos como falencias en
+                                        una dimensión o ICVU en su desarrollo urbano similar al
+                                        promedio que alcanza el país.</p>
                                     <span class="font-weight-bold text-danger">Rango Inferior</span>
                                     <p>Clasifica aquellas comunas o ciudades que no superan el valor
-                                            mínimo del rango promedio, es decir, presentan una menor
-                                            cantidad de atributos o mayores falencias en su desarrollo
-                                            urbano en una dimensión o ICVU. </p>
+                                        mínimo del rango promedio, es decir, presentan una menor
+                                        cantidad de atributos o mayores falencias en su desarrollo
+                                        urbano en una dimensión o ICVU. </p>
                                 </div>
                                 <div class="col-2">
                                     <br>
@@ -167,6 +180,7 @@
 
                                 </div>
                             </div> 
+                            <a href="#inicio">Volver Arriba</a>
                     </div>
                   </div>
                 </div>
@@ -174,7 +188,7 @@
                   <div class="card-header col-md-offset-3" id="headingTwo">
                     <h2 class="mb-0">
                       <a href="icvu.html" class="text-white">
-                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" >
                        Explorar resultados 2018 
                         </button>
                     </a>
@@ -195,7 +209,39 @@
               </div>
 </section>
 
+<!-- Inicio Modales -->
+<div class="modal fade" id="sociocultural" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+                  <h2 class="modal-title font-weight-bold" id="exampleModalCenterTitle">Condiciones Socioculturales</h2>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 
+            <span aria-hidden="false">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <h3>Aspectos relativos al desarrollo de capital social, conforme la oferta y resultados en educación,
+                participación ciudadana y convivencia social.</h3>
+        <h4 class="font-weight-bold">2019</h4>
+        <p>Ingreso promedio de los hogares, 2015, Casen</p>
+        <p>Porcentaje de Ocupados Asalariados con contrato de trabajo rmado, 2015</p>
+        <p>Ingreso promedio de los hogares, 2015, Casen</p>
+        <p>Ingreso promedio de los hogares, 2015, Casen</p>
+        <p>Ingreso promedio de los hogares, 2015, Casen</p>  
+        <h4 class="font-weight-bold">2018</h4>
+        <p>Ingreso promedio de los hogares, 2015, Casen</p>
+        <p>Porcentaje de Ocupados Asalariados con contrato de trabajo rmado, 2015</p>
+        <p>Ingreso promedio de los hogares, 2015, Casen</p>
+        <p>Ingreso promedio de los hogares, 2015, Casen</p>
+        <p>Ingreso promedio de los hogares, 2015, Casen</p> 
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Footer -->
 <footer class="footer_main mt-5">
     <div class="text-center mx-auto">
         <span class="font-weight-light font-italic">Estudio de: </span>

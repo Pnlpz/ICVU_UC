@@ -139,12 +139,11 @@ function downloadImageSvg(imageContainer, filename){
 
 
   $( "#button1" ).click(function() {
-    downloadImageSvg(chartContainerRANKING, 'Ranking.svg');
+    downloadImageSvg(chartContainerRANKING, 'Ranking.svg');  
   });
 
-
+// Acá se dibuja la imagen del gráfico araña a exportar en formato png
               function setBackgroundWhite(canvasId){
-
                   //document.getElementById("spider").setBackgroundColor('rgba(255, 73, 64, 0.6)');
                   var canvas = document.getElementById(canvasId);
                   var ctx = canvas.getContext("2d");
@@ -160,6 +159,7 @@ function downloadImageSvg(imageContainer, filename){
                       }
                   }
                   ctx.putImageData(imgData,0,0);
+
 
                   //AÑADIENDO LEYENDA POR FIN//
                   ctx.font = "10px Barlow";
@@ -188,9 +188,14 @@ function downloadImageSvg(imageContainer, filename){
               * The event handler for the link's onclick event. We give THIS as a
               * parameter (=the link element), ID of the canvas and a filename.
               */
+            //  Acá se descarga el gráfico araña 
+
               document.getElementById('download').addEventListener('click', function() {
                  downloadCanvas(this, 'spider', 'icvu2018.png');
+
               });
+
+// Acá se descarga el Ranking de comunas
               document.getElementById('downloadRanking').addEventListener('click', function() {
 
                 var downloadLink = document.createElement("a");
@@ -291,7 +296,9 @@ function downloadImageSvg(imageContainer, filename){
                 height: 100
             }
           }
+          
         });
+
 
 
 
@@ -425,6 +432,8 @@ function downloadImageSvg(imageContainer, filename){
             //'filterColumnLabel': 'Zona',
           }
         });
+
+        
 
 /* ESTO ES LO PENDIENTE A SUBIR  <- **/
 // Acá están las opciones del gráfico:
@@ -665,7 +674,7 @@ google.visualization.events.addListener(TypeFilter, 'statechange', function() {
           (selectedVals == "Ciudades Metropolitanas" || selectedVals == "Ciudades Intermedias")? $("#filtros").hide() :  $("#filtros").show();
           (selectedVals == "Ciudades Metropolitanas" || selectedVals == "Ciudades Intermedias")? $("#div_filtros").hide() :  $("#div_filtros").show();
           if(selectedVals != 'Comunas'){
-            dashboard.unbind([PopulationRangeSlider, MetropolitanaFilter, LocalizacionFilter, DistribucionFilter, DependenciaRangeSlider, PerCapitaRangeSlider], [barChart])
+            dashboard.bind([TypeFilter], [barChart])
             $("#filtros").hide()
             $("#div_filtros").hide()
             selectedVals == "Ciudades Intermedias" ? $("#map").hide() :  $("#map").show();
@@ -718,7 +727,8 @@ google.visualization.events.addListener(MetropolitanaFilter, 'statechange', func
             barChart.setOption('height', expectedHeight);
             barChart.draw();
             if (numRows === 0){
-              setTimeout(() => {alert('No hay datos')}, 0);
+              setTimeout(() => {alert('No hay comunas que cumplan con los parámetros.')}, 0)
+              
             }
           }
           
@@ -836,3 +846,7 @@ chartHeight = 70 + (N)*32;
           $("#chartRanking").css("");
 
       }); // FIN $( document ).ready(
+        
+      $(document).ready(function() {
+          alert("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t \t \t \t ¡IMPORTANTE!\n\n Por temas metodológicos el ranking ICVU no es comparable año a año.");
+        });
