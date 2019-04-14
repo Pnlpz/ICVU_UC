@@ -21,7 +21,7 @@
     <script src="js/Chart.bundle.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/radar.js"></script>
-    <script src="js/chart_google.js"></script>
+    <script src="js/chart_google2.js"></script>
 
   </head>
   <body>
@@ -61,7 +61,7 @@
       <section class="col-lg-3" id="ordenamiento">
           <div class="icvu-indicador">
               <h1 id="titulo">ICVU</h1>
-              <span class="bajada-titulo">Índice de calidad de vida urbano</span>
+              <span class="bajada-titulo">Índice de calidad de vida urbano 2019</span>
           </div>
           <div class="parte-orden">
               <h3 id="datos">Datos</h3>
@@ -124,7 +124,7 @@
               <div id="reset_button"></div>
           </div>
           <div class="clear">
-            <button class="btn btn-secondary btn-sm" onclick="clear();">Limpiar filtros</button>
+            <button class="btn btn-secondary btn-sm" id="clear" onclick="clear(this, 'ordenamiento');">Limpiar filtros</button>
           </div>
       </section>
       <!--Fin filtros-->
@@ -136,7 +136,9 @@
             <!--
               <a class="btn btn-primary menu-opciones" href="datos_icvu2.csv" style="right: 150px;"><i class="fas fa-download"></i> Exportar Data</a>
             -->
+          
             <a class="btn btn-primary menu-opciones" href="index.html" style="right: 20px;"> Volver</a>
+
           </div>
       </div>
       <!--Fin barra gris superior -->
@@ -199,6 +201,7 @@
             </div>
         </div>
     </div>
+
 
 <script>
   $(function () {
