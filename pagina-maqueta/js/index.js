@@ -20,10 +20,4 @@ $(function(){
 
 
   $('[data-toggle="popover"]').popover();
-
-  function clear('ordenamiento'){
-    document.getElementById("ordenamiento").reset();
-    console.log('limpiar filtros');
-  };
-
 });
