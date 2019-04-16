@@ -440,6 +440,13 @@ function downloadImageSvg(imageContainer, filename){
           }
         });
 
+         // Event listener on '#clearFilters' button that selects all declared filters
+        // and resets them to their original state.
+        $('#clearFilters').on('click',function(){
+          var filters =  [TypeFilter, PopulationRangeSlider, MetropolitanaFilter, LocalizacionFilter, DistribucionFilter, DependenciaRangeSlider, PerCapitaRangeSlider]
+          filters.map( filter => filter.getControl().resetControl() );
+        });
+
         
 
 /* ESTO ES LO PENDIENTE A SUBIR  <- **/
