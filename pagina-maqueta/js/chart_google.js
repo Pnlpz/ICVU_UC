@@ -300,8 +300,6 @@ function downloadImageSvg(imageContainer, filename){
         });
 
 
-
-
         // Create a CategoryFilter, passing some options
         var TypeFilter = new google.visualization.ControlWrapper({
           'controlType': 'CategoryFilter',
@@ -321,10 +319,6 @@ function downloadImageSvg(imageContainer, filename){
           }
 
         });
-
-     
-
-    
 
         /************************************************************************************/
           // RETOMAR ESTA PARTE PARA SETEAR VALOR
@@ -438,7 +432,13 @@ function downloadImageSvg(imageContainer, filename){
           }
         });
 
-        
+        // Event listener on '#clearFilters' button that selects all declared filters
+        // and resets them to their original state.
+        $('#clearFilters').on('click',function(){
+          var filters =  [TypeFilter, PopulationRangeSlider, MetropolitanaFilter, LocalizacionFilter, DistribucionFilter, DependenciaRangeSlider, PerCapitaRangeSlider]
+          filters.map( filter => filter.getControl().resetControl() );
+        });
+
 
 /* ESTO ES LO PENDIENTE A SUBIR  <- **/
 // Acá están las opciones del gráfico:
@@ -848,7 +848,7 @@ chartHeight = 70 + (N)*32;
           message = "Haz click en alguna comuna"
 
           createRadar(ejemplo, message);
-          $("#chartRanking").css("");
+          // $("#chartRanking").css("");
 
       }); // FIN $( document ).ready(
         
