@@ -190,10 +190,10 @@ function downloadImageSvg(imageContainer, filename){
               */
             //  Acá se descarga el gráfico araña 
 
-              document.getElementById('download').addEventListener('click', function() {
-                 downloadCanvas(this, 'spider', 'icvu2019.png');
+              // document.getElementById('download').addEventListener('click', function() {
+              //    downloadCanvas(this, 'spider', 'icvu2019.png');
 
-              });
+              // });
 
 // Acá se descarga el Ranking de comunas
               document.getElementById('downloadRanking').addEventListener('click', function() {

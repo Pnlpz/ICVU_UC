@@ -38,7 +38,11 @@ body{
     top: 21%;
   }
 }
-
+@media screen and (max-width: 900px){
+  #inicio{
+    align-self: center;
+  }
+}
 
 .accordion {
     align-self: center;
