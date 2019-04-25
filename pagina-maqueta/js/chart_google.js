@@ -732,8 +732,10 @@ google.visualization.events.addListener(MetropolitanaFilter, 'statechange', func
             barChart.setOption('height', expectedHeight);
             barChart.draw();
             if (numRows === 0){
-              setTimeout(() => { swal("Ups!", "No hay comunas que cumplan con los parámetros.", "error");
+              setTimeout(() => { 
+                swal("Ups!", "No hay comunas que cumplan con los parámetros.", "error");
             })
+          }
           }
           
     });
