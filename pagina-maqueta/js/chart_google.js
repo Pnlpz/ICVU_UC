@@ -732,9 +732,8 @@ google.visualization.events.addListener(MetropolitanaFilter, 'statechange', func
             barChart.setOption('height', expectedHeight);
             barChart.draw();
             if (numRows === 0){
-              setTimeout(() => {alert('No hay comunas que cumplan con los parámetros.')}, 0)
-              
-            }
+              setTimeout(() => { swal("Ups!", "No hay comunas que cumplan con los parámetros.", "error");
+            })
           }
           
     });
@@ -852,6 +851,3 @@ chartHeight = 70 + (N)*32;
 
       }); // FIN $( document ).ready(
         
-      $(document).ready(function() {
-          alert("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t \t \t \t ¡IMPORTANTE!\n\n Por temas metodológicos el ranking ICVU no es comparable año a año.");
-        });
