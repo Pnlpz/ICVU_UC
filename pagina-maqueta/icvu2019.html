@@ -65,6 +65,11 @@
           </div>
           <div class="parte-orden">
               <h3 id="datos">Datos</h3>
+              <label for="order1">Año:<span><i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Seleccione el año que desea ver."></i></span></label>
+              <select name="years" onchange="location = this.value;">
+                <option value="icvu2019.html">2019</option>
+                <option value="icvu.html">2018</option>
+              </select>
               <label for="order1">División Político Administrativa:<span><i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Corresponde a la división político administrativa a visualizar, estas pueden ser, áreas metropolitanas (cualquier ciudad de más de 250.000 hab. que aglomere a más de una comuna), ciudades intermedias (son comunas de más de 40.000 y menos de 250.000  habitantes) ó comunas del país."></i></span></label>
 
               <!--
@@ -76,11 +81,7 @@
               </select>
             -->
               <div id="filter_type_div"></div>
-              <label for="order1">Año:<span><i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Seleccione el año que desea ver."></i></span></label>
-              <select name="years" onchange="location = this.value;">
-                <option value="icvu2019.html">2019</option>
-                <option value="icvu.html">2018</option>
-              </select>
+
           </div>
           <div class="parte-orden">
               <h3>Orden</h3>
