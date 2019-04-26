@@ -20,6 +20,9 @@ $(function(){
 
 
   $('[data-toggle="popover"]').popover();
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> d55169b03c081cc9f5c8c818dbd50290dd94d160
 });

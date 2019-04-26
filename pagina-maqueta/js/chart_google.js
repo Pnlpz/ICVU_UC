@@ -436,9 +436,14 @@ function downloadImageSvg(imageContainer, filename){
         // and resets them to their original state.
         $('#clearFilters').on('click',function(){
           var filters =  [TypeFilter, PopulationRangeSlider, MetropolitanaFilter, LocalizacionFilter, DistribucionFilter, DependenciaRangeSlider, PerCapitaRangeSlider]
+<<<<<<< HEAD
           filters.map( filter => filter.getControl().resetControl() );
         });
 
+=======
+          filters.map( filter => filter.getControl().resetControl() )
+        })
+>>>>>>> d55169b03c081cc9f5c8c818dbd50290dd94d160
 
 /* ESTO ES LO PENDIENTE A SUBIR  <- **/
 // Acá están las opciones del gráfico:
