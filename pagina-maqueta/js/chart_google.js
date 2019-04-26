@@ -190,10 +190,10 @@ function downloadImageSvg(imageContainer, filename){
               */
             //  Acá se descarga el gráfico araña 
 
-              document.getElementById('download').addEventListener('click', function() {
-                 downloadCanvas(this, 'spider', 'icvu2018.png');
+            document.getElementById('download').addEventListener('click', function() {
+              downloadCanvas(this, 'spider', 'icvu2018.png');
 
-              });
+           });
 
 // Acá se descarga el Ranking de comunas
               document.getElementById('downloadRanking').addEventListener('click', function() {
@@ -320,6 +320,8 @@ function downloadImageSvg(imageContainer, filename){
 
         });
 
+
+
         /************************************************************************************/
           // RETOMAR ESTA PARTE PARA SETEAR VALOR
           //PopulationRangeSlider.setState({'lowValue': 2, 'highValue': 5});
@@ -434,16 +436,11 @@ function downloadImageSvg(imageContainer, filename){
 
         // Event listener on '#clearFilters' button that selects all declared filters
         // and resets them to their original state.
+
         $('#clearFilters').on('click',function(){
           var filters =  [TypeFilter, PopulationRangeSlider, MetropolitanaFilter, LocalizacionFilter, DistribucionFilter, DependenciaRangeSlider, PerCapitaRangeSlider]
-<<<<<<< HEAD
           filters.map( filter => filter.getControl().resetControl() );
         });
-
-=======
-          filters.map( filter => filter.getControl().resetControl() )
-        })
->>>>>>> d55169b03c081cc9f5c8c818dbd50290dd94d160
 
 /* ESTO ES LO PENDIENTE A SUBIR  <- **/
 // Acá están las opciones del gráfico:
